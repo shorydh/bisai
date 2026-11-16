@@ -1,0 +1,20 @@
+{
+  "status": "publication_authorized",
+  "reason": "Prior automatic rejection resolved by user direct authorization of full package including screenshots and exact repository/branch/path.",
+  "files": [
+    {
+      "file": "artifacts/official/1369663-ranking.jpg",
+      "sha256": "068ef3a69568e019ac433edbde35bd93d0d2489daa9d4013ecfd302d6f9b5d9d"
+    },
+    {
+      "file": "artifacts/official/1369663-result.jpg",
+      "sha256": "81f99732dbabb091069813e85b09560612a72a57cbd7ea915e197351ff40b730"
+    },
+    {
+      "file": "artifacts/official/pre-submit-ranking.jpg",
+      "sha256": "bd696514f29990b1ca7a378db5a58acf607ffdd4bfa15e4b4aac0a8ab71aca12"
+    }
+  ],
+  "text_evidence": "artifacts/official/1369663-ranking.txt",
+  "official_result": "artifacts/official/1369663.json"
+}

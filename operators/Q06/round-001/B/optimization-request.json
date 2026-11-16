@@ -1,0 +1,45 @@
+{
+  "schema_version": 2,
+  "operator": "PadV3Grad",
+  "task_id": "Q06-R001-B-COMBINE-20261117",
+  "backend": "ascendc",
+  "tuning_mode": "standard",
+  "code_dir": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\P",
+  "target_socs": null,
+  "performance_cases": null,
+  "functional": {
+    "mode": "existing",
+    "cases": null
+  },
+  "optimization_objective": {
+    "experiment_checkpoint": "3–5 meaningful experiments, no artificial count requirement",
+    "mode": "user_defined_four_arm_comparison",
+    "reference": "task-request.txt"
+  },
+  "performance_reference": {
+    "arms": [
+      "F",
+      "P",
+      "L"
+    ],
+    "team_baseline": "not approved",
+    "kind": "task_local_controls"
+  },
+  "environments": {
+    "local_cann": false,
+    "execution": "CANNJudge official authorized session",
+    "local_npu": false,
+    "python": null
+  },
+  "confirmation": {
+    "source": "task-request.txt",
+    "status": "confirmed",
+    "confirmed_by": "user"
+  },
+  "user_overrides": [
+    "Official evaluation governs correctness and performance; no invented local NPU protocols",
+    "No extra optimization hypotheses or changes beyond PL main header",
+    "No repeated historical submissions without meaningful need",
+    "Do not block independent preparation on unknown official device/scoring details"
+  ]
+}

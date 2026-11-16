@@ -1,0 +1,11 @@
+{
+  "snapshot": "PL-source.zip",
+  "sha256": "ee037759f9934f0ecf0fa3ed78c07ea15ed7f247fc07c87c89690c1a50f4127c",
+  "files": 38,
+  "seven_source_sha256": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41",
+  "main_header_sha256": "88f6164377498e6c2d89d1c52578c4f601d172c98faa82c291197392249fcc08",
+  "all_38_file_sha256": "89cf4d6015ae23d17c90d9c28053c0cfcd21fcf36faa7693a7d872b3b5b04ba8",
+  "source_root": "../../../PL",
+  "snapshot_root": "code/",
+  "immutable_after_freeze": true
+}

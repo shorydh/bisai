@@ -1,0 +1,44 @@
+{
+  "task_id": "Q06-R001-B-COMBINE-20261117",
+  "decision": "source_scope_pass_dynamic_pending",
+  "checker": "verify_candidate.cjs; direct byte/hunk checks, not canonical Python validate_implementation_conformance.py",
+  "source_isolation": {
+    "decision": "pass",
+    "changed_files": [
+      "op_kernel/pad_v3_grad.h"
+    ],
+    "all_38_baseline_identity_matches": true,
+    "other_37_exact": true,
+    "reverse_hunks_recovers_P": true,
+    "scope_sha256": "b078bb2a9e1646b0777491b9377bba92f03c43eee5ba5ba96398503ddcc17d8e"
+  },
+  "candidate_safety": {
+    "decision": "static_pass_dynamic_pending",
+    "public_contract": "unchanged bytes",
+    "host_tiling": "unchanged bytes",
+    "UB_sync_reduction_certificate_fallback": "unchanged bytes except last-axis plan selection",
+    "new_cache_lifetime": "local function invocation",
+    "actual_stack_spill": "unknown",
+    "device_validation": "pending"
+  },
+  "canonical_workflow_gate": "pending",
+  "eligible_for_performance": false,
+  "checks": {
+    "file_count": true,
+    "file_inventory": true,
+    "only_main_header_changed": true,
+    "reverse_exact_parent": true,
+    "scope_sha256": true,
+    "contract_sha256": true,
+    "candidate_identity": true,
+    "cache_single_insert": true,
+    "selector_single_replace": true
+  },
+  "official_evaluation": {
+    "task_id": 1369663,
+    "status": "Pass",
+    "source_full_38_match": true,
+    "evidence": "../../official/1369663.json",
+    "evaluated_at": null
+  }
+}

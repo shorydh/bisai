@@ -1,0 +1,104 @@
+{
+  "schema_version": 3,
+  "scheme_id": "PL",
+  "task_id": "Q06-R001-B-COMBINE-20261117",
+  "round_id": "round-001",
+  "status": "ready_for_implementation_after_parent_freeze",
+  "generic_workflow_stage_status": "pending_official_baseline_and_preparation_gates",
+  "implementation_mode": "exact",
+  "substitution_policy": "forbidden",
+  "target_socs": [],
+  "actual_official_soc": null,
+  "project_registered_soc": "ascend910b",
+  "parent_version": {
+    "zip_sha256": "18679dad71f9ea7723ca524599b0d9363861aeadf8f8032202f6391199a5a85a",
+    "source_root": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\P",
+    "official_task_id": 1367774,
+    "seven_source_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+    "main_header_sha256": "9739a0c61d4c545dd0d98c0203c7cf4c786acf745d3a4cdb8c1e099a841381bb"
+  },
+  "candidate_root": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\PL",
+  "editable_file": "op_kernel/pad_v3_grad.h",
+  "source_isolation": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\artifacts\\workflow\\analysis\\round1\\source-isolation-PL.json",
+  "required_features": [
+    {
+      "description": "Preserve every P byte except the two allowed edits in TryWideCertifiedFlat, including InitOuterPrefix before early rejection and InitOuter cursor/base reset",
+      "id": "retain-P-verbatim"
+    },
+    {
+      "description": "Insert exact r1 constexpr int64_t lastPlanCapacity = 32; guard outputWidth_ <= lastPlanCapacity && count > outputWidth_; local Contributors lastPlans[lastPlanCapacity]; initialize columns [0,outputWidth_) only if reuseLast",
+      "id": "r1-local-cache"
+    },
+    {
+      "description": "Use const auto last = reuseLast ? lastPlans[column + c] : MakeContributors(column + c,inputWidth_,outputWidth_,front_[rank_-1],data_->mode); retain original outer-major/last-axis-minor and all count guards",
+      "id": "r1-plan-selection"
+    },
+    {
+      "description": "Candidate is full 38-file clone of official P code/; other 37 files byte-identical; strip exactly two cache edits to recover exact P main header",
+      "id": "complete-clone"
+    },
+    {
+      "description": "Freeze full candidate snapshot/seven-source digest and diff before official submission; downloaded submitted engineering code must match all files/config; official evaluated_at null when unavailable",
+      "id": "identity-and-evidence"
+    },
+    {
+      "description": "Exercise host-reachable and synthetic core ranges separately, width31/32/33,count<=width/>width,tail begin/run,prefix classes,source counts0/31/32/33/63/64/65,wide rejection then fallback,and changed padding between calls",
+      "id": "boundary-verification"
+    }
+  ],
+  "forbidden": [
+    "Changes outside PL/op_kernel/pad_v3_grad.h",
+    "Any edit outside the exact two r1 transplant locations",
+    "Host/TilingData/TilingKey/blockFactor/UB/sentinel/64-slot changes",
+    "New DMA overlap/r5/r10/8-or-16-slot schemes",
+    "Floating reduction order/certificate/threshold/synchronization/fallback policy changes",
+    "Static/member/global lastPlans or cache persisted across calls",
+    "Declare performance gain or all-input precision from CPU model or historical P/L Pass"
+  ],
+  "safety": {
+    "sum_order": "unchanged",
+    "scope": "user-authorized isolated official engineering only; no full-platform validation claim",
+    "ub": "unchanged",
+    "sync": "unchanged",
+    "public_contract": "unchanged",
+    "other_source_files": "byte-identical"
+  },
+  "expected_effect": {
+    "prediction_missed_if": "Official compile/precision/resource failure or PL slower than verified comparable P; classify actual evidence",
+    "comparison": "lt",
+    "end_to_end_performance": "unknown",
+    "metric": "last-axis MakeContributors constructions",
+    "cases": [
+      "wide-eligible core with reuseLast true and accepted wide mapping"
+    ],
+    "baseline": "count",
+    "candidate": "outputWidth"
+  },
+  "expectations": {
+    "source_automatic_storage_bytes": 1280,
+    "casttrait": false,
+    "vf": false,
+    "actual_stack_or_spill_bytes": null,
+    "new_api": false
+  },
+  "case_ids": [],
+  "case_coverage": "Official hidden cases unavailable; preserve original evaluator; auxiliary factors described in analysis.md",
+  "evaluation": {
+    "cpu_role": "source-derived diagnostic only, device_execution=false",
+    "completion_time": "official evaluated_at only, otherwise null",
+    "historical_controls": "F/P/L accurate results may be reused only after protocol/config comparability checks",
+    "official_required": true,
+    "formal_comparison": "pending if scoring/timing/degeneration rules or repeat noise unresolved"
+  },
+  "kb_unavailable": true,
+  "kb_cards": [],
+  "not_completed": [
+    "Official compilation",
+    "Official precision",
+    "PL official performance",
+    "Actual stack pressure",
+    "Four-arm strict comparability",
+    "A common baseline",
+    "Generic workflow manifest/state/canonical gates"
+  ]
+}

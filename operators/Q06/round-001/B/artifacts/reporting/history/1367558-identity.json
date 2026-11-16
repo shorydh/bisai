@@ -1,0 +1,85 @@
+{
+  "official_task_id": 1367558,
+  "official_result_ref": "https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6afb1c176bd0f9be37af982a",
+  "seven_source_sha256": "700af8da3ef6679f48ebf8bbfa9d2f145d9357e9b6fd2e4f288542c662a1969b",
+  "seven_source_files": [
+    {
+      "file": "op_host/pad_v3_grad_def.cpp",
+      "sha256": "704380e0b489f02527514fa73ec5fc4b9dcbd32040fa0333a43d0d0c5b072a92"
+    },
+    {
+      "file": "op_host/pad_v3_grad_infershape.cpp",
+      "sha256": "908ac633c33c8506964e7ffa75fe2faa8f3ec415723572237509127fae9c385b"
+    },
+    {
+      "file": "op_host/pad_v3_grad_tiling.cpp",
+      "sha256": "de2cc09b5189b0201985ec79b1e077b74da8b7450535f1ffe4e847e7f715e689"
+    },
+    {
+      "file": "op_kernel/pad_v3_grad.cpp",
+      "sha256": "c22da1fcbf8d4f4607356a004f72ad5c9a251459b97500a5cfd8dc61d6132468"
+    },
+    {
+      "file": "op_kernel/pad_v3_grad.h",
+      "sha256": "e354629d43be2f42dd027cbce12d042ee545aa7e6cb062d5c27a68c0369a66e3"
+    },
+    {
+      "file": "op_kernel/pad_v3_grad_tiling_data.h",
+      "sha256": "d98e018fb41fe5ec79fdcd2885a1db34530b489e6b505cafdc55b611cbbfe84e"
+    },
+    {
+      "file": "op_kernel/pad_v3_grad_tiling_key.h",
+      "sha256": "464965d7728c9eecce949f3b1a79c7c06b1beed970b97df63d7096cec8f2e9ba"
+    }
+  ],
+  "package_sha256": "cbb5fa762f71555d27ce59414de73b30f37a24218e9f608edb91b09584b233df",
+  "build_and_source_files": [
+    {
+      "file": "op_host/CMakeLists.txt",
+      "sha256": "1de444d1f669aabeb63b73b636b64a1532d74d7e056956150ba1465073aed96b"
+    },
+    {
+      "file": "op_host/pad_v3_grad_def.cpp",
+      "sha256": "704380e0b489f02527514fa73ec5fc4b9dcbd32040fa0333a43d0d0c5b072a92"
+    },
+    {
+      "file": "op_host/pad_v3_grad_infershape.cpp",
+      "sha256": "908ac633c33c8506964e7ffa75fe2faa8f3ec415723572237509127fae9c385b"
+    },
+    {
+      "file": "op_host/pad_v3_grad_tiling.cpp",
+      "sha256": "de2cc09b5189b0201985ec79b1e077b74da8b7450535f1ffe4e847e7f715e689"
+    },
+    {
+      "file": "op_kernel/CMakeLists.txt",
+      "sha256": "803fb189cb5bb83c1003e43e7df99db42fc838fa53ea8f0fce9dc6ccd3561d6b"
+    },
+    {
+      "file": "op_kernel/pad_v3_grad.cpp",
+      "sha256": "c22da1fcbf8d4f4607356a004f72ad5c9a251459b97500a5cfd8dc61d6132468"
+    },
+    {
+      "file": "op_kernel/pad_v3_grad.h",
+      "sha256": "e354629d43be2f42dd027cbce12d042ee545aa7e6cb062d5c27a68c0369a66e3"
+    },
+    {
+      "file": "op_kernel/pad_v3_grad_tiling_data.h",
+      "sha256": "d98e018fb41fe5ec79fdcd2885a1db34530b489e6b505cafdc55b611cbbfe84e"
+    },
+    {
+      "file": "op_kernel/pad_v3_grad_tiling_key.h",
+      "sha256": "464965d7728c9eecce949f3b1a79c7c06b1beed970b97df63d7096cec8f2e9ba"
+    },
+    {
+      "file": "build.sh",
+      "sha256": "3d1aec7a6644163f6db2924748843774f1d100b4289c986c3456e8214222e214"
+    },
+    {
+      "file": "CMakeLists.txt",
+      "sha256": "e497dee58e2f9bb8faed63634be17513b3312aad0215e372e6f4437a27bb0195"
+    }
+  ],
+  "matching_local_directories": [
+    "friend_20261116/baseline"
+  ]
+}

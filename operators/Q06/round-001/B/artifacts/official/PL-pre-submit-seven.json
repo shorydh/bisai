@@ -1,0 +1,48 @@
+{
+  "candidate": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41",
+  "verified_at": "2026-11-16T17:17:03.127Z",
+  "files": [
+    {
+      "file": "op_host/pad_v3_grad_def.cpp",
+      "sha256": "704380e0b489f02527514fa73ec5fc4b9dcbd32040fa0333a43d0d0c5b072a92",
+      "match": true,
+      "bytes": 1725
+    },
+    {
+      "file": "op_host/pad_v3_grad_infershape.cpp",
+      "sha256": "908ac633c33c8506964e7ffa75fe2faa8f3ec415723572237509127fae9c385b",
+      "match": true,
+      "bytes": 4503
+    },
+    {
+      "file": "op_host/pad_v3_grad_tiling.cpp",
+      "sha256": "de2cc09b5189b0201985ec79b1e077b74da8b7450535f1ffe4e847e7f715e689",
+      "match": true,
+      "bytes": 12054
+    },
+    {
+      "file": "op_kernel/pad_v3_grad_tiling_data.h",
+      "sha256": "d98e018fb41fe5ec79fdcd2885a1db34530b489e6b505cafdc55b611cbbfe84e",
+      "match": true,
+      "bytes": 4035
+    },
+    {
+      "file": "op_kernel/pad_v3_grad_tiling_key.h",
+      "sha256": "464965d7728c9eecce949f3b1a79c7c06b1beed970b97df63d7096cec8f2e9ba",
+      "match": true,
+      "bytes": 808
+    },
+    {
+      "file": "op_kernel/pad_v3_grad.cpp",
+      "sha256": "c22da1fcbf8d4f4607356a004f72ad5c9a251459b97500a5cfd8dc61d6132468",
+      "match": true,
+      "bytes": 3458
+    },
+    {
+      "file": "op_kernel/pad_v3_grad.h",
+      "sha256": "88f6164377498e6c2d89d1c52578c4f601d172c98faa82c291197392249fcc08",
+      "match": true,
+      "bytes": 46032
+    }
+  ]
+}

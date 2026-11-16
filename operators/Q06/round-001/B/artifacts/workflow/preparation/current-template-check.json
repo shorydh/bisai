@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "task_id": "Q06-R001-B-COMBINE-20261117",
+  "observed_at": "2026-11-17T01:17:13.3261631+08:00",
+  "baseline_task_id": 1367774,
+  "baseline_seven_source_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+  "current_template_zip": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\artifacts\\official\\current-template.zip",
+  "current_template_zip_sha256": "b8e9af34e2c12d22f15d97a0835d1803fef202f9a19ff3c97fa8dcf21f6212a9",
+  "source": "Current official template downloaded by parent through supported browser",
+  "noneditable_file_count": 31,
+  "all_noneditable_match": true,
+  "differences": [],
+  "files": [
+    {
+      "file": "README.md",
+      "baseline_sha256": "7f9bf3a841a3988ffb551f5ad168d00abc24e8f043be996c856d06c9d508e1a4",
+      "current_template_sha256": "7f9bf3a841a3988ffb551f5ad168d00abc24e8f043be996c856d06c9d508e1a4",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "build.sh",
+      "baseline_sha256": "3d1aec7a6644163f6db2924748843774f1d100b4289c986c3456e8214222e214",
+      "current_template_sha256": "3d1aec7a6644163f6db2924748843774f1d100b4289c986c3456e8214222e214",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "CMakeLists.txt",
+      "baseline_sha256": "e497dee58e2f9bb8faed63634be17513b3312aad0215e372e6f4437a27bb0195",
+      "current_template_sha256": "e497dee58e2f9bb8faed63634be17513b3312aad0215e372e6f4437a27bb0195",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "op_kernel/CMakeLists.txt",
+      "baseline_sha256": "803fb189cb5bb83c1003e43e7df99db42fc838fa53ea8f0fce9dc6ccd3561d6b",
+      "current_template_sha256": "803fb189cb5bb83c1003e43e7df99db42fc838fa53ea8f0fce9dc6ccd3561d6b",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "op_host/CMakeLists.txt",
+      "baseline_sha256": "1de444d1f669aabeb63b73b636b64a1532d74d7e056956150ba1465073aed96b",
+      "current_template_sha256": "1de444d1f669aabeb63b73b636b64a1532d74d7e056956150ba1465073aed96b",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "examples/sample_support.h",
+      "baseline_sha256": "3af9ffac518aac44ec947fbc9fbbe947d68a6c53a080f28b7f926037fbb8e31e",
+      "current_template_sha256": "3af9ffac518aac44ec947fbc9fbbe947d68a6c53a080f28b7f926037fbb8e31e",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "examples/run.sh",
+      "baseline_sha256": "46cb83c880d178112853b066c6cb30b763a2c8018be06ffdaa232b4a05e165f7",
+      "current_template_sha256": "46cb83c880d178112853b066c6cb30b763a2c8018be06ffdaa232b4a05e165f7",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "examples/test_aclnn_pad_v3_grad.cpp",
+      "baseline_sha256": "5ab9a12b4eb2fffcbf07fc2af599883f0a1b33de7c5e1d7858a31a55d92c8380",
+      "current_template_sha256": "5ab9a12b4eb2fffcbf07fc2af599883f0a1b33de7c5e1d7858a31a55d92c8380",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "examples/CMakeLists.txt",
+      "baseline_sha256": "59da02da218c3886d8de41b3c3314dc207bdd5f2e4dc2e52d5a35f50ca66d5ba",
+      "current_template_sha256": "59da02da218c3886d8de41b3c3314dc207bdd5f2e4dc2e52d5a35f50ca66d5ba",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "samples/sample.py",
+      "baseline_sha256": "2950dfbede5aac86040755923f2282e8f29246e16c5f63b253bcc084d87249d8",
+      "current_template_sha256": "2950dfbede5aac86040755923f2282e8f29246e16c5f63b253bcc084d87249d8",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "samples/case.json",
+      "baseline_sha256": "4ed5b04487ac94773d32b92b72478a5b42200695d9a694a54b431c89903f75ec",
+      "current_template_sha256": "4ed5b04487ac94773d32b92b72478a5b42200695d9a694a54b431c89903f75ec",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "samples/reference.py",
+      "baseline_sha256": "1542d63e602aa3aaa60242e91ea0d6a8ac038bab788c6898dc4777557f040ed3",
+      "current_template_sha256": "1542d63e602aa3aaa60242e91ea0d6a8ac038bab788c6898dc4777557f040ed3",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/run.sh",
+      "baseline_sha256": "8077868c31345d5c9cd3a3ff94d45c40fd5934aa18972673bb37dbd431a6be9c",
+      "current_template_sha256": "8077868c31345d5c9cd3a3ff94d45c40fd5934aa18972673bb37dbd431a6be9c",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/CMakeLists.txt",
+      "baseline_sha256": "8c5e7a12fe0115ba81f6f3dc2e9d1184a2831f2507d42d8773db4d1dccceb3f3",
+      "current_template_sha256": "8c5e7a12fe0115ba81f6f3dc2e9d1184a2831f2507d42d8773db4d1dccceb3f3",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/common/infershape_context_faker.h",
+      "baseline_sha256": "9acca6cc6c3078fc4734a6d5ca12a65c2db1af5664b0371793f89cd2bb0b4415",
+      "current_template_sha256": "9acca6cc6c3078fc4734a6d5ca12a65c2db1af5664b0371793f89cd2bb0b4415",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/common/infershape_case_executor.h",
+      "baseline_sha256": "94b126cff506fe0340a887c135685b7ac2e3779cf20b1fcdf496e50924474423",
+      "current_template_sha256": "94b126cff506fe0340a887c135685b7ac2e3779cf20b1fcdf496e50924474423",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/common/tiling_context_faker.h",
+      "baseline_sha256": "32fdc0c5bf68133fb37482413ae24dd3c0bda2cf314e9607fc6d8e174fc36ef3",
+      "current_template_sha256": "32fdc0c5bf68133fb37482413ae24dd3c0bda2cf314e9607fc6d8e174fc36ef3",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/common/infershape_context_faker.cpp",
+      "baseline_sha256": "98e57a09b514b9473c712e3df49b74278519b4b433c0c70ef8fc07f09390bd94",
+      "current_template_sha256": "98e57a09b514b9473c712e3df49b74278519b4b433c0c70ef8fc07f09390bd94",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/common/tiling_context_faker.cpp",
+      "baseline_sha256": "62f60bb4fc01448dbe88383c0e383a9446c95b3ca3662cb1b41a16e4c4a5d192",
+      "current_template_sha256": "62f60bb4fc01448dbe88383c0e383a9446c95b3ca3662cb1b41a16e4c4a5d192",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/common/infershape_case_executor.cpp",
+      "baseline_sha256": "daa97c41fc64e205aa845f9cf248401d945424bc10da5893c286a87cb1a2866f",
+      "current_template_sha256": "daa97c41fc64e205aa845f9cf248401d945424bc10da5893c286a87cb1a2866f",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/common/tiling_case_executor.cpp",
+      "baseline_sha256": "c3e1fbc6c8bbd9ac4e1e4816e114a93ebf4bf226c13d051971cb4b1f86494516",
+      "current_template_sha256": "c3e1fbc6c8bbd9ac4e1e4816e114a93ebf4bf226c13d051971cb4b1f86494516",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/common/tiling_case_executor.h",
+      "baseline_sha256": "3046db4183f72778f3a4162617fde703d613dc9d7b5fbcbadf9cb45357ee4e5c",
+      "current_template_sha256": "3046db4183f72778f3a4162617fde703d613dc9d7b5fbcbadf9cb45357ee4e5c",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/common/any_value.h",
+      "baseline_sha256": "94c3bc4b66b984c67565fa140a780154fc2423ee37164397590fc08dc57d07ca",
+      "current_template_sha256": "94c3bc4b66b984c67565fa140a780154fc2423ee37164397590fc08dc57d07ca",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/op_kernel/test_pad_v3_grad.cpp",
+      "baseline_sha256": "3cbc5015a836392c0f6604ac8d9e0a29a333cc8c395037d01b4a832d18c7ef61",
+      "current_template_sha256": "3cbc5015a836392c0f6604ac8d9e0a29a333cc8c395037d01b4a832d18c7ef61",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/op_kernel/pad_v3_grad_tiling.h",
+      "baseline_sha256": "fbd6bdcf077919c7c93a44d9525cb4b13d7609e64aa13fa98f601ea8843e7681",
+      "current_template_sha256": "fbd6bdcf077919c7c93a44d9525cb4b13d7609e64aa13fa98f601ea8843e7681",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/op_kernel/CMakeLists.txt",
+      "baseline_sha256": "fb479d1340207a931a7111cb97343d266b100c7f3d2a436c4f080b44ff224dd6",
+      "current_template_sha256": "fb479d1340207a931a7111cb97343d266b100c7f3d2a436c4f080b44ff224dd6",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/op_kernel/pad_v3_grad_data/README.md",
+      "baseline_sha256": "ffd9bb0b039727b52ed5ea3df627fb669ccd53b6752297d93bc8de786f76a934",
+      "current_template_sha256": "ffd9bb0b039727b52ed5ea3df627fb669ccd53b6752297d93bc8de786f76a934",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/op_host/test_pad_v3_grad_tiling.cpp",
+      "baseline_sha256": "0a425c4474bf351310634a3876d4b39da7ef97f9b9c160b5bb09aace4a6a70e4",
+      "current_template_sha256": "0a425c4474bf351310634a3876d4b39da7ef97f9b9c160b5bb09aace4a6a70e4",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/op_host/test_op_host_main.cpp",
+      "baseline_sha256": "e820cf19f2906a70776ebb363f571992a8874a87d35c86e545decb4d5265ff68",
+      "current_template_sha256": "e820cf19f2906a70776ebb363f571992a8874a87d35c86e545decb4d5265ff68",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/op_host/CMakeLists.txt",
+      "baseline_sha256": "6a7f5c6cc8a3ed906de7fd32299f467dd0a39a4b2262c765fb127957be30322f",
+      "current_template_sha256": "6a7f5c6cc8a3ed906de7fd32299f467dd0a39a4b2262c765fb127957be30322f",
+      "match": true,
+      "present": true
+    },
+    {
+      "file": "tests/ut/cmake/BuildGoogleTest.cmake",
+      "baseline_sha256": "51270daff5b349ce5f21f73e18d0b561f179541864158cafdef440ac7f81de93",
+      "current_template_sha256": "51270daff5b349ce5f21f73e18d0b561f179541864158cafdef440ac7f81de93",
+      "match": true,
+      "present": true
+    }
+  ],
+  "zip_file_count": 38,
+  "outside_code_entries": [],
+  "config_available": false,
+  "config_note": "ZIP contains code/ only; no platform scoring/configuration JSON. Template equality does not prove current platform scoring or hardware identity."
+}

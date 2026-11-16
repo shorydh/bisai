@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "producer": "Manual PowerShell source/env audit (not preflight_dependencies.py)",
+  "task_id": "Q06-R001-B-COMBINE-20261117",
+  "recorded_at": "2026-11-17T01:11:45.2814399+08:00",
+  "request": {
+    "path": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\optimization-request.json",
+    "sha256": "d1986cb7fa165b36899cb3f5e34504776b0e9ec48e6998504f9b4e5c1b557894"
+  },
+  "local_platform": "Microsoft Windows 10.0.19045",
+  "commands": [
+    {
+      "command": "node",
+      "path": "D:\\nodegit\\node\\node.exe",
+      "present": true,
+      "usable_for_npu_work": true
+    },
+    {
+      "command": "python",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps\\python.exe",
+      "present": true,
+      "usable_for_npu_work": false
+    },
+    {
+      "command": "python3",
+      "path": "C:\\Users\\Administrator\\AppData\\Local\\Microsoft\\WindowsApps\\python3.exe",
+      "present": true,
+      "usable_for_npu_work": false
+    },
+    {
+      "command": "npu-smi",
+      "path": null,
+      "present": false,
+      "usable_for_npu_work": false
+    },
+    {
+      "command": "msprof",
+      "path": null,
+      "present": false,
+      "usable_for_npu_work": false
+    },
+    {
+      "command": "atc",
+      "path": null,
+      "present": false,
+      "usable_for_npu_work": false
+    },
+    {
+      "command": "asys",
+      "path": null,
+      "present": false,
+      "usable_for_npu_work": false
+    }
+  ],
+  "environment": {
+    "ASCEND_HOME_PATH": null,
+    "ASCEND_OPP_PATH": null
+  },
+  "target_socs": null,
+  "kb_unavailable": true,
+  "checks": [
+    {
+      "status": "pass",
+      "detail": "F/P/L complete 38-file source trees, ZIP and 7-source identities verified; see restoration-identity.json",
+      "id": "source_identity"
+    },
+    {
+      "status": "pass",
+      "detail": "31 non-editable files equal; all 37 files other than main header equal across F/P/L",
+      "id": "template_identity"
+    },
+    {
+      "status": "pass",
+      "detail": "Six archived Pass results/score observations and package identities verified; no new submits",
+      "id": "historical_results"
+    },
+    {
+      "status": "fail",
+      "detail": "npu-smi/msprof/atc/asys unavailable; ASCEND_HOME_PATH/ASCEND_OPP_PATH unset; no local NPU validation claimed",
+      "id": "local_npu_cann"
+    },
+    {
+      "status": "fail",
+      "detail": "python/python3 resolve only to WindowsApps placeholders; no Python environment invoked or installed",
+      "id": "local_python"
+    },
+    {
+      "status": "pending",
+      "detail": "Official actual SoC/driver/frequency/counter protocol not available from archived results. build.sh target ascend910b does not identify remote hardware.",
+      "id": "official_device"
+    },
+    {
+      "status": "pending",
+      "detail": "Full score formula/timing/degradation rule and historical version equivalence require parent current-page audit",
+      "id": "official_rules"
+    },
+    {
+      "status": "not_run",
+      "detail": "Python unavailable and local preflight fails; generic Python workflow scripts not invoked; no fabricated run-manifest or complete gate",
+      "id": "generic_workflow_freeze"
+    },
+    {
+      "status": "partial",
+      "detail": "Only public first sample frozen in actual restored tree; hidden 45 cases not accessed; boundary inventory belongs to candidate validation",
+      "id": "functional_inventory"
+    },
+    {
+      "status": "warn",
+      "detail": "kb_unavailable true per parent dispatch; not a blocker",
+      "id": "knowledge_base"
+    },
+    {
+      "status": "applicable",
+      "detail": "User task mandates official evaluation and allows independent preparation; local missing NPU does not prohibit parent official browser path",
+      "id": "user_authorized_official_work"
+    }
+  ],
+  "source_restoration_gate": "pass",
+  "generic_local_execution_gate": "fail",
+  "official_execution_gate": "pending parent audit",
+  "frozen_by_workflow_script": false
+}

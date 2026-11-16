@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "task_id": "Q06-R001-B-COMBINE-20261117",
+  "generated_at": "2026-11-16T17:30:43.546Z",
+  "lifecycle": "exploration_delivered_formal_comparison_pending",
+  "records": 7,
+  "field_count": 21,
+  "historical_references": 6,
+  "new_experiments": 1,
+  "official_new_results": 1,
+  "official_terminal_result_observed": true,
+  "new_official_source_identity_verified": true,
+  "formal_performance_conclusion": "pending",
+  "all_evaluated_at_are_null": true,
+  "files": [
+    {
+      "file": "summary.md",
+      "sha256": "17dd4b85d453e3d4b32b5465ce16de7510e5133e503484e694020d8b6f29a97e"
+    },
+    {
+      "file": "experiments.jsonl",
+      "sha256": "accb2f93a39cfe1da99ba9b4d0d72d842ef824daea18c9e38e39abcbfcc11016"
+    },
+    {
+      "file": "性能调优报告.md",
+      "sha256": "f3062cd799a68df4e81c4836c5d0d530eb64292c27a6c88137b565a9c47ff7f0"
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "source": "Actual frozen F/P/PL header planning prefixes and unchanged helpers",
+  "device_execution": false,
+  "extraction": [
+    {
+      "arm": "F",
+      "header_sha256": "e354629d43be2f42dd027cbce12d042ee545aa7e6cb062d5c27a68c0369a66e3",
+      "helpers": [
+        {
+          "name": "InitOuter",
+          "sha256": "37ce570f2b9d2d666eb9dadd3b829de3cce93a9c52d53cd98dc2ff9ed5a3f9a8"
+        },
+        {
+          "name": "NextOuter",
+          "sha256": "28ed443fd698458e9350f35581d57df7e56e47af5dbb77e6452d6415f2e0d48b"
+        }
+      ],
+      "wide_planning_prefix_sha256": "5e791f990e09c7d8e28ca6ae0e13cf40014aef87b8241b9562b532b0ee244ee8",
+      "modifications": [
+        "Device Sync no-op only in CPU harness",
+        "OffsetTensor stores uint32 byte offsets in std::vector",
+        "Cut wide function before input DataCopy; append observed max and return true",
+        "No device floating/vector/certificate execution"
+      ]
+    },
+    {
+      "arm": "P",
+      "header_sha256": "9739a0c61d4c545dd0d98c0203c7cf4c786acf745d3a4cdb8c1e099a841381bb",
+      "helpers": [
+        {
+          "name": "InitOuterPrefix",
+          "sha256": "bb87b76510ac0527079cd7da356c6c19e8bc250ab531199dcc3ee8ad0b3a8d1b"
+        },
+        {
+          "name": "InitOuter",
+          "sha256": "7a53aaae262c4e58f0a5005216a4f307ca515aaef94599d9bb14a94f0be77ef4"
+        },
+        {
+          "name": "NextOuter",
+          "sha256": "fce404e10558e67c199deded71ea56a3eb537930dbffe0f66295a5dd4ed66119"
+        }
+      ],
+      "wide_planning_prefix_sha256": "81837e9f7f80dbf5627951a661fdc088df9723f5161b441ca4154befb2a303f0",
+      "modifications": [
+        "Device Sync no-op only in CPU harness",
+        "OffsetTensor stores uint32 byte offsets in std::vector",
+        "Cut wide function before input DataCopy; append observed max and return true",
+        "No device floating/vector/certificate execution"
+      ]
+    },
+    {
+      "arm": "PL",
+      "header_sha256": "88f6164377498e6c2d89d1c52578c4f601d172c98faa82c291197392249fcc08",
+      "helpers": [
+        {
+          "name": "InitOuterPrefix",
+          "sha256": "bb87b76510ac0527079cd7da356c6c19e8bc250ab531199dcc3ee8ad0b3a8d1b"
+        },
+        {
+          "name": "InitOuter",
+          "sha256": "7a53aaae262c4e58f0a5005216a4f307ca515aaef94599d9bb14a94f0be77ef4"
+        },
+        {
+          "name": "NextOuter",
+          "sha256": "fce404e10558e67c199deded71ea56a3eb537930dbffe0f66295a5dd4ed66119"
+        }
+      ],
+      "wide_planning_prefix_sha256": "dc005af82e38c845b0870b69d63072f633fb8dea120be625cc64edcf54a8e95b",
+      "modifications": [
+        "Device Sync no-op only in CPU harness",
+        "OffsetTensor stores uint32 byte offsets in std::vector",
+        "Cut wide function before input DataCopy; append observed max and return true",
+        "No device floating/vector/certificate execution"
+      ]
+    }
+  ],
+  "generated_sha256": "6ddada1c215d223c01d8dcf503af95ef6f66edeea04f444a921ea137c141cef8"
+}

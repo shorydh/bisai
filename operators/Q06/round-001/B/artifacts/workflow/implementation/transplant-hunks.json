@@ -1,0 +1,6 @@
+{
+  "anchor": "        int64_t outerBases[groupSize];\n",
+  "inserted": "        // Last-axis contributors depend only on the column and this call's\n        // padding. Cache narrow rows only when this core processes >1 row's\n        // worth of outputs; wider/shorter ranges keep the original mapping.\n        constexpr int64_t lastPlanCapacity = 32;\n        const bool reuseLast = outputWidth_ <= lastPlanCapacity && count > outputWidth_;\n        Contributors lastPlans[lastPlanCapacity];\n        if (reuseLast) {\n            for (int64_t column = 0; column < outputWidth_; ++column) {\n                lastPlans[column] = MakeContributors(column, inputWidth_, outputWidth_,\n                    front_[rank_ - 1], data_->mode);\n            }\n        }\n",
+  "oldPlan": "                const auto last = MakeContributors(column + c, inputWidth_, outputWidth_,\n                                                   front_[rank_ - 1], data_->mode);",
+  "newPlan": "                const auto last = reuseLast ? lastPlans[column + c] :\n                    MakeContributors(column + c, inputWidth_, outputWidth_,\n                                     front_[rank_ - 1], data_->mode);"
+}

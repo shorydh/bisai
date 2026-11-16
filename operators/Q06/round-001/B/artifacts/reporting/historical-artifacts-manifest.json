@@ -1,0 +1,149 @@
+{
+  "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37",
+  "files": [
+    {
+      "file": "artifacts/reporting/history/1362811.json",
+      "sha256": "dde6b224d0e13e45abe74a5adfabe568ec40ee39e32b735e684acf6caf6a737f",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1362811.json",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1362811-identity.json",
+      "sha256": "1345015b604630583f45be3c0414e8fd25df3276e7185aacdcb453b81c644ce2",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1362811-identity.json",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1362811-ranking-saved.txt",
+      "sha256": "fdaaa860dbcfdd4ee994901eb74e25ee6b8b88d32e03ce1aeece66877413089b",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1362811-ranking-saved.txt",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1362811.zip",
+      "sha256": "c4c08a32f730a69e8b64f260493093981f752dcb99b541463080cd6b2da1f244",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1362811.zip",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1362890.json",
+      "sha256": "5b1df4ecc063f4e0819e4f0a799c38813e568754ad7968301a68374ce97a2c42",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1362890.json",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1362890-identity.json",
+      "sha256": "58c5f1fb2891d7a81c7206669a9970b735eb174c77bd1fbe9cd006708ab4cc80",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1362890-identity.json",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1362890-ranking-saved.txt",
+      "sha256": "43623c13084e876e49852127a9752f3f726b0b47e8de4406b760069c31ec4374",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1362890-ranking-saved.txt",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1362890.zip",
+      "sha256": "c04bc9bcc87d9c52dafbc964d87acc709f2bc0369463f32126f80593af2c04ba",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1362890.zip",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1364006.json",
+      "sha256": "864ccd379a52fa95b673ff94cf4112ed3c9647b04e57a56d5a80af535b409687",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1364006.json",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1364006-identity.json",
+      "sha256": "638e0026611cc3accaf6a73fcf801055ce38a1ff857153edccc135adc3846a88",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1364006-identity.json",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1364006-ranking-saved.txt",
+      "sha256": "2f203f38c89e979a5f4a9adc76f809369b09cb6dfd66b3977721eafc8313d2b7",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1364006-ranking-saved.txt",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1364006.zip",
+      "sha256": "55bd90c09f96a9f2a30ecf84196a496757b8c4b4249a5def973e0326c3217a3e",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1364006.zip",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1367558.json",
+      "sha256": "925dffc978d411ecefde5cd45389f61fb3d4bc9009b076faf6a703f4f068fba4",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367558.json",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1367558-identity.json",
+      "sha256": "dedf3a5dcaa11660e06ac7bfca396f49862b1163642d270de370acb1a63c50fc",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367558-identity.json",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1367558-ranking.txt",
+      "sha256": "e0574aa326a65fab46b06525ca18906aa647f829e5351b5e969ad2df3e057d45",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367558-ranking.txt",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1367558.zip",
+      "sha256": "cbb5fa762f71555d27ce59414de73b30f37a24218e9f608edb91b09584b233df",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367558.zip",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1367629.json",
+      "sha256": "6967b359260e67c2f1eeb05bb68d8fffa927445d958b4e48498428e4fcd7871f",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367629.json",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1367629-identity.json",
+      "sha256": "e3785861cec64b74ba16bdb82378145ca66912dc02387e7ca8c17a19ccd9c468",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367629-identity.json",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1367629-ranking.txt",
+      "sha256": "fcdd73673c662d91073e55c3b174c775910a18f9d761b16d3597f454bf73a1bd",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367629-ranking.txt",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1367629.zip",
+      "sha256": "954863ed68a2f5334ceae862c49c1af2969449ddb98ea093e373cf370a3c8d3b",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367629.zip",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1367774.json",
+      "sha256": "726c9feb0a0cf776709a96850904ed1c95264bc807383eab588ffa096c95d166",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367774.json",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1367774-identity.json",
+      "sha256": "20a93865c361260eb5189e6ed6fb118adf721aa0732c66da6305d054ee9f42c1",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367774-identity.json",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1367774-ranking.txt",
+      "sha256": "2d707a30036156494f9e035b939b909ef74c6a01b39c991b3253b7e8ee43636b",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367774-ranking.txt",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    },
+    {
+      "file": "artifacts/reporting/history/1367774.zip",
+      "sha256": "18679dad71f9ea7723ca524599b0d9363861aeadf8f8032202f6391199a5a85a",
+      "original_path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367774.zip",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37"
+    }
+  ]
+}

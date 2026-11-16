@@ -1,0 +1,517 @@
+{
+  "task_id": "Q06-R001-B-COMBINE-20261117",
+  "historical_records": [
+    {
+      "experiment_id": "B-HIST-1362811",
+      "round_id": "历史盘点",
+      "official_task_id": 1362811,
+      "official_result_ref": "https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6afae80f6bd0f9be37477997",
+      "submitted_at": "2026-11-16T19:25:03+08:00",
+      "evaluated_at": null,
+      "observed_at": "2026-11-16T14:47:35.41Z",
+      "official_status": "Pass",
+      "official_metrics": {
+        "total_score": 28.61,
+        "public_cases": [
+          {
+            "case": "1",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.00μs",
+            "best_time_displayed": "3.71μs"
+          },
+          {
+            "case": "2",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.40μs",
+            "best_time_displayed": "3.75μs"
+          },
+          {
+            "case": "3",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.95μs",
+            "best_time_displayed": "3.73μs"
+          },
+          {
+            "case": "4",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "9.76μs",
+            "best_time_displayed": "3.78μs"
+          },
+          {
+            "case": "5",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.33μs",
+            "best_time_displayed": "3.66μs"
+          }
+        ],
+        "raw_public_table_text": "测试点\t结果\t输出错误占比\t用时\t最优用时\n1\tPass\t0.00%\t7.00μs\t3.71μs\n2\tPass\t0.00%\t7.40μs\t3.75μs\n3\tPass\t0.00%\t7.95μs\t3.73μs\n4\tPass\t0.00%\t9.76μs\t3.78μs\n5\tPass\t0.00%\t7.33μs\t3.66μs\n6\t*（隐藏）\t*\t*\t*\n7\t*（隐藏）\t*\t*\t*\n8\t*（隐藏）\t*\t*\t*\n9\t*（隐藏）\t*\t*\t*\n10\t*（隐藏）\t*\t*\t*\n11\t*（隐藏）\t*\t*\t*\n12\t*（隐藏）\t*\t*\t*\n13\t*（隐藏）\t*\t*\t*\n14\t*（隐藏）\t*\t*\t*\n15\t*（隐藏）\t*\t*\t*\n16\t*（隐藏）\t*\t*\t*\n17\t*（隐藏）\t*\t*\t*\n18\t*（隐藏）\t*\t*\t*\n19\t*（隐藏）\t*\t*\t*\n20\t*（隐藏）\t*\t*\t*\n21\t*（隐藏）\t*\t*\t*\n22\t*（隐藏）\t*\t*\t*\n23\t*（隐藏）\t*\t*\t*\n24\t*（隐藏）\t*\t*\t*\n25\t*（隐藏）\t*\t*\t*\n26\t*（隐藏）\t*\t*\t*\n27\t*（隐藏）\t*\t*\t*\n28\t*（隐藏）\t*\t*\t*\n29\t*（隐藏）\t*\t*\t*\n30\t*（隐藏）\t*\t*\t*\n31\t*（隐藏）\t*\t*\t*\n32\t*（隐藏）\t*\t*\t*\n33\t*（隐藏）\t*\t*\t*\n34\t*（隐藏）\t*\t*\t*\n35\t*（隐藏）\t*\t*\t*\n36\t*（隐藏）\t*\t*\t*\n37\t*（隐藏）\t*\t*\t*\n38\t*（隐藏）\t*\t*\t*\n39\t*（隐藏）\t*\t*\t*\n40\t*（隐藏）\t*\t*\t*\n41\t*（隐藏）\t*\t*\t*\n42\t*（隐藏）\t*\t*\t*\n43\t*（隐藏）\t*\t*\t*\n44\t*（隐藏）\t*\t*\t*\n45\t*（隐藏）\t*\t*\t*\n46\t*（隐藏）\t*\t*\t*\n47\t*（隐藏）\t*\t*\t*\n48\t*（隐藏）\t*\t*\t*\n49\t*（隐藏）\t*\t*\t*\n50\t*（隐藏）\t*\t*\t*"
+      },
+      "seven_source_sha256": "700af8da3ef6679f48ebf8bbfa9d2f145d9357e9b6fd2e4f288542c662a1969b",
+      "package_sha256": "c4c08a32f730a69e8b64f260493093981f752dcb99b541463080cd6b2da1f244",
+      "ranking_binding": "Archived ranking submission timestamp and 5 public timings agree with selected official task; latest ranking is not historical source",
+      "evidence": [
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1362811.json",
+          "sha256": "dde6b224d0e13e45abe74a5adfabe568ec40ee39e32b735e684acf6caf6a737f"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1362811-identity.json",
+          "sha256": "1345015b604630583f45be3c0414e8fd25df3276e7185aacdcb453b81c644ce2"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1362811-ranking-saved.txt",
+          "sha256": "fdaaa860dbcfdd4ee994901eb74e25ee6b8b88d32e03ce1aeece66877413089b"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1362811.zip",
+          "sha256": "c4c08a32f730a69e8b64f260493093981f752dcb99b541463080cd6b2da1f244"
+        }
+      ],
+      "comparability": {
+        "same_problem": true,
+        "same_31_non_editable_template_files": true,
+        "official_valid_observation": true,
+        "stable_performance_gain_proven": false,
+        "full_historical_scoring_protocol": null,
+        "actual_device_and_frequency": null,
+        "formal_four_arm_conclusion": "pending current official configuration/rules audit and PL result"
+      },
+      "notes": [
+        "历史 JSONL evaluated_at 按其原 notes 实为官方提交时间；本轮引用改记 submitted_at，完成时间缺失为 null；不修改固定历史包。",
+        "仅为引用，同一任务不计成新实验或额外复测。"
+      ]
+    },
+    {
+      "experiment_id": "B-HIST-1362890",
+      "round_id": "历史盘点",
+      "official_task_id": 1362890,
+      "official_result_ref": "https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6afae96e6bd0f9be374a1e96",
+      "submitted_at": "2026-11-16T19:30:54+08:00",
+      "evaluated_at": null,
+      "observed_at": "2026-11-16T14:47:33.516Z",
+      "official_status": "Pass",
+      "official_metrics": {
+        "total_score": 29.23,
+        "public_cases": [
+          {
+            "case": "1",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.01μs",
+            "best_time_displayed": "3.71μs"
+          },
+          {
+            "case": "2",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.35μs",
+            "best_time_displayed": "3.75μs"
+          },
+          {
+            "case": "3",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.69μs",
+            "best_time_displayed": "3.73μs"
+          },
+          {
+            "case": "4",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "9.17μs",
+            "best_time_displayed": "3.78μs"
+          },
+          {
+            "case": "5",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.22μs",
+            "best_time_displayed": "3.66μs"
+          }
+        ],
+        "raw_public_table_text": "测试点\t结果\t输出错误占比\t用时\t最优用时\n1\tPass\t0.00%\t7.01μs\t3.71μs\n2\tPass\t0.00%\t7.35μs\t3.75μs\n3\tPass\t0.00%\t7.69μs\t3.73μs\n4\tPass\t0.00%\t9.17μs\t3.78μs\n5\tPass\t0.00%\t7.22μs\t3.66μs\n6\t*（隐藏）\t*\t*\t*\n7\t*（隐藏）\t*\t*\t*\n8\t*（隐藏）\t*\t*\t*\n9\t*（隐藏）\t*\t*\t*\n10\t*（隐藏）\t*\t*\t*\n11\t*（隐藏）\t*\t*\t*\n12\t*（隐藏）\t*\t*\t*\n13\t*（隐藏）\t*\t*\t*\n14\t*（隐藏）\t*\t*\t*\n15\t*（隐藏）\t*\t*\t*\n16\t*（隐藏）\t*\t*\t*\n17\t*（隐藏）\t*\t*\t*\n18\t*（隐藏）\t*\t*\t*\n19\t*（隐藏）\t*\t*\t*\n20\t*（隐藏）\t*\t*\t*\n21\t*（隐藏）\t*\t*\t*\n22\t*（隐藏）\t*\t*\t*\n23\t*（隐藏）\t*\t*\t*\n24\t*（隐藏）\t*\t*\t*\n25\t*（隐藏）\t*\t*\t*\n26\t*（隐藏）\t*\t*\t*\n27\t*（隐藏）\t*\t*\t*\n28\t*（隐藏）\t*\t*\t*\n29\t*（隐藏）\t*\t*\t*\n30\t*（隐藏）\t*\t*\t*\n31\t*（隐藏）\t*\t*\t*\n32\t*（隐藏）\t*\t*\t*\n33\t*（隐藏）\t*\t*\t*\n34\t*（隐藏）\t*\t*\t*\n35\t*（隐藏）\t*\t*\t*\n36\t*（隐藏）\t*\t*\t*\n37\t*（隐藏）\t*\t*\t*\n38\t*（隐藏）\t*\t*\t*\n39\t*（隐藏）\t*\t*\t*\n40\t*（隐藏）\t*\t*\t*\n41\t*（隐藏）\t*\t*\t*\n42\t*（隐藏）\t*\t*\t*\n43\t*（隐藏）\t*\t*\t*\n44\t*（隐藏）\t*\t*\t*\n45\t*（隐藏）\t*\t*\t*\n46\t*（隐藏）\t*\t*\t*\n47\t*（隐藏）\t*\t*\t*\n48\t*（隐藏）\t*\t*\t*\n49\t*（隐藏）\t*\t*\t*\n50\t*（隐藏）\t*\t*\t*"
+      },
+      "seven_source_sha256": "d3174f99553a7ba700a726f77370e1e287e1084cd2bc9768d4bbbcbd66ce9d24",
+      "package_sha256": "c04bc9bcc87d9c52dafbc964d87acc709f2bc0369463f32126f80593af2c04ba",
+      "ranking_binding": "Archived ranking submission timestamp and 5 public timings agree with selected official task; latest ranking is not historical source",
+      "evidence": [
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1362890.json",
+          "sha256": "5b1df4ecc063f4e0819e4f0a799c38813e568754ad7968301a68374ce97a2c42"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1362890-identity.json",
+          "sha256": "58c5f1fb2891d7a81c7206669a9970b735eb174c77bd1fbe9cd006708ab4cc80"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1362890-ranking-saved.txt",
+          "sha256": "43623c13084e876e49852127a9752f3f726b0b47e8de4406b760069c31ec4374"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1362890.zip",
+          "sha256": "c04bc9bcc87d9c52dafbc964d87acc709f2bc0369463f32126f80593af2c04ba"
+        }
+      ],
+      "comparability": {
+        "same_problem": true,
+        "same_31_non_editable_template_files": true,
+        "official_valid_observation": true,
+        "stable_performance_gain_proven": false,
+        "full_historical_scoring_protocol": null,
+        "actual_device_and_frequency": null,
+        "formal_four_arm_conclusion": "pending current official configuration/rules audit and PL result"
+      },
+      "notes": [
+        "历史 JSONL evaluated_at 按其原 notes 实为官方提交时间；本轮引用改记 submitted_at，完成时间缺失为 null；不修改固定历史包。",
+        "仅为引用，同一任务不计成新实验或额外复测。"
+      ]
+    },
+    {
+      "experiment_id": "B-HIST-1364006",
+      "round_id": "历史盘点",
+      "official_task_id": 1364006,
+      "official_result_ref": "https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6afaf9e36bd0f9be3769c389",
+      "submitted_at": "2026-11-16T20:41:07+08:00",
+      "evaluated_at": null,
+      "observed_at": "2026-11-16T14:47:11.94Z",
+      "official_status": "Pass",
+      "official_metrics": {
+        "total_score": 28.84,
+        "public_cases": [
+          {
+            "case": "1",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.02μs",
+            "best_time_displayed": "3.71μs"
+          },
+          {
+            "case": "2",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.39μs",
+            "best_time_displayed": "3.75μs"
+          },
+          {
+            "case": "3",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.70μs",
+            "best_time_displayed": "3.73μs"
+          },
+          {
+            "case": "4",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "9.18μs",
+            "best_time_displayed": "3.78μs"
+          },
+          {
+            "case": "5",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.31μs",
+            "best_time_displayed": "3.66μs"
+          }
+        ],
+        "raw_public_table_text": "测试点\t结果\t输出错误占比\t用时\t最优用时\n1\tPass\t0.00%\t7.02μs\t3.71μs\n2\tPass\t0.00%\t7.39μs\t3.75μs\n3\tPass\t0.00%\t7.70μs\t3.73μs\n4\tPass\t0.00%\t9.18μs\t3.78μs\n5\tPass\t0.00%\t7.31μs\t3.66μs\n6\t*（隐藏）\t*\t*\t*\n7\t*（隐藏）\t*\t*\t*\n8\t*（隐藏）\t*\t*\t*\n9\t*（隐藏）\t*\t*\t*\n10\t*（隐藏）\t*\t*\t*\n11\t*（隐藏）\t*\t*\t*\n12\t*（隐藏）\t*\t*\t*\n13\t*（隐藏）\t*\t*\t*\n14\t*（隐藏）\t*\t*\t*\n15\t*（隐藏）\t*\t*\t*\n16\t*（隐藏）\t*\t*\t*\n17\t*（隐藏）\t*\t*\t*\n18\t*（隐藏）\t*\t*\t*\n19\t*（隐藏）\t*\t*\t*\n20\t*（隐藏）\t*\t*\t*\n21\t*（隐藏）\t*\t*\t*\n22\t*（隐藏）\t*\t*\t*\n23\t*（隐藏）\t*\t*\t*\n24\t*（隐藏）\t*\t*\t*\n25\t*（隐藏）\t*\t*\t*\n26\t*（隐藏）\t*\t*\t*\n27\t*（隐藏）\t*\t*\t*\n28\t*（隐藏）\t*\t*\t*\n29\t*（隐藏）\t*\t*\t*\n30\t*（隐藏）\t*\t*\t*\n31\t*（隐藏）\t*\t*\t*\n32\t*（隐藏）\t*\t*\t*\n33\t*（隐藏）\t*\t*\t*\n34\t*（隐藏）\t*\t*\t*\n35\t*（隐藏）\t*\t*\t*\n36\t*（隐藏）\t*\t*\t*\n37\t*（隐藏）\t*\t*\t*\n38\t*（隐藏）\t*\t*\t*\n39\t*（隐藏）\t*\t*\t*\n40\t*（隐藏）\t*\t*\t*\n41\t*（隐藏）\t*\t*\t*\n42\t*（隐藏）\t*\t*\t*\n43\t*（隐藏）\t*\t*\t*\n44\t*（隐藏）\t*\t*\t*\n45\t*（隐藏）\t*\t*\t*\n46\t*（隐藏）\t*\t*\t*\n47\t*（隐藏）\t*\t*\t*\n48\t*（隐藏）\t*\t*\t*\n49\t*（隐藏）\t*\t*\t*\n50\t*（隐藏）\t*\t*\t*"
+      },
+      "seven_source_sha256": "d3174f99553a7ba700a726f77370e1e287e1084cd2bc9768d4bbbcbd66ce9d24",
+      "package_sha256": "55bd90c09f96a9f2a30ecf84196a496757b8c4b4249a5def973e0326c3217a3e",
+      "ranking_binding": "Archived ranking submission timestamp and 5 public timings agree with selected official task; latest ranking is not historical source",
+      "evidence": [
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1364006.json",
+          "sha256": "864ccd379a52fa95b673ff94cf4112ed3c9647b04e57a56d5a80af535b409687"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1364006-identity.json",
+          "sha256": "638e0026611cc3accaf6a73fcf801055ce38a1ff857153edccc135adc3846a88"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1364006-ranking-saved.txt",
+          "sha256": "2f203f38c89e979a5f4a9adc76f809369b09cb6dfd66b3977721eafc8313d2b7"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1364006.zip",
+          "sha256": "55bd90c09f96a9f2a30ecf84196a496757b8c4b4249a5def973e0326c3217a3e"
+        }
+      ],
+      "comparability": {
+        "same_problem": true,
+        "same_31_non_editable_template_files": true,
+        "official_valid_observation": true,
+        "stable_performance_gain_proven": false,
+        "full_historical_scoring_protocol": null,
+        "actual_device_and_frequency": null,
+        "formal_four_arm_conclusion": "pending current official configuration/rules audit and PL result"
+      },
+      "notes": [
+        "历史 JSONL evaluated_at 按其原 notes 实为官方提交时间；本轮引用改记 submitted_at，完成时间缺失为 null；不修改固定历史包。",
+        "仅为引用，同一任务不计成新实验或额外复测。"
+      ]
+    },
+    {
+      "experiment_id": "B-HIST-1367558",
+      "round_id": "历史盘点",
+      "official_task_id": 1367558,
+      "official_result_ref": "https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6afb1c176bd0f9be37af982a",
+      "submitted_at": "2026-11-16T23:07:03+08:00",
+      "evaluated_at": null,
+      "observed_at": "2026-11-16T15:09:47.767Z",
+      "official_status": "Pass",
+      "official_metrics": {
+        "total_score": 28.66,
+        "public_cases": [
+          {
+            "case": "1",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.02μs",
+            "best_time_displayed": "3.71μs"
+          },
+          {
+            "case": "2",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.22μs",
+            "best_time_displayed": "3.75μs"
+          },
+          {
+            "case": "3",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.89μs",
+            "best_time_displayed": "3.73μs"
+          },
+          {
+            "case": "4",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "9.77μs",
+            "best_time_displayed": "3.78μs"
+          },
+          {
+            "case": "5",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.29μs",
+            "best_time_displayed": "3.66μs"
+          }
+        ],
+        "raw_public_table_text": "测试点\t结果\t输出错误占比\t用时\t最优用时\n1\tPass\t0.00%\t7.02μs\t3.71μs\n2\tPass\t0.00%\t7.22μs\t3.75μs\n3\tPass\t0.00%\t7.89μs\t3.73μs\n4\tPass\t0.00%\t9.77μs\t3.78μs\n5\tPass\t0.00%\t7.29μs\t3.66μs\n6\t*（隐藏）\t*\t*\t*\n7\t*（隐藏）\t*\t*\t*\n8\t*（隐藏）\t*\t*\t*\n9\t*（隐藏）\t*\t*\t*\n10\t*（隐藏）\t*\t*\t*\n11\t*（隐藏）\t*\t*\t*\n12\t*（隐藏）\t*\t*\t*\n13\t*（隐藏）\t*\t*\t*\n14\t*（隐藏）\t*\t*\t*\n15\t*（隐藏）\t*\t*\t*\n16\t*（隐藏）\t*\t*\t*\n17\t*（隐藏）\t*\t*\t*\n18\t*（隐藏）\t*\t*\t*\n19\t*（隐藏）\t*\t*\t*\n20\t*（隐藏）\t*\t*\t*\n21\t*（隐藏）\t*\t*\t*\n22\t*（隐藏）\t*\t*\t*\n23\t*（隐藏）\t*\t*\t*\n24\t*（隐藏）\t*\t*\t*\n25\t*（隐藏）\t*\t*\t*\n26\t*（隐藏）\t*\t*\t*\n27\t*（隐藏）\t*\t*\t*\n28\t*（隐藏）\t*\t*\t*\n29\t*（隐藏）\t*\t*\t*\n30\t*（隐藏）\t*\t*\t*\n31\t*（隐藏）\t*\t*\t*\n32\t*（隐藏）\t*\t*\t*\n33\t*（隐藏）\t*\t*\t*\n34\t*（隐藏）\t*\t*\t*\n35\t*（隐藏）\t*\t*\t*\n36\t*（隐藏）\t*\t*\t*\n37\t*（隐藏）\t*\t*\t*\n38\t*（隐藏）\t*\t*\t*\n39\t*（隐藏）\t*\t*\t*\n40\t*（隐藏）\t*\t*\t*\n41\t*（隐藏）\t*\t*\t*\n42\t*（隐藏）\t*\t*\t*\n43\t*（隐藏）\t*\t*\t*\n44\t*（隐藏）\t*\t*\t*\n45\t*（隐藏）\t*\t*\t*\n46\t*（隐藏）\t*\t*\t*\n47\t*（隐藏）\t*\t*\t*\n48\t*（隐藏）\t*\t*\t*\n49\t*（隐藏）\t*\t*\t*\n50\t*（隐藏）\t*\t*\t*"
+      },
+      "seven_source_sha256": "700af8da3ef6679f48ebf8bbfa9d2f145d9357e9b6fd2e4f288542c662a1969b",
+      "package_sha256": "cbb5fa762f71555d27ce59414de73b30f37a24218e9f608edb91b09584b233df",
+      "ranking_binding": "Archived ranking submission timestamp and 5 public timings agree with selected official task; latest ranking is not historical source",
+      "evidence": [
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367558.json",
+          "sha256": "925dffc978d411ecefde5cd45389f61fb3d4bc9009b076faf6a703f4f068fba4"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367558-identity.json",
+          "sha256": "dedf3a5dcaa11660e06ac7bfca396f49862b1163642d270de370acb1a63c50fc"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367558-ranking.txt",
+          "sha256": "e0574aa326a65fab46b06525ca18906aa647f829e5351b5e969ad2df3e057d45"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367558.zip",
+          "sha256": "cbb5fa762f71555d27ce59414de73b30f37a24218e9f608edb91b09584b233df"
+        }
+      ],
+      "comparability": {
+        "same_problem": true,
+        "same_31_non_editable_template_files": true,
+        "official_valid_observation": true,
+        "stable_performance_gain_proven": false,
+        "full_historical_scoring_protocol": null,
+        "actual_device_and_frequency": null,
+        "formal_four_arm_conclusion": "pending current official configuration/rules audit and PL result"
+      },
+      "notes": [
+        "历史 JSONL evaluated_at 按其原 notes 实为官方提交时间；本轮引用改记 submitted_at，完成时间缺失为 null；不修改固定历史包。",
+        "仅为引用，同一任务不计成新实验或额外复测。"
+      ]
+    },
+    {
+      "experiment_id": "B-HIST-1367629",
+      "round_id": "历史盘点",
+      "official_task_id": 1367629,
+      "official_result_ref": "https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6afb1d006bd0f9be37b15ed8",
+      "submitted_at": "2026-11-16T23:10:56+08:00",
+      "evaluated_at": null,
+      "observed_at": "2026-11-16T15:14:06.765Z",
+      "official_status": "Pass",
+      "official_metrics": {
+        "total_score": 29.59,
+        "public_cases": [
+          {
+            "case": "1",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "6.89μs",
+            "best_time_displayed": "3.71μs"
+          },
+          {
+            "case": "2",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.30μs",
+            "best_time_displayed": "3.75μs"
+          },
+          {
+            "case": "3",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.42μs",
+            "best_time_displayed": "3.73μs"
+          },
+          {
+            "case": "4",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "9.34μs",
+            "best_time_displayed": "3.78μs"
+          },
+          {
+            "case": "5",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.14μs",
+            "best_time_displayed": "3.66μs"
+          }
+        ],
+        "raw_public_table_text": "测试点\t结果\t输出错误占比\t用时\t最优用时\n1\tPass\t0.00%\t6.89μs\t3.71μs\n2\tPass\t0.00%\t7.30μs\t3.75μs\n3\tPass\t0.00%\t7.42μs\t3.73μs\n4\tPass\t0.00%\t9.34μs\t3.78μs\n5\tPass\t0.00%\t7.14μs\t3.66μs\n6\t*（隐藏）\t*\t*\t*\n7\t*（隐藏）\t*\t*\t*\n8\t*（隐藏）\t*\t*\t*\n9\t*（隐藏）\t*\t*\t*\n10\t*（隐藏）\t*\t*\t*\n11\t*（隐藏）\t*\t*\t*\n12\t*（隐藏）\t*\t*\t*\n13\t*（隐藏）\t*\t*\t*\n14\t*（隐藏）\t*\t*\t*\n15\t*（隐藏）\t*\t*\t*\n16\t*（隐藏）\t*\t*\t*\n17\t*（隐藏）\t*\t*\t*\n18\t*（隐藏）\t*\t*\t*\n19\t*（隐藏）\t*\t*\t*\n20\t*（隐藏）\t*\t*\t*\n21\t*（隐藏）\t*\t*\t*\n22\t*（隐藏）\t*\t*\t*\n23\t*（隐藏）\t*\t*\t*\n24\t*（隐藏）\t*\t*\t*\n25\t*（隐藏）\t*\t*\t*\n26\t*（隐藏）\t*\t*\t*\n27\t*（隐藏）\t*\t*\t*\n28\t*（隐藏）\t*\t*\t*\n29\t*（隐藏）\t*\t*\t*\n30\t*（隐藏）\t*\t*\t*\n31\t*（隐藏）\t*\t*\t*\n32\t*（隐藏）\t*\t*\t*\n33\t*（隐藏）\t*\t*\t*\n34\t*（隐藏）\t*\t*\t*\n35\t*（隐藏）\t*\t*\t*\n36\t*（隐藏）\t*\t*\t*\n37\t*（隐藏）\t*\t*\t*\n38\t*（隐藏）\t*\t*\t*\n39\t*（隐藏）\t*\t*\t*\n40\t*（隐藏）\t*\t*\t*\n41\t*（隐藏）\t*\t*\t*\n42\t*（隐藏）\t*\t*\t*\n43\t*（隐藏）\t*\t*\t*\n44\t*（隐藏）\t*\t*\t*\n45\t*（隐藏）\t*\t*\t*\n46\t*（隐藏）\t*\t*\t*\n47\t*（隐藏）\t*\t*\t*\n48\t*（隐藏）\t*\t*\t*\n49\t*（隐藏）\t*\t*\t*\n50\t*（隐藏）\t*\t*\t*"
+      },
+      "seven_source_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+      "package_sha256": "954863ed68a2f5334ceae862c49c1af2969449ddb98ea093e373cf370a3c8d3b",
+      "ranking_binding": "Archived ranking submission timestamp and 5 public timings agree with selected official task; latest ranking is not historical source",
+      "evidence": [
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367629.json",
+          "sha256": "6967b359260e67c2f1eeb05bb68d8fffa927445d958b4e48498428e4fcd7871f"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367629-identity.json",
+          "sha256": "e3785861cec64b74ba16bdb82378145ca66912dc02387e7ca8c17a19ccd9c468"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367629-ranking.txt",
+          "sha256": "fcdd73673c662d91073e55c3b174c775910a18f9d761b16d3597f454bf73a1bd"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367629.zip",
+          "sha256": "954863ed68a2f5334ceae862c49c1af2969449ddb98ea093e373cf370a3c8d3b"
+        }
+      ],
+      "comparability": {
+        "same_problem": true,
+        "same_31_non_editable_template_files": true,
+        "official_valid_observation": true,
+        "stable_performance_gain_proven": false,
+        "full_historical_scoring_protocol": null,
+        "actual_device_and_frequency": null,
+        "formal_four_arm_conclusion": "pending current official configuration/rules audit and PL result"
+      },
+      "notes": [
+        "历史 JSONL evaluated_at 按其原 notes 实为官方提交时间；本轮引用改记 submitted_at，完成时间缺失为 null；不修改固定历史包。",
+        "仅为引用，同一任务不计成新实验或额外复测。"
+      ]
+    },
+    {
+      "experiment_id": "B-HIST-1367774",
+      "round_id": "历史盘点",
+      "official_task_id": 1367774,
+      "official_result_ref": "https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6afb1ec66bd0f9be37b4e0f3",
+      "submitted_at": "2026-11-16T23:18:30+08:00",
+      "evaluated_at": null,
+      "observed_at": "2026-11-16T15:22:45.356Z",
+      "official_status": "Pass",
+      "official_metrics": {
+        "total_score": 29.39,
+        "public_cases": [
+          {
+            "case": "1",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "6.77μs",
+            "best_time_displayed": "3.71μs"
+          },
+          {
+            "case": "2",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.18μs",
+            "best_time_displayed": "3.75μs"
+          },
+          {
+            "case": "3",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "7.26μs",
+            "best_time_displayed": "3.73μs"
+          },
+          {
+            "case": "4",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "9.16μs",
+            "best_time_displayed": "3.78μs"
+          },
+          {
+            "case": "5",
+            "status": "Pass",
+            "output_error_ratio": "0.00%",
+            "time": "6.98μs",
+            "best_time_displayed": "3.66μs"
+          }
+        ],
+        "raw_public_table_text": "测试点\t结果\t输出错误占比\t用时\t最优用时\n1\tPass\t0.00%\t6.77μs\t3.71μs\n2\tPass\t0.00%\t7.18μs\t3.75μs\n3\tPass\t0.00%\t7.26μs\t3.73μs\n4\tPass\t0.00%\t9.16μs\t3.78μs\n5\tPass\t0.00%\t6.98μs\t3.66μs\n6\t*（隐藏）\t*\t*\t*\n7\t*（隐藏）\t*\t*\t*\n8\t*（隐藏）\t*\t*\t*\n9\t*（隐藏）\t*\t*\t*\n10\t*（隐藏）\t*\t*\t*\n11\t*（隐藏）\t*\t*\t*\n12\t*（隐藏）\t*\t*\t*\n13\t*（隐藏）\t*\t*\t*\n14\t*（隐藏）\t*\t*\t*\n15\t*（隐藏）\t*\t*\t*\n16\t*（隐藏）\t*\t*\t*\n17\t*（隐藏）\t*\t*\t*\n18\t*（隐藏）\t*\t*\t*\n19\t*（隐藏）\t*\t*\t*\n20\t*（隐藏）\t*\t*\t*\n21\t*（隐藏）\t*\t*\t*\n22\t*（隐藏）\t*\t*\t*\n23\t*（隐藏）\t*\t*\t*\n24\t*（隐藏）\t*\t*\t*\n25\t*（隐藏）\t*\t*\t*\n26\t*（隐藏）\t*\t*\t*\n27\t*（隐藏）\t*\t*\t*\n28\t*（隐藏）\t*\t*\t*\n29\t*（隐藏）\t*\t*\t*\n30\t*（隐藏）\t*\t*\t*\n31\t*（隐藏）\t*\t*\t*\n32\t*（隐藏）\t*\t*\t*\n33\t*（隐藏）\t*\t*\t*\n34\t*（隐藏）\t*\t*\t*\n35\t*（隐藏）\t*\t*\t*\n36\t*（隐藏）\t*\t*\t*\n37\t*（隐藏）\t*\t*\t*\n38\t*（隐藏）\t*\t*\t*\n39\t*（隐藏）\t*\t*\t*\n40\t*（隐藏）\t*\t*\t*\n41\t*（隐藏）\t*\t*\t*\n42\t*（隐藏）\t*\t*\t*\n43\t*（隐藏）\t*\t*\t*\n44\t*（隐藏）\t*\t*\t*\n45\t*（隐藏）\t*\t*\t*\n46\t*（隐藏）\t*\t*\t*\n47\t*（隐藏）\t*\t*\t*\n48\t*（隐藏）\t*\t*\t*\n49\t*（隐藏）\t*\t*\t*\n50\t*（隐藏）\t*\t*\t*"
+      },
+      "seven_source_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+      "package_sha256": "18679dad71f9ea7723ca524599b0d9363861aeadf8f8032202f6391199a5a85a",
+      "ranking_binding": "Archived ranking submission timestamp and 5 public timings agree with selected official task; latest ranking is not historical source",
+      "evidence": [
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367774.json",
+          "sha256": "726c9feb0a0cf776709a96850904ed1c95264bc807383eab588ffa096c95d166"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367774-identity.json",
+          "sha256": "20a93865c361260eb5189e6ed6fb118adf721aa0732c66da6305d054ee9f42c1"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367774-ranking.txt",
+          "sha256": "2d707a30036156494f9e035b939b909ef74c6a01b39c991b3253b7e8ee43636b"
+        },
+        {
+          "path": "D:\\算子比赛\\346题\\第六题\\历史盘点\\B\\artifacts\\official\\1367774.zip",
+          "sha256": "18679dad71f9ea7723ca524599b0d9363861aeadf8f8032202f6391199a5a85a"
+        }
+      ],
+      "comparability": {
+        "same_problem": true,
+        "same_31_non_editable_template_files": true,
+        "official_valid_observation": true,
+        "stable_performance_gain_proven": false,
+        "full_historical_scoring_protocol": null,
+        "actual_device_and_frequency": null,
+        "formal_four_arm_conclusion": "pending current official configuration/rules audit and PL result"
+      },
+      "notes": [
+        "历史 JSONL evaluated_at 按其原 notes 实为官方提交时间；本轮引用改记 submitted_at，完成时间缺失为 null；不修改固定历史包。",
+        "仅为引用，同一任务不计成新实验或额外复测。"
+      ]
+    }
+  ],
+  "reuse_status": "Identity/status/score observations verified; formal comparability pending unknown official rule/timing details",
+  "no_new_submissions": true
+}

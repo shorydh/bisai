@@ -1,0 +1,110 @@
+提示词 B：第六题 PadV3Grad，第 1 轮
+
+你是已有执行 Agent B。task_id=Q06-R001-B-COMBINE-20261117；任务类型：有依据的组合优化探索与官方四臂比较。本提示词自包含，组合尚未执行。
+
+## 准确起点与隔离位置
+
+从 https://github.com/shorydh/bisai 的 agent-b 固定交接提交 8e245dab91700555bd619e95c70fa780305b1b37 建立你本机独立分支 q06/r001/b-r6-lastplan 或 work/Q06/round-001/B/。真正实现起点为包内 artifacts/official/1367774.zip 的 code/，七源码 d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949，ZIP SHA256=18679dad71f9ea7723ca524599b0d9363861aeadf8f8032202f6391199a5a85a。不要以当前未冻结工作目录代替该版本。
+
+团队共同基线未批准，A 正在核验；你先使用以下明确四臂局部对照。资料均在同一固定 B 包中：
+
+| 臂 | 精确七源码哈希／来源 | 已有证据 |
+|---|---|---|
+| F 朋友原版 | 700af8da3ef6679f48ebf8bbfa9d2f145d9357e9b6fd2e4f288542c662a1969b；artifacts/official/1367558.zip | B-HIST-1367558 Pass/28.66；同源码1362811为28.61 |
+| P r6 前缀合并 | d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949；1367774.zip | B-HIST-1367629与1367774 Pass/29.59、29.39 |
+| L r1 末轴计划缓存 | d3174f99553a7ba700a726f77370e1e287e1084cd2bc9768d4bbbcbd66ce9d24；1362890.zip | B-HIST-1362890与1364006 Pass/29.23、28.84 |
+| PL 新组合 | 从 P 适配 L，另存新代码快照 | 尚无证据；不能沿用P或L结果 |
+
+四臂分别恢复到 work 目录的 F/、P/、L/、PL/，历史版本不覆盖。
+
+## 实验问题、假设和判据
+
+核心问题：r6 消除前导恒等轴重复枚举后，r1 的末轴 Contributors 跨行缓存是否仍减少规划开销，并在正式官方比较中带来可保留的收益？单项都有 Pass 与正向归档分数观测，但复测存在波动，收益不相加或相乘。为什么优先：两项都局部作用于索引规划，具有明确守卫，不必引入新 DMA 同步或新归约树。
+
+阅读 artifacts/diffs/1367629-vs-1367558.diff 与 1362890-vs-1362811.diff。r6 守卫为前导轴 front=0 且输入输出轴长相同，outerStart_ 影响后续回退；r1 仅在 TryWideCertifiedFlat、outputWidth<=32 且本核 count>outputWidth 时复用 lastPlans。PL 保留两个守卫和原生成顺序。
+
+支持假设：准确 PL 全部精度验证有效，官方在可比口径下优于合理对照并符合真实退化要求。否定当前方案：编译或精度失败、资源问题、实测开销抵消或退化。差异落入未解释波动、评分口径未知则 pending。保留单项与组合全部结果，不挑最高分，不能宣布团队共同最佳。
+
+## 允许改动与相互作用检查
+
+仅在 PL 的 op_kernel/pad_v3_grad.h 适配 r1 缓存；测试／日志脚本可在独立目录扩展。保持 op_host、TilingData、blockFactor、UB 分配、64槽/sentinel布局、原同步、证书阈值、浮点求和顺序、回退策略。若发现必须扩大改动，先拆成另一个明确假设记录，不悄悄叠加。不要混入r5 DMA重叠、r10直拷或早期8/16槽方案。
+
+检查核内 count 与全张量行数的区别、run尾块、width31/32/33、本核count<=width与>width；r1新增 Contributors[32] 栈状态，即便 UB 不变仍可能增加栈/寄存器压力。保持 outer-major/last-axis-minor 顺序。检查 r6 前缀合并后快路拒绝是否正确重置 cursor/base，源计划不得跨不同 padding 调用错误复用。测试无/部分/全部恒等前缀、两种padding布局、贡献数31/32/33/63/64/65和空来源；测试合法范围以官方题面/参考为准。
+
+每次改动写明相对 P 还是上一 PL 实验。F/P/L 是四臂对照，不冒充共同基线。最终用于正式组合结论的 F/P/L/PL 均须有同口径官方有效结果；可复用经严格核实的准确结果，不要求无意义重提。A 若提供已冻结共同基线，与四臂相同则引用；不同时补列该基线的同口径结果，不跳过比较。A未完成时可以完成本任务准备与四臂分析，再将团队选择列待验。
+
+C另做独立数值/回退反例；你仍完成组合自身的必要精度，不承担对 A 旧模型的全面修复。若 C 报出共同起点反例，先保存组合快照和结果，针对反例验证/适配并新建实验，不用历史 Pass 覆盖问题。
+
+## 资料定位与真实运行入口
+
+资料仓库：https://github.com/shorydh/bisai 。A 包在 agent-a 的固定提交 562db68e0193c407dd714f5f071800911f378190，路径 operators/Q06/历史盘点/A/；B 包在 agent-b 的固定提交 8e245dab91700555bd619e95c70fa780305b1b37，路径 operators/Q06/历史盘点/B/。不要只读 main。发布 commit 标识交接包；实际测试代码以七源码 SHA256、官方包和模板配置为准。
+
+先读所用包的 README.md、summary.md、experiments.jsonl，再读相应 official JSON/TXT、identity/manifest、ranking、源码差异。恢复 B 使用 artifacts/official/<ID>.zip 中 code/ 的完整工程；可按包内 tools/restore_sources.ps1 解压，Linux 使用本机已有解压工具并核验文件哈希，不臆造专用提交 CLI。恢复 A 使用 tools/restore_sources.py 与匹配官方模板，或逐文件验证 B 1367774 工程中的31个非编辑文件与 A manifest 后再覆盖 A 七文件；中央已证明这些历史模板相同，你仍要在本机校验。保留全部38文件的身份，不只拷主头。
+
+官方题目入口：https://cannjudge.cn/public/ictcompetition/padv3grad ；提交页面为该路径后 /submit；问题 ID 6ad9ab403ff2fef7e80e2a1d。A README 记录官方模板入口 https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d/package 。使用已有官方页面／已有授权会话评测；若入口或流程与历史材料不同，先检查题面与项目说明，报告真实差异，不猜命令、令牌或新网址。
+
+官方 ZIP 的 code/README.md 提供的构建与本地首样例入口（在恢复工程根目录运行，环境和依赖按本机实际设置）：
+
+~~~bash
+source /path/to/cann/set_env.sh
+bash build.sh -j4
+DEVICE_ID=0 bash build.sh -j4 -e
+NLOHMANN_JSON_INCLUDE_DIR=/path/to/json/include GTEST_SOURCE_DIR=/path/to/googletest bash build.sh -j4 -u
+~~~
+
+/path/to/... 是原说明占位符，DEVICE_ID=0 是原说明示例，须换成本机实际路径与已确认设备。-e 只验证首个样例；-u 的内层 fixture／数值断言受 README 条件限制，不等于全量精度通过。读 samples/reference.py、sample.py、case.json 及 examples、tests 的实际入口再扩展测试。未发现完整云性能或 Profiler 入口，先检查项目已有脚本；需要自建测量器则明确记录为新工具和云数据，不能编造“项目原有命令”。
+
+已保存题面文字要求 float 默认阈值 1e-4、half 1e-3、int 0，所有测试通过且支持合法输入泛化；本轮由 A 核实当前官方规范。公开首样例 FP32 的 sample.py 使用 np.isclose(rtol=atol=1e-4,equal_nan=True) 和 bad<=1e-4*N，只能说明该样例。完整评分公式、精确计时方法、退化要求尚未核实；不要把 iterations=5 推成自定预热/中位数规则，不自行放宽精度。官方存档配置 CANN 9.1.0、revision=0、score_mode=1、ranking_submission_mode=latest，不证明所有历史记录口径相同。
+
+
+## 执行流程、测量与汇总
+
+严格按“提出假设 → 修改代码 → 编译 → 精度测试 → 性能测试 → 记录结果”执行。原样复现的 change 明确写“无代码修改”，不为凑流程添加无关改动。每次尽量只检验一个主要假设，记录相对共同基线还是上一实验；共同基线未批准时明确使用哪一个任务指定的局部对照，不能暗改基线。保存实际送测 commit/快照、未提交差异、构建开关、源码包 SHA256、输入种子与校验器。
+
+云环境可探索、调试、分析瓶颈；先核对设备型号、CANN、驱动、实际调用路径及是否共享，性能测量避开同设备并发负载。Profiler/插桩运行与正常性能运行区分。构建失败、运行错误、精度失败、性能退化分别记录，保留原始日志和失败版本。
+
+最终汇总前，由你使用已有官方入口完成用于正式结论的相关版本及必要基线评测；无需每个中间改动都提交。确认准确题目、任务编号、终态/有效性、官方实际评测的文件与本机冻结快照一致，并保存任务详情、原始指标、总分的准确任务绑定以及提交/观察时间。evaluated_at 仅填官方实际完成时间，未提供填 null；不能再将提交时间写作完成时间。评测后改码须新建版本，旧结果不沿用。历史复用结果必须确认完整口径足够一致；不同文件引用同一任务不能当多次复测。
+
+正式性能比较与最佳选择只使用可比的官方有效结果，禁止用云基线对官方候选计算收益。官方只有总分则按真实评分规则比较总分，不推算隐藏耗时、精度或算子加速比。全部重复观测原样保留，不只报最高值；单次分数差不能证明稳定收益。规则或结果不够就写 pending，具体指出缺口。不要自行宣布或覆盖中央共同基线。
+
+先完成 3～5 次有意义的实验，检查流程是否可靠，再自行决定汇总还是继续探索。3～5 次是检查节点，不是次数上限。有明确且值得验证的后续假设可以继续，并定期检查；已形成清晰结论、需要其他路线配合或遇到实际阻塞时返回中央。验证任务以完成目标为准，不为凑次数修改代码。没有额外实验次数或时间上限。实际遇到官方入口、额度、设备、访问或运行限制，报告具体情况与未完成项，不虚构测试完成或性能提升。你可以自行完成必要官方提交，不要求由团队统一安排。
+
+
+## 交接格式（本提示词完整规定）
+
+在你自己的仓库／工作目录交付 operators/Q06/round-001/B/summary.md 和 experiments.jsonl，代码、diff、配置、编译日志、精度结果、性能数据、Profiler 材料和官方原始结果放 artifacts/。按“题目／轮次／执行者”分别保存，已有实验编号保持不变，新实验用 Q06-R001-B-E001 起追加，不覆盖其他人材料或删除失败记录。task_id 固定 Q06-R001-B-COMBINE-20261117；round_id=round-001。历史记录引用其原 round_id=历史盘点，不重命名成新实验。最后告知用户交付分支及精确 commit/快照；中央将接收包保存到其 incoming/Q06/round-001/B/，这个中央路径不要求在你的电脑存在。
+
+summary.md 包含：
+
+- 题目、轮次、执行者、任务和基线。
+- 统一实验表：实验编号、假设与改动、准确代码版本、测量来源、官方任务编号、官方状态及实际指标、与官方基线的比较、结论及证据位置。
+- 发现清单：已验证、待验证、已证伪或无效，并注明环境、条件和证据。
+- 当前最佳有效版本及其官方依据。
+- 值得继续探索、复测或组合的发现。
+- 异常、未完成事项、原因及下一步。
+- 对应代码、日志和结果材料的位置。
+
+experiments.jsonl 每行一个实验，固定字段为：
+
+~~~text
+experiment_id, operator, round_id, agent_id, task_id,
+base_version, candidate_version, hypothesis, change,
+official_task_id, official_result_ref, evaluated_at,
+evaluation_protocol, official_status, official_metrics,
+baseline_official_result_ref, comparison, finding_status,
+applicability, artifacts, notes
+~~~
+
+字段要求：
+
+- version 必须能恢复实际测试的代码，包含提交编号或源码快照，以及必要差异和配置。
+- official_result_ref 指向可核对的官方结果。
+- official_metrics 原样记录官方实际返回的指标。
+- comparison 只比较可比的官方结果，不能判断时说明原因。
+- finding_status 使用 verified／pending／invalid，并写清证据与适用条件。
+- 云环境日志、性能数据及 Profiler 材料保存在 artifacts 中，明确注明来源。
+- 缺失字段填 null，并说明原因；不补造数据。
+- 尚无官方结果的过程实验如实记录，不将云环境数据填写为官方指标。
+- 已取得官方结果不自动等于性能提升；仍需与有效基线比较。
+
+执行结束在对话中报告关键发现、官方结果、最佳有效版本、未完成事项及文件位置，不能只交文件路径。若共同基线或最佳无法判定，明确写未判定及证据缺口。本次任务单不是实验已完成的证明。

@@ -1,0 +1,15 @@
+{
+  "lifecycle": "exploration_delivered_formal_comparison_pending",
+  "approval_block_resolved": true,
+  "official_results": [
+    "artifacts/official/1369663.json"
+  ],
+  "additional_artifacts": [
+    "artifacts/official/submission-approval-block.json",
+    "artifacts/workflow/implementation/PL-vs-P.diff",
+    "artifacts/official/1369663-submitted.json"
+  ],
+  "notes": [
+    "先前自动审批拒绝已由用户直接授权解除，记录只作流程历史；官方1369663已Pass，未重新提交历史P。无活动授权阻塞，正式性能比较仍pending。"
+  ]
+}

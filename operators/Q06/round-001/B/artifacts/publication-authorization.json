@@ -1,0 +1,15 @@
+{
+  "status": "authorized_by_direct_user_answer",
+  "answer": "授权发布上述完整交付包",
+  "repository": "shorydh/bisai",
+  "branch": "q06/r001/b-r6-lastplan",
+  "path": "operators/Q06/round-001/B/",
+  "scope": [
+    "F/P/L/PL sources",
+    "diffs and diagnostic logs",
+    "official engineering ZIP and metrics",
+    "CANNJudge screenshots with shorydh/三溯",
+    "task and artifact hash manifest"
+  ],
+  "prior_rejections_resolved": true
+}

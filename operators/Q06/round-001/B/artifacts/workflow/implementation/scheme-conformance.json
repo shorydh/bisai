@@ -1,0 +1,91 @@
+{
+  "task_id": "Q06-R001-B-COMBINE-20261117",
+  "experiment_id": "Q06-R001-B-E001",
+  "scheme": "PL",
+  "implementation_mode": "exact",
+  "substitution_policy": "forbidden",
+  "parent_seven_source_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+  "candidate_seven_source_sha256": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41",
+  "main_header_sha256": "88f6164377498e6c2d89d1c52578c4f601d172c98faa82c291197392249fcc08",
+  "scope_sha256": "b078bb2a9e1646b0777491b9377bba92f03c43eee5ba5ba96398503ddcc17d8e",
+  "contract_sha256": "bdb5ce6362cecdaec1b4c07f6bc0762fe00ddd6d09fdc1d103fe49a13a7bbd47",
+  "checks": {
+    "file_count": true,
+    "file_inventory": true,
+    "only_main_header_changed": true,
+    "reverse_exact_parent": true,
+    "scope_sha256": true,
+    "contract_sha256": true,
+    "candidate_identity": true,
+    "cache_single_insert": true,
+    "selector_single_replace": true
+  },
+  "required_features": [
+    {
+      "id": "retain-P-verbatim",
+      "status": "source_pass",
+      "evidence": [
+        "candidate-identity.json",
+        "PL-vs-P.diff",
+        "verify_candidate.cjs"
+      ]
+    },
+    {
+      "id": "r1-local-cache",
+      "status": "source_pass",
+      "evidence": [
+        "candidate-identity.json",
+        "PL-vs-P.diff",
+        "verify_candidate.cjs"
+      ]
+    },
+    {
+      "id": "r1-plan-selection",
+      "status": "source_pass",
+      "evidence": [
+        "candidate-identity.json",
+        "PL-vs-P.diff",
+        "verify_candidate.cjs"
+      ]
+    },
+    {
+      "id": "complete-clone",
+      "status": "source_pass",
+      "evidence": [
+        "candidate-identity.json",
+        "PL-vs-P.diff",
+        "verify_candidate.cjs"
+      ]
+    },
+    {
+      "id": "identity-and-evidence",
+      "status": "source_pass",
+      "evidence": [
+        "candidate-identity.json",
+        "PL-vs-P.diff",
+        "verify_candidate.cjs"
+      ]
+    },
+    {
+      "id": "boundary-verification",
+      "status": "supplementary_cpu_pass_device_pending",
+      "evidence": "planner-result.json"
+    }
+  ],
+  "kb_unavailable": true,
+  "kb_unavailable_reason": "No installed knowledge-query or configured knowledge root in parent discovery",
+  "kb_cards": [],
+  "source_automatic_storage_bytes": 1280,
+  "actual_device_stack_bytes": null,
+  "official_task_id": 1369663,
+  "eligible_for_performance": false,
+  "missing": [
+    "Actual SoC/build/loaded binary details and stack/spill",
+    "Comparable official timing/scoring/degeneration protocol",
+    "Canonical Python workflow gate and independent device sequence stress"
+  ],
+  "device_execution": false,
+  "official_status": "Pass",
+  "official_result_evidence": "../../official/1369663.json",
+  "official_full_38_identity_match": true
+}

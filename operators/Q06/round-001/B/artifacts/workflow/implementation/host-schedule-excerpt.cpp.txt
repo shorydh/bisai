@@ -1,0 +1,11 @@
+        const bool smallOutput = tiling->totalInput <= kSmallInputElements &&
+            tiling->totalOutput <= kSmallOutputElements;
+        const int64_t workPerCore = smallOutput ? kSmallWorkPerCore : kGeneralWorkPerCore;
+        const int64_t usefulCores = std::max<int64_t>(1,
+            CeilDivide(std::max(tiling->totalInput, tiling->totalOutput), workPerCore));
+        const int64_t requestedCores = std::min(coreNum,
+            std::min(usefulCores, CeilDivide(tiling->totalOutput, alignment)));
+        const int64_t alignedBlocks = CeilDivide(CeilDivide(tiling->totalOutput, requestedCores), alignment);
+        tiling->blockFactor = alignedBlocks * alignment;
+        blockDim = static_cast<uint32_t>(CeilDivide(tiling->totalOutput, tiling->blockFactor));
+    }

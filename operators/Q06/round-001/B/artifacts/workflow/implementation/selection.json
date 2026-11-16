@@ -1,0 +1,37 @@
+{
+  "scheme": "PL",
+  "candidate_seven_source_sha256": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41",
+  "status": "pending_formal_comparison_retain_P",
+  "selected_candidate": "P",
+  "selection_scope": "local retention decision; not team-best or statistical performance winner",
+  "current_safe_restored": "P/1367774",
+  "official_task_id": 1369663,
+  "official_status": "Pass",
+  "official_metrics": {
+    "public_us": [
+      6.67,
+      6.93,
+      7.0,
+      8.35,
+      6.93
+    ],
+    "total_score": 29.2,
+    "public_error_ratio": [
+      "0.00%",
+      "0.00%",
+      "0.00%",
+      "0.00%",
+      "0.00%"
+    ]
+  },
+  "official_result_ref": "https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6afb3b076bd0f9be37e856f6",
+  "evaluated_at": null,
+  "submitted_at": "2026-11-17T01:19:03+08:00",
+  "full_38_source_match": true,
+  "canonical_eligible_for_performance": null,
+  "formal_four_arm_comparison": "pending unknown scoring/timing/degeneration protocol and unexplained noise",
+  "reason": "PL single observed29.20 below existing P29.59/29.39; no evidence to retain PL, no stable regression claim",
+  "official_current_latest": "PL/1369663 Pass29.20",
+  "team_common_baseline": "not approved",
+  "cpu_diagnostic_device_execution": false
+}

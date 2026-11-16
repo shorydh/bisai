@@ -1,0 +1,119 @@
+{
+  "task_id": "Q06-R001-B-COMBINE-20261117",
+  "entry_files": [
+    {
+      "path": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\P\\README.md",
+      "sha256": "7f9bf3a841a3988ffb551f5ad168d00abc24e8f043be996c856d06c9d508e1a4",
+      "file": "README.md"
+    },
+    {
+      "path": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\P\\build.sh",
+      "sha256": "3d1aec7a6644163f6db2924748843774f1d100b4289c986c3456e8214222e214",
+      "file": "build.sh"
+    },
+    {
+      "path": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\P\\examples\\run.sh",
+      "sha256": "46cb83c880d178112853b066c6cb30b763a2c8018be06ffdaa232b4a05e165f7",
+      "file": "examples/run.sh"
+    },
+    {
+      "path": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\P\\examples\\test_aclnn_pad_v3_grad.cpp",
+      "sha256": "5ab9a12b4eb2fffcbf07fc2af599883f0a1b33de7c5e1d7858a31a55d92c8380",
+      "file": "examples/test_aclnn_pad_v3_grad.cpp"
+    },
+    {
+      "path": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\P\\samples\\reference.py",
+      "sha256": "1542d63e602aa3aaa60242e91ea0d6a8ac038bab788c6898dc4777557f040ed3",
+      "file": "samples/reference.py"
+    },
+    {
+      "path": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\P\\samples\\sample.py",
+      "sha256": "2950dfbede5aac86040755923f2282e8f29246e16c5f63b253bcc084d87249d8",
+      "file": "samples/sample.py"
+    },
+    {
+      "path": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\P\\samples\\case.json",
+      "sha256": "4ed5b04487ac94773d32b92b72478a5b42200695d9a694a54b431c89903f75ec",
+      "file": "samples/case.json"
+    },
+    {
+      "path": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\P\\tests\\ut\\run.sh",
+      "sha256": "8077868c31345d5c9cd3a3ff94d45c40fd5934aa18972673bb37dbd431a6be9c",
+      "file": "tests/ut/run.sh"
+    },
+    {
+      "path": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\P\\tests\\ut\\CMakeLists.txt",
+      "sha256": "8c5e7a12fe0115ba81f6f3dc2e9d1184a2831f2507d42d8773db4d1dccceb3f3",
+      "file": "tests/ut/CMakeLists.txt"
+    },
+    {
+      "path": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\P\\tests\\ut\\op_kernel\\CMakeLists.txt",
+      "sha256": "fb479d1340207a931a7111cb97343d266b100c7f3d2a436c4f080b44ff224dd6",
+      "file": "tests/ut/op_kernel/CMakeLists.txt"
+    },
+    {
+      "path": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\P\\tests\\ut\\op_kernel\\test_pad_v3_grad.cpp",
+      "sha256": "3cbc5015a836392c0f6604ac8d9e0a29a333cc8c395037d01b4a832d18c7ef61",
+      "file": "tests/ut/op_kernel/test_pad_v3_grad.cpp"
+    },
+    {
+      "path": "D:\\算子比赛\\346题\\work\\Q06\\round-001\\B\\P\\op_kernel\\pad_v3_grad_tiling_data.h",
+      "sha256": "d98e018fb41fe5ec79fdcd2885a1db34530b489e6b505cafdc55b611cbbfe84e",
+      "file": "op_kernel/pad_v3_grad_tiling_data.h"
+    }
+  ],
+  "build": {
+    "remote_hardware_proven": false,
+    "command": "source <actual CANN>/set_env.sh; bash build.sh -j4",
+    "actual_execution": "not run",
+    "compile_unit_in_script": "ascend910b"
+  },
+  "sample": {
+    "bad_fraction_limit": 0.0001,
+    "atol": 0.0001,
+    "seed": 42,
+    "coverage": "samples only npu_cases[0]",
+    "equal_nan": true,
+    "mode": "reflect",
+    "paddings_contiguous": true,
+    "output_shape": [
+      1,
+      1,
+      4,
+      4
+    ],
+    "input_shape": [
+      1,
+      1,
+      8,
+      8
+    ],
+    "actual_execution": "not run",
+    "rtol": 0.0001,
+    "exact_output_bytes": 64,
+    "dtype": "float32",
+    "command": "DEVICE_ID=<confirmed device> bash build.sh -j4 -e"
+  },
+  "reference": {
+    "declared_modes": [
+      "constant",
+      "edge",
+      "replicate",
+      "reflect",
+      "symmetric",
+      "circular"
+    ],
+    "scope_warning": "Source reference accepts these modes; current official legal scope still needs rule audit",
+    "padding_true": "interleaved front/back",
+    "padding_false": "front half then back half",
+    "implementation": "Per-axis padding index map; torch.float64 accumulation via index_select/autograd except constant crop, then cast to original dtype"
+  },
+  "ut": {
+    "command": "NLOHMANN_JSON_INCLUDE_DIR=<actual>/include GTEST_SOURCE_DIR=<actual> bash build.sh -j4 -u",
+    "actual_cmake": "Unconditional add_subdirectory(op_kernel); run.sh invokes kernel UT and sample verify, without ENABLE_INNER_KERNEL_UT gate in inspected files",
+    "actual_execution": "not run",
+    "stale_fixture": "kernel test writes totalNum not present in current PadV3GradTilingData (totalInput/totalOutput); not a valid precision proof",
+    "readme_claim": "Default skip inner numeric assertion; ENABLE_INNER_KERNEL_UT enables",
+    "status": "static incompatibility, no actual compile failure claimed"
+  }
+}

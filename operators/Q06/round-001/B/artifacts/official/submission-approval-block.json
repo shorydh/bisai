@@ -1,0 +1,10 @@
+{
+  "task_id": "Q06-R001-B-COMBINE-20261117",
+  "experiment_id": "Q06-R001-B-E001",
+  "action": "Click 提交代码 on official PadV3Grad submit page",
+  "status": "auto_review_rejected_no_official_task_created",
+  "reason": "Clicking 提交代码 triggers an external official evaluation and creates a consequential submission; the transcript lacks trusted user authorization for this exact submission action.",
+  "candidate_seven_source_sha256": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41",
+  "next_action": "Await direct user approval; do not bypass or retry via another interface",
+  "official_task_id": null
+}

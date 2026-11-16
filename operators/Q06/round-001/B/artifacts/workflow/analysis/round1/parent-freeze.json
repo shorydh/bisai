@@ -1,0 +1,10 @@
+{
+  "task_id": "Q06-R001-B-COMBINE-20261117",
+  "decision": "authorize exact PL implementation for official evaluation per full user task",
+  "contract_sha256": "bdb5ce6362cecdaec1b4c07f6bc0762fe00ddd6d09fdc1d103fe49a13a7bbd47",
+  "scope_sha256": "b078bb2a9e1646b0777491b9377bba92f03c43eee5ba5ba96398503ddcc17d8e",
+  "parent_seven_source_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+  "scope": "Only two r1 cache hunks in PL/op_kernel/pad_v3_grad.h",
+  "generic_workflow_gates": "pending; no local CANN/Python/NPU, no fabricated manifest or timing/SoC",
+  "user_overrides": "Use authorized official evaluator as required by task-request.txt, preserve exact engineering and supplementary source diagnostics"
+}

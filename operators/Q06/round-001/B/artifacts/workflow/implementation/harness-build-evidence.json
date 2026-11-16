@@ -1,0 +1,32 @@
+{
+  "device_execution": false,
+  "toolchain": "GCC (tdm64-1) 4.9.2",
+  "compiler": "D:\\C++\\Dev-Cpp\\MinGW64\\bin\\g++.exe",
+  "attempts": [
+    {
+      "exit_code": 1,
+      "command": "g++ -std=c++17 -O2 -Wall -Wextra -fno-fast-math planner_harness.cpp -o planner_harness.exe",
+      "error": "unrecognized command line option '-std=c++17'"
+    },
+    {
+      "exit_code": 0,
+      "command": "g++ -std=c++11 -O2 -Wall -Wextra -fno-fast-math planner_harness.cpp -o planner_harness.exe",
+      "log": "harness-build.log"
+    }
+  ],
+  "run": {
+    "stderr": "planner-errors.log",
+    "stdout": "planner-result.raw.txt",
+    "exit_code": 0,
+    "normalized": "planner-result.json",
+    "seed": 20261117,
+    "command": "planner_harness.exe"
+  },
+  "source_sha256": "6ddada1c215d223c01d8dcf503af95ef6f66edeea04f444a921ea137c141cef8",
+  "executable_sha256": "b65f3db643b7bc92bdb8b51a03bd2070d833b3cab15250a2c9c343a781bf6c07",
+  "notes": [
+    "Auxiliary CPU planner compile only; not AscendC or official build",
+    "No timing or CPU score collected",
+    "Raw output escaped dynamic-map key quotes are normalized by normalize_harness_result.cjs without changing numeric data"
+  ]
+}

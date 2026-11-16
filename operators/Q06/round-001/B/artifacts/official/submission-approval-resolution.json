@@ -1,0 +1,8 @@
+{
+  "status": "resolved",
+  "user_answer": "授权本轮 PL 官方提交与评测",
+  "candidate_seven_source_sha256": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41",
+  "official_task_id": 1369663,
+  "submission_authorized": true,
+  "previous_rejection": "submission-approval-block.json"
+}
