@@ -1,0 +1,16 @@
+diff --git a/artifacts/platform/1148133/code/op_host/pad_v3_grad_tiling.cpp b/artifacts/platform/1148294/code/op_host/pad_v3_grad_tiling.cpp
+index da47919..5f083c6 100644
+--- a/artifacts/platform/1148133/code/op_host/pad_v3_grad_tiling.cpp
++++ b/artifacts/platform/1148294/code/op_host/pad_v3_grad_tiling.cpp
+@@ -231,7 +231,10 @@ static ge::graphStatus PadV3GradTilingFunc(gert::TilingContext* context)
+         const int64_t workPerCore = smallOutput ? kSmallWorkPerCore : kGeneralWorkPerCore;
+         const int64_t usefulCores = std::max<int64_t>(1,
+             CeilDivide(std::max(tiling->totalInput, tiling->totalOutput), workPerCore));
+-        const int64_t requestedCores = std::min(coreNum,
++        // Single-owner probe retains the <=128-output wide-certificate path.
++        // All other shapes keep the established output partitioning policy.
++        const bool singleOwner = smallOutput && tiling->totalOutput <= 128;
++        const int64_t requestedCores = singleOwner ? 1 : std::min(coreNum,
+             std::min(usefulCores, CeilDivide(tiling->totalOutput, alignment)));
+         const int64_t alignedBlocks = CeilDivide(CeilDivide(tiling->totalOutput, requestedCores), alignment);
+         tiling->blockFactor = alignedBlocks * alignment;

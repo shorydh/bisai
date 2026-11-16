@@ -1,0 +1,25 @@
+diff --git a/artifacts/platform/1367273/code/op_kernel/pad_v3_grad.h b/artifacts/platform/1367477/code/op_kernel/pad_v3_grad.h
+index 985bfc6..315d051 100644
+--- a/artifacts/platform/1367273/code/op_kernel/pad_v3_grad.h
++++ b/artifacts/platform/1367477/code/op_kernel/pad_v3_grad.h
+@@ -503,7 +503,7 @@ private:
+     // existing 8192-element buffers. No buffer allocation changes are needed.
+     __aicore__ inline bool TryWideCertifiedFlat()
+     {
+-        constexpr int64_t groupSize = 64;
++        constexpr int64_t groupSize = 32;
+         const int64_t count = end_ - begin_;
+         if (rank_ == 0 || data_->totalInput > CACHE_ELEMENTS ||
+             data_->totalOutput > 256 || count > 128) {
+@@ -563,9 +563,9 @@ private:
+             auto floats = floatBuffer_.Get<float>();
+             Cast(floats, gathered, RoundMode::CAST_NONE, lanes);
+             PipeBarrier<PIPE_V>();
+-            return StoreCertified(floats, count, terms, 64, threshold, true);
++            return StoreCertified(floats, count, terms, 32, threshold, true);
+         } else {
+-            return StoreCertified(gathered, count, terms, 64, threshold, true);
++            return StoreCertified(gathered, count, terms, 32, threshold, true);
+         }
+     }
+ 

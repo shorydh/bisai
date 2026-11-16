@@ -1,0 +1,48 @@
+diff --git a/artifacts/platform/1362811/code/op_kernel/pad_v3_grad.h b/artifacts/platform/1363127/code/op_kernel/pad_v3_grad.h
+index e12db51..8b3419a 100644
+--- a/artifacts/platform/1362811/code/op_kernel/pad_v3_grad.h
++++ b/artifacts/platform/1363127/code/op_kernel/pad_v3_grad.h
+@@ -483,7 +483,8 @@ private:
+         int64_t maxContributors = 0;
+         // Expand the outer Cartesian product once per output row. Every column
+         // reuses the same ordered bases instead of restarting NextOuter.
+-        int64_t outerBases[groupSize];
++        // This path has <=8192 inputs, hence every byte offset fits uint32.
++        uint32_t outerBases[groupSize];
+         for (int64_t j = 0; j < count;) {
+             const int64_t output = begin_ + j;
+             const int64_t row = output / outputWidth_;
+@@ -505,7 +506,7 @@ private:
+                                     Sync<HardEvent::S_V>();
+                                     return false;
+                                 }
+-                                outerBases[outerCount++] = base_;
++                                outerBases[outerCount++] = static_cast<uint32_t>(base_ * sizeof(T));
+                             } while (NextOuter());
+                         }
+                         planned = true;
+@@ -516,10 +517,21 @@ private:
+                     }
+                     // Keep the original outer-major, last-axis-minor order so
+                     // grouped reduction and its numerical certificate are unchanged.
++                    const uint32_t stepBytes = static_cast<uint32_t>(last.step * sizeof(T));
++                    const uint32_t firstBytes0 = static_cast<uint32_t>(last.first[0] * sizeof(T));
++                    const uint32_t firstBytes1 = static_cast<uint32_t>(last.first[1] * sizeof(T));
++                    const int64_t destination = (j + c) * groupSize;
+                     for (int64_t outer = 0; outer < outerCount; ++outer) {
+-                        for (int64_t k = 0; k < lastCount; ++k) {
+-                            offsets.SetValue((j + c) * groupSize + pass,
+-                                static_cast<uint32_t>((outerBases[outer] + last.At(k)) * sizeof(T)));
++                        uint32_t source = outerBases[outer] + firstBytes0;
++                        for (int64_t k = 0; k < last.count[0]; ++k) {
++                            offsets.SetValue(destination + pass, source);
++                            source += stepBytes;
++                            ++pass;
++                        }
++                        source = outerBases[outer] + firstBytes1;
++                        for (int64_t k = 0; k < last.count[1]; ++k) {
++                            offsets.SetValue(destination + pass, source);
++                            source += stepBytes;
+                             ++pass;
+                         }
+                     }

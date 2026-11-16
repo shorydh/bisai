@@ -1,0 +1,45 @@
+diff --git a/artifacts/platform/1367558/code/op_kernel/pad_v3_grad.h b/artifacts/platform/1367695/code/op_kernel/pad_v3_grad.h
+index e12db51..d4602b4 100644
+--- a/artifacts/platform/1367558/code/op_kernel/pad_v3_grad.h
++++ b/artifacts/platform/1367695/code/op_kernel/pad_v3_grad.h
+@@ -243,6 +243,10 @@ public:
+             if (!contiguous && hasOuter) {
+                 passes = PrepareGather(column, count);
+             }
++            if (contiguous && hasOuter && TryDirectTile(output, row, column, count)) {
++                output += count;
++                continue;
++            }
+             if (contiguous || !hasOuter || passes <= MAX_GATHER_PASSES) {
+                 VectorTile(output, row, column, count, contiguous, passes, hasOuter);
+             } else {
+@@ -818,6 +822,29 @@ private:
+         PipeBarrier<PIPE_V>();
+     }
+ 
++    __aicore__ inline void CopyDirectTile(int64_t output, int64_t source, int64_t count)
++    {
++        Load(source, count);
++        Sync<HardEvent::MTE2_MTE3>();
++        DataCopyExtParams params{1, static_cast<uint32_t>(count * sizeof(T)), 0, 0, 0};
++        DataCopyPad(y_[output], inputBuffer_.Get<T>(), params);
++        Sync<HardEvent::MTE3_MTE2>();
++    }
++
++    // Process has proved that the last-axis tile is a valid unique contiguous
++    // interval. One NextOuter probe proves uniqueness in every remaining axis.
++    __aicore__ inline bool TryDirectTile(int64_t output, int64_t row, int64_t column, int64_t count)
++    {
++        const int64_t source = base_ + column + (rank_ == 0 ? 0 : front_[rank_ - 1]);
++        if (NextOuter()) {
++            // Restore the original first combination for the existing reducer.
++            InitOuter(row);
++            return false;
++        }
++        CopyDirectTile(output, source, count);
++        return true;
++    }
++
+     __aicore__ inline void VectorTile(int64_t output, int64_t row, int64_t column,
+                                      int64_t count, bool contiguous, int64_t passes, bool hasOuter)
+     {

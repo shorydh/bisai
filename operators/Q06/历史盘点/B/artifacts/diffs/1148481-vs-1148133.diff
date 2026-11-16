@@ -1,0 +1,84 @@
+diff --git a/artifacts/platform/1148133/code/op_kernel/pad_v3_grad.h b/artifacts/platform/1148481/code/op_kernel/pad_v3_grad.h
+index e412a48..8c2b7ae 100644
+--- a/artifacts/platform/1148133/code/op_kernel/pad_v3_grad.h
++++ b/artifacts/platform/1148481/code/op_kernel/pad_v3_grad.h
+@@ -463,6 +463,62 @@ private:
+         return true;
+     }
+ 
++    // Every output uses at most n input elements. A uniform input bound K/p,
++    // with p the next power of two >= n, implies sum(abs(contributors)) <= K.
++    // K is the original conservative certificate budget, not a new tolerance.
++    __aicore__ inline bool InputRangeCertified(int64_t contributors)
++    {
++        if (contributors == 0) {
++            return true;
++        }
++        const int64_t inputCount = data_->totalInput;
++        if (inputCount > 256) {
++            return false;
++        }
++        float limit = sizeof(T) == sizeof(half) ?
++            (contributors <= 32 ? 256.0f : 128.0f) :
++            (contributors <= 32 ? 26.0f : 13.0f);
++        for (int64_t power = 1; power < contributors; power *= 2) {
++            limit *= 0.5f;
++        }
++        const int64_t compareBlock = 256 / sizeof(T);
++        const uint32_t compareCount = static_cast<uint32_t>(
++            (inputCount + compareBlock - 1) / compareBlock * compareBlock);
++        // Gather has finished with its offsets. Reuse that buffer for the
++        // input range check; zero padding makes every compared tail bit valid.
++        auto absolute = offsetBuffer_.Get<T>();
++        Duplicate(absolute, static_cast<T>(0), compareCount);
++        PipeBarrier<PIPE_V>();
++        Abs(absolute, inputBuffer_.Get<T>(), static_cast<uint32_t>(inputCount));
++        PipeBarrier<PIPE_V>();
++        CompareScalar(maskBuffer_.Get<uint8_t>(), absolute, static_cast<T>(limit), CMPMODE::LE, compareCount);
++        Sync<HardEvent::V_S>();
++        auto words = maskBuffer_.Get<uint32_t>();
++        for (uint32_t word = 0; word < compareCount / 32; ++word) {
++            // Ordered <= rejects NaN and infinity as well as large magnitudes.
++            if (words.GetValue(word) != static_cast<uint32_t>(0xffffffffu)) {
++                Sync<HardEvent::S_V>();
++                return false;
++            }
++        }
++        return true;
++    }
++
++    __aicore__ inline void StoreRangeCertified(const LocalTensor<float> &values,
++                                               int64_t count, int32_t terms)
++    {
++        auto sum = sumBuffer_.Get<float>();
++        ReduceGroups(sum, values, count, terms, 64);
++        PipeBarrier<PIPE_V>();
++        auto out = outputBuffer_.Get<T>();
++        if constexpr (sizeof(T) == sizeof(half)) {
++            Cast(out, sum, RoundMode::CAST_RINT, static_cast<uint32_t>(count));
++        } else {
++            Adds(out, sum, 0.0f, static_cast<uint32_t>(count));
++        }
++        Store(begin_, count, false);
++    }
++
+     // A core with at most 128 outputs can use 64 slots per output in the
+     // existing 8192-element buffers. No buffer allocation changes are needed.
+     __aicore__ inline bool TryWideCertifiedFlat()
+@@ -554,8 +610,16 @@ private:
+             auto floats = floatBuffer_.Get<float>();
+             Cast(floats, gathered, RoundMode::CAST_NONE, lanes);
+             PipeBarrier<PIPE_V>();
++            if (InputRangeCertified(maxContributors)) {
++                StoreRangeCertified(floats, count, terms);
++                return true;
++            }
+             return StoreCertified(floats, count, terms, 64, threshold, true);
+         } else {
++            if (InputRangeCertified(maxContributors)) {
++                StoreRangeCertified(gathered, count, terms);
++                return true;
++            }
+             return StoreCertified(gathered, count, terms, 64, threshold, true);
+         }
+     }

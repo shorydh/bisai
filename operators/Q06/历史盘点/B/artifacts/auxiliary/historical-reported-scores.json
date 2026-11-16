@@ -1,0 +1,25 @@
+{
+  "classification": "secondary_reports_only; not official_metrics without independent official snapshot",
+  "sources": [
+    "本机早期性能调优报告.md",
+    "朋友提供的friend_review.md"
+  ],
+  "reported_scores": {
+    "1124074": 18.41,
+    "1137274": 30.8,
+    "1137595": 32.4,
+    "1139103": 29.89,
+    "1140175": 31.88,
+    "1147813": 34.06,
+    "1147881": 34.6,
+    "1148294": 31.16,
+    "1148481": 34.7,
+    "1148685": 35.17,
+    "1148765": 35.9
+  },
+  "conflict": {
+    "official_task_id": 1125548,
+    "local_report": 30.76,
+    "friend_review": 30.95
+  }
+}

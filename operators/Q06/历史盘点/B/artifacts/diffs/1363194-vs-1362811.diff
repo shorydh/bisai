@@ -1,0 +1,46 @@
+diff --git a/artifacts/platform/1362811/code/op_kernel/pad_v3_grad.h b/artifacts/platform/1363194/code/op_kernel/pad_v3_grad.h
+index e12db51..dcd6372 100644
+--- a/artifacts/platform/1362811/code/op_kernel/pad_v3_grad.h
++++ b/artifacts/platform/1363194/code/op_kernel/pad_v3_grad.h
+@@ -389,7 +389,8 @@ private:
+ 
+     __aicore__ inline bool StoreCertified(const LocalTensor<float> &values, int64_t count,
+                                             int32_t terms = 32, int32_t slots = 32,
+-                                            float threshold = 26.0f, bool dynamicFloat = false)
++                                            float threshold = 26.0f, bool dynamicFloat = false,
++                                            int64_t maxContributors = 64)
+     {
+         const uint32_t n = static_cast<uint32_t>(count);
+         const uint32_t compareCount = static_cast<uint32_t>((count + 63) / 64 * 64);
+@@ -398,6 +399,19 @@ private:
+         // Gather has finished reading its offsets before this function is
+         // called, so their storage is now available for absolute values.
+         auto absolute = offsetBuffer_.Get<float>();
++        // With at most two FP32 sources the sole nonzero addition is the
++        // correctly rounded FP32 result of their exact sum. Extra zero lanes
++        // do not introduce rounding error, so no error certificate is needed.
++        // Half retains its existing certificate and conversion path.
++        if constexpr (sizeof(T) == sizeof(float)) {
++            if (dynamicFloat && maxContributors <= 2) {
++                ReduceGroups(sum, values, count, terms, slots);
++                PipeBarrier<PIPE_V>();
++                Adds(outputBuffer_.Get<T>(), sum, 0.0f, n);
++                Store(begin_, count, false);
++                return true;
++            }
++        }
+         Duplicate(sumAbs, 0.0f, compareCount);
+         if constexpr (sizeof(T) == sizeof(float)) {
+             if (dynamicFloat) {
+@@ -553,9 +567,9 @@ private:
+             auto floats = floatBuffer_.Get<float>();
+             Cast(floats, gathered, RoundMode::CAST_NONE, lanes);
+             PipeBarrier<PIPE_V>();
+-            return StoreCertified(floats, count, terms, 64, threshold, true);
++            return StoreCertified(floats, count, terms, 64, threshold, true, maxContributors);
+         } else {
+-            return StoreCertified(gathered, count, terms, 64, threshold, true);
++            return StoreCertified(gathered, count, terms, 64, threshold, true, maxContributors);
+         }
+     }
+ 

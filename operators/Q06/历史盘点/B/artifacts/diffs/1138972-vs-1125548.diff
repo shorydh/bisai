@@ -1,0 +1,101 @@
+diff --git a/artifacts/platform/1125548/code/op_kernel/pad_v3_grad.cpp b/artifacts/platform/1138972/code/op_kernel/pad_v3_grad.cpp
+index fc153c7..9937144 100644
+--- a/artifacts/platform/1125548/code/op_kernel/pad_v3_grad.cpp
++++ b/artifacts/platform/1138972/code/op_kernel/pad_v3_grad.cpp
+@@ -56,13 +56,14 @@ __global__ __aicore__ void pad_v3_grad(GM_ADDR x, GM_ADDR paddings, GM_ADDR y, G
+         if (tilingData.rank < 0 || tilingData.rank > PAD_V3_GRAD_SMALL_RANK) {
+             return;
+         }
++        AscendC::TPipe pipe;
+         if constexpr (schMode == 2) {
+             NsPadV3Grad::PadV3Grad<half, PadV3GradSmallTilingData> op;
+-            op.Init(x, paddings, y, &tilingData);
++            op.Init(x, paddings, y, &tilingData, &pipe);
+             op.Process();
+         } else {
+             NsPadV3Grad::PadV3Grad<float, PadV3GradSmallTilingData> op;
+-            op.Init(x, paddings, y, &tilingData);
++            op.Init(x, paddings, y, &tilingData, &pipe);
+             op.Process();
+         }
+     } else {
+@@ -74,14 +75,15 @@ __global__ __aicore__ void pad_v3_grad(GM_ADDR x, GM_ADDR paddings, GM_ADDR y, G
+         if (!LoadPadV3GradTiling(tiling, tilingData)) {
+             return;
+         }
++        AscendC::TPipe pipe;
+         if constexpr (schMode == static_cast<uint32_t>(PadV3GradTilingKey::TILING_KEY_PADV3GRAD_MODE_0)) {
+             NsPadV3Grad::PadV3Grad<half> op;
+-            op.Init(x, paddings, y, &tilingData);
++            op.Init(x, paddings, y, &tilingData, &pipe);
+             op.Process();
+         }
+         if constexpr (schMode == static_cast<uint32_t>(PadV3GradTilingKey::TILING_KEY_PADV3GRAD_MODE_1)) {
+             NsPadV3Grad::PadV3Grad<float> op;
+-            op.Init(x, paddings, y, &tilingData);
++            op.Init(x, paddings, y, &tilingData, &pipe);
+             op.Process();
+         }
+     }
+diff --git a/artifacts/platform/1125548/code/op_kernel/pad_v3_grad.h b/artifacts/platform/1138972/code/op_kernel/pad_v3_grad.h
+index 141abc9..4e5ef59 100644
+--- a/artifacts/platform/1125548/code/op_kernel/pad_v3_grad.h
++++ b/artifacts/platform/1138972/code/op_kernel/pad_v3_grad.h
+@@ -138,8 +138,9 @@ constexpr int64_t MAX_GATHER_PASSES = 8;
+ template <typename T, typename Meta = PadV3GradTilingData> class PadV3Grad {
+ public:
+     __aicore__ inline void Init(GM_ADDR x, GM_ADDR paddings, GM_ADDR y,
+-                               const Meta *data)
++                               const Meta *data, TPipe *pipeIn)
+     {
++        pipe_ = pipeIn;
+         data_ = data;
+         x_.SetGlobalBuffer(reinterpret_cast<__gm__ T *>(x), data_->totalInput);
+         y_.SetGlobalBuffer(reinterpret_cast<__gm__ T *>(y), data_->totalOutput);
+@@ -176,17 +177,17 @@ public:
+         // below 128KiB and separate from Select's reserved 8KiB at 184KiB.
+         // An extra aligned input block holds a zero sentinel for missing gathers.
+         const bool smallFlat = data_->totalInput <= CACHE_ELEMENTS && data_->totalOutput <= 256;
+-        pipe_.InitBuffer(inputBuffer_, (CACHE_ELEMENTS + 16) * sizeof(T));
+-        pipe_.InitBuffer(outputBuffer_, TILE_ELEMENTS * sizeof(T));
+-        pipe_.InitBuffer(gatherBuffer_, (smallFlat ? CACHE_ELEMENTS : TILE_ELEMENTS) * sizeof(T));
+-        pipe_.InitBuffer(offsetBuffer_, MAX_GATHER_PASSES * TILE_ELEMENTS * sizeof(uint32_t));
+-        pipe_.InitBuffer(sumBuffer_, TILE_ELEMENTS * sizeof(float));
+-        pipe_.InitBuffer(floatBuffer_, (smallFlat && sizeof(T) == sizeof(half) ? CACHE_ELEMENTS : TILE_ELEMENTS) * sizeof(float));
+-        pipe_.InitBuffer(nextBuffer_, TILE_ELEMENTS * sizeof(float));
+-        pipe_.InitBuffer(errorBuffer_, TILE_ELEMENTS * sizeof(float));
+-        pipe_.InitBuffer(tempBuffer_, TILE_ELEMENTS * sizeof(float));
+-        pipe_.InitBuffer(correctionBuffer_, TILE_ELEMENTS * sizeof(float));
+-        pipe_.InitBuffer(maskBuffer_, TILE_ELEMENTS / 8);
++        pipe_->InitBuffer(inputBuffer_, (CACHE_ELEMENTS + 16) * sizeof(T));
++        pipe_->InitBuffer(outputBuffer_, TILE_ELEMENTS * sizeof(T));
++        pipe_->InitBuffer(gatherBuffer_, (smallFlat ? CACHE_ELEMENTS : TILE_ELEMENTS) * sizeof(T));
++        pipe_->InitBuffer(offsetBuffer_, MAX_GATHER_PASSES * TILE_ELEMENTS * sizeof(uint32_t));
++        pipe_->InitBuffer(sumBuffer_, TILE_ELEMENTS * sizeof(float));
++        pipe_->InitBuffer(floatBuffer_, (smallFlat && sizeof(T) == sizeof(half) ? CACHE_ELEMENTS : TILE_ELEMENTS) * sizeof(float));
++        pipe_->InitBuffer(nextBuffer_, TILE_ELEMENTS * sizeof(float));
++        pipe_->InitBuffer(errorBuffer_, TILE_ELEMENTS * sizeof(float));
++        pipe_->InitBuffer(tempBuffer_, TILE_ELEMENTS * sizeof(float));
++        pipe_->InitBuffer(correctionBuffer_, TILE_ELEMENTS * sizeof(float));
++        pipe_->InitBuffer(maskBuffer_, TILE_ELEMENTS / 8);
+     }
+ 
+     __aicore__ inline void Process()
+@@ -281,7 +282,7 @@ private:
+ 
+     template <HardEvent event> __aicore__ inline void Sync()
+     {
+-        const auto id = pipe_.FetchEventID<event>();
++        const auto id = pipe_->FetchEventID<event>();
+         SetFlag<event>(id);
+         WaitFlag<event>(id);
+     }
+@@ -936,7 +937,7 @@ private:
+         Store(output, count, true);
+     }
+ 
+-    TPipe pipe_;
++    TPipe *pipe_;
+     TBuf<QuePosition::VECIN> inputBuffer_;
+     TBuf<QuePosition::VECOUT> outputBuffer_;
+     TBuf<QuePosition::VECCALC> gatherBuffer_;

@@ -1,0 +1,239 @@
+container 提交状态：Compile Error, ID: submission-status-msg-modal
+				637 heading 提交状态：Compile Error, Value: 4, ID: submission-status-msg-title
+					638 text 提交状态：Compile Error
+				639 button 关闭
+				640 text INFO target name: cust_optiling
+INFO target name: cust_op_proto
+INFO target name: cust_opapi
+INFO target name: ascendc_kernels
+<path>/aclnn_pad_v3_grad.cpp: In function ‘aclnnStatus aclnnPadV3GradGetWorkspaceSize(const aclTensor*, const aclTensor*, char*, bool, const aclTensor*, uint64_t*, aclOpExecutor**)’:
+<path>/aclnn_pad_v3_grad.cpp:236:40: warning: ISO C++ forbids converting a string constant to ‘char*’ [-Wwrite-strings]
+  236 |         static char *modeOptionalDef = "reflect";
+      |                                        ^~~~~~~~~
+<path> <path>
+
+
+==============check valid for ops info start==============
+==============check valid for ops info end================
+
+
+Compile op info cfg successfully.
+Consolidate compiler generated dependencies of target cust_optiling
+[ascend910b] Generating PadV3Grad_9afa82184aa429ef41dcf627b8e032e8 ...
+[ascend910b] Generating PadV3Grad_22587b9da8f27bd0f4b532d5daf93888 ...
+[ascend910b] Generating PadV3Grad_c274f09af1f975ed340c9ff457a87da8 ...
+[ascend910b] Generating PadV3Grad_2bfeba299148d69c93a6b63c6cebd524 ...
+[ERROR] TBE(401,python3):2026-11-04-04:35:29.978.595 [log_utils.py:183][plog_print] [ascend910b]  PadV3Grad_c274f09af1f975ed340c9ff457a87da8 In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+Opc tool start working now, please wait for a moment.
+[2026-11-04 04:35:29] [ERROR] [ascend910b] PadV3Grad_c274f09af1f975ed340c9ff457a87da8 In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+
+[ERROR] TBE(401,python3):2026-11-04-04:35:29.978.881 [op_compilation.py:311][__single_op_compile] Exception occured, An error occurred during compile phases of CompileStage.PRECOMPILE, msg is In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+[ERROR] TBE(401,python3):2026-11-04-04:35:29.980.780 [opc_common.py:227][_log_error] Traceback (most recent call last):
+  File "<path>/op_compilation.py", line 303, in __single_op_compile
+    json_file_path = single_op_obj.op_compile()
+  File "<path>/single_op_compile.py", line 259, in op_compile
+    json_file_path = self.__call_op()
+  File "<path>/single_op_compile.py", line 165, in __call_op
+    op_func(*inputs, *outputs, *new_attrs, self.__op_info.get(OpcOptions.KERNEL_NAME), **kwargs)
+  File "<path>/operation_func_mgr.py", line 55, in wrapper
+    return func(*args, **kwargs)
+[ERROR] TBE(401,python3):2026-11-04-04:35:29.980.804 [opc_common.py:227][_log_error]   File "<path>/para_check.py", line 527, in _in_wrapper
+    return func(*args, **kwargs)
+  File "<path>/PadV3Grad.py", line 260, in pad_v3_grad
+    compile_op(src, origin_func_name, op_info, options, code_channel, '{}', {'valueDepend': {}})
+  File "<path>/compile_op.py", line 1404, in compile_op
+    infered_info_from_ifile = KernelInfoInfer.get_tiling_key_list_and_simple_infer_code_channel(op_info, cce_file, \
+[ERROR] TBE(401,python3):2026-11-04-04:35:29.980.819 [opc_common.py:227][_log_error]   File "<path>/kernel_info_infer.py", line 577, in get_tiling_key_list_and_simple_infer_code_channel
+    CommonUtility.run_cmd_inner(pre_compile_cmd, CompileStage.PRECOMPILE, compile_log_path)
+  File "<path>/ascendc_common_utility.py", line 330, in run_cmd_inner
+    CommonUtility.dump_build_log(output.decode(), cmds, stage, ret_code)
+  File "<path>/ascendc_common_utility.py", line 603, in dump_build_log
+    raise Exception("An error occurred during compile phases of {}, msg is {}".\
+[ERROR] TBE(401,python3):2026-11-04-04:35:29.980.833 [opc_common.py:227][_log_error] Exception: An error occurred during compile phases of CompileStage.PRECOMPILE, msg is In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+
+[ERROR] TBE(401,python3):2026-11-04-04:35:29.980.849 [op_compilation.py:190][record_compile_error_info] Op[PadV3Grad] of index[0] compile failed, kernelName: PadV3Grad_c274f09af1f975ed340c9ff457a87da8.
+[ERROR] TBE(401,python3):2026-11-04-04:35:29.980.990 [opc_common.py:520][opc_log_full] [op_compilation.py:192][record_compile_error_info] reason is:[An error occurred during compile phases of CompileStage.PRECOMPILE, msg is In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+].
+[ERROR] TBE(401,python3):2026-11-04-04:35:29.981.269 [opc.py:688][main] Opc tool compile failed.
+DrvMngGetConsoleLogLevel failed. (ret=4)
+<path>/PadV3Grad_c274f09af1f975ed340c9ff457a87da8.json not generated!
+make[4]: *** [<path>/pad_v3_grad.make:7: pad_v3_grad2] Error 1
+make[4]: *** Waiting for unfinished jobs....
+[ERROR] TBE(404,python3):2026-11-04-04:35:29.988.624 [log_utils.py:183][plog_print] [ascend910b]  PadV3Grad_22587b9da8f27bd0f4b532d5daf93888 In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+Opc tool start working now, please wait for a moment.
+[2026-11-04 04:35:29] [ERROR] [ascend910b] PadV3Grad_22587b9da8f27bd0f4b532d5daf93888 In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+
+[ERROR] TBE(404,python3):2026-11-04-04:35:29.988.965 [op_compilation.py:311][__single_op_compile] Exception occured, An error occurred during compile phases of CompileStage.PRECOMPILE, msg is In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+[ERROR] TBE(404,python3):2026-11-04-04:35:29.991.004 [opc_common.py:227][_log_error] Traceback (most recent call last):
+  File "<path>/op_compilation.py", line 303, in __single_op_compile
+    json_file_path = single_op_obj.op_compile()
+  File "<path>/single_op_compile.py", line 259, in op_compile
+    json_file_path = self.__call_op()
+  File "<path>/single_op_compile.py", line 165, in __call_op
+    op_func(*inputs, *outputs, *new_attrs, self.__op_info.get(OpcOptions.KERNEL_NAME), **kwargs)
+  File "<path>/operation_func_mgr.py", line 55, in wrapper
+    return func(*args, **kwargs)
+[ERROR] TBE(404,python3):2026-11-04-04:35:29.991.029 [opc_common.py:227][_log_error]   File "<path>/para_check.py", line 527, in _in_wrapper
+    return func(*args, **kwargs)
+  File "<path>/PadV3Grad.py", line 260, in pad_v3_grad
+    compile_op(src, origin_func_name, op_info, options, code_channel, '{}', {'valueDepend': {}})
+  File "<path>/compile_op.py", line 1404, in compile_op
+    infered_info_from_ifile = KernelInfoInfer.get_tiling_key_list_and_simple_infer_code_channel(op_info, cce_file, \
+[ERROR] TBE(404,python3):2026-11-04-04:35:29.991.046 [opc_common.py:227][_log_error]   File "<path>/kernel_info_infer.py", line 577, in get_tiling_key_list_and_simple_infer_code_channel
+    CommonUtility.run_cmd_inner(pre_compile_cmd, CompileStage.PRECOMPILE, compile_log_path)
+  File "<path>/ascendc_common_utility.py", line 330, in run_cmd_inner
+    CommonUtility.dump_build_log(output.decode(), cmds, stage, ret_code)
+  File "<path>/ascendc_common_utility.py", line 603, in dump_build_log
+    raise Exception("An error occurred during compile phases of {}, msg is {}".\
+[ERROR] TBE(404,python3):2026-11-04-04:35:29.991.061 [opc_common.py:227][_log_error] Exception: An error occurred during compile phases of CompileStage.PRECOMPILE, msg is In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+
+[ERROR] TBE(404,python3):2026-11-04-04:35:29.991.080 [op_compilation.py:190][record_compile_error_info] Op[PadV3Grad] of index[0] compile failed, kernelName: PadV3Grad_22587b9da8f27bd0f4b532d5daf93888.
+[ERROR] TBE(404,python3):2026-11-04-04:35:29.991.237 [opc_common.py:520][opc_log_full] [op_compilation.py:192][record_compile_error_info] reason is:[An error occurred during compile phases of CompileStage.PRECOMPILE, msg is In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+].
+[ERROR] TBE(404,python3):2026-11-04-04:35:29.991.570 [opc.py:688][main] Opc tool compile failed.
+DrvMngGetConsoleLogLevel failed. (ret=4)
+<path>/PadV3Grad_22587b9da8f27bd0f4b532d5daf93888.json not generated!
+make[4]: *** [<path>/pad_v3_grad.make:5: pad_v3_grad1] Error 1
+[ERROR] TBE(402,python3):2026-11-04-04:35:30.020.462 [log_utils.py:183][plog_print] [ascend910b]  PadV3Grad_2bfeba299148d69c93a6b63c6cebd524 In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+Opc tool start working now, please wait for a moment.
+[2026-11-04 04:35:30] [ERROR] [ascend910b] PadV3Grad_2bfeba299148d69c93a6b63c6cebd524 In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+
+[ERROR] TBE(402,python3):2026-11-04-04:35:30.020.829 [op_compilation.py:311][__single_op_compile] Exception occured, An error occurred during compile phases of CompileStage.PRECOMPILE, msg is In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+[ERROR] TBE(402,python3):2026-11-04-04:35:30.023.247 [opc_common.py:227][_log_error] Traceback (most recent call last):
+  File "<path>/op_compilation.py", line 303, in __single_op_compile
+    json_file_path = single_op_obj.op_compile()
+  File "<path>/single_op_compile.py", line 259, in op_compile
+    json_file_path = self.__call_op()
+  File "<path>/single_op_compile.py", line 165, in __call_op
+    op_func(*inputs, *outputs, *new_attrs, self.__op_info.get(OpcOptions.KERNEL_NAME), **kwargs)
+  File "<path>/operation_func_mgr.py", line 55, in wrapper
+    return func(*args, **kwargs)
+[ERROR] TBE(402,python3):2026-11-04-04:35:30.023.273 [opc_common.py:227][_log_error]   File "<path>/para_check.py", line 527, in _in_wrapper
+    return func(*args, **kwargs)
+  File "<path>/PadV3Grad.py", line 260, in pad_v3_grad
+    compile_op(src, origin_func_name, op_info, options, code_channel, '{}', {'valueDepend': {}})
+  File "<path>/compile_op.py", line 1404, in compile_op
+    infered_info_from_ifile = KernelInfoInfer.get_tiling_key_list_and_simple_infer_code_channel(op_info, cce_file, \
+[ERROR] TBE(402,python3):2026-11-04-04:35:30.023.288 [opc_common.py:227][_log_error]   File "<path>/kernel_info_infer.py", line 577, in get_tiling_key_list_and_simple_infer_code_channel
+    CommonUtility.run_cmd_inner(pre_compile_cmd, CompileStage.PRECOMPILE, compile_log_path)
+  File "<path>/ascendc_common_utility.py", line 330, in run_cmd_inner
+    CommonUtility.dump_build_log(output.decode(), cmds, stage, ret_code)
+  File "<path>/ascendc_common_utility.py", line 603, in dump_build_log
+    raise Exception("An error occurred during compile phases of {}, msg is {}".\
+[ERROR] TBE(402,python3):2026-11-04-04:35:30.023.303 [opc_common.py:227][_log_error] Exception: An error occurred during compile phases of CompileStage.PRECOMPILE, msg is In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+
+[ERROR] TBE(402,python3):2026-11-04-04:35:30.023.320 [op_compilation.py:190][record_compile_error_info] Op[PadV3Grad] of index[0] compile failed, kernelName: PadV3Grad_2bfeba299148d69c93a6b63c6cebd524.
+[ERROR] TBE(402,python3):2026-11-04-04:35:30.023.478 [opc_common.py:520][opc_log_full] [op_compilation.py:192][record_compile_error_info] reason is:[An error occurred during compile phases of CompileStage.PRECOMPILE, msg is In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+].
+[ERROR] TBE(402,python3):2026-11-04-04:35:30.023.792 [opc.py:688][main] Opc tool compile failed.
+DrvMngGetConsoleLogLevel failed. (ret=4)
+<path>/PadV3Grad_2bfeba299148d69c93a6b63c6cebd524.json not generated!
+make[4]: *** [<path>/pad_v3_grad.make:9: pad_v3_grad3] Error 1
+[ERROR] TBE(399,python3):2026-11-04-04:35:30.041.603 [log_utils.py:183][plog_print] [ascend910b]  PadV3Grad_9afa82184aa429ef41dcf627b8e032e8 In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+Opc tool start working now, please wait for a moment.
+[2026-11-04 04:35:30] [ERROR] [ascend910b] PadV3Grad_9afa82184aa429ef41dcf627b8e032e8 In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+
+[ERROR] TBE(399,python3):2026-11-04-04:35:30.041.947 [op_compilation.py:311][__single_op_compile] Exception occured, An error occurred during compile phases of CompileStage.PRECOMPILE, msg is In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+[ERROR] TBE(399,python3):2026-11-04-04:35:30.044.140 [opc_common.py:227][_log_error] Traceback (most recent call last):
+  File "<path>/op_compilation.py", line 303, in __single_op_compile
+    json_file_path = single_op_obj.op_compile()
+  File "<path>/single_op_compile.py", line 259, in op_compile
+    json_file_path = self.__call_op()
+  File "<path>/single_op_compile.py", line 165, in __call_op
+    op_func(*inputs, *outputs, *new_attrs, self.__op_info.get(OpcOptions.KERNEL_NAME), **kwargs)
+  File "<path>/operation_func_mgr.py", line 55, in wrapper
+    return func(*args, **kwargs)
+[ERROR] TBE(399,python3):2026-11-04-04:35:30.044.165 [opc_common.py:227][_log_error]   File "<path>/para_check.py", line 527, in _in_wrapper
+    return func(*args, **kwargs)
+  File "<path>/PadV3Grad.py", line 260, in pad_v3_grad
+    compile_op(src, origin_func_name, op_info, options, code_channel, '{}', {'valueDepend': {}})
+  File "<path>/compile_op.py", line 1404, in compile_op
+    infered_info_from_ifile = KernelInfoInfer.get_tiling_key_list_and_simple_infer_code_channel(op_info, cce_file, \
+[ERROR] TBE(399,python3):2026-11-04-04:35:30.044.181 [opc_common.py:227][_log_error]   File "<path>/kernel_info_infer.py", line 577, in get_tiling_key_list_and_simple_infer_code_channel
+    CommonUtility.run_cmd_inner(pre_compile_cmd, CompileStage.PRECOMPILE, compile_log_path)
+  File "<path>/ascendc_common_utility.py", line 330, in run_cmd_inner
+    CommonUtility.dump_build_log(output.decode(), cmds, stage, ret_code)
+  File "<path>/ascendc_common_utility.py", line 603, in dump_build_log
+    raise Exception("An error occurred during compile phases of {}, msg is {}".\
+[ERROR] TBE(399,python3):2026-11-04-04:35:30.044.195 [opc_common.py:227][_log_error] Exception: An error occurred during compile phases of CompileStage.PRECOMPILE, msg is In file included from <path>/pad_v3_grad.cpp:6:
+<path>/pad_v3_grad.h:9:10: fatal error: 'pad_v3_grad_index.h' file not found
+#include "pad_v3_grad_index.h"
+         ^~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+
+[ERROR] TBE(399,python3):2026-11-04-04:35:
+[truncated]
+
+The focused UI element is 639 button 关闭

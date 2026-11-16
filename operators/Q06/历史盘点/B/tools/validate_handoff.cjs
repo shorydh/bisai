@@ -1,0 +1,33 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto');
+const root=path.resolve(__dirname,'..');
+const keys='experiment_id operator round_id agent_id task_id base_version candidate_version hypothesis change official_task_id official_result_ref evaluated_at evaluation_protocol official_status official_metrics baseline_official_result_ref comparison finding_status applicability artifacts notes'.split(' ');
+const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const rows=fs.readFileSync(path.join(root,'experiments.jsonl'),'utf8').trim().split('\n').map(JSON.parse);
+const ids=new Set();
+const newRuns=JSON.parse(fs.readFileSync(path.join(root,'artifacts/official/new-runs.json'),'utf8'));
+for(const run of newRuns)if(run.status==='Running'||!rows.some(r=>r.official_task_id===run.id))throw Error('Unfinished new official run '+run.id);
+for(const row of rows){
+  if(Object.keys(row).sort().join('|')!==[...keys].sort().join('|'))throw Error('Fixed fields mismatch '+row.experiment_id);
+  if(ids.has(row.official_task_id))throw Error('Duplicate official task '+row.official_task_id);
+  ids.add(row.official_task_id);
+  if(row.operator!=='PadV3Grad'||row.round_id!=='历史盘点'||row.agent_id!=='B')throw Error('Wrong ownership');
+  if(!['verified','pending','invalid'].includes(row.finding_status))throw Error('Invalid finding status');
+  if(!row.official_result_ref.startsWith('https://cannjudge.cn/public/ictcompetition/padv3grad/submission/'))throw Error('Wrong official source');
+  if(row.official_status==='Running')throw Error('Official result unfinished');
+  for(const file of row.artifacts)if(!fs.existsSync(path.join(root,file)))throw Error('Missing artifact '+file);
+  const version=row.candidate_version;
+  if(sha(fs.readFileSync(path.join(root,version.official_source_package)))!==version.package_sha256)throw Error('Official ZIP mismatch');
+  const identity=JSON.parse(fs.readFileSync(path.join(root,version.source_identity),'utf8'));
+  if(identity.official_task_id!==row.official_task_id||identity.official_result_ref!==row.official_result_ref)throw Error('Identity/result mismatch');
+  if(identity.seven_source_sha256!==version.seven_source_sha256)throw Error('Source version mismatch');
+  if(row.official_status!=='Pass'&&row.comparison.total_score_delta_points!==null)throw Error('Invalid performance benefit for failed task');
+  if(row.official_metrics.total_score!==null&&!row.evaluation_protocol.total_score_provenance)throw Error('Unproven official total score');
+  if(row.official_metrics.public_cases.length!==5)throw Error('Unexpected public metric count');
+  if(row.evaluation_protocol.cloud_metrics_used!==false)throw Error('Cloud metric used as official result');
+}
+const inventory=JSON.parse(fs.readFileSync(path.join(root,'artifacts/version-inventory.json'),'utf8'));
+const missing=inventory.local.filter(v=>!v.matches.some(m=>rows.some(r=>r.official_task_id===m.id&&!['Running'].includes(r.official_status))));
+if(missing.length)throw Error('Local versions without official results: '+missing.map(v=>v.dir).join(', '));
+const result={status:'PASS',official_records:rows.length,local_source_snapshots:inventory.local.length,missing_official_result_versions:0,fixed_fields:keys.length,checked:'schema, official references, source/archive identity, artifact existence, null/provenance rules, local-version coverage'};
+fs.writeFileSync(path.join(root,'validation.json'),JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify(result,null,2));

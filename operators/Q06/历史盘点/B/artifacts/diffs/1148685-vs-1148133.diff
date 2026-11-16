@@ -1,0 +1,22 @@
+diff --git a/artifacts/platform/1148133/code/op_kernel/pad_v3_grad.h b/artifacts/platform/1148685/code/op_kernel/pad_v3_grad.h
+index e412a48..e12db51 100644
+--- a/artifacts/platform/1148133/code/op_kernel/pad_v3_grad.h
++++ b/artifacts/platform/1148685/code/op_kernel/pad_v3_grad.h
+@@ -544,12 +544,11 @@ private:
+         Gather(gathered, input, offsets, static_cast<uint32_t>(0), lanes);
+         PipeBarrier<PIPE_V>();
+         const int32_t terms = maxContributors <= 32 ? 32 : 64;
+-        // gamma31/(1-gamma31)*256 and gamma63/(1-gamma63)*128
+-        // are both < 2^-11. Including final half rounding satisfies the
+-        // specified atol=rtol=1e-3 contract. FP32 uses a conservative mixed
+-        // absolute/relative budget scaled by 1 + abs(fastSum).
+-        const float threshold = sizeof(T) == sizeof(half) ?
+-            (terms == 32 ? 256.0f : 128.0f) : (terms == 32 ? 26.0f : 13.0f);
++        // The documented pairwise reduction has at most six FP32 stages for
++        // 64 lanes. These budgets retain margin even with per-stage error 2u;
++        // half pre-rounding error stays below 2^-11, and FP32 keeps its original
++        // mixed tolerance plus the finite/top-end guards in StoreCertified.
++        const float threshold = sizeof(T) == sizeof(half) ? 512.0f : 64.0f;
+         if constexpr (sizeof(T) == sizeof(half)) {
+             auto floats = floatBuffer_.Get<float>();
+             Cast(floats, gathered, RoundMode::CAST_NONE, lanes);

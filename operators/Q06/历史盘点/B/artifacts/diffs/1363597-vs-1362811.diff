@@ -1,0 +1,62 @@
+diff --git a/artifacts/platform/1362811/code/op_kernel/pad_v3_grad.h b/artifacts/platform/1363597/code/op_kernel/pad_v3_grad.h
+index e12db51..7937c17 100644
+--- a/artifacts/platform/1362811/code/op_kernel/pad_v3_grad.h
++++ b/artifacts/platform/1363597/code/op_kernel/pad_v3_grad.h
+@@ -150,6 +150,8 @@ public:
+         inputWidth_ = rank_ == 0 ? 1 : data_->inputShape[rank_ - 1];
+         outputWidth_ = rank_ == 0 ? 1 : data_->outputShape[rank_ - 1];
+         identity_ = data_->totalInput == data_->totalOutput;
++        pipe_.InitBuffer(inputBuffer_, (CACHE_ELEMENTS + 16) * sizeof(T));
++        const bool usePaddingDma = data_->readPaddings != 0 && rank_ >= 4;
+         GlobalTensor<int32_t> pad32;
+         GlobalTensor<int64_t> pad64;
+         if (data_->readPaddings != 0) {
+@@ -159,17 +161,40 @@ public:
+                 pad64.SetGlobalBuffer(reinterpret_cast<__gm__ int64_t *>(paddings), 2 * rank_);
+             }
+         }
++        // Stage this invocation's small padding tensor once. The input cache
++        // is not live yet and has room for all 2*rank int64 padding values.
++        if (usePaddingDma) {
++            if (data_->paddingsDtype == 0) {
++                DataCopyExtParams params{1, static_cast<uint32_t>(2 * rank_ * sizeof(int32_t)), 0, 0, 0};
++                DataCopyPadExtParams<int32_t> padding{false, 0, 0, 0};
++                DataCopyPad(inputBuffer_.Get<int32_t>(), pad32, params, padding);
++            } else {
++                DataCopyExtParams params{1, static_cast<uint32_t>(2 * rank_ * sizeof(int64_t)), 0, 0, 0};
++                DataCopyPadExtParams<int64_t> padding{false, 0, 0, 0};
++                DataCopyPad(inputBuffer_.Get<int64_t>(), pad64, params, padding);
++            }
++            Sync<HardEvent::MTE2_S>();
++        }
+         for (int64_t d = 0; d < rank_; ++d) {
+             if (data_->readPaddings != 0) {
+                 const int64_t index = data_->paddingsContiguous != 0 ? 2 * d : d;
++                if (usePaddingDma) {
++                    front_[d] = data_->paddingsDtype == 0 ? static_cast<int64_t>(inputBuffer_.Get<int32_t>().GetValue(index))
++                                                         : inputBuffer_.Get<int64_t>().GetValue(index);
++                } else {
+                 front_[d] = data_->paddingsDtype == 0 ? static_cast<int64_t>(pad32.GetValue(index))
+                                                      : pad64.GetValue(index);
++                }
+             } else {
+                 front_[d] = data_->padFront[d];
+             }
+             identity_ = identity_ && front_[d] == 0 &&
+                         data_->inputShape[d] == data_->outputShape[d];
+         }
++        if (usePaddingDma) {
++            // Complete scalar reads before a later input DMA reuses this UB.
++            Sync<HardEvent::S_MTE2>();
++        }
+         if (begin_ >= end_) {
+             return;
+         }
+@@ -177,7 +202,6 @@ public:
+         // below 128KiB and separate from Select's reserved 8KiB at 184KiB.
+         // An extra aligned input block holds a zero sentinel for missing gathers.
+         const bool smallFlat = data_->totalInput <= CACHE_ELEMENTS && data_->totalOutput <= 256;
+-        pipe_.InitBuffer(inputBuffer_, (CACHE_ELEMENTS + 16) * sizeof(T));
+         pipe_.InitBuffer(outputBuffer_, TILE_ELEMENTS * sizeof(T));
+         pipe_.InitBuffer(gatherBuffer_, (smallFlat ? CACHE_ELEMENTS : TILE_ELEMENTS) * sizeof(T));
+         pipe_.InitBuffer(offsetBuffer_, MAX_GATHER_PASSES * TILE_ELEMENTS * sizeof(uint32_t));

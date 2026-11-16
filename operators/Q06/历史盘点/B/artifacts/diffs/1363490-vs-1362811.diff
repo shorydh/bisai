@@ -1,0 +1,109 @@
+diff --git a/artifacts/platform/1362811/code/op_kernel/pad_v3_grad.h b/artifacts/platform/1363490/code/op_kernel/pad_v3_grad.h
+index e12db51..f4373aa 100644
+--- a/artifacts/platform/1362811/code/op_kernel/pad_v3_grad.h
++++ b/artifacts/platform/1363490/code/op_kernel/pad_v3_grad.h
+@@ -133,6 +133,21 @@ constexpr int64_t TILE_ELEMENTS = 1024;
+ constexpr int64_t CACHE_ELEMENTS = 8192;
+ constexpr int64_t MAX_GATHER_PASSES = 8;
+ 
++// Views preserve disjoint storage and all original tensor capacities.
++class PadV3GradBufferView {
++public:
++    __aicore__ inline void Init(TBuf<QuePosition::VECIN> &storage, uint32_t bytes, uint32_t offset)
++    {
++        data_ = storage.GetWithOffset<uint8_t>(bytes, offset);
++    }
++    template<typename U> __aicore__ inline LocalTensor<U> Get()
++    {
++        return data_.ReinterpretCast<U>();
++    }
++private:
++    LocalTensor<uint8_t> data_;
++};
++
+ // Every core exclusively owns a contiguous output interval. Each output is
+ // gathered from the inverse pad map, so no atomic updates or workspace are needed.
+ template <typename T, typename Meta = PadV3GradTilingData> class PadV3Grad {
+@@ -177,17 +192,41 @@ public:
+         // below 128KiB and separate from Select's reserved 8KiB at 184KiB.
+         // An extra aligned input block holds a zero sentinel for missing gathers.
+         const bool smallFlat = data_->totalInput <= CACHE_ELEMENTS && data_->totalOutput <= 256;
+-        pipe_.InitBuffer(inputBuffer_, (CACHE_ELEMENTS + 16) * sizeof(T));
+-        pipe_.InitBuffer(outputBuffer_, TILE_ELEMENTS * sizeof(T));
+-        pipe_.InitBuffer(gatherBuffer_, (smallFlat ? CACHE_ELEMENTS : TILE_ELEMENTS) * sizeof(T));
+-        pipe_.InitBuffer(offsetBuffer_, MAX_GATHER_PASSES * TILE_ELEMENTS * sizeof(uint32_t));
+-        pipe_.InitBuffer(sumBuffer_, TILE_ELEMENTS * sizeof(float));
+-        pipe_.InitBuffer(floatBuffer_, (smallFlat && sizeof(T) == sizeof(half) ? CACHE_ELEMENTS : TILE_ELEMENTS) * sizeof(float));
+-        pipe_.InitBuffer(nextBuffer_, TILE_ELEMENTS * sizeof(float));
+-        pipe_.InitBuffer(errorBuffer_, TILE_ELEMENTS * sizeof(float));
+-        pipe_.InitBuffer(tempBuffer_, TILE_ELEMENTS * sizeof(float));
+-        pipe_.InitBuffer(correctionBuffer_, TILE_ELEMENTS * sizeof(float));
+-        pipe_.InitBuffer(maskBuffer_, TILE_ELEMENTS / 8);
++        const uint32_t bufBytes0 = (CACHE_ELEMENTS + 16) * sizeof(T);
++        const uint32_t bufBytes1 = TILE_ELEMENTS * sizeof(T);
++        const uint32_t bufBytes2 = (smallFlat ? CACHE_ELEMENTS : TILE_ELEMENTS) * sizeof(T);
++        const uint32_t bufBytes3 = MAX_GATHER_PASSES * TILE_ELEMENTS * sizeof(uint32_t);
++        const uint32_t bufBytes4 = TILE_ELEMENTS * sizeof(float);
++        const uint32_t bufBytes5 = (smallFlat && sizeof(T) == sizeof(half) ? CACHE_ELEMENTS : TILE_ELEMENTS) * sizeof(float);
++        const uint32_t bufBytes6 = TILE_ELEMENTS * sizeof(float);
++        const uint32_t bufBytes7 = TILE_ELEMENTS * sizeof(float);
++        const uint32_t bufBytes8 = TILE_ELEMENTS * sizeof(float);
++        const uint32_t bufBytes9 = TILE_ELEMENTS * sizeof(float);
++        const uint32_t bufBytes10 = TILE_ELEMENTS / 8;
++        pipe_.InitBuffer(storageBuffer_, bufBytes0 + bufBytes1 + bufBytes2 + bufBytes3 + bufBytes4 + bufBytes5 + bufBytes6 + bufBytes7 + bufBytes8 + bufBytes9 + bufBytes10);
++        uint32_t bufferOffset = 0;
++        inputBuffer_.Init(storageBuffer_, bufBytes0, bufferOffset);
++        bufferOffset += bufBytes0;
++        outputBuffer_.Init(storageBuffer_, bufBytes1, bufferOffset);
++        bufferOffset += bufBytes1;
++        gatherBuffer_.Init(storageBuffer_, bufBytes2, bufferOffset);
++        bufferOffset += bufBytes2;
++        offsetBuffer_.Init(storageBuffer_, bufBytes3, bufferOffset);
++        bufferOffset += bufBytes3;
++        sumBuffer_.Init(storageBuffer_, bufBytes4, bufferOffset);
++        bufferOffset += bufBytes4;
++        floatBuffer_.Init(storageBuffer_, bufBytes5, bufferOffset);
++        bufferOffset += bufBytes5;
++        nextBuffer_.Init(storageBuffer_, bufBytes6, bufferOffset);
++        bufferOffset += bufBytes6;
++        errorBuffer_.Init(storageBuffer_, bufBytes7, bufferOffset);
++        bufferOffset += bufBytes7;
++        tempBuffer_.Init(storageBuffer_, bufBytes8, bufferOffset);
++        bufferOffset += bufBytes8;
++        correctionBuffer_.Init(storageBuffer_, bufBytes9, bufferOffset);
++        bufferOffset += bufBytes9;
++        maskBuffer_.Init(storageBuffer_, bufBytes10, bufferOffset);
++        bufferOffset += bufBytes10;
+     }
+ 
+     __aicore__ inline void Process()
+@@ -980,17 +1019,18 @@ private:
+     }
+ 
+     TPipe pipe_;
+-    TBuf<QuePosition::VECIN> inputBuffer_;
+-    TBuf<QuePosition::VECOUT> outputBuffer_;
+-    TBuf<QuePosition::VECCALC> gatherBuffer_;
+-    TBuf<QuePosition::VECCALC> offsetBuffer_;
+-    TBuf<QuePosition::VECCALC> sumBuffer_;
+-    TBuf<QuePosition::VECCALC> floatBuffer_;
+-    TBuf<QuePosition::VECCALC> nextBuffer_;
+-    TBuf<QuePosition::VECCALC> errorBuffer_;
+-    TBuf<QuePosition::VECCALC> tempBuffer_;
+-    TBuf<QuePosition::VECCALC> correctionBuffer_;
+-    TBuf<QuePosition::VECCALC> maskBuffer_;
++    TBuf<QuePosition::VECIN> storageBuffer_;
++    PadV3GradBufferView inputBuffer_;
++    PadV3GradBufferView outputBuffer_;
++    PadV3GradBufferView gatherBuffer_;
++    PadV3GradBufferView offsetBuffer_;
++    PadV3GradBufferView sumBuffer_;
++    PadV3GradBufferView floatBuffer_;
++    PadV3GradBufferView nextBuffer_;
++    PadV3GradBufferView errorBuffer_;
++    PadV3GradBufferView tempBuffer_;
++    PadV3GradBufferView correctionBuffer_;
++    PadV3GradBufferView maskBuffer_;
+     GlobalTensor<T> x_;
+     GlobalTensor<T> y_;
+     const Meta *data_ = nullptr;

@@ -1,0 +1,7 @@
+container 提交状态：Fail, ID: submission-status-msg-modal
+				637 heading 提交状态：Fail, Value: 4, ID: submission-status-msg-title
+					638 text 提交状态：Fail
+				639 button 关闭
+				640 text evaluation machine unavailable; retry on another machine
+
+The focused UI element is 639 button 关闭

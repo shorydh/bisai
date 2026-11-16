@@ -1,0 +1,75 @@
+diff --git a/artifacts/platform/1367558/code/op_kernel/pad_v3_grad.h b/artifacts/platform/1367629/code/op_kernel/pad_v3_grad.h
+index e12db51..b7d1cd5 100644
+--- a/artifacts/platform/1367558/code/op_kernel/pad_v3_grad.h
++++ b/artifacts/platform/1367629/code/op_kernel/pad_v3_grad.h
+@@ -324,6 +324,17 @@ private:
+         }
+     }
+ 
++    // Collapse leading axes whose map is exactly the identity for this call.
++    // Their Cartesian contribution is unique and already encoded by row.
++    __aicore__ inline void InitOuterPrefix()
++    {
++        outerStart_ = 0;
++        while (outerStart_ < rank_ - 1 && front_[outerStart_] == 0 &&
++               data_->inputShape[outerStart_] == data_->outputShape[outerStart_]) {
++            ++outerStart_;
++        }
++    }
++
+     __aicore__ inline bool InitOuter(int64_t row)
+     {
+         if (row == cachedOuterRow_) {
+@@ -332,7 +343,7 @@ private:
+             }
+             base_ = cachedOuterBase_;
+             // A rejected gather can stop NextOuter before it resets the cursor.
+-            for (int64_t d = rank_ - 2; d >= 0; --d) {
++            for (int64_t d = rank_ - 2; d >= outerStart_; --d) {
+                 position_[d] = 0;
+             }
+             return true;
+@@ -341,7 +352,7 @@ private:
+         cachedOuterRow_ = row;
+         cachedOuterValid_ = false;
+         base_ = 0;
+-        for (int64_t d = rank_ - 2; d >= 0; --d) {
++        for (int64_t d = rank_ - 2; d >= outerStart_; --d) {
+             const int64_t coord = row % data_->outputShape[d];
+             row /= data_->outputShape[d];
+             outer_[d] = MakeContributors(coord, data_->inputShape[d],
+@@ -352,6 +363,9 @@ private:
+             }
+             base_ += outer_[d].At(0) * data_->inputStride[d];
+         }
++        if (outerStart_ != 0) {
++            base_ += row * data_->inputStride[outerStart_ - 1];
++        }
+         cachedOuterBase_ = base_;
+         cachedOuterValid_ = true;
+         return true;
+@@ -359,7 +373,7 @@ private:
+ 
+     __aicore__ inline bool NextOuter()
+     {
+-        for (int64_t d = rank_ - 2; d >= 0; --d) {
++        for (int64_t d = rank_ - 2; d >= outerStart_; --d) {
+             const int64_t old = outer_[d].At(position_[d]);
+             ++position_[d];
+             if (position_[d] < outer_[d].Size()) {
+@@ -467,6 +481,7 @@ private:
+     // existing 8192-element buffers. No buffer allocation changes are needed.
+     __aicore__ inline bool TryWideCertifiedFlat()
+     {
++        InitOuterPrefix();
+         constexpr int64_t groupSize = 64;
+         const int64_t count = end_ - begin_;
+         if (rank_ == 0 || data_->totalInput > CACHE_ELEMENTS ||
+@@ -1001,6 +1016,7 @@ private:
+     int64_t position_[PAD_V3_GRAD_MAX_RANK];
+     int64_t front_[PAD_V3_GRAD_MAX_RANK];
+     int64_t rank_ = 0;
++    int64_t outerStart_ = 0;
+     int64_t begin_ = 0;
+     int64_t end_ = 0;
+     int64_t base_ = 0;

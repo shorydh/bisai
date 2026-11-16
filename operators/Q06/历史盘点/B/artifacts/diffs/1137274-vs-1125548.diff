@@ -1,0 +1,94 @@
+diff --git a/artifacts/platform/1125548/code/op_kernel/pad_v3_grad.h b/artifacts/platform/1137274/code/op_kernel/pad_v3_grad.h
+index 141abc9..59827a1 100644
+--- a/artifacts/platform/1125548/code/op_kernel/pad_v3_grad.h
++++ b/artifacts/platform/1137274/code/op_kernel/pad_v3_grad.h
+@@ -172,11 +172,16 @@ public:
+         if (begin_ >= end_) {
+             return;
+         }
++        pipe_.InitBuffer(inputBuffer_, (CACHE_ELEMENTS + 16) * sizeof(T));
++        // Identity only uses the input buffer as a GM -> UB -> GM staging area.
++        // Do not initialize the ten reduction/gather buffers on this path.
++        if (identity_) {
++            return;
++        }
+         // Explicit buffers use 127168 bytes for float and 120992 for half,
+         // below 128KiB and separate from Select's reserved 8KiB at 184KiB.
+         // An extra aligned input block holds a zero sentinel for missing gathers.
+         const bool smallFlat = data_->totalInput <= CACHE_ELEMENTS && data_->totalOutput <= 256;
+-        pipe_.InitBuffer(inputBuffer_, (CACHE_ELEMENTS + 16) * sizeof(T));
+         pipe_.InitBuffer(outputBuffer_, TILE_ELEMENTS * sizeof(T));
+         pipe_.InitBuffer(gatherBuffer_, (smallFlat ? CACHE_ELEMENTS : TILE_ELEMENTS) * sizeof(T));
+         pipe_.InitBuffer(offsetBuffer_, MAX_GATHER_PASSES * TILE_ELEMENTS * sizeof(uint32_t));
+@@ -198,11 +203,13 @@ public:
+             CopyIdentity();
+             return;
+         }
+-        if (TryWideCertifiedFlat()) {
+-            return;
+-        }
+-        if (TryCertifiedFlat()) {
+-            return;
++        // For <=128 outputs the wide plan already handles <=32 contributors
++        // with a no-stricter certificate. Retrying the narrow plan after a
++        // wide rejection repeats index generation and input DMA needlessly.
++        if (end_ - begin_ <= 128) {
++            if (TryWideCertifiedFlat()) { return; }
++        } else {
++            if (TryCertifiedFlat()) { return; }
+         }
+         if (data_->totalInput <= CACHE_ELEMENTS && data_->totalOutput <= 256) {
+             if (SmallFlatTile()) { return; }
+@@ -214,7 +221,7 @@ public:
+         DirectInterval(directBegin, directEnd);
+         for (int64_t output = begin_; output < end_;) {
+             const int64_t column = output % outputWidth_;
+-            int64_t count = Min(Min(outputWidth_ - column, end_ - output), TILE_ELEMENTS);
++            int64_t count = Min(Min(outputWidth_ - column, end_ - output), CACHE_ELEMENTS);
+             const int64_t row = output / outputWidth_;
+             const bool hasOuter = InitOuter(row);
+             bool contiguous = rank_ == 0 ||
+@@ -238,6 +245,16 @@ public:
+                     count = Min(count, outputWidth_ - 1 - column);
+                 }
+             }
++            if (contiguous && hasOuter && OuterIsUnique()) {
++                // DirectInterval proves one source per last-axis coordinate;
++                // OuterIsUnique proves one source in every remaining axis.
++                // No Cast/Add/correction is needed for a one-term reduction.
++                CopyDirect(base_ + column + (rank_ == 0 ? 0 : front_[rank_ - 1]), output, count);
++                output += count;
++                continue;
++            }
++            // Only the direct-copy branch uses the larger input-buffer tile.
++            count = Min(count, TILE_ELEMENTS);
+             int64_t passes = 0;
+             if (!contiguous && hasOuter) {
+                 passes = PrepareGather(column, count);
+@@ -323,6 +340,26 @@ private:
+         }
+     }
+ 
++    __aicore__ inline bool OuterIsUnique() const
++    {
++        for (int64_t d = rank_ - 2; d >= 0; --d) {
++            if (outer_[d].Size() != 1) { return false; }
++        }
++        return true;
++    }
++
++    __aicore__ inline void CopyDirect(int64_t source, int64_t destination, int64_t count)
++    {
++        // Load waits for previous vector/scalar input-buffer readers. Finish
++        // this MTE3 reader before another direct Load or a vector-path Load.
++        cacheBase_ = -1;
++        Load(source, count);
++        Sync<HardEvent::MTE2_MTE3>();
++        DataCopyExtParams params{1, static_cast<uint32_t>(count * sizeof(T)), 0, 0, 0};
++        DataCopyPad(y_[destination], inputBuffer_.Get<T>(), params);
++        Sync<HardEvent::MTE3_MTE2>();
++    }
++
+     __aicore__ inline bool InitOuter(int64_t row)
+     {
+         base_ = 0;

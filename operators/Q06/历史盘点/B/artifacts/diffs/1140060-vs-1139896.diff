@@ -1,0 +1,52 @@
+diff --git a/artifacts/platform/1139896/code/op_kernel/pad_v3_grad.h b/artifacts/platform/1140060/code/op_kernel/pad_v3_grad.h
+index 141abc9..e34544c 100644
+--- a/artifacts/platform/1139896/code/op_kernel/pad_v3_grad.h
++++ b/artifacts/platform/1140060/code/op_kernel/pad_v3_grad.h
+@@ -141,6 +141,7 @@ public:
+                                const Meta *data)
+     {
+         data_ = data;
++        cachedOuterRow_ = -1;
+         x_.SetGlobalBuffer(reinterpret_cast<__gm__ T *>(x), data_->totalInput);
+         y_.SetGlobalBuffer(reinterpret_cast<__gm__ T *>(y), data_->totalOutput);
+         begin_ = static_cast<int64_t>(GetBlockIdx()) * data_->blockFactor;
+@@ -325,6 +326,20 @@ private:
+ 
+     __aicore__ inline bool InitOuter(int64_t row)
+     {
++        if (row == cachedOuterRow_) {
++            if (!cachedOuterValid_) {
++                return false;
++            }
++            base_ = cachedOuterBase_;
++            // A rejected gather can stop NextOuter before it resets the cursor.
++            for (int64_t d = rank_ - 2; d >= 0; --d) {
++                position_[d] = 0;
++            }
++            return true;
++        }
++        // Save the original row before decoding its coordinates below.
++        cachedOuterRow_ = row;
++        cachedOuterValid_ = false;
+         base_ = 0;
+         for (int64_t d = rank_ - 2; d >= 0; --d) {
+             const int64_t coord = row % data_->outputShape[d];
+@@ -337,6 +352,8 @@ private:
+             }
+             base_ += outer_[d].At(0) * data_->inputStride[d];
+         }
++        cachedOuterBase_ = base_;
++        cachedOuterValid_ = true;
+         return true;
+     }
+ 
+@@ -952,6 +969,9 @@ private:
+     GlobalTensor<T> y_;
+     const Meta *data_ = nullptr;
+     Contributors outer_[PAD_V3_GRAD_MAX_RANK];
++    int64_t cachedOuterRow_ = -1;
++    int64_t cachedOuterBase_ = 0;
++    bool cachedOuterValid_ = false;
+     int64_t position_[PAD_V3_GRAD_MAX_RANK];
+     int64_t front_[PAD_V3_GRAD_MAX_RANK];
+     int64_t rank_ = 0;

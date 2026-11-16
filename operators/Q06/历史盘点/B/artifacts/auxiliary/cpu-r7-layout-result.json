@@ -1,0 +1,254 @@
+{
+  "status": "PASS",
+  "layouts": [
+    {
+      "typeBytes": 2,
+      "smallFlat": false,
+      "totalBytes": 77984,
+      "views": [
+        {
+          "name": "inputBuffer_",
+          "offset": 0,
+          "bytes": 16416
+        },
+        {
+          "name": "outputBuffer_",
+          "offset": 16416,
+          "bytes": 2048
+        },
+        {
+          "name": "gatherBuffer_",
+          "offset": 18464,
+          "bytes": 2048
+        },
+        {
+          "name": "offsetBuffer_",
+          "offset": 20512,
+          "bytes": 32768
+        },
+        {
+          "name": "sumBuffer_",
+          "offset": 53280,
+          "bytes": 4096
+        },
+        {
+          "name": "floatBuffer_",
+          "offset": 57376,
+          "bytes": 4096
+        },
+        {
+          "name": "nextBuffer_",
+          "offset": 61472,
+          "bytes": 4096
+        },
+        {
+          "name": "errorBuffer_",
+          "offset": 65568,
+          "bytes": 4096
+        },
+        {
+          "name": "tempBuffer_",
+          "offset": 69664,
+          "bytes": 4096
+        },
+        {
+          "name": "correctionBuffer_",
+          "offset": 73760,
+          "bytes": 4096
+        },
+        {
+          "name": "maskBuffer_",
+          "offset": 77856,
+          "bytes": 128
+        }
+      ]
+    },
+    {
+      "typeBytes": 2,
+      "smallFlat": true,
+      "totalBytes": 120992,
+      "views": [
+        {
+          "name": "inputBuffer_",
+          "offset": 0,
+          "bytes": 16416
+        },
+        {
+          "name": "outputBuffer_",
+          "offset": 16416,
+          "bytes": 2048
+        },
+        {
+          "name": "gatherBuffer_",
+          "offset": 18464,
+          "bytes": 16384
+        },
+        {
+          "name": "offsetBuffer_",
+          "offset": 34848,
+          "bytes": 32768
+        },
+        {
+          "name": "sumBuffer_",
+          "offset": 67616,
+          "bytes": 4096
+        },
+        {
+          "name": "floatBuffer_",
+          "offset": 71712,
+          "bytes": 32768
+        },
+        {
+          "name": "nextBuffer_",
+          "offset": 104480,
+          "bytes": 4096
+        },
+        {
+          "name": "errorBuffer_",
+          "offset": 108576,
+          "bytes": 4096
+        },
+        {
+          "name": "tempBuffer_",
+          "offset": 112672,
+          "bytes": 4096
+        },
+        {
+          "name": "correctionBuffer_",
+          "offset": 116768,
+          "bytes": 4096
+        },
+        {
+          "name": "maskBuffer_",
+          "offset": 120864,
+          "bytes": 128
+        }
+      ]
+    },
+    {
+      "typeBytes": 4,
+      "smallFlat": false,
+      "totalBytes": 98496,
+      "views": [
+        {
+          "name": "inputBuffer_",
+          "offset": 0,
+          "bytes": 32832
+        },
+        {
+          "name": "outputBuffer_",
+          "offset": 32832,
+          "bytes": 4096
+        },
+        {
+          "name": "gatherBuffer_",
+          "offset": 36928,
+          "bytes": 4096
+        },
+        {
+          "name": "offsetBuffer_",
+          "offset": 41024,
+          "bytes": 32768
+        },
+        {
+          "name": "sumBuffer_",
+          "offset": 73792,
+          "bytes": 4096
+        },
+        {
+          "name": "floatBuffer_",
+          "offset": 77888,
+          "bytes": 4096
+        },
+        {
+          "name": "nextBuffer_",
+          "offset": 81984,
+          "bytes": 4096
+        },
+        {
+          "name": "errorBuffer_",
+          "offset": 86080,
+          "bytes": 4096
+        },
+        {
+          "name": "tempBuffer_",
+          "offset": 90176,
+          "bytes": 4096
+        },
+        {
+          "name": "correctionBuffer_",
+          "offset": 94272,
+          "bytes": 4096
+        },
+        {
+          "name": "maskBuffer_",
+          "offset": 98368,
+          "bytes": 128
+        }
+      ]
+    },
+    {
+      "typeBytes": 4,
+      "smallFlat": true,
+      "totalBytes": 127168,
+      "views": [
+        {
+          "name": "inputBuffer_",
+          "offset": 0,
+          "bytes": 32832
+        },
+        {
+          "name": "outputBuffer_",
+          "offset": 32832,
+          "bytes": 4096
+        },
+        {
+          "name": "gatherBuffer_",
+          "offset": 36928,
+          "bytes": 32768
+        },
+        {
+          "name": "offsetBuffer_",
+          "offset": 69696,
+          "bytes": 32768
+        },
+        {
+          "name": "sumBuffer_",
+          "offset": 102464,
+          "bytes": 4096
+        },
+        {
+          "name": "floatBuffer_",
+          "offset": 106560,
+          "bytes": 4096
+        },
+        {
+          "name": "nextBuffer_",
+          "offset": 110656,
+          "bytes": 4096
+        },
+        {
+          "name": "errorBuffer_",
+          "offset": 114752,
+          "bytes": 4096
+        },
+        {
+          "name": "tempBuffer_",
+          "offset": 118848,
+          "bytes": 4096
+        },
+        {
+          "name": "correctionBuffer_",
+          "offset": 122944,
+          "bytes": 4096
+        },
+        {
+          "name": "maskBuffer_",
+          "offset": 127040,
+          "bytes": 128
+        }
+      ]
+    }
+  ],
+  "device_execution": false
+}

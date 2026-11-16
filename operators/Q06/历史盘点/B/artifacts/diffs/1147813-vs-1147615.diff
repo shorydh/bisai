@@ -1,0 +1,160 @@
+diff --git a/artifacts/platform/1147615/code/op_kernel/pad_v3_grad.h b/artifacts/platform/1147813/code/op_kernel/pad_v3_grad.h
+index e34544c..b621ff1 100644
+--- a/artifacts/platform/1147615/code/op_kernel/pad_v3_grad.h
++++ b/artifacts/platform/1147813/code/op_kernel/pad_v3_grad.h
+@@ -463,16 +463,57 @@ private:
+         return true;
+     }
+ 
++    // A conservative product of per-axis inverse-map sizes selects a compact
++    // Gather layout. Saturation preserves the existing >64-contributor fallback.
++    __aicore__ inline int64_t FlatGroupSize() const
++    {
++        if (data_->totalInput == 0) {
++            return 8;
++        }
++        int64_t bound = 1;
++        for (int64_t d = 0; d < rank_; ++d) {
++            const int64_t input = data_->inputShape[d];
++            const int64_t output = data_->outputShape[d];
++            if (input == 0) {
++                return 8;
++            }
++            int64_t axis = 1;
++            if (input != output || front_[d] != 0) {
++                if (data_->mode == PadV3GradIndex::CONSTANT) {
++                    axis = 1;
++                } else if (output == 1) {
++                    axis = input;
++                } else if (data_->mode == PadV3GradIndex::EDGE) {
++                    const int64_t first = MakeContributors(0, input, output, front_[d], data_->mode).Size();
++                    const int64_t last = MakeContributors(output - 1, input, output, front_[d], data_->mode).Size();
++                    axis = first > last ? first : last;
++                    if (axis < 1) { axis = 1; }
++                } else if (data_->mode == PadV3GradIndex::CIRCULAR) {
++                    axis = input / output + (input % output != 0);
++                } else {
++                    const int64_t period = data_->mode == PadV3GradIndex::REFLECT ?
++                        2 * (output - 1) : 2 * output;
++                    const int64_t perResidue = input / period + (input % period != 0);
++                    axis = perResidue > 32 ? 65 : 2 * perResidue;
++                }
++            }
++            axis = Min(axis, 65);
++            bound = bound > 64 / axis ? 65 : bound * axis;
++        }
++        return bound <= 8 ? 8 : (bound <= 16 ? 16 : (bound <= 32 ? 32 : 64));
++    }
++
+     // A core with at most 128 outputs can use 64 slots per output in the
+     // existing 8192-element buffers. No buffer allocation changes are needed.
+     __aicore__ inline bool TryWideCertifiedFlat()
+     {
+-        constexpr int64_t groupSize = 64;
++        constexpr int64_t maxGroupSize = 64;
+         const int64_t count = end_ - begin_;
+         if (rank_ == 0 || data_->totalInput > CACHE_ELEMENTS ||
+             data_->totalOutput > 256 || count > 128) {
+             return false;
+         }
++        const int64_t groupSize = FlatGroupSize();
+         const int64_t alignElements = 32 / sizeof(T);
+         const int64_t sentinel = (data_->totalInput + alignElements - 1) /
+                                   alignElements * alignElements;
+@@ -481,27 +522,54 @@ private:
+                   static_cast<uint32_t>(count * groupSize));
+         Sync<HardEvent::V_S>();
+         int64_t maxContributors = 0;
+-        for (int64_t j = 0; j < count; ++j) {
++        // Expand the outer Cartesian product once per output row. Every column
++        // reuses the same ordered bases instead of restarting NextOuter.
++        int64_t outerBases[maxGroupSize];
++        for (int64_t j = 0; j < count;) {
+             const int64_t output = begin_ + j;
+-            const auto last = MakeContributors(output % outputWidth_, inputWidth_, outputWidth_,
+-                                               front_[rank_ - 1], data_->mode);
+-            int64_t pass = 0;
+-            if (last.Size() != 0 && InitOuter(output / outputWidth_)) {
+-                do {
+-                    for (int64_t k = 0; k < last.Size(); ++k) {
+-                        if (pass == groupSize) {
+-                            Sync<HardEvent::S_V>();
+-                            return false;
++            const int64_t row = output / outputWidth_;
++            const int64_t column = output % outputWidth_;
++            const int64_t run = Min(count - j, outputWidth_ - column);
++            int64_t outerCount = 0;
++            bool planned = false;
++            for (int64_t c = 0; c < run; ++c) {
++                const auto last = MakeContributors(column + c, inputWidth_, outputWidth_,
++                                                   front_[rank_ - 1], data_->mode);
++                const int64_t lastCount = last.Size();
++                int64_t pass = 0;
++                if (lastCount != 0) {
++                    // An entirely empty last-axis interval needs no outer plan.
++                    if (!planned) {
++                        if (InitOuter(row)) {
++                            do {
++                                if (outerCount == maxGroupSize) {
++                                    Sync<HardEvent::S_V>();
++                                    return false;
++                                }
++                                outerBases[outerCount++] = base_;
++                            } while (NextOuter());
+                         }
+-                        offsets.SetValue(j * groupSize + pass,
+-                            static_cast<uint32_t>((base_ + last.At(k)) * sizeof(T)));
+-                        ++pass;
++                        planned = true;
+                     }
+-                } while (NextOuter());
+-            }
+-            if (pass > maxContributors) {
+-                maxContributors = pass;
++                    if (outerCount != 0 && lastCount > groupSize / outerCount) {
++                        Sync<HardEvent::S_V>();
++                        return false;
++                    }
++                    // Keep the original outer-major, last-axis-minor order so
++                    // grouped reduction and its numerical certificate are unchanged.
++                    for (int64_t outer = 0; outer < outerCount; ++outer) {
++                        for (int64_t k = 0; k < lastCount; ++k) {
++                            offsets.SetValue((j + c) * groupSize + pass,
++                                static_cast<uint32_t>((outerBases[outer] + last.At(k)) * sizeof(T)));
++                            ++pass;
++                        }
++                    }
++                }
++                if (pass > maxContributors) {
++                    maxContributors = pass;
++                }
+             }
++            j += run;
+         }
+         auto input = inputBuffer_.Get<T>();
+         if (data_->totalInput != 0) {
+@@ -516,20 +584,20 @@ private:
+         auto gathered = gatherBuffer_.Get<T>();
+         Gather(gathered, input, offsets, static_cast<uint32_t>(0), lanes);
+         PipeBarrier<PIPE_V>();
+-        const int32_t terms = maxContributors <= 32 ? 32 : 64;
++        const int32_t terms = static_cast<int32_t>(Min(groupSize, maxContributors <= 32 ? 32 : 64));
+         // gamma31/(1-gamma31)*256 and gamma63/(1-gamma63)*128
+         // are both < 2^-11. Including final half rounding satisfies the
+         // specified atol=rtol=1e-3 contract. FP32 uses a conservative mixed
+         // absolute/relative budget scaled by 1 + abs(fastSum).
+         const float threshold = sizeof(T) == sizeof(half) ?
+-            (terms == 32 ? 256.0f : 128.0f) : (terms == 32 ? 26.0f : 13.0f);
++            (terms <= 32 ? 256.0f : 128.0f) : (terms <= 32 ? 26.0f : 13.0f);
+         if constexpr (sizeof(T) == sizeof(half)) {
+             auto floats = floatBuffer_.Get<float>();
+             Cast(floats, gathered, RoundMode::CAST_NONE, lanes);
+             PipeBarrier<PIPE_V>();
+-            return StoreCertified(floats, count, terms, 64, threshold, true);
++            return StoreCertified(floats, count, terms, static_cast<int32_t>(groupSize), threshold, true);
+         } else {
+-            return StoreCertified(gathered, count, terms, 64, threshold, true);
++            return StoreCertified(gathered, count, terms, static_cast<int32_t>(groupSize), threshold, true);
+         }
+     }
+ 

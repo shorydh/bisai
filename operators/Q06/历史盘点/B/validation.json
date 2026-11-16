@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "official_records": 48,
+  "local_source_snapshots": 17,
+  "missing_official_result_versions": 0,
+  "fixed_fields": 21,
+  "checked": "schema, official references, source/archive identity, artifact existence, null/provenance rules, local-version coverage"
+}

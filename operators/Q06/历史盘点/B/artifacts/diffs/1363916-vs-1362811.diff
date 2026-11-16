@@ -1,0 +1,70 @@
+diff --git a/artifacts/platform/1362811/code/op_kernel/pad_v3_grad.h b/artifacts/platform/1363916/code/op_kernel/pad_v3_grad.h
+index e12db51..c4477cf 100644
+--- a/artifacts/platform/1362811/code/op_kernel/pad_v3_grad.h
++++ b/artifacts/platform/1363916/code/op_kernel/pad_v3_grad.h
+@@ -179,6 +179,12 @@ public:
+         const bool smallFlat = data_->totalInput <= CACHE_ELEMENTS && data_->totalOutput <= 256;
+         pipe_.InitBuffer(inputBuffer_, (CACHE_ELEMENTS + 16) * sizeof(T));
+         pipe_.InitBuffer(outputBuffer_, TILE_ELEMENTS * sizeof(T));
++        if (smallFlat && rank_ > 0 && data_->mode == PadV3GradIndex::CONSTANT) {
++            // TryConstantFlat always completes this shape/mode branch and uses
++            // only input, output and compact offsets. Other buffers are not live.
++            pipe_.InitBuffer(offsetBuffer_, 256 * sizeof(uint32_t));
++            return;
++        }
+         pipe_.InitBuffer(gatherBuffer_, (smallFlat ? CACHE_ELEMENTS : TILE_ELEMENTS) * sizeof(T));
+         pipe_.InitBuffer(offsetBuffer_, MAX_GATHER_PASSES * TILE_ELEMENTS * sizeof(uint32_t));
+         pipe_.InitBuffer(sumBuffer_, TILE_ELEMENTS * sizeof(float));
+@@ -199,6 +205,9 @@ public:
+             CopyIdentity();
+             return;
+         }
++        if (TryConstantFlat()) {
++            return;
++        }
+         if (TryWideCertifiedFlat()) {
+             return;
+         }
+@@ -465,6 +474,42 @@ private:
+ 
+     // A core with at most 128 outputs can use 64 slots per output in the
+     // existing 8192-element buffers. No buffer allocation changes are needed.
++    // Constant padding has zero or one source in every axis. A direct
++    // compact gather is exact for both dtypes and needs no reduction certificate.
++    __aicore__ inline bool TryConstantFlat()
++    {
++        if (data_->mode != PadV3GradIndex::CONSTANT || rank_ == 0 ||
++            data_->totalInput > CACHE_ELEMENTS || data_->totalOutput > 256) {
++            return false;
++        }
++        const int64_t count = end_ - begin_;
++        const int64_t alignment = 32 / sizeof(T);
++        const int64_t sentinel = (data_->totalInput + alignment - 1) / alignment * alignment;
++        auto offsets = offsetBuffer_.Get<uint32_t>();
++        for (int64_t j = 0; j < count; ++j) {
++            const int64_t output = begin_ + j;
++            const auto last = MakeContributors(output % outputWidth_, inputWidth_, outputWidth_,
++                                               front_[rank_ - 1], data_->mode);
++            int64_t source = sentinel;
++            if (last.Size() != 0 && InitOuter(output / outputWidth_)) {
++                source = base_ + last.first[0];
++            }
++            offsets.SetValue(j, static_cast<uint32_t>(source * sizeof(T)));
++        }
++        auto input = inputBuffer_.Get<T>();
++        if (data_->totalInput != 0) {
++            DataCopyExtParams params{1, static_cast<uint32_t>(data_->totalInput * sizeof(T)), 0, 0, 0};
++            DataCopyPadExtParams<T> padding{false, 0, 0, static_cast<T>(0)};
++            DataCopyPad(input, x_, params, padding);
++            Sync<HardEvent::MTE2_S>();
++        }
++        input.SetValue(sentinel, static_cast<T>(0));
++        Sync<HardEvent::S_V>();
++        Gather(outputBuffer_.Get<T>(), input, offsets, static_cast<uint32_t>(0), static_cast<uint32_t>(count));
++        Store(begin_, count, false);
++        return true;
++    }
++
+     __aicore__ inline bool TryWideCertifiedFlat()
+     {
+         constexpr int64_t groupSize = 64;

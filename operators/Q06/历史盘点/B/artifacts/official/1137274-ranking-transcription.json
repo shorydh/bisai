@@ -1,0 +1,10 @@
+{
+  "source": "1137274-ranking-historical.png",
+  "source_sha256": "9cd30005ce0dc785eae91ec87e629deac7fccd4093e6370aac5b13fa43ad8652",
+  "method": "人工读取原始官方排行榜截图中的shorydh行；没有从聊天报告取总分",
+  "official_task_id": 1137274,
+  "submission_time": "2026/11/04 23:10:10",
+  "score": 30.8,
+  "transcribed_at": "2026-11-16T15:18:18.406Z",
+  "note": "原截图含历史本地题号误称，按用户更正统一归Q06 PadV3Grad；原图不编辑以保持证据"
+}

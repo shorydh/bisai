@@ -1,0 +1,40 @@
+diff --git a/artifacts/platform/1362811/code/op_kernel/pad_v3_grad.h b/artifacts/platform/1363030/code/op_kernel/pad_v3_grad.h
+index e12db51..9623c9f 100644
+--- a/artifacts/platform/1362811/code/op_kernel/pad_v3_grad.h
++++ b/artifacts/platform/1363030/code/op_kernel/pad_v3_grad.h
+@@ -411,6 +411,35 @@ private:
+         ReduceGroups(sumAbs, absolute, count, terms, slots);
+         PipeBarrier<PIPE_V>();
+         auto mask = maskBuffer_.Get<uint8_t>();
++        if constexpr (sizeof(T) == sizeof(float)) {
++            if (dynamicFloat) {
++                // An absolute certificate is a sufficient condition for the
++                // existing mixed certificate. sumAbs <= threshold implies
++                // sumAbs <= threshold * (1 + abs(sum)). With <=64 terms and
++                // this small finite threshold, no input or partial sum can
++                // overflow; NaN/Inf fail the ordered absolute comparison.
++                CompareScalar(mask, sumAbs, threshold, CMPMODE::LE, compareCount);
++                Sync<HardEvent::V_S>();
++                bool absoluteCertified = true;
++                for (int64_t byte = 0; byte < (count + 7) / 8; ++byte) {
++                    const int64_t bits = Min(8, count - byte * 8);
++                    const uint8_t wanted = static_cast<uint8_t>((1u << bits) - 1u);
++                    if ((mask.GetValue(byte) & wanted) != wanted) {
++                        absoluteCertified = false;
++                        break;
++                    }
++                }
++                if (absoluteCertified) {
++                    auto out = outputBuffer_.Get<T>();
++                    Adds(out, sum, 0.0f, n);
++                    Store(begin_, count, false);
++                    return true;
++                }
++                // Complete the scalar mask reader before the original vector
++                // certificate below overwrites the same mask storage.
++                Sync<HardEvent::S_V>();
++            }
++        }
+         // The dynamic FP32 certificate retains both absolute and relative
+         // error budgets. Separate ordered masks reject NaN/Inf; the small
+         // top-end exclusion ensures that the FP64 reference cannot cast to

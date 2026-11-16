@@ -1,0 +1,30 @@
+[
+  {
+    "file": "op_host/pad_v3_grad_def.cpp",
+    "match": true
+  },
+  {
+    "file": "op_host/pad_v3_grad_infershape.cpp",
+    "match": true
+  },
+  {
+    "file": "op_host/pad_v3_grad_tiling.cpp",
+    "match": true
+  },
+  {
+    "file": "op_kernel/pad_v3_grad.cpp",
+    "match": true
+  },
+  {
+    "file": "op_kernel/pad_v3_grad.h",
+    "match": true
+  },
+  {
+    "file": "op_kernel/pad_v3_grad_tiling_data.h",
+    "match": true
+  },
+  {
+    "file": "op_kernel/pad_v3_grad_tiling_key.h",
+    "match": true
+  }
+]

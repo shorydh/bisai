@@ -1,0 +1,56 @@
+diff --git a/artifacts/platform/1362811/code/op_kernel/pad_v3_grad.h b/artifacts/platform/1363392/code/op_kernel/pad_v3_grad.h
+index e12db51..a9ac0b6 100644
+--- a/artifacts/platform/1362811/code/op_kernel/pad_v3_grad.h
++++ b/artifacts/platform/1363392/code/op_kernel/pad_v3_grad.h
+@@ -465,6 +465,17 @@ private:
+ 
+     // A core with at most 128 outputs can use 64 slots per output in the
+     // existing 8192-element buffers. No buffer allocation changes are needed.
++    // The input DMA and scalar offset plan use disjoint UB regions.
++    // The consumer waits below; rejected plans drain DMA before fallback.
++    __aicore__ inline void StartSmallInputPrefetch()
++    {
++        if (data_->totalInput != 0) {
++            DataCopyExtParams params{1, static_cast<uint32_t>(data_->totalInput * sizeof(T)), 0, 0, 0};
++            DataCopyPadExtParams<T> padding{false, 0, 0, static_cast<T>(0)};
++            DataCopyPad(inputBuffer_.Get<T>(), x_, params, padding);
++        }
++    }
++
+     __aicore__ inline bool TryWideCertifiedFlat()
+     {
+         constexpr int64_t groupSize = 64;
+@@ -473,6 +484,7 @@ private:
+             data_->totalOutput > 256 || count > 128) {
+             return false;
+         }
++        StartSmallInputPrefetch();
+         const int64_t alignElements = 32 / sizeof(T);
+         const int64_t sentinel = (data_->totalInput + alignElements - 1) /
+                                   alignElements * alignElements;
+@@ -502,6 +514,7 @@ private:
+                         if (InitOuter(row)) {
+                             do {
+                                 if (outerCount == groupSize) {
++                                    Sync<HardEvent::MTE2_S>();
+                                     Sync<HardEvent::S_V>();
+                                     return false;
+                                 }
+@@ -511,6 +524,7 @@ private:
+                         planned = true;
+                     }
+                     if (outerCount != 0 && lastCount > groupSize / outerCount) {
++                        Sync<HardEvent::MTE2_S>();
+                         Sync<HardEvent::S_V>();
+                         return false;
+                     }
+@@ -532,9 +546,6 @@ private:
+         }
+         auto input = inputBuffer_.Get<T>();
+         if (data_->totalInput != 0) {
+-            DataCopyExtParams params{1, static_cast<uint32_t>(data_->totalInput * sizeof(T)), 0, 0, 0};
+-            DataCopyPadExtParams<T> padding{false, 0, 0, static_cast<T>(0)};
+-            DataCopyPad(input, x_, params, padding);
+             Sync<HardEvent::MTE2_S>();
+         }
+         input.SetValue(sentinel, static_cast<T>(0));

@@ -1,0 +1,216 @@
+diff --git a/artifacts/platform/1125548/code/op_kernel/pad_v3_grad.cpp b/artifacts/platform/1137595/code/op_kernel/pad_v3_grad.cpp
+index fc153c7..9937144 100644
+--- a/artifacts/platform/1125548/code/op_kernel/pad_v3_grad.cpp
++++ b/artifacts/platform/1137595/code/op_kernel/pad_v3_grad.cpp
+@@ -56,13 +56,14 @@ __global__ __aicore__ void pad_v3_grad(GM_ADDR x, GM_ADDR paddings, GM_ADDR y, G
+         if (tilingData.rank < 0 || tilingData.rank > PAD_V3_GRAD_SMALL_RANK) {
+             return;
+         }
++        AscendC::TPipe pipe;
+         if constexpr (schMode == 2) {
+             NsPadV3Grad::PadV3Grad<half, PadV3GradSmallTilingData> op;
+-            op.Init(x, paddings, y, &tilingData);
++            op.Init(x, paddings, y, &tilingData, &pipe);
+             op.Process();
+         } else {
+             NsPadV3Grad::PadV3Grad<float, PadV3GradSmallTilingData> op;
+-            op.Init(x, paddings, y, &tilingData);
++            op.Init(x, paddings, y, &tilingData, &pipe);
+             op.Process();
+         }
+     } else {
+@@ -74,14 +75,15 @@ __global__ __aicore__ void pad_v3_grad(GM_ADDR x, GM_ADDR paddings, GM_ADDR y, G
+         if (!LoadPadV3GradTiling(tiling, tilingData)) {
+             return;
+         }
++        AscendC::TPipe pipe;
+         if constexpr (schMode == static_cast<uint32_t>(PadV3GradTilingKey::TILING_KEY_PADV3GRAD_MODE_0)) {
+             NsPadV3Grad::PadV3Grad<half> op;
+-            op.Init(x, paddings, y, &tilingData);
++            op.Init(x, paddings, y, &tilingData, &pipe);
+             op.Process();
+         }
+         if constexpr (schMode == static_cast<uint32_t>(PadV3GradTilingKey::TILING_KEY_PADV3GRAD_MODE_1)) {
+             NsPadV3Grad::PadV3Grad<float> op;
+-            op.Init(x, paddings, y, &tilingData);
++            op.Init(x, paddings, y, &tilingData, &pipe);
+             op.Process();
+         }
+     }
+diff --git a/artifacts/platform/1125548/code/op_kernel/pad_v3_grad.h b/artifacts/platform/1137595/code/op_kernel/pad_v3_grad.h
+index 141abc9..985bfc6 100644
+--- a/artifacts/platform/1125548/code/op_kernel/pad_v3_grad.h
++++ b/artifacts/platform/1137595/code/op_kernel/pad_v3_grad.h
+@@ -138,8 +138,9 @@ constexpr int64_t MAX_GATHER_PASSES = 8;
+ template <typename T, typename Meta = PadV3GradTilingData> class PadV3Grad {
+ public:
+     __aicore__ inline void Init(GM_ADDR x, GM_ADDR paddings, GM_ADDR y,
+-                               const Meta *data)
++                               const Meta *data, TPipe *pipe)
+     {
++        pipe_ = pipe;
+         data_ = data;
+         x_.SetGlobalBuffer(reinterpret_cast<__gm__ T *>(x), data_->totalInput);
+         y_.SetGlobalBuffer(reinterpret_cast<__gm__ T *>(y), data_->totalOutput);
+@@ -172,21 +173,26 @@ public:
+         if (begin_ >= end_) {
+             return;
+         }
++        pipe_->InitBuffer(inputBuffer_, (CACHE_ELEMENTS + 16) * sizeof(T));
++        // Identity only uses the input buffer as a GM -> UB -> GM staging area.
++        // Do not initialize the ten reduction/gather buffers on this path.
++        if (identity_) {
++            return;
++        }
+         // Explicit buffers use 127168 bytes for float and 120992 for half,
+         // below 128KiB and separate from Select's reserved 8KiB at 184KiB.
+         // An extra aligned input block holds a zero sentinel for missing gathers.
+         const bool smallFlat = data_->totalInput <= CACHE_ELEMENTS && data_->totalOutput <= 256;
+-        pipe_.InitBuffer(inputBuffer_, (CACHE_ELEMENTS + 16) * sizeof(T));
+-        pipe_.InitBuffer(outputBuffer_, TILE_ELEMENTS * sizeof(T));
+-        pipe_.InitBuffer(gatherBuffer_, (smallFlat ? CACHE_ELEMENTS : TILE_ELEMENTS) * sizeof(T));
+-        pipe_.InitBuffer(offsetBuffer_, MAX_GATHER_PASSES * TILE_ELEMENTS * sizeof(uint32_t));
+-        pipe_.InitBuffer(sumBuffer_, TILE_ELEMENTS * sizeof(float));
+-        pipe_.InitBuffer(floatBuffer_, (smallFlat && sizeof(T) == sizeof(half) ? CACHE_ELEMENTS : TILE_ELEMENTS) * sizeof(float));
+-        pipe_.InitBuffer(nextBuffer_, TILE_ELEMENTS * sizeof(float));
+-        pipe_.InitBuffer(errorBuffer_, TILE_ELEMENTS * sizeof(float));
+-        pipe_.InitBuffer(tempBuffer_, TILE_ELEMENTS * sizeof(float));
+-        pipe_.InitBuffer(correctionBuffer_, TILE_ELEMENTS * sizeof(float));
+-        pipe_.InitBuffer(maskBuffer_, TILE_ELEMENTS / 8);
++        pipe_->InitBuffer(outputBuffer_, TILE_ELEMENTS * sizeof(T));
++        pipe_->InitBuffer(gatherBuffer_, (smallFlat ? CACHE_ELEMENTS : TILE_ELEMENTS) * sizeof(T));
++        pipe_->InitBuffer(offsetBuffer_, MAX_GATHER_PASSES * TILE_ELEMENTS * sizeof(uint32_t));
++        pipe_->InitBuffer(sumBuffer_, TILE_ELEMENTS * sizeof(float));
++        pipe_->InitBuffer(floatBuffer_, (smallFlat && sizeof(T) == sizeof(half) ? CACHE_ELEMENTS : TILE_ELEMENTS) * sizeof(float));
++        pipe_->InitBuffer(nextBuffer_, TILE_ELEMENTS * sizeof(float));
++        pipe_->InitBuffer(errorBuffer_, TILE_ELEMENTS * sizeof(float));
++        pipe_->InitBuffer(tempBuffer_, TILE_ELEMENTS * sizeof(float));
++        pipe_->InitBuffer(correctionBuffer_, TILE_ELEMENTS * sizeof(float));
++        pipe_->InitBuffer(maskBuffer_, TILE_ELEMENTS / 8);
+     }
+ 
+     __aicore__ inline void Process()
+@@ -198,11 +204,13 @@ public:
+             CopyIdentity();
+             return;
+         }
+-        if (TryWideCertifiedFlat()) {
+-            return;
+-        }
+-        if (TryCertifiedFlat()) {
+-            return;
++        // For <=128 outputs the wide plan already handles <=32 contributors
++        // with a no-stricter certificate. Retrying the narrow plan after a
++        // wide rejection repeats index generation and input DMA needlessly.
++        if (end_ - begin_ <= 128) {
++            if (TryWideCertifiedFlat()) { return; }
++        } else {
++            if (TryCertifiedFlat()) { return; }
+         }
+         if (data_->totalInput <= CACHE_ELEMENTS && data_->totalOutput <= 256) {
+             if (SmallFlatTile()) { return; }
+@@ -214,7 +222,7 @@ public:
+         DirectInterval(directBegin, directEnd);
+         for (int64_t output = begin_; output < end_;) {
+             const int64_t column = output % outputWidth_;
+-            int64_t count = Min(Min(outputWidth_ - column, end_ - output), TILE_ELEMENTS);
++            int64_t count = Min(Min(outputWidth_ - column, end_ - output), CACHE_ELEMENTS);
+             const int64_t row = output / outputWidth_;
+             const bool hasOuter = InitOuter(row);
+             bool contiguous = rank_ == 0 ||
+@@ -238,6 +246,16 @@ public:
+                     count = Min(count, outputWidth_ - 1 - column);
+                 }
+             }
++            if (contiguous && hasOuter && OuterIsUnique()) {
++                // DirectInterval proves one source per last-axis coordinate;
++                // OuterIsUnique proves one source in every remaining axis.
++                // No Cast/Add/correction is needed for a one-term reduction.
++                CopyDirect(base_ + column + (rank_ == 0 ? 0 : front_[rank_ - 1]), output, count);
++                output += count;
++                continue;
++            }
++            // Only the direct-copy branch uses the larger input-buffer tile.
++            count = Min(count, TILE_ELEMENTS);
+             int64_t passes = 0;
+             if (!contiguous && hasOuter) {
+                 passes = PrepareGather(column, count);
+@@ -281,7 +299,7 @@ private:
+ 
+     template <HardEvent event> __aicore__ inline void Sync()
+     {
+-        const auto id = pipe_.FetchEventID<event>();
++        const auto id = pipe_->FetchEventID<event>();
+         SetFlag<event>(id);
+         WaitFlag<event>(id);
+     }
+@@ -323,8 +341,41 @@ private:
+         }
+     }
+ 
++    __aicore__ inline bool OuterIsUnique() const
++    {
++        for (int64_t d = rank_ - 2; d >= 0; --d) {
++            if (outer_[d].Size() != 1) { return false; }
++        }
++        return true;
++    }
++
++    __aicore__ inline void CopyDirect(int64_t source, int64_t destination, int64_t count)
++    {
++        // Load waits for previous vector/scalar input-buffer readers. Finish
++        // this MTE3 reader before another direct Load or a vector-path Load.
++        cacheBase_ = -1;
++        Load(source, count);
++        Sync<HardEvent::MTE2_MTE3>();
++        DataCopyExtParams params{1, static_cast<uint32_t>(count * sizeof(T)), 0, 0, 0};
++        DataCopyPad(y_[destination], inputBuffer_.Get<T>(), params);
++        Sync<HardEvent::MTE3_MTE2>();
++    }
++
+     __aicore__ inline bool InitOuter(int64_t row)
+     {
++        // Every output in the same row has the same outer-axis inverse map.
++        // Reuse the descriptors, but reset the enumeration even after an early
++        // rejection in a certified path (NextOuter may not have wrapped yet).
++        if (row == outerRow_) {
++            base_ = outerBase_;
++            if (outerValid_) {
++                for (int64_t d = rank_ - 2; d >= 0; --d) { position_[d] = 0; }
++            }
++            return outerValid_;
++        }
++        outerRow_ = row;
++        outerBase_ = 0;
++        outerValid_ = false;
+         base_ = 0;
+         for (int64_t d = rank_ - 2; d >= 0; --d) {
+             const int64_t coord = row % data_->outputShape[d];
+@@ -337,6 +388,8 @@ private:
+             }
+             base_ += outer_[d].At(0) * data_->inputStride[d];
+         }
++        outerBase_ = base_;
++        outerValid_ = true;
+         return true;
+     }
+ 
+@@ -936,7 +989,7 @@ private:
+         Store(output, count, true);
+     }
+ 
+-    TPipe pipe_;
++    TPipe *pipe_ = nullptr;
+     TBuf<QuePosition::VECIN> inputBuffer_;
+     TBuf<QuePosition::VECOUT> outputBuffer_;
+     TBuf<QuePosition::VECCALC> gatherBuffer_;
+@@ -958,6 +1011,9 @@ private:
+     int64_t begin_ = 0;
+     int64_t end_ = 0;
+     int64_t base_ = 0;
++    int64_t outerRow_ = -1;
++    int64_t outerBase_ = 0;
++    bool outerValid_ = false;
+     int64_t inputWidth_ = 0;
+     int64_t outputWidth_ = 0;
+     int64_t windowStart_[MAX_GATHER_PASSES];
