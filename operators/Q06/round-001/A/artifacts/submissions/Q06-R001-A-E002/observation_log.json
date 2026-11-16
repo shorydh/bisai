@@ -1,0 +1,20 @@
+[
+  {
+    "source_file": "raw_official/runs/Q06-R001-A-E002/observations/20261116T172603709992Z.json",
+    "source_sha256": "d59a8cf5a04fdb389d1e8c8b6251648a6c98ad967e51277004f6956ce6a98ec2",
+    "observed_at_from_filename": "20261116T172603709992Z",
+    "status": "Running",
+    "valid": true,
+    "judge_revision": 0,
+    "official_task_id": "6afb3c6f6bd0f9be37eabd76"
+  },
+  {
+    "source_file": "raw_official/runs/Q06-R001-A-E002/observations/20261116T173156940839Z.json",
+    "source_sha256": "72c2e360bee3baee756f205c6dd5f5ce911f67125e82b6149c49b3a22681e147",
+    "observed_at_from_filename": "20261116T173156940839Z",
+    "status": "Pass",
+    "valid": true,
+    "judge_revision": 0,
+    "official_task_id": "6afb3c6f6bd0f9be37eabd76"
+  }
+]

@@ -1,0 +1,88 @@
+{
+  "sources": [
+    {
+      "version": "exp5",
+      "round_id": "历史盘点",
+      "agent_id": "A",
+      "official_task_id": "6afb1beb6bd0f9be37af3fc5",
+      "official_numeric_id": 1367540,
+      "archived_total_score": 14.74,
+      "source_commit": "562db68e0193c407dd714f5f071800911f378190",
+      "editable_text_tree_sha256": "11bb802ef346fd11a4c9d157e0bb1b56591fd125a6fed93c4992b8cd3d5e4330",
+      "package_url": "https://github.com/shorydh/bisai/tree/562db68e0193c407dd714f5f071800911f378190/operators/Q06/历史盘点/A",
+      "reused_as_new_official_run": false,
+      "note": "Historical task identity and observed score only; this is not an independent round-001 evaluation or an approved team baseline."
+    },
+    {
+      "version": "u64src",
+      "round_id": "历史盘点",
+      "agent_id": "A",
+      "official_task_id": "6afb1ca86bd0f9be37b0b7cd",
+      "official_numeric_id": 1367599,
+      "archived_total_score": 15.51,
+      "source_commit": "562db68e0193c407dd714f5f071800911f378190",
+      "editable_text_tree_sha256": "119a5a5b9e4c1589e595a391c8867e75eb5901e192183c4ac5ad7a2a90ea1b86",
+      "package_url": "https://github.com/shorydh/bisai/tree/562db68e0193c407dd714f5f071800911f378190/operators/Q06/历史盘点/A",
+      "reused_as_new_official_run": false,
+      "note": "Historical task identity and observed score only; this is not an independent round-001 evaluation or an approved team baseline."
+    },
+    {
+      "version": "r6",
+      "round_id": "历史盘点",
+      "agent_id": "B",
+      "official_task_id": "6afb1ec66bd0f9be37b4e0f3",
+      "official_numeric_id": 1367774,
+      "archived_total_score": 29.39,
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37",
+      "editable_text_tree_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+      "package_url": "https://github.com/shorydh/bisai/tree/8e245dab91700555bd619e95c70fa780305b1b37/operators/Q06/历史盘点/B",
+      "reused_as_new_official_run": false,
+      "note": "Historical task identity and observed score only; this is not an independent round-001 evaluation or an approved team baseline."
+    },
+    {
+      "version": "r6",
+      "round_id": "历史盘点",
+      "agent_id": "B",
+      "official_task_id": "6afb1d006bd0f9be37b15ed8",
+      "official_numeric_id": 1367629,
+      "archived_total_score": 29.59,
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37",
+      "editable_text_tree_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+      "reused_as_new_official_run": false
+    },
+    {
+      "version": "B_friend_original",
+      "experiment_id": "B-HIST-1148765",
+      "round_id": "历史盘点",
+      "agent_id": "B",
+      "official_task_id": "6aebea621dac5d235bf355b5",
+      "official_numeric_id": 1148765,
+      "official_result_ref": "https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6aebea621dac5d235bf355b5",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37",
+      "editable_text_tree_sha256": "700af8da3ef6679f48ebf8bbfa9d2f145d9357e9b6fd2e4f288542c662a1969b",
+      "source_package_sha256": "9cb2a41f328ea74944cff914d675f7e8b61c81d550c439aa83a099fc0abb0884",
+      "source_package_url": "https://github.com/shorydh/bisai/blob/8e245dab91700555bd619e95c70fa780305b1b37/operators/Q06/历史盘点/B/artifacts/official/1148765.zip",
+      "reused_as_new_official_run": false,
+      "note": "Separate historical B friend-original control; no new official evaluation or score comparison claimed here."
+    },
+    {
+      "version": "B_friend_original",
+      "experiment_id": "B-HIST-1367558",
+      "round_id": "历史盘点",
+      "agent_id": "B",
+      "official_task_id": "6afb1c176bd0f9be37af982a",
+      "official_numeric_id": 1367558,
+      "official_result_ref": "https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6afb1c176bd0f9be37af982a",
+      "source_commit": "8e245dab91700555bd619e95c70fa780305b1b37",
+      "editable_text_tree_sha256": "700af8da3ef6679f48ebf8bbfa9d2f145d9357e9b6fd2e4f288542c662a1969b",
+      "source_package_sha256": "cbb5fa762f71555d27ce59414de73b30f37a24218e9f608edb91b09584b233df",
+      "source_package_url": "https://github.com/shorydh/bisai/blob/8e245dab91700555bd619e95c70fa780305b1b37/operators/Q06/历史盘点/B/artifacts/official/1367558.zip",
+      "reused_as_new_official_run": false,
+      "note": "Separate historical B friend-original control; no new official evaluation or score comparison claimed here."
+    }
+  ],
+  "b_package_sha256": "18679dad71f9ea7723ca524599b0d9363861aeadf8f8032202f6391199a5a85a",
+  "b_package_url": "https://github.com/shorydh/bisai/blob/8e245dab91700555bd619e95c70fa780305b1b37/operators/Q06/历史盘点/B/artifacts/official/1367774.zip",
+  "time_correction": "B original evaluated_at used submission time; this handoff never reuses it as completion time. All new evaluated_at values remain null unless an official completion timestamp is supplied.",
+  "note": "A exp5 and B friend original retain separate historical baseline identities. No central baseline is changed."
+}

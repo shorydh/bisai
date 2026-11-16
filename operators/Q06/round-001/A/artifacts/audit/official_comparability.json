@@ -1,0 +1,214 @@
+{
+  "checked_at": "2026-11-16T17:35:52.936279+00:00",
+  "task_id": "Q06-R001-A-BASELINE-20261117",
+  "scope": "Offline comparison of exact official results and frozen files, not a new benchmark",
+  "observable_conditions_verified": {
+    "all_six_before_after_configs_equal": true,
+    "all_31_readonly_template_files_equal": true,
+    "all_five_public_testcase_ids_and_full_precision_tbest_equal": true,
+    "same_config": {
+      "_id": "6ad9ab403ff2fef7e80e2a1d",
+      "version_no": 1,
+      "version_label": "v1",
+      "code_template": "gitcode_template_noopapi",
+      "cann_version": "9.1.0",
+      "judge_revision": 0,
+      "score_mode": 1,
+      "use_baseline": false,
+      "iterations": 5,
+      "ranking_submission_mode": "latest",
+      "ranking_testcase_count": null,
+      "judge_baseline_verified": false,
+      "difficulty": 3
+    }
+  },
+  "runs": [
+    {
+      "experiment_id": "Q06-R001-A-E001",
+      "version": "exp5",
+      "official_task_id": "6afb3b9e6bd0f9be37e9567e",
+      "official_numeric_id": 1369690,
+      "status": "Pass",
+      "valid": true,
+      "judge_revision": 0,
+      "public_only": false,
+      "judge_missing_cases": false,
+      "total_testcase_count": 50,
+      "editable_tree_sha256": "11bb802ef346fd11a4c9d157e0bb1b56591fd125a6fed93c4992b8cd3d5e4330",
+      "all_38_files_match_frozen": true,
+      "frozen_working_files_unchanged": true,
+      "visible_count": 5,
+      "hidden_rows": 45,
+      "public_case_and_tbest_signature": [
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a22",
+          "type": "default",
+          "best_time": 3.71
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a27",
+          "type": "default",
+          "best_time": 3.75
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a2b",
+          "type": "default",
+          "best_time": 3.73
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a2f",
+          "type": "default",
+          "best_time": 3.783333333333333
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a33",
+          "type": "default",
+          "best_time": 3.66
+        }
+      ],
+      "all_visible_pass": true,
+      "ranking_observations": [
+        {
+          "observed_at": "2026-11-16T17:23:30.127664+00:00",
+          "score": 14.73,
+          "machine_a_local_source_file": "raw_official/runs/Q06-R001-A-E001/ranking_exact/20261116T172329523988Z.json",
+          "published_ref": "artifacts/ranking/6afb3b9e6bd0f9be37e9567e_20261116T172329523988Z.json"
+        }
+      ],
+      "submitted_at": "2026-11-16T17:21:34.738Z",
+      "evaluated_at": null,
+      "terminal_observed_at": "2026-11-16T17:23:24.089032+00:00",
+      "descriptive_score_delta_vs_E001": "0.00"
+    },
+    {
+      "experiment_id": "Q06-R001-A-E002",
+      "version": "u64src",
+      "official_task_id": "6afb3c6f6bd0f9be37eabd76",
+      "official_numeric_id": 1369742,
+      "status": "Pass",
+      "valid": true,
+      "judge_revision": 0,
+      "public_only": false,
+      "judge_missing_cases": false,
+      "total_testcase_count": 50,
+      "editable_tree_sha256": "119a5a5b9e4c1589e595a391c8867e75eb5901e192183c4ac5ad7a2a90ea1b86",
+      "all_38_files_match_frozen": true,
+      "frozen_working_files_unchanged": true,
+      "visible_count": 5,
+      "hidden_rows": 45,
+      "public_case_and_tbest_signature": [
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a22",
+          "type": "default",
+          "best_time": 3.71
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a27",
+          "type": "default",
+          "best_time": 3.75
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a2b",
+          "type": "default",
+          "best_time": 3.73
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a2f",
+          "type": "default",
+          "best_time": 3.783333333333333
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a33",
+          "type": "default",
+          "best_time": 3.66
+        }
+      ],
+      "all_visible_pass": true,
+      "ranking_observations": [
+        {
+          "observed_at": "2026-11-16T17:31:58.024350+00:00",
+          "score": 15.53,
+          "machine_a_local_source_file": "raw_official/runs/Q06-R001-A-E002/ranking_exact/20261116T173157388445Z.json",
+          "published_ref": "artifacts/ranking/6afb3c6f6bd0f9be37eabd76_20261116T173157388445Z.json"
+        }
+      ],
+      "submitted_at": "2026-11-16T17:25:03.212Z",
+      "evaluated_at": null,
+      "terminal_observed_at": "2026-11-16T17:31:56.942500+00:00",
+      "descriptive_score_delta_vs_E001": "0.80"
+    },
+    {
+      "experiment_id": "Q06-R001-A-E003",
+      "version": "r6",
+      "official_task_id": "6afb3e276bd0f9be37ed9f96",
+      "official_numeric_id": 1369815,
+      "status": "Pass",
+      "valid": true,
+      "judge_revision": 0,
+      "public_only": false,
+      "judge_missing_cases": false,
+      "total_testcase_count": 50,
+      "editable_tree_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+      "all_38_files_match_frozen": true,
+      "frozen_working_files_unchanged": true,
+      "visible_count": 5,
+      "hidden_rows": 45,
+      "public_case_and_tbest_signature": [
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a22",
+          "type": "default",
+          "best_time": 3.71
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a27",
+          "type": "default",
+          "best_time": 3.75
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a2b",
+          "type": "default",
+          "best_time": 3.73
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a2f",
+          "type": "default",
+          "best_time": 3.783333333333333
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a33",
+          "type": "default",
+          "best_time": 3.66
+        }
+      ],
+      "all_visible_pass": true,
+      "ranking_observations": [
+        {
+          "observed_at": "2026-11-16T17:35:00.107203+00:00",
+          "score": 29.67,
+          "machine_a_local_source_file": "raw_official/runs/Q06-R001-A-E003/ranking_exact/20261116T173459592105Z.json",
+          "published_ref": "artifacts/ranking/6afb3e276bd0f9be37ed9f96_20261116T173459592105Z.json"
+        }
+      ],
+      "submitted_at": "2026-11-16T17:32:23.279Z",
+      "evaluated_at": null,
+      "terminal_observed_at": "2026-11-16T17:34:51.999647+00:00",
+      "descriptive_score_delta_vs_E001": "14.94"
+    }
+  ],
+  "formal_comparison_status": "pending",
+  "team_common_baseline": "not_approved",
+  "stable_best": "not_determined",
+  "highest_single_observation": "Q06-R001-A-E003",
+  "limitations": [
+    "Official TBest is dynamic; the unchanged hidden 45-case scoring scale across timestamps is not established. No hidden values inferred.",
+    "Normal-domain score formula is described by official frontend default rules; backend edge behavior and exact timing definition are not disclosed.",
+    "No official degradation threshold was found; no substitute threshold invented.",
+    "One current-round execution per source cannot establish stable superiority or universal input correctness.",
+    "A exp5 is only the explicitly designated local comparison task. Central baseline files were not changed."
+  ],
+  "_publication": {
+    "source_file": "audit_comparison/official_comparability.json",
+    "source_sha256": "09f7fe23513334cd61b31cc16546c3b567583a047b3cf913da2324a1dcc3e13d",
+    "changes": "Only provenance paths relabeled as machine-A-local and corresponding published ranking refs added; all findings and actual numeric values unchanged."
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "source_file": "raw_official/runs/Q06-R001-A-E003/observations/20261116T173243279351Z.json",
+    "source_sha256": "1378388f1939b1e789e703cbd899389b5c2155995196b21bbf69715f674d9752",
+    "observed_at_from_filename": "20261116T173243279351Z",
+    "status": "Running",
+    "valid": true,
+    "judge_revision": 0,
+    "official_task_id": "6afb3e276bd0f9be37ed9f96"
+  },
+  {
+    "source_file": "raw_official/runs/Q06-R001-A-E003/observations/20261116T173338675923Z.json",
+    "source_sha256": "1378388f1939b1e789e703cbd899389b5c2155995196b21bbf69715f674d9752",
+    "observed_at_from_filename": "20261116T173338675923Z",
+    "status": "Running",
+    "valid": true,
+    "judge_revision": 0,
+    "official_task_id": "6afb3e276bd0f9be37ed9f96"
+  },
+  {
+    "source_file": "raw_official/runs/Q06-R001-A-E003/observations/20261116T173418983685Z.json",
+    "source_sha256": "1378388f1939b1e789e703cbd899389b5c2155995196b21bbf69715f674d9752",
+    "observed_at_from_filename": "20261116T173418983685Z",
+    "status": "Running",
+    "valid": true,
+    "judge_revision": 0,
+    "official_task_id": "6afb3e276bd0f9be37ed9f96"
+  },
+  {
+    "source_file": "raw_official/runs/Q06-R001-A-E003/observations/20261116T173451997725Z.json",
+    "source_sha256": "1801ff9ed25561098a3daae61154b6930266a386528d86574df5b4e46f8a8644",
+    "observed_at_from_filename": "20261116T173451997725Z",
+    "status": "Pass",
+    "valid": true,
+    "judge_revision": 0,
+    "official_task_id": "6afb3e276bd0f9be37ed9f96"
+  }
+]

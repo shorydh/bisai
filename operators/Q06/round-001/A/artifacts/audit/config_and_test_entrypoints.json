@@ -1,0 +1,201 @@
+{
+  "checked_at": "2026-11-16T17:21:32.697296+00:00",
+  "scope": "Static reading of the exactly restored 38-file official projects; no new runtime, compilation, precision, or performance claim",
+  "source_identity_ref": "restoration_identity.json",
+  "unchanged_implementations": true,
+  "config": {
+    "exp5": {
+      "macros": {
+        "PADV3_INFER_FROM_PADDINGS": {
+          "default_value": 0,
+          "path": "exp5/op_host/pad_v3_grad_infershape.cpp",
+          "line": 38
+        },
+        "PADV3_TILING_USE_OUT_SHAPE": {
+          "default_value": 0,
+          "path": "exp5/op_host/pad_v3_grad_tiling.cpp",
+          "line": 45
+        }
+      },
+      "compile_flag_overrides_found_in_frozen_files": false,
+      "runtime_build_overrides": null,
+      "note": "The infershape source comment says default 1, but actual preprocessor definition is 0; no source edits made.",
+      "compile_flag_override_scan_refs": []
+    },
+    "u64src": {
+      "macros": {
+        "PADV3_INFER_FROM_PADDINGS": {
+          "default_value": 0,
+          "path": "u64src/op_host/pad_v3_grad_infershape.cpp",
+          "line": 38
+        },
+        "PADV3_TILING_USE_OUT_SHAPE": {
+          "default_value": 0,
+          "path": "u64src/op_host/pad_v3_grad_tiling.cpp",
+          "line": 45
+        }
+      },
+      "compile_flag_overrides_found_in_frozen_files": false,
+      "runtime_build_overrides": null,
+      "note": "The infershape source comment says default 1, but actual preprocessor definition is 0; no source edits made.",
+      "compile_flag_override_scan_refs": []
+    },
+    "r6": {
+      "A_macros_present": false,
+      "infershape_registration": "InputsDataDependency({1})",
+      "paddings_access": "Infer only from host-readable padding values; otherwise preserve unknown dimensions. Tiling can use caller-provided output descriptors.",
+      "source_paths": [
+        "r6/op_host/pad_v3_grad_infershape.cpp",
+        "r6/op_host/pad_v3_grad_tiling.cpp"
+      ]
+    }
+  },
+  "entrypoint_evidence": [
+    {
+      "path": "r6/README.md",
+      "sha256": "7f9bf3a841a3988ffb551f5ad168d00abc24e8f043be996c856d06c9d508e1a4",
+      "same_readonly_bytes_all_three": true
+    },
+    {
+      "path": "r6/build.sh",
+      "sha256": "3d1aec7a6644163f6db2924748843774f1d100b4289c986c3456e8214222e214",
+      "same_readonly_bytes_all_three": true
+    },
+    {
+      "path": "r6/CMakeLists.txt",
+      "sha256": "e497dee58e2f9bb8faed63634be17513b3312aad0215e372e6f4437a27bb0195",
+      "same_readonly_bytes_all_three": true
+    },
+    {
+      "path": "r6/samples/sample.py",
+      "sha256": "2950dfbede5aac86040755923f2282e8f29246e16c5f63b253bcc084d87249d8",
+      "same_readonly_bytes_all_three": true
+    },
+    {
+      "path": "r6/samples/reference.py",
+      "sha256": "1542d63e602aa3aaa60242e91ea0d6a8ac038bab788c6898dc4777557f040ed3",
+      "same_readonly_bytes_all_three": true
+    },
+    {
+      "path": "r6/samples/case.json",
+      "sha256": "4ed5b04487ac94773d32b92b72478a5b42200695d9a694a54b431c89903f75ec",
+      "same_readonly_bytes_all_three": true
+    },
+    {
+      "path": "r6/examples/run.sh",
+      "sha256": "46cb83c880d178112853b066c6cb30b763a2c8018be06ffdaa232b4a05e165f7",
+      "same_readonly_bytes_all_three": true
+    },
+    {
+      "path": "r6/examples/test_aclnn_pad_v3_grad.cpp",
+      "sha256": "5ab9a12b4eb2fffcbf07fc2af599883f0a1b33de7c5e1d7858a31a55d92c8380",
+      "same_readonly_bytes_all_three": true
+    },
+    {
+      "path": "r6/tests/ut/run.sh",
+      "sha256": "8077868c31345d5c9cd3a3ff94d45c40fd5934aa18972673bb37dbd431a6be9c",
+      "same_readonly_bytes_all_three": true
+    },
+    {
+      "path": "r6/tests/ut/CMakeLists.txt",
+      "sha256": "8c5e7a12fe0115ba81f6f3dc2e9d1184a2831f2507d42d8773db4d1dccceb3f3",
+      "same_readonly_bytes_all_three": true
+    },
+    {
+      "path": "r6/tests/ut/op_kernel/CMakeLists.txt",
+      "sha256": "fb479d1340207a931a7111cb97343d266b100c7f3d2a436c4f080b44ff224dd6",
+      "same_readonly_bytes_all_three": true
+    },
+    {
+      "path": "r6/tests/ut/op_kernel/test_pad_v3_grad.cpp",
+      "sha256": "3cbc5015a836392c0f6604ac8d9e0a29a333cc8c395037d01b4a832d18c7ef61",
+      "same_readonly_bytes_all_three": true
+    },
+    {
+      "path": "r6/tests/ut/op_host/test_pad_v3_grad_tiling.cpp",
+      "sha256": "0a425c4474bf351310634a3876d4b39da7ef97f9b9c160b5bb09aace4a6a70e4",
+      "same_readonly_bytes_all_three": true
+    }
+  ],
+  "findings": [
+    {
+      "status": "verified",
+      "finding": "-e runs only the first supplied sample",
+      "evidence": [
+        "r6/README.md:12",
+        "r6/examples/run.sh:9",
+        "r6/examples/run.sh:10",
+        "r6/examples/run.sh:11",
+        "r6/samples/case.json:2"
+      ],
+      "conditions": "Only FP32 x [1,1,8,8], int32 paddings [4,2], reflect, contiguous=true, FP32 y [1,1,4,4]. Input uses numpy default_rng(42), uniform(-1,1). No hidden inputs or additional dtypes inferred."
+    },
+    {
+      "status": "verified",
+      "finding": "Sample comparator is exact-size checked np.isclose with rtol=atol=1e-4, equal_nan=True, bad<=1e-4*N",
+      "evidence": [
+        "r6/samples/sample.py:10",
+        "r6/samples/sample.py:59",
+        "r6/samples/sample.py:62",
+        "r6/samples/sample.py:70"
+      ],
+      "conditions": "This generated sample has N=16; integer bad count must be zero. This is sample-specific, not a full official tolerance rule."
+    },
+    {
+      "status": "verified",
+      "finding": "Reference computes gradients in float64 then casts back to original dtype",
+      "evidence": [
+        "r6/samples/reference.py:108",
+        "r6/samples/reference.py:131"
+      ],
+      "conditions": "Static reference implementation fact; reference alone is not execution of any frozen candidate."
+    },
+    {
+      "status": "invalid",
+      "finding": "Cannot use unmodified -u as full precision acceptance for these frozen implementations",
+      "evidence": [
+        "r6/tests/ut/op_kernel/test_pad_v3_grad.cpp:77",
+        "r6/tests/ut/op_kernel/test_pad_v3_grad.cpp:82",
+        "r6/tests/ut/op_kernel/test_pad_v3_grad.cpp:87",
+        "r6/tests/ut/op_host/test_pad_v3_grad_tiling.cpp:34",
+        "r6/op_kernel/pad_v3_grad_tiling_data.h:9"
+      ],
+      "conditions": "Kernel fixture still assigns template totalNum (absent from r6 PadV3GradTilingData) and only blockFactor/ubFactor, with fixed tilingKey 1; host expected tiling is also a template TODO. These are static incompatibilities, not an observed compilation or runtime failure."
+    },
+    {
+      "status": "verified",
+      "finding": "README default-skip/ENABLE_INNER_KERNEL_UT wording is not implemented by these frozen UT files",
+      "evidence": [
+        "r6/README.md:14",
+        "r6/tests/ut/run.sh:5",
+        "r6/tests/ut/run.sh:10",
+        "r6/tests/ut/run.sh:11",
+        "r6/tests/ut/op_kernel/CMakeLists.txt"
+      ],
+      "conditions": "run.sh passes ENABLE_INNER_KERNEL_UT, but no CMake branch or source GTEST_SKIP uses it in the restored 38 files; the kernel target is added and invoked unconditionally. RUN_OP_API_UT appears only in README and there is no op_api directory in this package. Do not assert a functioning skip gate solely from README."
+    },
+    {
+      "status": "pending",
+      "finding": "No complete performance measurement or Profiler entry point was established from the frozen package",
+      "evidence": [
+        "r6/build.sh",
+        "r6/examples/run.sh",
+        "r6/examples/test_aclnn_pad_v3_grad.cpp",
+        "r6/tests/ut/run.sh"
+      ],
+      "conditions": "NPU example performs an invocation, synchronization, and output write/verify; no official timing definition, warmup count, aggregation policy, or Profiler command inferred."
+    }
+  ],
+  "shared_build_config": {
+    "source_target": "ascend910b",
+    "source_target_evidence": "r6/build.sh:50; r6/op_host/pad_v3_grad_def.cpp:34; A equivalents",
+    "source_cxx_standard": 17,
+    "readme_cann_versions": [
+      "9.0.0",
+      "9.1.0"
+    ],
+    "current_official_cann_version": null,
+    "current_official_hardware": null,
+    "note": "Source/default targets and README accepted toolkits are not proof of the current official machine or actual compiler switches."
+  }
+}

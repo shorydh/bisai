@@ -1,0 +1,21 @@
+{
+  "status": "completed_bounded_audit",
+  "created_at": "2026-11-16T17:33:26.264635+00:00",
+  "task_id": "Q06-R001-A-BASELINE-20261117",
+  "public_evidence_file": "rule_evidence.json",
+  "raw_source_inventory": "fetch_manifest.json",
+  "sources_checked": 25,
+  "verified": [
+    "Current precision thresholds and CANN 9.1.0/revision 0/score_mode 1/iterations 5/latest configuration",
+    "Published platform ordinary scoring formula and dynamic TBest definition",
+    "Current contest aggregate rules and actual page/size pagination",
+    "Display time unit microseconds"
+  ],
+  "pending": [
+    "Exact timing scope/warmup/statistic and degradation requirements",
+    "Scoring boundary handling and exact two-decimal rounding tie behavior",
+    "Hidden scoring scale equality across evaluations",
+    "Final team common baseline and stable-best decision"
+  ],
+  "network_note": "Only read-only official/page/static-resource GET requests; no official submissions, account edits or hidden input access. One generic requests fetch hit proxy reset, recovered using existing official client transport for CANNJudge and unauthenticated direct requests for public Huawei article."
+}

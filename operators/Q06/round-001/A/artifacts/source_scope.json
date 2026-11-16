@@ -1,0 +1,10 @@
+{
+  "complete_raw_local_root": "work/Q06/round-001/A/raw_official",
+  "frozen_project_local_roots": [
+    "work/Q06/round-001/A/exp5",
+    "work/Q06/round-001/A/u64src",
+    "work/Q06/round-001/A/r6"
+  ],
+  "public_package_scope": "Three frozen seven-editable-file source sets, each official task 38-file manifest, exact-task result/ranking excerpts and evidence audits. No credentials, unrelated leaderboard rows, or readonly official template/sample/test files are republished.",
+  "official_submission_transport": "Existing authorized CANNJudge SDK; seven exact UTF-8 source texts in files[]. Actual request_files.json is preserved per run. No new optimizer or CANN/NPU local build is claimed."
+}

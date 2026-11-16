@@ -1,0 +1,10 @@
+{
+  "change": "无代码修改",
+  "frozen_editable_tree_sha256": "119a5a5b9e4c1589e595a391c8867e75eb5901e192183c4ac5ad7a2a90ea1b86",
+  "official_return_matches_frozen_38_files": true,
+  "source_files_modified": [],
+  "uncommitted_operator_diff": "",
+  "build_config_change": null,
+  "source_package_note": "API submits files[] rather than ZIP; request_files.json SHA256 and all frozen file hashes identify the actual source payload.",
+  "request_files_json_sha256": "0966c4e0edd7570b5c5a2b971e8031baca2a554a8a4c98db0fb193ad1c021f17"
+}

@@ -1,0 +1,43 @@
+{
+  "checked_at": "2026-11-16T17:39:11.387470+00:00",
+  "status": "PASS",
+  "scope": "Offline evidence consistency only; no official evaluation, timing-rule verification, stable-gain proof, or baseline approval",
+  "records": 3,
+  "fixed_fields": [
+    "experiment_id",
+    "operator",
+    "round_id",
+    "agent_id",
+    "task_id",
+    "base_version",
+    "candidate_version",
+    "hypothesis",
+    "change",
+    "official_task_id",
+    "official_result_ref",
+    "evaluated_at",
+    "evaluation_protocol",
+    "official_status",
+    "official_metrics",
+    "baseline_official_result_ref",
+    "comparison",
+    "finding_status",
+    "applicability",
+    "artifacts",
+    "notes"
+  ],
+  "status_counts": {
+    "Pass": 3
+  },
+  "unique_editable_versions": 3,
+  "official_manifest_entries": 114,
+  "editable_content_checks": 21,
+  "ranking_observations": 3,
+  "local_control_official_task_id": "6afb3b9e6bd0f9be37e9567e",
+  "central_baseline_approved_by_this_validator": false,
+  "limitations": [
+    "The omitted 31 template files require a matching official template for restoration.",
+    "Hashes of original responses provide provenance; this tool validates published projections and cannot independently attest the server.",
+    "A matching observable protocol does not prove unchanged hidden inputs, exact timing statistics, or stable performance."
+  ]
+}

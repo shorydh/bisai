@@ -1,0 +1,281 @@
+{
+  "task_id": "Q06-R001-A-BASELINE-20261117",
+  "operator": "06_PadV3Grad",
+  "round_id": "round-001",
+  "agent_id": "A",
+  "observed_at": "2026-11-16T17:33:26.264635+00:00",
+  "publication_scope": "Selected public rules and non-personal config/provenance; raw full responses, HTML and JS remain in machine A audit_rules. No hidden testcase inputs or values fetched.",
+  "sources": {
+    "current_problem": {
+      "url": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d",
+      "sha256": "bf45d9729959a9228a157dcde6a103382b5528fa7e110b936ffbb605c3459b8d",
+      "observed_at": "2026-11-16T17:26:29.362617+00:00",
+      "local_source_file": "problem_current.json",
+      "source_scope": "Current authenticated official problem response; published selection omits user/account and testcase input data"
+    },
+    "contest_rules_pointer": {
+      "url": "https://cannjudge.cn/api/contests/6a9e2d04bf41025d60f21804",
+      "sha256": "4ff288a59f123b3c5610b8d711cae79a829d5032b8380782309640af56f8b022",
+      "observed_at": "2026-11-16T17:21:32.672243+00:00",
+      "local_source_file": "contest_detail.json",
+      "source_scope": "Current official contest detail contains scoring_rules_content link; contest list intentionally omits that field"
+    },
+    "official_default_scoring_text": {
+      "url": "https://cannjudge.cn/js/pages/scoring-rules-content.js",
+      "sha256": "403196242914b295dd27e81e1faa542649f5a4f940f79258ad5c7807093ba60a",
+      "observed_at": "2026-11-16T17:25:09.344213+00:00",
+      "local_source_file": "scoring-rules-content.js",
+      "source_scope": "Official platform public frontend default-rule generator. Its source comment maps the formula to backend functions; backend implementation was not fetched or verified"
+    },
+    "current_config_labels": {
+      "url": "https://cannjudge.cn/js/pages/group-admin/contest-detail.js",
+      "sha256": "09db1fa8863cb59aa6867d75124b1524f9fa681866e35ca13e71e00e98bbfcae",
+      "observed_at": "2026-11-16T17:24:51.003498+00:00",
+      "local_source_file": "contest-detail.js",
+      "source_scope": "Official platform public frontend form labels, not an admin API request"
+    },
+    "ranking_pagination": {
+      "url": "https://cannjudge.cn/js/pages/contest-screen-search.js",
+      "sha256": "aaade64e1fc0f5f7bafc23546ff7339890fea57e8925b33cf8174df06029d202",
+      "observed_at": "2026-11-16T17:21:32.724317+00:00",
+      "local_source_file": "contest-screen-search.js",
+      "source_scope": "Official public frontend builds page/size and optional q"
+    },
+    "time_unit_display": {
+      "url": "https://cannjudge.cn/js/ui/shared.js",
+      "sha256": "8ea9838d24b0a5a24ada98fdb9c3bb59147bd099694a90155178467a8a51bd1c",
+      "observed_at": "2026-11-16T17:21:32.835951+00:00",
+      "local_source_file": "ui_shared.js",
+      "source_scope": "Official frontend testcaseTimeLabel display conversion"
+    },
+    "tbest_display_mapping": {
+      "url": "https://cannjudge.cn/js/pages/problem/detail.js",
+      "sha256": "ae8ea36394f08f0c53529ff36b0346e9637fd5b4cd9f7787bffa96fddbfcd33d",
+      "observed_at": "2026-11-16T17:20:55.287228+00:00",
+      "local_source_file": "detail.js",
+      "source_scope": "Official public frontend reads ranking testcase.tbest and tbest_submission_id; hidden columns remain hidden"
+    },
+    "submission_best_time_display": {
+      "url": "https://cannjudge.cn/js/pages/problem/submission.js",
+      "sha256": "5c9ada86c9bc3b4465ce3e49655666dfce3c8afbcb956ffff884bf1e94a58a4d",
+      "observed_at": "2026-11-16T17:20:55.354108+00:00",
+      "local_source_file": "submission.js",
+      "source_scope": "Official frontend displays visible result.best_time or bestTime via testcaseTimeLabel"
+    },
+    "external_rules_article": {
+      "url": "https://apigw-04.huawei.com/api/services/ubms/v1/console/commands/getConsultationByConsultationId?consultationId=5762&X-HW-ID=com.huawei.prm.talent&env=&language=zh_CN",
+      "sha256": "1a75259ebb8e4baf420f3aaf33785a3f29bb6db00f09024dddffa9e358b0bca5",
+      "observed_at": "2026-11-16T17:23:25.984216+00:00",
+      "local_source_file": "huawei_rule_response.json",
+      "source_scope": "Public article response obtained through routes present in official article JavaScript",
+      "page_url": "https://e.huawei.com/cn/talent/news/#/details?consultationId=5762",
+      "title": "昇腾 AI 算子开发赛道算子赛题评分机制详解",
+      "published_at_displayed": "2026-06-16T14:42:57.000+0800",
+      "image_sha256": "d3bd4377f4f387dfa1719f03aaf0a3cc10048d65852f2fdb3aa8ee30d240648b"
+    }
+  },
+  "current_configuration": {
+    "_id": "6ad9ab403ff2fef7e80e2a1d",
+    "ID": 2328,
+    "name": "padv3grad",
+    "canonical_name": "padv3grad",
+    "title": "PadV3Grad",
+    "version_no": 1,
+    "version_label": "v1",
+    "version_root_id": "6ad9ab403ff2fef7e80e2a1d",
+    "code_template": "gitcode_template_noopapi",
+    "cann_version": "9.1.0",
+    "judge_revision": 0,
+    "score_mode": 1,
+    "use_baseline": false,
+    "iterations": 5,
+    "ranking_submission_mode": "latest",
+    "judge_baseline_verified": false,
+    "ranking_testcase_count": null
+  },
+  "findings": [
+    {
+      "id": "RULE-01",
+      "finding_status": "verified",
+      "subject": "Current problem requirements and configuration",
+      "value": {
+        "precision_thresholds": {
+          "float": 0.0001,
+          "half": 0.001,
+          "integer": 0
+        },
+        "core_behavior": "Align with original Ascend TBE PadV3Grad, logical-value comparison, all supported data types/formats and legal inputs, all test cases pass",
+        "configuration": {
+          "_id": "6ad9ab403ff2fef7e80e2a1d",
+          "ID": 2328,
+          "name": "padv3grad",
+          "canonical_name": "padv3grad",
+          "title": "PadV3Grad",
+          "version_no": 1,
+          "version_label": "v1",
+          "version_root_id": "6ad9ab403ff2fef7e80e2a1d",
+          "code_template": "gitcode_template_noopapi",
+          "cann_version": "9.1.0",
+          "judge_revision": 0,
+          "score_mode": 1,
+          "use_baseline": false,
+          "iterations": 5,
+          "ranking_submission_mode": "latest",
+          "judge_baseline_verified": false,
+          "ranking_testcase_count": null
+        }
+      },
+      "sources": [
+        "current_problem"
+      ],
+      "applicability": "Current PadV3Grad problem v1 only; configuration observed now does not reconstruct an undisclosed historical judge environment. Thresholds alone do not specify the complete comparison algorithm."
+    },
+    {
+      "id": "RULE-02",
+      "finding_status": "verified",
+      "subject": "Published ordinary-operator scoring rule",
+      "value": {
+        "per_testcase_score_formula": "100 / (1 + log(time / TBest) / log(1.5))",
+        "ordinary_problem_score": "Average over all testcase scores, retained to two decimal places",
+        "failed_testcase_score": 0,
+        "TBest_definition": "Historical fastest time for that testcase across all participants submissions",
+        "TBest_dynamic": true,
+        "latest_submission_semantics": "The latest submission replaces the represented ranking score, even when worse",
+        "score_mode_1_display": "按全部测试点",
+        "ranking_testcase_count_null_display": "All testcases counted; blank is all, 0 is none"
+      },
+      "sources": [
+        "official_default_scoring_text",
+        "current_config_labels"
+      ],
+      "applicability": "This is the official platform default-rule generator plus current config labels, not the contest-specific custom article text or an independently inspected backend. Applies to ordinary operators, not the distinct HCCL scoring branch. Use actual task-bound row.score instead of reconstructing it from hidden values."
+    },
+    {
+      "id": "RULE-03",
+      "finding_status": "verified",
+      "subject": "Contest-specific published aggregate rule",
+      "value": {
+        "base_score_max": 100,
+        "ranking_representative": "Latest team submission",
+        "difficulty_weights": {
+          "hard": 3,
+          "medium": 2,
+          "easy": 1
+        },
+        "first_place_bonus": {
+          "hard": 30,
+          "medium": 20,
+          "easy": 10
+        },
+        "problem_final_score": "base_score * difficulty_weight + eligible first-place bonus",
+        "contest_total": "sum of problem final scores",
+        "article_claim": "Per-problem scores unique, no ties"
+      },
+      "sources": [
+        "contest_rules_pointer",
+        "external_rules_article"
+      ],
+      "applicability": "The article is linked by current contest scoring_rules_content. It supplies contest aggregation, not the numerical time-to-base-score formula, warmup, timing aggregation, degradation gates, or actual score_mode backend implementation. The platform generic difficulty text permits coefficients 1..5; do not use that generic range to overwrite this contest-specific 3/2/1 description. No tie-handling reconciliation is inferred."
+    },
+    {
+      "id": "RULE-04",
+      "finding_status": "verified",
+      "subject": "Time display unit and iterations label",
+      "value": {
+        "result_time_display_unit": "microseconds",
+        "conversion": "value >= 1000 is divided by 1000 for milliseconds display",
+        "iterations": 5,
+        "iterations_ui_label": "循环次数（iterations）"
+      },
+      "sources": [
+        "time_unit_display",
+        "current_problem",
+        "current_config_labels"
+      ],
+      "applicability": "Display unit and current loop-count configuration only. Does not prove warmup count, inner timed repetitions, aggregation statistic, synchronisation, or kernel-only versus end-to-end timing."
+    },
+    {
+      "id": "RULE-05",
+      "finding_status": "verified",
+      "subject": "Ranking pagination and binding",
+      "value": {
+        "query_parameters": [
+          "page",
+          "size"
+        ],
+        "page_min": 1,
+        "size_range": [
+          1,
+          100
+        ],
+        "optional_search_parameter": "q",
+        "binding": "Exact submission_id on ranking row, never branch name, user row alone, or theory_score"
+      },
+      "sources": [
+        "ranking_pagination",
+        "tbest_display_mapping"
+      ],
+      "applicability": "Existing root page/size scan matches the actual frontend contract. Latest mode can replace older rows; a missing row is not score zero. Exact latest-mode replacement cause for any specific prior missing row remains unproven without an observed successor row."
+    },
+    {
+      "id": "RULE-06",
+      "finding_status": "pending",
+      "subject": "Complete timing and degradation acceptance definition",
+      "value": {
+        "warmup_count": null,
+        "timed_inner_repetitions": null,
+        "timing_aggregation_statistic": null,
+        "synchronization_definition": null,
+        "timing_scope": null,
+        "clock_or_profiler_method": null,
+        "degradation_threshold": null,
+        "hard_degradation_rejection_rule": null,
+        "hardware_model_and_shared_load": null
+      },
+      "sources": [
+        "current_problem",
+        "official_default_scoring_text",
+        "external_rules_article"
+      ],
+      "reason": "Not specified in the examined current problem/contest text, linked official article, public default scoring text or relevant frontend display/config labels. iterations=5 and use_baseline=false are not substitutes for these definitions. No self-defined median/warmup or tolerance is introduced.",
+      "applicability": "Remain unknown until an official explicit measurement/acceptance specification or corresponding full official protocol is supplied."
+    },
+    {
+      "id": "RULE-07",
+      "finding_status": "pending",
+      "subject": "Scoring edge conditions and strict cross-time scale equality",
+      "value": {
+        "time_zero_or_negative_handling": null,
+        "TBest_zero_or_negative_handling": null,
+        "missing_timing_handling": null,
+        "ratio_below_one_or_score_clamping": null,
+        "two_decimal_rounding_tie_rule": null,
+        "hidden_TBest_equal_across_runs": null,
+        "full_backend_formula_independently_verified": false
+      },
+      "sources": [
+        "official_default_scoring_text",
+        "tbest_display_mapping",
+        "current_problem"
+      ],
+      "reason": "Published normal-case formula and two-decimal presentation do not disclose these boundary implementations. TBest dynamically changes with other submissions. Equality of five public TBest values and revision does not establish equality of forty-five hidden TBest values. Hidden inputs/metrics were neither accessed nor inferred.",
+      "applicability": "Keep all official task-bound observations; compare within explicitly stated observable conditions only. Do not turn one highest score or a score delta into stable speedup, full semantic proof, or automatic team-baseline approval."
+    }
+  ],
+  "short_source_excerpts": {
+    "score_mode_1": "按全部测试点",
+    "iterations_label": "循环次数（iterations）",
+    "ordinary_formula": "100/(1+log(t/tbest)/log1.5)",
+    "TBest_dynamic": "其他选手更快的提交会刷新 TBest",
+    "contest_rule_pointer": "算子赛题评分机制详解: [Link](https://e.huawei.com/cn/talent/news/#/details?consultationId=5762)"
+  },
+  "comparison_checklist": [
+    "Recover exact 38-file source identity, seven editable tree hash and template/configuration",
+    "Same official problem/version/revision/public_only and valid terminal Pass; preserve visible result details and withheld Hidden entries",
+    "Record exact ranking submission_id, task numeric ID, original row.score and observation timestamps",
+    "Compare current configuration including score_mode, use_baseline, iterations, ranking_testcase_count, plus visible testcase IDs/type/TBest values",
+    "State hidden TBest equality is not observed and timing/acceptance details are incomplete; score-only bounded observation is not a measured speedup or stable-best proof",
+    "No central baseline replacement; retain A exp5 local control and B friend-original historical identity"
+  ],
+  "central_baseline_decision": "not_decided_by_this_rule_audit"
+}

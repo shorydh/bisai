@@ -1,0 +1,23 @@
+{
+  "_id": "6ad9ab403ff2fef7e80e2a1d",
+  "name": "padv3grad",
+  "title": "PadV3Grad",
+  "version_no": 1,
+  "version_label": "v1",
+  "code_template": "gitcode_template_noopapi",
+  "cann_version": "9.1.0",
+  "judge_revision": 0,
+  "score_mode": 1,
+  "use_baseline": false,
+  "iterations": 5,
+  "ranking_submission_mode": "latest",
+  "ranking_testcase_count": null,
+  "judge_baseline_verified": false,
+  "difficulty": 3,
+  "_publication": {
+    "source_file": "raw_official/runs/Q06-R001-A-E002/problem_before.json",
+    "source_sha256": "3925c2ef79701955e2145fdb187816d237a16b4093a1186ebb209a176c1da938",
+    "official_endpoint": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d",
+    "extraction": "Explicit field selection. Actual metrics and submitted source text are unchanged; account/profile fields omitted. Complete raw response retained locally on machine A."
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "official_task_id": "6afb3e276bd0f9be37ed9f96",
+  "scans": [
+    {
+      "page": 1,
+      "size": 100,
+      "total": 355,
+      "rows_returned": 100,
+      "response_sha256": "f842a0818ba59760bb8699056993942a563ffbab07d75660b1bae0fe25afaa41",
+      "observed_at": "2026-11-16T17:34:19.739904+00:00"
+    },
+    {
+      "page": 2,
+      "size": 100,
+      "total": 355,
+      "rows_returned": 100,
+      "response_sha256": "901d3dd322f8c9c4efabe2898b9144b04e78ead6934395f111a82d85ce5f2cbc",
+      "observed_at": "2026-11-16T17:34:19.853187+00:00"
+    },
+    {
+      "page": 3,
+      "size": 100,
+      "total": 355,
+      "rows_returned": 100,
+      "response_sha256": "01d7ffd8d3b18408211f0353a5ce2546523e138fdb0c1c83efe666822a271a4b",
+      "observed_at": "2026-11-16T17:34:19.959300+00:00"
+    },
+    {
+      "page": 4,
+      "size": 100,
+      "total": 355,
+      "rows_returned": 55,
+      "response_sha256": "1d1ccd5a36a16f7f6d7fac593a15bbf1a657b45bbc244b4ca7d471b145e9bdd6",
+      "observed_at": "2026-11-16T17:34:20.060430+00:00"
+    }
+  ],
+  "found": false
+}
