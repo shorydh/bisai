@@ -1,0 +1,169 @@
+{
+  "editable_paths": [
+    "op_host/pad_v3_grad_def.cpp",
+    "op_host/pad_v3_grad_infershape.cpp",
+    "op_host/pad_v3_grad_tiling.cpp",
+    "op_kernel/pad_v3_grad_tiling_data.h",
+    "op_kernel/pad_v3_grad_tiling_key.h",
+    "op_kernel/pad_v3_grad.cpp",
+    "op_kernel/pad_v3_grad.h"
+  ],
+  "versions": [
+    {
+      "editable_text_tree_sha256": "118b069cd24fd298e3d0d1df17b66d2a8a85dc2fff93948c8f1d71560cc0f288",
+      "official_task_ids": [
+        "6af0c6166bd0f9be37e0648f"
+      ],
+      "snapshot": "artifacts/code/118b069cd24fd298e3d0d1df17b66d2a8a85dc2fff93948c8f1d71560cc0f288"
+    },
+    {
+      "editable_text_tree_sha256": "119a5a5b9e4c1589e595a391c8867e75eb5901e192183c4ac5ad7a2a90ea1b86",
+      "official_task_ids": [
+        "6af151866bd0f9be37b22149",
+        "6afb0d156bd0f9be37912e71",
+        "6afb1ca86bd0f9be37b0b7cd"
+      ],
+      "snapshot": "artifacts/code/119a5a5b9e4c1589e595a391c8867e75eb5901e192183c4ac5ad7a2a90ea1b86"
+    },
+    {
+      "editable_text_tree_sha256": "11bb802ef346fd11a4c9d157e0bb1b56591fd125a6fed93c4992b8cd3d5e4330",
+      "official_task_ids": [
+        "6aeabeb51dac5d235bb1c0cd",
+        "6aee14d16bd0f9be378dfb6b",
+        "6aee884a6bd0f9be378c2837",
+        "6afb1beb6bd0f9be37af3fc5"
+      ],
+      "snapshot": "artifacts/code/11bb802ef346fd11a4c9d157e0bb1b56591fd125a6fed93c4992b8cd3d5e4330"
+    },
+    {
+      "editable_text_tree_sha256": "185b58a0bd6e1a5989de12367d4a46b53415d59a9aef70562c5cee43ad3c256c",
+      "official_task_ids": [
+        "6afb19ad6bd0f9be37aab735"
+      ],
+      "snapshot": "artifacts/code/185b58a0bd6e1a5989de12367d4a46b53415d59a9aef70562c5cee43ad3c256c"
+    },
+    {
+      "editable_text_tree_sha256": "2d0f873125923bbdae4fcc9e8c9271100796e557ba6dc2b7c3ac147d1bda7322",
+      "official_task_ids": [
+        "6aeeb18d6bd0f9be37188007"
+      ],
+      "snapshot": "artifacts/code/2d0f873125923bbdae4fcc9e8c9271100796e557ba6dc2b7c3ac147d1bda7322"
+    },
+    {
+      "editable_text_tree_sha256": "2d357c22d92267e0d3ac7f516de7dc484374c0a79345a9a1a29dcf99ab070853",
+      "official_task_ids": [
+        "6aeead4c6bd0f9be370fcb30"
+      ],
+      "snapshot": "artifacts/code/2d357c22d92267e0d3ac7f516de7dc484374c0a79345a9a1a29dcf99ab070853"
+    },
+    {
+      "editable_text_tree_sha256": "3f6d951cd4cd6483023d7108559e1591f6a6262625751ab81932c29b676f4f5d",
+      "official_task_ids": [
+        "6aeeb3b26bd0f9be371ce6a2",
+        "6af0bfea6bd0f9be37d61185",
+        "6af0c3936bd0f9be37dc3c7b"
+      ],
+      "snapshot": "artifacts/code/3f6d951cd4cd6483023d7108559e1591f6a6262625751ab81932c29b676f4f5d"
+    },
+    {
+      "editable_text_tree_sha256": "4bcc5e205a33ef30988e80f8a436c006e34f175e627fd08c033a82d0d63ca83a",
+      "official_task_ids": [
+        "6af0bdc86bd0f9be37d29d3b"
+      ],
+      "snapshot": "artifacts/code/4bcc5e205a33ef30988e80f8a436c006e34f175e627fd08c033a82d0d63ca83a"
+    },
+    {
+      "editable_text_tree_sha256": "4ef5ceb9e426e1e15379c242dd11bfcc506678ae7a454a8ab0cca04e30d72db3",
+      "official_task_ids": [
+        "6afb1b336bd0f9be37addda5"
+      ],
+      "snapshot": "artifacts/code/4ef5ceb9e426e1e15379c242dd11bfcc506678ae7a454a8ab0cca04e30d72db3"
+    },
+    {
+      "editable_text_tree_sha256": "5e3fcac8ed5c3c845172202e71444a58c6f8c058e2cf1f08e38c3e791dcc4438",
+      "official_task_ids": [
+        "6aeabc161dac5d235bac53db"
+      ],
+      "snapshot": "artifacts/code/5e3fcac8ed5c3c845172202e71444a58c6f8c058e2cf1f08e38c3e791dcc4438"
+    },
+    {
+      "editable_text_tree_sha256": "635916fc922bb26b5227c7e8e8e9915aeea9790adc7085867cff47b41c87b297",
+      "official_task_ids": [
+        "6af0c8916bd0f9be37e482b7"
+      ],
+      "snapshot": "artifacts/code/635916fc922bb26b5227c7e8e8e9915aeea9790adc7085867cff47b41c87b297"
+    },
+    {
+      "editable_text_tree_sha256": "7345731e51c47a43bf1feb5f33817fbfa4eebdc591af8773a9010214560feb91",
+      "official_task_ids": [
+        "6af0c5606bd0f9be37df4557"
+      ],
+      "snapshot": "artifacts/code/7345731e51c47a43bf1feb5f33817fbfa4eebdc591af8773a9010214560feb91"
+    },
+    {
+      "editable_text_tree_sha256": "78950a80c94607b1438edcd76f07bf506273df81c07b8d4bdc8d6216d4f87281",
+      "official_task_ids": [
+        "6afb1a756bd0f9be37ac4b1d"
+      ],
+      "snapshot": "artifacts/code/78950a80c94607b1438edcd76f07bf506273df81c07b8d4bdc8d6216d4f87281"
+    },
+    {
+      "editable_text_tree_sha256": "78b5b1091849378634e5292e2c3933cda9c6d93242b3643ccbf75c7867ac2528",
+      "official_task_ids": [
+        "6af0bd126bd0f9be37d16d5b"
+      ],
+      "snapshot": "artifacts/code/78b5b1091849378634e5292e2c3933cda9c6d93242b3643ccbf75c7867ac2528"
+    },
+    {
+      "editable_text_tree_sha256": "7cadaf33b7d495267d5bba8df324641cf122c5991f7c422ef20d2c97e49f404b",
+      "official_task_ids": [
+        "6af0c7bb6bd0f9be37e337c5",
+        "6af0c9476bd0f9be37e59a72",
+        "6af0cb9c6bd0f9be37e918ec"
+      ],
+      "snapshot": "artifacts/code/7cadaf33b7d495267d5bba8df324641cf122c5991f7c422ef20d2c97e49f404b"
+    },
+    {
+      "editable_text_tree_sha256": "8c1981df66b3b8522182bafdc19d6b931a92c41b55c61100507e3088d1f41ea7",
+      "official_task_ids": [
+        "6af0cae66bd0f9be37e81243"
+      ],
+      "snapshot": "artifacts/code/8c1981df66b3b8522182bafdc19d6b931a92c41b55c61100507e3088d1f41ea7"
+    },
+    {
+      "editable_text_tree_sha256": "bdfd5a6df839d722d8b7fbedd43889ba6a21c16817821475b3a216c2df9a8b4e",
+      "official_task_ids": [
+        "6af0bf356bd0f9be37d50465"
+      ],
+      "snapshot": "artifacts/code/bdfd5a6df839d722d8b7fbedd43889ba6a21c16817821475b3a216c2df9a8b4e"
+    },
+    {
+      "editable_text_tree_sha256": "c778603a3429e666a93b7c5dd938d0da35a0a1d06f115ac27dd30ed1f969bff6",
+      "official_task_ids": [
+        "6af0be7e6bd0f9be37d3cc6d"
+      ],
+      "snapshot": "artifacts/code/c778603a3429e666a93b7c5dd938d0da35a0a1d06f115ac27dd30ed1f969bff6"
+    },
+    {
+      "editable_text_tree_sha256": "d4c08ce012943d539ce1dc6caaa38f490ebfd3b5ebc7a415496a4596300e1595",
+      "official_task_ids": [
+        "6af0c2dd6bd0f9be37db01c9"
+      ],
+      "snapshot": "artifacts/code/d4c08ce012943d539ce1dc6caaa38f490ebfd3b5ebc7a415496a4596300e1595"
+    },
+    {
+      "editable_text_tree_sha256": "d6b8cfcb28ba0d77bcf2208fb7807c97eb4d4ebd5699bbc9b6b0226f88c3e160",
+      "official_task_ids": [
+        "6aee86db6bd0f9be3785ad1f"
+      ],
+      "snapshot": "artifacts/code/d6b8cfcb28ba0d77bcf2208fb7807c97eb4d4ebd5699bbc9b6b0226f88c3e160"
+    },
+    {
+      "editable_text_tree_sha256": "d83984eda220083350746cad5e36cb822be1ca8d9939e4acd603514c25aa4428",
+      "official_task_ids": [
+        "6aeabcd41dac5d235bade2c3"
+      ],
+      "snapshot": "artifacts/code/d83984eda220083350746cad5e36cb822be1ca8d9939e4acd603514c25aa4428"
+    }
+  ]
+}

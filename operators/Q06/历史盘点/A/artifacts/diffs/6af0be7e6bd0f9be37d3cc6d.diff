@@ -1,0 +1,19 @@
+--- 6af0bdc86bd0f9be37d29d3b/op_kernel/pad_v3_grad.h
++++ 6af0be7e6bd0f9be37d3cc6d/op_kernel/pad_v3_grad.h
+@@ -668,11 +668,11 @@
+         if (chunkLen > ubFactor_) {
+             chunkLen = ubFactor_;
+         }
+-        if (mode_ == 0) {
+-            ComputeConstantChunk(chunkStart, chunkLen);
+-        } else {
+-            ComputeChunk(chunkStart, chunkLen);
+-        }
++        /* DIAG_ONLY：诊断实验——跳过所有 gather，只把 0 写满 UB。
++         * 用来量出「gather 占总耗时多少」：与正常版本的耗时差 = gather 的真实成本。
++         * 这一步必然 WA（输出全 0），跑完立刻回退。 */
++        Duplicate(outLocal_, PadConvert<T>::FromFloat(0.0f), static_cast<int32_t>(chunkLen));
++        PipeBarrier<PIPE_ALL>();
+         CopyOutChunk(chunkStart, chunkLen);
+     }
+ }

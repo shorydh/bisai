@@ -1,0 +1,1060 @@
+--- 6afb19ad6bd0f9be37aab735/op_host/pad_v3_grad_infershape.cpp
++++ 6afb1a756bd0f9be37ac4b1d/op_host/pad_v3_grad_infershape.cpp
+@@ -1,6 +1,18 @@
+ /*!
+  * \file pad_v3_grad_infershape.cpp
+- * \brief PadV3Grad 算子形状推导实现
++ * \brief PadV3Grad 形状推导（S0 Rev.2）
++ *
++ * 输出 shape 依赖 paddings 的“值”：out_shape[d] = x_shape[d] - front_d - back_d。
++ *
++ * 默认（PADV3_INFER_FROM_PADDINGS == 0）：**纯 no-op**
++ *   - 不读 paddings（平台 example 的 paddings 是 device aclTensor，host 解引用 device
++ *     指针会崩溃）；
++ *   - 不覆盖框架/调用方已给出的输出 shape；
++ *   - 不复制 input0 的 shape（模板桩的旧逻辑是错的）。
++ *   平台 `-e` 路径的输出张量由调用方按 golden shape 创建（examples/sample.py/case.json）。
++ *
++ * 打开编译期开关（= 1）后才读取 paddings 值；启用前必须先在平台确认
++ * `GetInputTensor(1)` 返回的是 Host 地址（S2 专项验证）。
+  */
+ 
+ #include "register/op_impl_registry.h"
+@@ -10,28 +22,117 @@
+ 
+ namespace ops {
+ 
++#ifndef PADV3_INFER_FROM_PADDINGS
++#define PADV3_INFER_FROM_PADDINGS 0
++#endif
++
++static constexpr size_t PADV3_INFER_MAX_RANK = 8;
++
+ static ge::graphStatus InferShapePadV3Grad(gert::InferShapeContext* context)
+ {
+-    // TODO: 实现形状推导逻辑
+-    const gert::Shape* input_shape = (2 > 0) ? context->GetInputShape(0) : nullptr;
+-    // 注意：无输入算子时 input_shape 为 nullptr，需在此处手动设置输出 shape
++    if (context == nullptr) {
++        return ge::GRAPH_FAILED;
++    }
++    const gert::Shape* xShape = context->GetInputShape(0);
++    if (xShape == nullptr) {
++        return ge::GRAPH_FAILED;
++    }
++    const size_t rank = xShape->GetDimNum();
++    if (rank > PADV3_INFER_MAX_RANK) {
++        return ge::GRAPH_FAILED;
++    }
++    gert::Shape* outShape = context->GetOutputShape(0);
++    if (outShape == nullptr) {
++        return ge::GRAPH_FAILED;
++    }
+ 
+-    for (size_t i = 0; i < 1; i++) {
+-        gert::Shape* output_shape = context->GetOutputShape(i);
+-        if (output_shape == nullptr) {
+-            return ge::GRAPH_FAILED;
+-        }
+-        const gert::Shape* in_shape = (i < 2) ? context->GetInputShape(i) : input_shape;
+-        if (in_shape == nullptr) {
+-            in_shape = input_shape;
+-        }
+-        if (in_shape != nullptr) {
+-            *output_shape = *in_shape;
++#if PADV3_INFER_FROM_PADDINGS == 0
++    /* no-op：不读数据、不改输出 shape（shape 由调用方/框架提供） */
++    (void)outShape;
++    return ge::GRAPH_SUCCESS;
++#else
++    /* ---- 读值路径：仅开关打开时编译；要求 paddings 数据在 Host ---- */
++    const gert::Shape* pShape = context->GetInputShape(1);
++    if (pShape == nullptr) {
++        return ge::GRAPH_SUCCESS;
++    }
++    int64_t pNum = 1;
++    if (pShape->GetDimNum() == 0) {
++        pNum = (rank == 0) ? 0 : 1;
++    } else {
++        for (size_t d = 0; d < pShape->GetDimNum(); ++d) {
++            const int64_t dim = pShape->GetDim(d);
++            if (dim < 0) {
++                return ge::GRAPH_SUCCESS;   /* 未知维：不冒险读 */
++            }
++            pNum *= dim;
+         }
+     }
++    if (pNum != static_cast<int64_t>(2 * rank)) {
++        return ge::GRAPH_SUCCESS;           /* 元素数不符：不读 */
++    }
++
++    const gert::Tensor* pTensor = context->GetInputTensor(1);
++    if (pTensor == nullptr) {
++        return ge::GRAPH_SUCCESS;
++    }
++    const ge::DataType dt = pTensor->GetDataType();
++    if (dt != ge::DT_INT32 && dt != ge::DT_INT64) {
++        return ge::GRAPH_SUCCESS;
++    }
++
++    bool contiguous = true;
++    const gert::RuntimeAttrs* attrs = context->GetAttrs();
++    if (attrs != nullptr) {
++        const bool* pc = attrs->GetAttrPointer<bool>(1);
++        if (pc != nullptr) {
++            contiguous = *pc;
++        }
++    }
++
++    gert::Shape out;
++    out.SetDimNum(rank);
++    for (size_t d = 0; d < rank; ++d) {
++        int64_t front = 0;
++        int64_t back = 0;
++        const size_t i0 = contiguous ? (2 * d) : d;
++        const size_t i1 = contiguous ? (2 * d + 1) : (rank + d);
++        if (dt == ge::DT_INT64) {
++            const int64_t* p = pTensor->GetData<int64_t>();
++            if (p == nullptr) {
++                return ge::GRAPH_SUCCESS;
++            }
++            front = p[i0];
++            back = p[i1];
++        } else {
++            const int32_t* p = pTensor->GetData<int32_t>();
++            if (p == nullptr) {
++                return ge::GRAPH_SUCCESS;
++            }
++            front = static_cast<int64_t>(p[i0]);
++            back = static_cast<int64_t>(p[i1]);
++        }
++        const int64_t n = xShape->GetDim(d);
++        if (n < 0) {
++            out.SetDim(d, -1);
++        } else {
++            int64_t v = n - front - back;
++            if (v < 0) {
++                v = 0;
++            }
++            out.SetDim(d, v);
++        }
++    }
++    *outShape = out;
+     return ge::GRAPH_SUCCESS;
++#endif
+ }
+ 
++#if PADV3_INFER_FROM_PADDINGS != 0
++/* 仅开关打开时才声明数据依赖，默认构建不引入该接口 */
++IMPL_OP_INFERSHAPE(PadV3Grad).InferShape(InferShapePadV3Grad).InputsDataDependency({1});
++#else
+ IMPL_OP_INFERSHAPE(PadV3Grad).InferShape(InferShapePadV3Grad);
++#endif
+ 
+ } // namespace ops
+--- 6afb19ad6bd0f9be37aab735/op_host/pad_v3_grad_tiling.cpp
++++ 6afb1a756bd0f9be37ac4b1d/op_host/pad_v3_grad_tiling.cpp
+@@ -1,6 +1,17 @@
+ /*!
+  * \file pad_v3_grad_tiling.cpp
+- * \brief PadV3Grad 算子 Tiling 实现
++ * \brief PadV3Grad Tiling 实现（S0 Rev.2）
++ *
++ * 设计要点：
++ *   1. tiling **不读 paddings 的值**（只校验元素数 = 2*rank）；front/back 由 kernel 从
++ *      GM 读取并自算 n_d / totalNum。这样 host 侧零数据依赖，避免 host 解引用 device
++ *      指针。
++ *   2. 分核按**工作量** x.numel = Π N_d 预算（大 pad 时输出小、工作量大）。
++ *   3. 输出 shape 只在 `TilingContext::GetOutputShape` 可用时用于优化 blockFactor；
++ *      取不到时 blockFactor=0，kernel 自划分。
++ *   4. dtype 逐输入独立校验：x ∈ {fp16, fp32}、paddings ∈ {int32, int64} 四种组合都支持。
++ *      tilingKey 只由 x dtype 决定，paddings 宽度只写进 tiling 字段。
++ *   5. workspace = 0。
+  */
+ 
+ #include "register/op_def_registry.h"
+@@ -10,6 +21,8 @@
+ #include "../op_kernel/pad_v3_grad_tiling_data.h"
+ #include "../op_kernel/pad_v3_grad_tiling_key.h"
+ 
++#include <cstring>
++
+ namespace optiling {
+ 
+ using Ops::Base::CeilDiv;
+@@ -19,16 +32,22 @@
+ using Ops::Base::GetUbBlockSize;
+ 
+ constexpr uint32_t WS_SYS_SIZE = 0U;
+-constexpr int64_t TYPE_SIZE = 4;
+-constexpr int64_t MIN_SPLIT_THRESHOLD = 1024;
+-
+-static const gert::Shape g_vec_1_shape = {1};
+-
+-static inline const gert::Shape EnsureNotScalar(const gert::Shape& in_shape) {
+-    if (in_shape.GetDimNum() == 0) {
+-        return g_vec_1_shape;
+-    }
+-    return in_shape;
++constexpr int64_t MIN_WORK_PER_CORE = 1024;
++constexpr int64_t TILING_SAFE_BYTES = 1024;
++constexpr int64_t TILING_PAD_BYTES = 256;
++
++/*
++ * TilingContext::GetOutputShape 只用于“可选地”填充 totalNum/blockFactor。
++ * 它不影响正确性：kernel 会用自己从 paddings 算出的 total 再划分一次。
++ * 为把 P0 编译风险降到最低，默认关闭（=0）；平台确认该接口后改成 1 即可（单变量）。
++ */
++#ifndef PADV3_TILING_USE_OUT_SHAPE
++#define PADV3_TILING_USE_OUT_SHAPE 0
++#endif
++
++static inline int64_t CeilDivI(int64_t a, int64_t b)
++{
++    return (a > 0) ? ((a + b - 1) / b) : 0;
+ }
+ 
+ static ge::graphStatus GetPlatformInfo(gert::TilingContext* context, uint64_t& ubSize, int64_t& coreNum)
+@@ -51,16 +70,74 @@
+     return ge::GRAPH_SUCCESS;
+ }
+ 
++static int64_t NumelOfShape(const gert::Shape& shape)
++{
++    const int64_t dimNum = static_cast<int64_t>(shape.GetDimNum());
++    if (dimNum == 0) {
++        return 1;
++    }
++    int64_t numel = 1;
++    for (int64_t d = 0; d < dimNum; ++d) {
++        const int64_t v = shape.GetDim(static_cast<size_t>(d));
++        if (v < 0) {
++            return -1;
++        }
++        numel *= v;
++    }
++    return numel;
++}
++
++static int64_t MapMode(const char* mode)
++{
++    if (mode == nullptr || mode[0] == '\0') {
++        return 2;   // def.cpp 默认 "reflect"
++    }
++    if (strcmp(mode, "constant") == 0) {
++        return 0;
++    }
++    if (strcmp(mode, "edge") == 0 || strcmp(mode, "replicate") == 0) {
++        return 1;
++    }
++    if (strcmp(mode, "reflect") == 0) {
++        return 2;
++    }
++    if (strcmp(mode, "symmetric") == 0) {
++        return 3;
++    }
++    if (strcmp(mode, "circular") == 0) {
++        return 4;
++    }
++    return -1;
++}
++
++static int64_t CalcUbFactor(uint64_t ubSize, int64_t elemSize)
++{
++    int64_t alignUnit = 32 / elemSize;
++    if (alignUnit < 1) {
++        alignUnit = 1;
++    }
++    int64_t avail = static_cast<int64_t>(ubSize) - TILING_SAFE_BYTES - TILING_PAD_BYTES;
++    if (avail < 64) {
++        avail = 64;
++    }
++    int64_t ubFactor = (avail / elemSize) / alignUnit * alignUnit;
++    if (ubFactor < alignUnit) {
++        ubFactor = alignUnit;
++    }
++    if (ubFactor > PADV3_UB_MAX) {
++        ubFactor = PADV3_UB_MAX;
++    }
++    return ubFactor;
++}
++
+ static ge::graphStatus PadV3GradTilingFunc(gert::TilingContext* context)
+ {
+-    // TODO: 实现 Tiling 逻辑
+-    uint64_t ubSize;
+-    int64_t coreNum;
++    uint64_t ubSize = 0;
++    int64_t coreNum = 0;
+     OP_CHECK_IF(
+         GetPlatformInfo(context, ubSize, coreNum) != ge::GRAPH_SUCCESS,
+         OP_LOGE(context, "GetPlatformInfo error"),
+         return ge::GRAPH_FAILED);
+-
+     OP_CHECK_IF(
+         GetWorkspaceSize(context) != ge::GRAPH_SUCCESS,
+         OP_LOGE(context, "GetWorkspaceSize error"),
+@@ -69,17 +146,141 @@
+     PadV3GradTilingData* tiling = context->GetTilingData<PadV3GradTilingData>();
+     OP_CHECK_NULL_WITH_CONTEXT(context, tiling);
+ 
+-    // TODO: 设置 tiling 数据
+-    tiling->totalNum = 0;
+-    tiling->blockFactor = 1;
+-    tiling->ubFactor = 0;
+-
+-    context->SetBlockDim(1);
+-
+-    // 根据输入 dtype 选择 tilingKey
++    /* ---------- 1. x shape / dtype ---------- */
++    const gert::StorageShape* xs = context->GetInputShape(0);
++    OP_CHECK_NULL_WITH_CONTEXT(context, xs);
++    const gert::Shape& xShape = xs->GetStorageShape();
++    const int64_t rank = static_cast<int64_t>(xShape.GetDimNum());
++    OP_CHECK_IF(rank > PADV3GRAD_MAX_RANK, OP_LOGE(context, "x rank too large"), return ge::GRAPH_FAILED);
++
++    int64_t xNumel = 1;
++    for (int64_t d = 0; d < rank; ++d) {
++        const int64_t N = xShape.GetDim(static_cast<size_t>(d));
++        OP_CHECK_IF(N < 0, OP_LOGE(context, "x has unknown dim"), return ge::GRAPH_FAILED);
++        tiling->xDims[d] = N;
++        tiling->outDims[d] = 0;
++        if (N > 0) {
++            xNumel *= N;
++            OP_CHECK_IF(xNumel > PADV3_XNUMEL_MAX, OP_LOGE(context, "x numel too large"),
++                        return ge::GRAPH_FAILED);
++        }
++    }
++
++    const gert::CompileTimeTensorDesc* xDesc = context->GetInputDesc(0);
++    OP_CHECK_NULL_WITH_CONTEXT(context, xDesc);
++    const ge::DataType dtX = xDesc->GetDataType();
++    OP_CHECK_IF(dtX != ge::DT_FLOAT16 && dtX != ge::DT_FLOAT,
++                OP_LOGE(context, "x dtype must be fp16/fp32"), return ge::GRAPH_FAILED);
++
++    const int64_t elemSize = (dtX == ge::DT_FLOAT16) ? 2 : 4;
++    const int64_t alignElem = (32 / elemSize > 0) ? (32 / elemSize) : 1;   /* 32B / 元素 */
++
++    /* ---------- 2. paddings shape / dtype（只校验元素数，不读值） ---------- */
++    const gert::StorageShape* ps = context->GetInputShape(1);
++    OP_CHECK_NULL_WITH_CONTEXT(context, ps);
++    const gert::Shape& pShape = ps->GetStorageShape();
++    int64_t pNum = 0;
++    if (pShape.GetDimNum() == 0) {
++        /* rank0 的 [] 视为空 paddings；rank>0 时标量 paddings 非法（1 != 2R） */
++        pNum = (rank == 0) ? 0 : 1;
++    } else {
++        pNum = NumelOfShape(pShape);
++        OP_CHECK_IF(pNum < 0, OP_LOGE(context, "paddings has unknown dim"), return ge::GRAPH_FAILED);
++    }
++    OP_CHECK_IF(pNum != 2 * rank, OP_LOGE(context, "paddings numel must be 2*rank"),
++                return ge::GRAPH_FAILED);
++
++    const gert::CompileTimeTensorDesc* pDesc = context->GetInputDesc(1);
++    OP_CHECK_NULL_WITH_CONTEXT(context, pDesc);
++    const ge::DataType dtP = pDesc->GetDataType();
++    OP_CHECK_IF(dtP != ge::DT_INT32 && dtP != ge::DT_INT64,
++                OP_LOGE(context, "paddings dtype must be int32/int64"), return ge::GRAPH_FAILED);
++
++    /* ---------- 3. attr（null -> def.cpp 默认值） ---------- */
++    int64_t mode = 2;
++    int64_t contiguous = 1;
++    const gert::RuntimeAttrs* attrs = context->GetAttrs();
++    if (attrs != nullptr) {
++        const char* modeStr = attrs->GetStr(0);
++        mode = MapMode(modeStr);
++        OP_CHECK_IF(mode < 0, OP_LOGE(context, "unsupported mode"), return ge::GRAPH_FAILED);
++        const bool* pc = attrs->GetAttrPointer<bool>(1);
++        if (pc != nullptr) {
++            contiguous = (*pc) ? 1 : 0;
++        }
++    }
++
++    /* ---------- 4. 输出 shape（可选；默认关闭，见 PADV3_TILING_USE_OUT_SHAPE） ---------- */
++    bool outKnown = false;
++    int64_t totalOut = 0;
++#if PADV3_TILING_USE_OUT_SHAPE
++    const gert::StorageShape* so = context->GetOutputShape(0);
++    if (so != nullptr) {
++        const gert::Shape& outShape = so->GetStorageShape();
++        if (static_cast<int64_t>(outShape.GetDimNum()) == rank) {
++            outKnown = true;
++            totalOut = 1;
++            for (int64_t d = 0; d < rank; ++d) {
++                const int64_t v = outShape.GetDim(static_cast<size_t>(d));
++                if (v < 0) {
++                    outKnown = false;
++                    break;
++                }
++                tiling->outDims[d] = v;
++                totalOut *= v;   /* 任一维为 0 -> totalOut=0（空输出） */
++            }
++            if (outKnown && totalOut > PADV3_XNUMEL_MAX) {
++                outKnown = false;
++            }
++        }
++    }
++#endif
++    if (!outKnown) {
++        for (int64_t d = 0; d < rank && d < PADV3GRAD_MAX_RANK; ++d) {
++            tiling->outDims[d] = 0;
++        }
++    }
++
++    /* ---------- 5. 分核：按工作量 x.numel ---------- */
++    int64_t usedCore = CeilDivI(xNumel, MIN_WORK_PER_CORE);
++    if (usedCore < 1) {
++        usedCore = 1;
++    }
++    if (usedCore > coreNum) {
++        usedCore = coreNum;
++    }
++    int64_t blockFactor = 0;
++    if (outKnown && totalOut > 0) {
++        /* 每核输出起点必须 32B 字节对齐：blockFactor 向上对齐到 32/sizeof(T) 个元素 */
++        blockFactor = CeilDivI(totalOut, usedCore);
++        blockFactor = ((blockFactor + alignElem - 1) / alignElem) * alignElem;
++        if (blockFactor < alignElem) {
++            blockFactor = alignElem;
++        }
++        const int64_t coresNeeded = CeilDivI(totalOut, blockFactor);
++        if (coresNeeded >= 1 && coresNeeded < usedCore) {
++            usedCore = coresNeeded;
++        }
++    }
++
++    /* ---------- 6. ubFactor ---------- */
++    const int64_t ubFactor = CalcUbFactor(ubSize, elemSize);
++
++    /* ---------- 7. 写 tiling ---------- */
++    tiling->totalNum = (outKnown && totalOut > 0) ? totalOut : 0;
++    tiling->blockFactor = blockFactor;
++    tiling->ubFactor = ubFactor;
++    tiling->rank = rank;
++    tiling->mode = mode;
++    tiling->paddingsContiguous = contiguous;
++    tiling->paddingsInt64 = (dtP == ge::DT_INT64) ? 1 : 0;
++    tiling->coreNum = usedCore;
++    tiling->dtypeCode = (dtX == ge::DT_FLOAT16) ? 0 : 1;
++
++    context->SetBlockDim(static_cast<uint32_t>(usedCore));
++
+     uint64_t tilingKey;
+-    auto inputDesc = context->GetInputDesc(0);
+-    if (inputDesc != nullptr && (inputDesc->GetDataType() == ge::DT_FLOAT16 || inputDesc->GetDataType() == ge::DT_BF16)) {
++    if (dtX == ge::DT_FLOAT16) {
+         tilingKey = GET_TPL_TILING_KEY(PADV3GRAD_TPL_SCH_MODE_0);
+     } else {
+         tilingKey = GET_TPL_TILING_KEY(PADV3GRAD_TPL_SCH_MODE_1);
+--- 6afb19ad6bd0f9be37aab735/op_kernel/pad_v3_grad_tiling_data.h
++++ 6afb1a756bd0f9be37ac4b1d/op_kernel/pad_v3_grad_tiling_data.h
+@@ -1,14 +1,43 @@
+ /*!
+  * \file pad_v3_grad_tiling_data.h
+- * \brief tiling data struct
++ * \brief PadV3Grad tiling data（S0 Rev.2）
++ *
++ * 前 3 个字段保持模板桩的名称/顺序；其余字段只在末尾追加并给默认值。
++ * 结构体大小：4*8 + 2*8*8 + 5*8 = 200 B（远小于 4096 B 的 tiling data 上限）。
++ *
++ * 说明：
++ *   - totalNum/blockFactor 只是 tiling 的“参考值”：kernel 用自己从 paddings 算出的
++ *     total 为准；两者不一致时 kernel 自划分（不 clamp、不部分写）。
++ *   - outDims[d] == 0 表示 tiling 未拿到输出 shape（kernel 自算）。
+  */
+-
+ #ifndef _PADV3GRAD_TILING_DATA_H_
+ #define _PADV3GRAD_TILING_DATA_H_
+ 
++#include <cstdint>
++
++#ifndef PADV3GRAD_MAX_RANK
++#define PADV3GRAD_MAX_RANK 8
++#endif
++
++/* kernel guard 用到的上界；host 与 kernel 共用 */
++#ifndef PADV3_UB_MAX
++#define PADV3_UB_MAX 8192
++#endif
++#ifndef PADV3_XNUMEL_MAX
++#define PADV3_XNUMEL_MAX (1LL << 40)
++#endif
++
+ struct PadV3GradTilingData {
+-    int64_t totalNum = 0;     // 总元素数量
+-    int64_t blockFactor = 1;  // 每个核处理的元素数量
+-    int64_t ubFactor = 0;     // 每次 UB 循环处理的元素数量
++    int64_t totalNum = 0;     // prod(outDims)（若已知）；0 = kernel 自算
++    int64_t blockFactor = 1;  // 每核输出元素数（若已知）；0 = kernel 自算
++    int64_t ubFactor = 0;     // 每次 UB 处理的输出元素数（>0）
++    int64_t rank = 0;         // R = x 维数
++    int64_t xDims[PADV3GRAD_MAX_RANK] = {0};    // N_d（padded 长度）
++    int64_t outDims[PADV3GRAD_MAX_RANK] = {0};  // n_d；0 = 未知
++    int64_t mode = 2;         // 0=constant 1=edge(含 replicate) 2=reflect 3=symmetric 4=circular
++    int64_t paddingsContiguous = 1;
++    int64_t paddingsInt64 = 0;
++    int64_t coreNum = 1;      // 实际启动块数（= SetBlockDim）
++    int64_t dtypeCode = 0;    // 0=fp16 1=fp32
+ };
+ #endif
+--- 6afb19ad6bd0f9be37aab735/op_kernel/pad_v3_grad.h
++++ 6afb1a756bd0f9be37ac4b1d/op_kernel/pad_v3_grad.h
+@@ -1,8 +1,21 @@
+ /*!
+  * \file pad_v3_grad.h
+- * \brief PadV3Grad 算子 kernel 类定义
++ * \brief PadV3Grad kernel 实现（S0 Rev.2）
++ *
++ * 语义（reference.py）：
++ *   - x 是 PadV3 前向输出（padded），y 是原张量梯度；
++ *   - 非 constant：y[i_vec] = Σ_{j: pad_index(j_d) == i_d, ∀d} x[j_vec + front_vec]
++ *     其中 j_d 是算术坐标，j_d ∈ [-front_d, n_d + back_d)，物理下标 = j_d + front_d；
++ *   - constant：y[i_vec] = x[i_vec + front_vec]（中间块，无累加）。
++ *
++ * 关键点：
++ *   1. 有符号 front/back：每个预像组都与 [-front, n+back) 求交；交集为空 -> 该输出为 0。
++ *   2. 每个核独占输出扁平区间 [start_, end_)：无 race、无需清零、无 workspace。
++ *   3. 精度：Neumaier（hi/lo）补偿 + 非有限值旁路（位模式判断，Inf+Inf 不会被算成 NaN）。
++ *   4. 本核输出区间全覆盖写入；不 clamp、不部分写。
++ *   5. constant + 负 pad：reference 自身返回的 shape 与声明不符（无合法 golden），
++ *      kernel 对本核区间全写 0（确定性、全覆盖）。
+  */
+-
+ #ifndef PADV3GRAD_H
+ #define PADV3GRAD_H
+ 
+@@ -12,65 +25,491 @@
+ #include "pad_v3_grad_tiling_key.h"
+ 
+ namespace NsPadV3Grad {
+-
+ using namespace AscendC;
+ 
+-constexpr int32_t BUFFER_NUM = 2;
++constexpr int32_t BUFFER_NUM = 1;
++constexpr int32_t PAD_MAX_RANK = PADV3GRAD_MAX_RANK;
++constexpr int32_t PAD_MAX_GROUPS = 2;
++
++union FloatUint32 {
++    float f;
++    uint32_t u;
++};
++
++template <typename T> struct PadConvert;
++template <> struct PadConvert<float> {
++    __aicore__ static inline float ToFloat(float v) { return v; }
++    __aicore__ static inline float FromFloat(float v) { return v; }
++};
++template <> struct PadConvert<half> {
++    __aicore__ static inline float ToFloat(half v) { return static_cast<float>(v); }
++    __aicore__ static inline half FromFloat(float v) { return static_cast<half>(v); }
++};
++
++/* fast-math 安全的有限性判断：指数位全 1 -> Inf/NaN */
++__aicore__ inline bool PadIsFinite(float v)
++{
++    FloatUint32 c;
++    c.f = v;
++    return (c.u & 0x7f800000u) != 0x7f800000u;
++}
++
++/* Neumaier（补偿求和）。
++ * 非有限旁路：
++ *   - 任一操作数非有限（Inf/NaN）-> 直接相加、comp=0，保证 Inf+(-Inf)=NaN、
++ *     Inf+有限=Inf、NaN 传播；
++ *   - 两个有限数相加**溢出到 ±Inf**（如 3e38+3e38）-> 直接返回 t，comp=0。
++ *     否则补偿项 (hi-t)+v 会算出 -Inf，最终 hi+comp = Inf+(-Inf) = NaN，
++ *     而 reference(fp64->fp32) 是 Inf。
++ */
++__aicore__ inline float PadAccStep(float hi, float& comp, float v)
++{
++    if (PadIsFinite(hi) && PadIsFinite(v)) {
++        const float t = hi + v;
++        if (PadIsFinite(t)) {
++            const float ah = (hi < 0.0f) ? -hi : hi;
++            const float av = (v < 0.0f) ? -v : v;
++            if (ah >= av) {
++                comp += (hi - t) + v;
++            } else {
++                comp += (v - t) + hi;
++            }
++            return t;
++        }
++        comp = 0.0f;
++        return t;   /* ±Inf（fp32 中间和溢出；与 reference 的该次加法一致） */
++    }
++    comp = 0.0f;
++    return hi + v;
++}
++
++/* C++ 整除是截断，负数时需要 floor-mod（审计 P3） */
++__aicore__ inline int64_t PadFloorDiv(int64_t a, int64_t b)
++{
++    int64_t q = a / b;
++    int64_t r = a % b;
++    if (r != 0 && ((r < 0) != (b < 0))) {
++        q -= 1;
++    }
++    return q;
++}
++
++__aicore__ inline int64_t PadCeilDiv(int64_t a, int64_t b)
++{
++    return -PadFloorDiv(-a, b);
++}
+ 
+ template <typename T>
+ class PadV3Grad {
+ public:
+-    __aicore__ inline PadV3Grad(){};
+-
+-    __aicore__ inline void Init(GM_ADDR x, GM_ADDR paddings, GM_ADDR y, const PadV3GradTilingData* tilingData);
++    __aicore__ inline PadV3Grad() {}
++    __aicore__ inline void Init(GM_ADDR x, GM_ADDR paddings, GM_ADDR y,
++                                const PadV3GradTilingData* tilingData);
+     __aicore__ inline void Process();
+ 
+ private:
+-    __aicore__ inline void CopyIn(int64_t progress, int64_t currentNum);
+-    __aicore__ inline void CopyOut(int64_t progress, int64_t currentNum);
+-    __aicore__ inline void Compute(int64_t currentNum);
+-
+-private:
+-    TPipe pipe;
+-    TQue<QuePosition::VECIN, BUFFER_NUM> inputQueueX;
+-    TQue<QuePosition::VECOUT, BUFFER_NUM> outputQueueY;
+-
+-    GlobalTensor<T> inputGMX;
+-    GlobalTensor<T> outputGMY;
+-
+-    int64_t blockLength_ = 0;
+-    int64_t ubLength_ = 0;
++    __aicore__ inline bool BuildGroups(int64_t flat);
++    __aicore__ inline void AddGroup(int64_t slot, int64_t r, int64_t step, int64_t jlo, int64_t jhi);
++    __aicore__ inline int64_t GroupJ(int64_t d, int64_t k) const;
++    __aicore__ inline void ComputeChunk(int64_t chunkStart, int64_t chunkLen);
++    __aicore__ inline void ComputeConstantChunk(int64_t chunkStart, int64_t chunkLen);
++    __aicore__ inline void CopyOutChunk(int64_t chunkStart, int64_t chunkLen);
++
++    TPipe pipe_;
++    TBuf<TPosition::VECCALC> outBuf_;
++    LocalTensor<T> outLocal_;
++    GlobalTensor<T> xGm_;
++    GlobalTensor<T> yGm_;
++    GlobalTensor<int32_t> padGm32_;
++    GlobalTensor<int64_t> padGm64_;
++
++    int64_t rank_ = 0;
++    int64_t mode_ = 2;
++    int64_t contiguous_ = 1;
++    int64_t useInt64Pad_ = 0;
++    int64_t coreNum_ = 1;
++    int64_t ubFactor_ = 0;
++    int64_t xDims_[PAD_MAX_RANK] = {0};
++    int64_t outDims_[PAD_MAX_RANK] = {0};
++    int64_t front_[PAD_MAX_RANK] = {0};
++    int64_t back_[PAD_MAX_RANK] = {0};
++    int64_t strides_[PAD_MAX_RANK] = {0};
++    int64_t total_ = 0;
++    int64_t start_ = 0;
++    int64_t end_ = 0;
++    int64_t hasNegPad_ = 0;
++
++    /* 每个输出元素的预像组（成员数组，避免 __aicore__ 内大栈数组） */
++    int64_t iDec_[PAD_MAX_RANK] = {0};
++    int64_t gr_[PAD_MAX_RANK * PAD_MAX_GROUPS] = {0};
++    int64_t gs_[PAD_MAX_RANK * PAD_MAX_GROUPS] = {0};
++    int64_t gt0_[PAD_MAX_RANK * PAD_MAX_GROUPS] = {0};
++    int64_t gcnt_[PAD_MAX_RANK * PAD_MAX_GROUPS] = {0};
++    int64_t dimCnt_[PAD_MAX_RANK] = {0};
++    int64_t pos_[PAD_MAX_RANK] = {0};
+ };
+ 
+-// TODO: 实现具体的 kernel 逻辑
+-template <typename T>
+-__aicore__ inline void PadV3Grad<T>::Init(GM_ADDR x, GM_ADDR paddings, GM_ADDR y, const PadV3GradTilingData* tilingData)
+-{
+-    // TODO: 实现 Init 逻辑
+-}
+-
+-template <typename T>
+-__aicore__ inline void PadV3Grad<T>::CopyIn(int64_t progress, int64_t currentNum)
+-{
+-    // TODO: 实现 CopyIn 逻辑
+-}
+-
+-template <typename T>
+-__aicore__ inline void PadV3Grad<T>::Compute(int64_t currentNum)
+-{
+-    // TODO: 实现 Compute 逻辑
+-}
+-
+-template <typename T>
+-__aicore__ inline void PadV3Grad<T>::CopyOut(int64_t progress, int64_t currentNum)
+-{
+-    // TODO: 实现 CopyOut 逻辑
++template <typename T>
++__aicore__ inline void PadV3Grad<T>::Init(GM_ADDR x, GM_ADDR paddings, GM_ADDR y,
++                                          const PadV3GradTilingData* tilingData)
++{
++    if (tilingData == nullptr || x == nullptr || y == nullptr) {
++        return;
++    }
++    rank_ = tilingData->rank;
++    if (rank_ < 0 || rank_ > PAD_MAX_RANK) {
++        return;
++    }
++    coreNum_ = tilingData->coreNum;
++    if (coreNum_ < 1 || coreNum_ > 1024) {
++        return;
++    }
++    ubFactor_ = tilingData->ubFactor;
++    if (ubFactor_ < 1 || ubFactor_ > PADV3_UB_MAX) {
++        return;
++    }
++    mode_ = tilingData->mode;
++    if (mode_ < 0 || mode_ > 4) {
++        return;
++    }
++    contiguous_ = (tilingData->paddingsContiguous != 0) ? 1 : 0;
++    useInt64Pad_ = (tilingData->paddingsInt64 != 0) ? 1 : 0;
++
++    int64_t xNumel = 1;
++    for (int64_t d = 0; d < rank_; ++d) {
++        const int64_t N = tilingData->xDims[d];
++        if (N < 0) {
++            return;
++        }
++        xDims_[d] = N;
++        outDims_[d] = 0;
++        front_[d] = 0;
++        back_[d] = 0;
++        strides_[d] = 1;
++        if (N > 0) {
++            xNumel *= N;
++            if (xNumel > PADV3_XNUMEL_MAX) {
++                return;
++            }
++        }
++    }
++
++    /* ---- 从 GM 读 paddings（2R 个 int32/int64）---- */
++    const int64_t padCount = 2 * rank_;
++    if (padCount > 0) {
++        if (paddings == nullptr) {
++            return;
++        }
++        if (useInt64Pad_ != 0) {
++            padGm64_.SetGlobalBuffer(reinterpret_cast<__gm__ int64_t*>(paddings), padCount);
++        } else {
++            padGm32_.SetGlobalBuffer(reinterpret_cast<__gm__ int32_t*>(paddings), padCount);
++        }
++    }
++    for (int64_t d = 0; d < rank_; ++d) {
++        int64_t f = 0;
++        int64_t b = 0;
++        if (padCount > 0) {
++            const int64_t i0 = (contiguous_ != 0) ? (2 * d) : d;
++            const int64_t i1 = (contiguous_ != 0) ? (2 * d + 1) : (rank_ + d);
++            if (useInt64Pad_ != 0) {
++                f = padGm64_.GetValue(static_cast<uint32_t>(i0));
++                b = padGm64_.GetValue(static_cast<uint32_t>(i1));
++            } else {
++                f = static_cast<int64_t>(padGm32_.GetValue(static_cast<uint32_t>(i0)));
++                b = static_cast<int64_t>(padGm32_.GetValue(static_cast<uint32_t>(i1)));
++            }
++        }
++        /* 防 int64 溢出：paddings 是外部输入，限制在 [-(2^40), 2^40] */
++        if (f < -PADV3_XNUMEL_MAX || f > PADV3_XNUMEL_MAX ||
++            b < -PADV3_XNUMEL_MAX || b > PADV3_XNUMEL_MAX) {
++            return;
++        }
++        front_[d] = f;
++        back_[d] = b;
++        if (f < 0 || b < 0) {
++            hasNegPad_ = 1;
++        }
++        const int64_t n = xDims_[d] - f - b;
++        if (n < 0) {
++            return;   /* 非法（front+back > N）：无合法 golden */
++        }
++        outDims_[d] = n;
++    }
++
++    /* ---- x 的行主序 stride ---- */
++    for (int64_t d = rank_ - 1; d >= 0; --d) {
++        int64_t s = 1;
++        for (int64_t k = d + 1; k < rank_; ++k) {
++            s *= xDims_[k];
++        }
++        strides_[d] = s;
++    }
++
++    /* ---- 输出总数（rank0 -> 1）---- */
++    total_ = 1;
++    for (int64_t d = 0; d < rank_; ++d) {
++        if (outDims_[d] <= 0 || outDims_[d] > PADV3_XNUMEL_MAX) {
++            total_ = 0;
++            break;
++        }
++        total_ *= outDims_[d];
++        if (total_ > PADV3_XNUMEL_MAX) {
++            total_ = 0;
++            break;
++        }
++    }
++    if (total_ <= 0) {
++        return;   /* 空输出：不启动计算 */
++    }
++
++    /* ---- 分核：以 kernel 自己算出的 total_ 为准 ----
++     * 每核起点必须是 32B 字节对齐：blockFactor 向上对齐到 32/sizeof(T) 个元素。
++     * 这样 start_ = coreId*bf 与 chunkStart = start_ + k*ubFactor_ 都是 32B 对齐，
++     * DataCopyPad 的目的 GM 起点不再依赖“非 32B 对齐 GM 起始”。
++     */
++    const int64_t alignElem = static_cast<int64_t>(32 / sizeof(T));
++    if (alignElem < 1 || (ubFactor_ % alignElem) != 0) {
++        return;
++    }
++    const int64_t coreId = static_cast<int64_t>(GetBlockIdx());
++    if (coreId < 0 || coreId >= coreNum_) {
++        return;
++    }
++    int64_t bf = 0;
++    if (tilingData->totalNum > 0 && tilingData->totalNum == total_ && tilingData->blockFactor > 0) {
++        bf = tilingData->blockFactor;
++    } else {
++        bf = (total_ + coreNum_ - 1) / coreNum_;
++    }
++    if (bf <= 0) {
++        return;
++    }
++    bf = ((bf + alignElem - 1) / alignElem) * alignElem;   /* 幂等：tiling 已对齐时不变 */
++    start_ = coreId * bf;
++    end_ = start_ + bf;
++    if (end_ > total_) {
++        end_ = total_;
++    }
++    if (start_ >= end_) {
++        return;
++    }
++
++    xGm_.SetGlobalBuffer(reinterpret_cast<__gm__ T*>(x), (xNumel > 0) ? xNumel : 1);
++    yGm_.SetGlobalBuffer(reinterpret_cast<__gm__ T*>(y), total_);
++
++    int64_t outBytes = ubFactor_ * static_cast<int64_t>(sizeof(T));
++    if (outBytes < 32) {
++        outBytes = 32;
++    }
++    pipe_.InitBuffer(outBuf_, outBytes);
++    outLocal_ = outBuf_.Get<T>();
++}
++
++template <typename T>
++__aicore__ inline void PadV3Grad<T>::AddGroup(int64_t slot, int64_t r, int64_t step,
++                                              int64_t jlo, int64_t jhi)
++{
++    /* j = r + t*step，t ∈ [t0, t1] */
++    const int64_t t0 = PadCeilDiv(jlo - r, step);
++    const int64_t t1 = PadCeilDiv(jhi - r, step) - 1;
++    int64_t cnt = t1 - t0 + 1;
++    if (cnt < 0) {
++        cnt = 0;
++    }
++    gr_[slot] = r;
++    gs_[slot] = step;
++    gt0_[slot] = t0;
++    gcnt_[slot] = cnt;
++}
++
++template <typename T>
++__aicore__ inline bool PadV3Grad<T>::BuildGroups(int64_t flat)
++{
++    /* 解码输出多下标 */
++    int64_t rem = flat;
++    for (int64_t d = rank_ - 1; d >= 0; --d) {
++        const int64_t n = outDims_[d];
++        if (n <= 0) {
++            return false;
++        }
++        iDec_[d] = rem % n;
++        rem /= n;
++    }
++
++    for (int64_t d = 0; d < rank_; ++d) {
++        const int64_t n = outDims_[d];
++        const int64_t jlo = -front_[d];
++        const int64_t jhi = n + back_[d];
++        const int64_t s0 = 2 * d;
++        gcnt_[s0] = 0;
++        gcnt_[s0 + 1] = 0;
++
++        if (n == 1) {
++            /* 所有 padded 位置都映射到 0（含 edge；reflect/symmetric/circular 同） */
++            if (jhi > jlo) {
++                gr_[s0] = 0;
++                gs_[s0] = 1;
++                gt0_[s0] = jlo;
++                gcnt_[s0] = jhi - jlo;
++            }
++        } else if (mode_ == 1) {
++            /* edge / replicate：端点是连续区间，中间是单点；全部与 [jlo, jhi) 求交 */
++            const int64_t iv = iDec_[d];
++            if (iv == 0) {
++                const int64_t t1 = (jhi - 1 < 0) ? (jhi - 1) : 0;
++                if (t1 >= jlo) {
++                    gr_[s0] = 0;
++                    gs_[s0] = 1;
++                    gt0_[s0] = jlo;
++                    gcnt_[s0] = t1 - jlo + 1;
++                }
++            } else if (iv == n - 1) {
++                const int64_t t0 = (jlo > n - 1) ? jlo : (n - 1);
++                if (jhi - 1 >= t0) {
++                    gr_[s0] = 0;
++                    gs_[s0] = 1;
++                    gt0_[s0] = t0;
++                    gcnt_[s0] = jhi - t0;
++                }
++            } else {
++                if (iv >= jlo && iv < jhi) {
++                    gr_[s0] = 0;
++                    gs_[s0] = 1;
++                    gt0_[s0] = iv;
++                    gcnt_[s0] = 1;
++                }
++            }
++        } else {
++            const int64_t P = (mode_ == 2) ? (2 * (n - 1)) : ((mode_ == 3) ? (2 * n) : n);
++            AddGroup(s0, iDec_[d] % P, P, jlo, jhi);
++            if (mode_ == 2) {
++                /* reflect 的两组在 i=0 / i=n-1 重合，需去重 */
++                if (iDec_[d] != 0 && iDec_[d] != n - 1) {
++                    AddGroup(s0 + 1, (P - iDec_[d]) % P, P, jlo, jhi);
++                }
++            } else if (mode_ == 3) {
++                AddGroup(s0 + 1, (2 * n - 1 - iDec_[d]) % P, P, jlo, jhi);
++            }
++        }
++        dimCnt_[d] = gcnt_[s0] + gcnt_[s0 + 1];
++        if (dimCnt_[d] <= 0) {
++            return false;   /* 该维无预像 -> 该输出为 0 */
++        }
++    }
++    return true;
++}
++
++template <typename T>
++__aicore__ inline int64_t PadV3Grad<T>::GroupJ(int64_t d, int64_t k) const
++{
++    const int64_t s0 = 2 * d;
++    if (k < gcnt_[s0]) {
++        return gr_[s0] + (gt0_[s0] + k) * gs_[s0];
++    }
++    const int64_t kk = k - gcnt_[s0];
++    return gr_[s0 + 1] + (gt0_[s0 + 1] + kk) * gs_[s0 + 1];
++}
++
++template <typename T>
++__aicore__ inline void PadV3Grad<T>::ComputeChunk(int64_t chunkStart, int64_t chunkLen)
++{
++    for (int64_t k = 0; k < chunkLen; ++k) {
++        float val = 0.0f;
++        if (BuildGroups(chunkStart + k)) {
++            for (int64_t d = 0; d < rank_; ++d) {
++                pos_[d] = 0;
++            }
++            float hi = 0.0f;
++            float comp = 0.0f;
++            bool done = false;
++            while (!done) {
++                int64_t src = 0;
++                for (int64_t d = 0; d < rank_; ++d) {
++                    src += (GroupJ(d, pos_[d]) + front_[d]) * strides_[d];
++                }
++                const float v = PadConvert<T>::ToFloat(xGm_.GetValue(static_cast<uint32_t>(src)));
++                hi = PadAccStep(hi, comp, v);
++
++                int64_t dd = rank_ - 1;
++                while (dd >= 0) {
++                    pos_[dd] += 1;
++                    if (pos_[dd] < dimCnt_[dd]) {
++                        break;
++                    }
++                    pos_[dd] = 0;
++                    dd -= 1;
++                }
++                if (dd < 0) {
++                    done = true;
++                }
++            }
++            val = hi + comp;
++        }
++        outLocal_.SetValue(k, PadConvert<T>::FromFloat(val));
++    }
++}
++
++template <typename T>
++__aicore__ inline void PadV3Grad<T>::ComputeConstantChunk(int64_t chunkStart, int64_t chunkLen)
++{
++    for (int64_t k = 0; k < chunkLen; ++k) {
++        float val = 0.0f;
++        if (hasNegPad_ == 0) {
++            const int64_t flat = chunkStart + k;
++            int64_t rem = flat;
++            for (int64_t d = rank_ - 1; d >= 0; --d) {
++                const int64_t n = outDims_[d];
++                if (n <= 0) {
++                    rem = 0;
++                    break;
++                }
++                iDec_[d] = rem % n;
++                rem /= n;
++            }
++            int64_t src = 0;
++            for (int64_t d = 0; d < rank_; ++d) {
++                src += (iDec_[d] + front_[d]) * strides_[d];
++            }
++            val = PadConvert<T>::ToFloat(xGm_.GetValue(static_cast<uint32_t>(src)));
++        }
++        /* constant + 负 pad：reference 无合法 golden，本核区间全写 0 */
++        outLocal_.SetValue(k, PadConvert<T>::FromFloat(val));
++    }
++}
++
++template <typename T>
++__aicore__ inline void PadV3Grad<T>::CopyOutChunk(int64_t chunkStart, int64_t chunkLen)
++{
++    PipeBarrier<PIPE_ALL>();
++    DataCopyExtParams p;
++    p.blockCount = 1;
++    p.blockLen = static_cast<uint32_t>(chunkLen * static_cast<int64_t>(sizeof(T)));
++    p.srcStride = 0;
++    p.dstStride = 0;
++    p.rsv = 0;
++    DataCopyPad(yGm_[chunkStart], outLocal_, p);
++    PipeBarrier<PIPE_ALL>();
+ }
+ 
+ template <typename T>
+ __aicore__ inline void PadV3Grad<T>::Process()
+ {
+-    // TODO: 实现 Process 逻辑
++    if (start_ >= end_) {
++        return;
++    }
++    for (int64_t chunkStart = start_; chunkStart < end_; chunkStart += ubFactor_) {
++        int64_t chunkLen = end_ - chunkStart;
++        if (chunkLen > ubFactor_) {
++            chunkLen = ubFactor_;
++        }
++        if (mode_ == 0) {
++            ComputeConstantChunk(chunkStart, chunkLen);
++        } else {
++            ComputeChunk(chunkStart, chunkLen);
++        }
++        CopyOutChunk(chunkStart, chunkLen);
++    }
+ }
+ 
+ } // namespace NsPadV3Grad

@@ -1,0 +1,79 @@
+# 第六题 PadV3Grad 历史盘点 A
+
+发布复核（2026-11-16 23:58:22 +08:00；复核记录时间 `2026-11-16T15:58:22.845773+00:00`）：本次发布核验仅 GET 30 个已存官方任务，未新增代码或官方评测；30 个任务的状态、7 个提交源码、全部 38 个文件及 `result` 均与原归档一致。2026-11-16 原归档轮次曾原样重放 5 个已有版本，其任务与评测结果保留在下文。本次最新排名扫描未找到当前保留版本的任务 `6afb1ca86bd0f9be37b0b7cd`，`current_ranking_observation=null`。15.51、14.74 和差值 +0.77 仅代表原归档轮次已精确绑定任务的保存观测，不能称为发布时的当前榜单值。复核证据见 [recheck.json](artifacts/recheck/recheck.json)。
+
+执行者：A。轮次：历史盘点。中央任务单未提供，`task_id=null`。本目录是原有历史盘点与复核结果的 GitHub 共享版，不新增优化，不把云环境指标作为官方结果。
+
+已整理 **30 条官方记录、21 个不同提交代码版本**：23 Pass、5 Runtime Error、2 Wrong Answer。已知完整本地备份、当前源码及外发版本均能关联到官方任务，未发现需要补测的未覆盖代码。早期遗漏的 exp0、exp1、exp2 已在 2026-11-16 原归档轮次原样补提；该原归档轮次重放的 5 次官方评测均已结束，不能把这些补测追溯冒充当年的任务。
+
+## 官方口径与共同基线
+
+官方入口：[PadV3Grad](https://cannjudge.cn/public/ictcompetition/padv3grad)，题目 ID `6ad9ab403ff2fef7e80e2a1d`。同一 CANNJudge 官方提交接口接收 7 个 editable 文件，详情接口返回源码与评测结果，排行按精确 `submission_id` 绑定总分。配置见 [evaluation_protocol.json](artifacts/evaluation_protocol.json)：CANN 9.1.0、judge_revision=0；当时未披露的硬件/负载不能从此推断。
+
+共同性能基线为 **exp5_common_baseline**，任务 `6afb1beb6bd0f9be37af3fc5`，原归档官方结果为 **Pass、14.74 分**。当前保留的 u64src 任务 `6afb1ca86bd0f9be37b0b7cd` 的原归档官方结果为 **Pass、15.51 分**，相对基线的原归档轮次单次总分差 **+0.77**。双方结果的题目、revision、公开 testcase ID 与 best_time 相同，保存的排行榜总分分别绑定准确任务；本次 GET 仍确认 Pass，但最新排名扫描未找到当前任务行，故当前榜面分数未知。该历史观测差值不是统计显著性、耗时加速比或历史全局最优证明。
+
+总分使用官方排行榜 `row.score`；详情中的 `theory_score=0` 与公开用例 `score` 原样保留，不能代替总分。5 例公开结果和 45 例 Hidden 保持原状，不重建隐藏耗时或精度。`evaluated_at=null`，因为官方未给完成时间；提交时间与终态观察时间分别保留。
+
+## 统一实验表
+
+完整原始数值及不可比较原因见 [experiments.jsonl](experiments.jsonl)。表中代码短哈希链接到包含全部 38 个文件哈希的 manifest，完整恢复方式见 README。历史“保留/回退”只代表当时记录，不能代替原归档轮次的官方性能结论。
+
+| 实验编号 | 假设与改动 | 准确代码版本 | 官方任务编号 | 官方状态及指标 | 与官方共同基线比较 | 结论 | 原始证据出处 |
+|---|---|---|---|---|---|---|---|
+| exp3_def4 | 假设：def 两列扩至四列，ValueDepend 与读值 infershape；改动：def 两列扩至四列，ValueDepend 与读值 infershape | [5e3fcac8ed5c](artifacts/manifests/6aeabc161dac5d235bac53db.json) | `6aeabc161dac5d235bac53db` | Runtime Error; 总分=null; theory_score=0; time=[0, 0, 0, 0, 0] | 不可作有效收益比较，原因见 JSONL | 失败记录；没有有效性能收益 | [官方摘取](artifacts/official/6aeabc161dac5d235bac53db.json) |
+| exp4_no_infer | 假设：关闭 infershape 读 paddings；改动：关闭 infershape 读 paddings | [d83984eda220](artifacts/manifests/6aeabcd41dac5d235bade2c3.json) | `6aeabcd41dac5d235bade2c3` | Runtime Error; 总分=null; theory_score=0; time=[0, 0, 0, 0, 0] | 不可作有效收益比较，原因见 JSONL | 失败记录；没有有效性能收益 | [官方摘取](artifacts/official/6aeabcd41dac5d235bade2c3.json) |
+| exp5_no_valuedepend | 假设：移除 paddings.ValueDepend，保留四列；改动：移除 paddings.ValueDepend，保留四列 | [11bb802ef346](artifacts/manifests/6aeabeb51dac5d235bb1c0cd.json) | `6aeabeb51dac5d235bb1c0cd` | Pass; 总分=null; theory_score=0; time=[15.96, 18.59, 18.83, 19.48, 12.87] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6aeabeb51dac5d235bb1c0cd.json) |
+| exp5_restore | 假设：确认同代码官方状态；改动：同代码重提恢复榜单 | [11bb802ef346](artifacts/manifests/6aee14d16bd0f9be378dfb6b.json) | `6aee14d16bd0f9be378dfb6b` | Pass; 总分=null; theory_score=0; time=[16.0935, 18.773833333333332, 19.29083333333333, 19.410333333333334, 12.73] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6aee14d16bd0f9be378dfb6b.json) |
+| exp6_batchrun | 假设：mode0 run 三段式 DMA；改动：mode0 run 三段式 DMA | [d6b8cfcb28ba](artifacts/manifests/6aee86db6bd0f9be3785ad1f.json) | `6aee86db6bd0f9be3785ad1f` | Pass; 总分=null; theory_score=0; time=[16.06, 18.87, 18.78, 19.743333333333332, 12.733333333333333] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6aee86db6bd0f9be3785ad1f.json) |
+| exp6_rollback | 假设：确认同代码官方状态；改动：恢复 exp5 | [11bb802ef346](artifacts/manifests/6aee884a6bd0f9be378c2837.json) | `6aee884a6bd0f9be378c2837` | Pass; 总分=null; theory_score=0; time=[16.273333333333333, 18.903333333333332, 18.973333333333333, 19.60333333333333, 12.856666666666667] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6aee884a6bd0f9be378c2837.json) |
+| exp7_odometer | 假设：ComputeChunk 增量坐标代替逐元素 div/mod；改动：ComputeChunk 增量坐标代替逐元素 div/mod | [2d357c22d922](artifacts/manifests/6aeead4c6bd0f9be370fcb30.json) | `6aeead4c6bd0f9be370fcb30` | Pass; 总分=null; theory_score=0; time=[15.523, 17.9365, 17.89966666666667, 18.550333333333334, 12.455333333333334] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6aeead4c6bd0f9be370fcb30.json) |
+| exp8_incgroup | 假设：仅重算进位变化维度分组；改动：仅重算进位变化维度分组 | [2d0f87312592](artifacts/manifests/6aeeb18d6bd0f9be37188007.json) | `6aeeb18d6bd0f9be37188007` | Pass; 总分=null; theory_score=0; time=[14.75, 16.463333333333335, 16.59, 16.903333333333332, 12.186666666666667] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6aeeb18d6bd0f9be37188007.json) |
+| exp9_constodo | 假设：mode0 增量 odometer 与 src；改动：mode0 增量 odometer 与 src | [3f6d951cd4cd](artifacts/manifests/6aeeb3b26bd0f9be371ce6a2.json) | `6aeeb3b26bd0f9be371ce6a2` | Pass; 总分=null; theory_score=0; time=[14.843333333333334, 16.27, 16.56, 16.973333333333333, 12.476666666666667] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6aeeb3b26bd0f9be371ce6a2.json) |
+| exp10_rowdma | 假设：mode0 对齐整行 DMA；改动：mode0 对齐整行 DMA | [78b5b1091849](artifacts/manifests/6af0bd126bd0f9be37d16d5b.json) | `6af0bd126bd0f9be37d16d5b` | Pass; 总分=null; theory_score=0; time=[14.523333333333333, 16.266666666666666, 16.29, 16.86, 11.826666666666666] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6af0bd126bd0f9be37d16d5b.json) |
+| exp11_rowdma_full | 假设：支持 chunk 首尾半行 DMA；改动：支持 chunk 首尾半行 DMA | [4bcc5e205a33](artifacts/manifests/6af0bdc86bd0f9be37d29d3b.json) | `6af0bdc86bd0f9be37d29d3b` | Pass; 总分=null; theory_score=0; time=[14.573333333333334, 16.196666666666665, 16.266666666666666, 16.756666666666668, 12.043333333333333] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6af0bdc86bd0f9be37d29d3b.json) |
+| diag_skip_all | 假设：跳过 Compute，输出零的消融诊断；改动：跳过 Compute，输出零的消融诊断 | [c778603a3429](artifacts/manifests/6af0be7e6bd0f9be37d3cc6d.json) | `6af0be7e6bd0f9be37d3cc6d` | Wrong Answer; 总分=null; theory_score=0; time=[4.816666666666666, None, None, None, None] | 不可作有效收益比较，原因见 JSONL | 失败记录；没有有效性能收益 | [官方摘取](artifacts/official/6af0be7e6bd0f9be37d3cc6d.json) |
+| exp12_blkdma | 假设：mode0 32B 块 DMA；改动：mode0 32B 块 DMA | [bdfd5a6df839](artifacts/manifests/6af0bf356bd0f9be37d50465.json) | `6af0bf356bd0f9be37d50465` | Pass; 总分=null; theory_score=0; time=[14.716666666666667, 16.296666666666667, 16.383333333333333, 16.753333333333334, 11.966666666666667] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6af0bf356bd0f9be37d50465.json) |
+| exp12_rollback | 假设：确认同代码官方状态；改动：恢复 exp9 | [3f6d951cd4cd](artifacts/manifests/6af0bfea6bd0f9be37d61185.json) | `6af0bfea6bd0f9be37d61185` | Pass; 总分=null; theory_score=0; time=[15.080333333333334, 16.413666666666668, 16.536666666666665, 16.663833333333333, 12.166666666666666] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6af0bfea6bd0f9be37d61185.json) |
+| exp13_iddma | 假设：按分组恒等谓词做块 DMA；改动：按分组恒等谓词做块 DMA | [d4c08ce01294](artifacts/manifests/6af0c2dd6bd0f9be37db01c9.json) | `6af0c2dd6bd0f9be37db01c9` | Pass; 总分=null; theory_score=0; time=[14.683333333333334, 16.793333333333333, 16.466666666666665, 17.29, 12.236666666666666] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6af0c2dd6bd0f9be37db01c9.json) |
+| exp13_rollback | 假设：确认同代码官方状态；改动：恢复 exp9 | [3f6d951cd4cd](artifacts/manifests/6af0c3936bd0f9be37dc3c7b.json) | `6af0c3936bd0f9be37dc3c7b` | Pass; 总分=null; theory_score=0; time=[14.963333333333333, 16.363333333333333, 16.623333333333335, 16.763333333333332, 12.163333333333334] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6af0c3936bd0f9be37dc3c7b.json) |
+| diag_skip_bookkeep | 假设：跳过分组更新与 elemOk 重扫的消融诊断；改动：跳过分组更新与 elemOk 重扫的消融诊断 | [7345731e51c4](artifacts/manifests/6af0c5606bd0f9be37df4557.json) | `6af0c5606bd0f9be37df4557` | Wrong Answer; 总分=null; theory_score=0; time=[7.593333333333334, None, None, None, None] | 不可作有效收益比较，原因见 JSONL | 失败记录；没有有效性能收益 | [官方摘取](artifacts/official/6af0c5606bd0f9be37df4557.json) |
+| exp14_validcnt | 假设：增量 badDims 代替全 rank 有效性重扫；改动：增量 badDims 代替全 rank 有效性重扫 | [118b069cd24f](artifacts/manifests/6af0c6166bd0f9be37e0648f.json) | `6af0c6166bd0f9be37e0648f` | Pass; 总分=null; theory_score=0; time=[14.926666666666666, 16.066833333333335, 16.380166666666668, 16.296833333333332, 12.123333333333333] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6af0c6166bd0f9be37e0648f.json) |
+| exp15_identfast | 假设：恒等单点分组快速构造；改动：恒等单点分组快速构造 | [7cadaf33b7d4](artifacts/manifests/6af0c7bb6bd0f9be37e337c5.json) | `6af0c7bb6bd0f9be37e337c5` | Pass; 总分=null; theory_score=0; time=[14.65, 14.8, 16.236666666666668, 16.58, 11.863333333333333] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6af0c7bb6bd0f9be37e337c5.json) |
+| exp16_identcopy | 假设：nonIdent 计数，恒等位置跳过组求和；改动：nonIdent 计数，恒等位置跳过组求和 | [635916fc922b](artifacts/manifests/6af0c8916bd0f9be37e482b7.json) | `6af0c8916bd0f9be37e482b7` | Pass; 总分=null; theory_score=0; time=[15.276666666666667, 15.52, 17.226666666666667, 17.496666666666666, 12.203333333333333] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6af0c8916bd0f9be37e482b7.json) |
+| exp16_identcopy_rollback | 假设：确认同代码官方状态；改动：恢复 exp15 | [7cadaf33b7d4](artifacts/manifests/6af0c9476bd0f9be37e59a72.json) | `6af0c9476bd0f9be37e59a72` | Pass; 总分=null; theory_score=0; time=[14.513333333333334, 14.75, 16.006666666666668, 16.426666666666666, 11.816666666666666] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6af0c9476bd0f9be37e59a72.json) |
+| exp17_plaincopy | 假设：输出对齐时用 DataCopy 替代 DataCopyPad；改动：输出对齐时用 DataCopy 替代 DataCopyPad | [8c1981df66b3](artifacts/manifests/6af0cae66bd0f9be37e81243.json) | `6af0cae66bd0f9be37e81243` | Pass; 总分=null; theory_score=0; time=[14.720166666666668, 15.096666666666666, 16.263333333333332, 16.8, 12.01] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6af0cae66bd0f9be37e81243.json) |
+| exp17_rollback | 假设：确认同代码官方状态；改动：恢复 exp15 | [7cadaf33b7d4](artifacts/manifests/6af0cb9c6bd0f9be37e918ec.json) | `6af0cb9c6bd0f9be37e918ec` | Pass; 总分=null; theory_score=0; time=[14.743333333333334, 14.803333333333333, 16.16, 16.60333333333333, 12.026666666666667] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6af0cb9c6bd0f9be37e918ec.json) |
+| exp16_u64src | 假设：两处 src 转 uint64，避免 uint32 截断；改动：两处 src 转 uint64，避免 uint32 截断 | [119a5a5b9e4c](artifacts/manifests/6af151866bd0f9be37b22149.json) | `6af151866bd0f9be37b22149` | Pass; 总分=null; theory_score=0; time=[14.652833333333334, 14.756333333333334, 16.486333333333334, 16.609833333333334, 12.1725] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6af151866bd0f9be37b22149.json) |
+| history_A_u64src_recheck | 假设：确认同代码官方状态；改动：不改源码，同版本官方复测 | [119a5a5b9e4c](artifacts/manifests/6afb0d156bd0f9be37912e71.json) | `6afb0d156bd0f9be37912e71` | Pass; 总分=15.51; theory_score=0; time=[14.863333333333333, 14.78, 16.273333333333333, 16.586666666666666, 12.333333333333334] | 不可作有效收益比较，原因见 JSONL | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6afb0d156bd0f9be37912e71.json) |
+| exp0_template_replay | 假设：复核初始模板在官方环境的状态；改动：原样重放 exp0_baseline 模板桩；无新增优化 | [185b58a0bd6e](artifacts/manifests/6afb19ad6bd0f9be37aab735.json) | `6afb19ad6bd0f9be37aab735` | Runtime Error; 总分=0; theory_score=0; time=[null, null, null, null, null] | 不可作有效收益比较，原因见 JSONL | 失败记录；没有有效性能收益 | [官方摘取](artifacts/official/6afb19ad6bd0f9be37aab735.json) |
+| exp1_neumaier_replay | 假设：历史标量完整实现与 Neumaier 累加能否通过官方评测；改动：原样重放 exp1_pad_neumaier；保留旧 no-op infershape | [78950a80c946](artifacts/manifests/6afb1a756bd0f9be37ac4b1d.json) | `6afb1a756bd0f9be37ac4b1d` | Runtime Error; 总分=0; theory_score=0; time=[null, null, null, null, null] | 不可作有效收益比较，原因见 JSONL | 失败记录；没有有效性能收益 | [官方摘取](artifacts/official/6afb1a756bd0f9be37ac4b1d.json) |
+| exp2_infer_replay | 假设：历史读取 paddings 的 infershape 改动能否解决参数校验问题；改动：原样重放 exp2_infer_paddings；相对 exp1 启用值依赖 infershape | [4ef5ceb9e426](artifacts/manifests/6afb1b336bd0f9be37addda5.json) | `6afb1b336bd0f9be37addda5` | Runtime Error; 总分=0; theory_score=0; time=[null, null, null, null, null] | 不可作有效收益比较，原因见 JSONL | 失败记录；没有有效性能收益 | [官方摘取](artifacts/official/6afb1b336bd0f9be37addda5.json) |
+| exp5_common_baseline | 假设：为首次有效实现取得本轮可核对的共同官方基线；改动：原样重放 exp5_no_valuedepend；移除 ValueDepend 的四列版本 | [11bb802ef346](artifacts/manifests/6afb1beb6bd0f9be37af3fc5.json) | `6afb1beb6bd0f9be37af3fc5` | Pass; 总分=14.74; theory_score=0; time=[16.090166666666665, 18.787, 19.094, 19.6505, 12.926666666666666] | +0 分（单次） | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6afb1beb6bd0f9be37af3fc5.json) |
+| current_u64_recheck | 假设：复核当前保留版本的官方状态和总分；改动：原样重放当前 u64src 版本；与历史 6af151866bd0f9be37b22149 核对 | [119a5a5b9e4c](artifacts/manifests/6afb1ca86bd0f9be37b0b7cd.json) | `6afb1ca86bd0f9be37b0b7cd` | Pass; 总分=15.51; theory_score=0; time=[14.87, 14.85, 16.33, 16.54, 12.183333333333334] | +0.77 分（单次） | 版本及官方 Pass 已核验；不自动证实优化因果 | [官方摘取](artifacts/official/6afb1ca86bd0f9be37b0b7cd.json) |
+
+## 已验证、待验证和无效发现
+
+- **verified：代码与官方结果的关联已核验。** 30 次官方返回的 1,140 个源码文件已在本机逐字节核对；共享包保留每个任务的完整 38 文件哈希与 7 个实际提交文件原文。见 [version_coverage.json](artifacts/version_coverage.json) 和 [validation.json](validation.json)。Pass 只说明对应官方任务的返回状态，不证明所有规格边界或优化假设。
+- **verified：移除 ValueDepend 后四列版本有官方 Pass。** exp3_def4 / exp4_no_infer 均 Runtime Error（std::bad_alloc），exp5_no_valuedepend Pass；源码差异与官方结果支持当时版本变化的关联，不能据此穷尽全部 bad_alloc 原因。
+- **verified：历史增量坐标、增量分组、validcnt 与 identfast 版本均有 Pass。** 历史大部分排行总分未留原文，不把手记的 23–24 可见均分当官方全题总分；跨批次不计算收益。
+- **verified：备份命名有误。** `exp16_u64src_cand` 实际等于修复前 exp15，哈希 `7cadaf33b7d495267d5bba8df324641cf122c5991f7c422ef20d2c97e49f404b`；真正当前 u64src 为 `119a5a5b9e4c1589e595a391c8867e75eb5901e192183c4ac5ad7a2a90ea1b86`。请按哈希或官方任务恢复，不按名称猜测。
+- **invalid：Wrong Answer 消融不能作为性能优化收益。** diag_skip_all 与 diag_skip_bookkeep 的失败耗时仅是诊断证据，不能严格推导 67%/48% 的有效成本占比。构建失败、运行失败与正确性失败分开记录；本包官方记录包含运行失败和正确性失败，没有捏造构建失败或有效收益。
+- **invalid：“本地 SUMMARY PASS 证明全语义等价”。** [pad_check.py](artifacts/auxiliary/pad_check.py) 的 overflow-cancel known 分支接受 ref=0、kernel=inf；[原日志](artifacts/auxiliary/local_model_check.log) 还含 ref_invalid=38、skip_family=4。该 PASS 不能作为完全等价证明，也不替代官方结果。
+- **pending：尚未实测的边界。** u64src 消除两处 uint32 下标截断，不代表官方已覆盖大于 2³² 的索引；公开用例规格未给出对应证据。未实施的组合方案仍是想法，不作为跳过已有版本官方评测的流程。
+
+## 当前保留有效版本与后续
+
+当前保留 **u64src**，任务 `6afb1ca86bd0f9be37b0b7cd`，7 文件树哈希 `119a5a5b9e4c1589e595a391c8867e75eb5901e192183c4ac5ad7a2a90ea1b86`；精确源码见 [快照目录](artifacts/code/119a5a5b9e4c1589e595a391c8867e75eb5901e192183c4ac5ad7a2a90ea1b86)。目前只能称为当前保留且复核有效的版本，历史总分证据不全，无法判定全历史最高分。
+
+当前版本已含增量坐标、增量分组和恒等单点处理的历史改动；中央 Agent 可据已有证据决定下一轮，任何新组合仍须独立官方提交。当前未新增优化方案，也没有用本地或云端筛选绕过已完成版本的官方评测。
+
+## 历史缺口与公开材料范围
+
+- 本次最新排名扫描未找到当前任务，`current_ranking_observation=null`；不将缺行解释为 0 分，也不把归档 15.51 分冒充当前榜单值。30 个详情 GET 的状态、源码和 result 均与归档一致，历史已绑定的总分证据仍按其原观察时刻保留。
+- exp0/exp1/exp2 当年的准确任务号未留存，旧笔记不能升级为官方原文；原归档轮次重放的新任务身份、时间与结果单独保留。
+- `readonly_baseline` 与 `readonly_baseline_before_def_20261104` 是不完整历史目录，均缺少 7 个 editable 文件中的 6 个，后者另缺 2 个 CMakeLists.txt；无法从这些目录恢复独立完整版本或绑定官方任务，不能声称它们已评测。具体缺失文件见 [版本覆盖审计](artifacts/version_coverage.json)。
+- 大多数旧任务缺少按任务号绑定的排行榜原文，故总分保持 null；本机原始官方记录和已有源码均保留，缺失指标不造数。
+- 官方未提供评测完成时间、隐藏 45 例明细及硬件/负载；这些字段或条件保持未知。当前用户提交列表可能截断，不能据列表仅有几条就断言此前任务不存在。
+- 本公开版只摘取本题相关官方字段和精确匹配的排行行，剔除无关参赛者资料、其他算子记录和私人资料库链接。每份摘取说明其源文件 SHA256、官方接口和筛选规则；实际指标和 7 个提交文件内容不改。完整原响应留在机器 A 原交接目录。
+- 31 个不可编辑官方模板/样例/测试文件不重新发布，保留每个任务的准确 SHA256。通过官方 package 获取获准使用的原模板，再运行恢复工具，验证 31 模板文件与 7 提交文件后可恢复完整 38 文件项目。若模板不匹配，工具拒绝声称恢复成功；仅凭这份精简包不能离线凭空重建被省略的模板内容。
+- 本机原项目无 Git 提交历史，所以源码版本用冻结快照和哈希恢复。此仓库的发布提交仅标识交接材料，不冒充当时实际测试代码的 Git commit。中央 Agent 应按 `agent-a` 的准确发布提交审阅；不合并 B/C 材料或修改中央基线。

@@ -1,0 +1,42 @@
+{
+  "prepared_at": "2026-11-16T14:56:44.567455+00:00",
+  "editable_text_tree_sha256": "185b58a0bd6e1a5989de12367d4a46b53415d59a9aef70562c5cee43ad3c256c",
+  "files": [
+    {
+      "path": "op_host/pad_v3_grad_def.cpp",
+      "raw_sha256": "790f247ef685f4458798bdc52c17e3687cee5b7b50af7516fa6be9125677ebf3",
+      "submitted_utf8_sha256": "790f247ef685f4458798bdc52c17e3687cee5b7b50af7516fa6be9125677ebf3"
+    },
+    {
+      "path": "op_host/pad_v3_grad_infershape.cpp",
+      "raw_sha256": "91bd5e0e4ce1c0635d7854dbcdc2df85af2e8c24b81870098f74268ad5971a2f",
+      "submitted_utf8_sha256": "91bd5e0e4ce1c0635d7854dbcdc2df85af2e8c24b81870098f74268ad5971a2f"
+    },
+    {
+      "path": "op_host/pad_v3_grad_tiling.cpp",
+      "raw_sha256": "5ec69835bbd28cd91648866a8c1db954311afe056f33d5cd7c72bce50bc911d0",
+      "submitted_utf8_sha256": "5ec69835bbd28cd91648866a8c1db954311afe056f33d5cd7c72bce50bc911d0"
+    },
+    {
+      "path": "op_kernel/pad_v3_grad_tiling_data.h",
+      "raw_sha256": "c25f0732a6be6c5668d40ff3be0698cec498fea6ab590f301751d7c03c4c3acb",
+      "submitted_utf8_sha256": "c25f0732a6be6c5668d40ff3be0698cec498fea6ab590f301751d7c03c4c3acb"
+    },
+    {
+      "path": "op_kernel/pad_v3_grad_tiling_key.h",
+      "raw_sha256": "15621b2dd6a6ab2ba5de75c8071b8ec768dfb6df99e3ddbb19769d514a18d8b3",
+      "submitted_utf8_sha256": "15621b2dd6a6ab2ba5de75c8071b8ec768dfb6df99e3ddbb19769d514a18d8b3"
+    },
+    {
+      "path": "op_kernel/pad_v3_grad.cpp",
+      "raw_sha256": "feda948da66feadfe92e768845e9b31d55ae9b81297089e1cf84aca72a6a4cf1",
+      "submitted_utf8_sha256": "feda948da66feadfe92e768845e9b31d55ae9b81297089e1cf84aca72a6a4cf1"
+    },
+    {
+      "path": "op_kernel/pad_v3_grad.h",
+      "raw_sha256": "65a1ffecc99c0950b78ffcb9f7a0702314c6c1ccd2dc10cb62103e1654d67260",
+      "submitted_utf8_sha256": "65a1ffecc99c0950b78ffcb9f7a0702314c6c1ccd2dc10cb62103e1654d67260"
+    }
+  ],
+  "source_snapshot_label": "exp0_template_replay"
+}

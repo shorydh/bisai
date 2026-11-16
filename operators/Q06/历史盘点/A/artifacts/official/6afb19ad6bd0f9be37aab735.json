@@ -1,0 +1,418 @@
+{
+  "_id": "6afb19ad6bd0f9be37aab735",
+  "ID": 1367370,
+  "problem_id": "6ad9ab403ff2fef7e80e2a1d",
+  "create_time": "2026-11-16T14:56:45.329Z",
+  "status": "Runtime Error",
+  "judge_revision": 0,
+  "public_only": false,
+  "valid": true,
+  "theory_score": 0,
+  "total_testcase_count": 50,
+  "judge_missing_cases": false,
+  "result": [
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a22",
+      "time": null,
+      "precision_ratio": 0,
+      "testcase_status": "Runtime Error",
+      "msg": "[Execution failed] returncode=2\n[WARNING] The argument --export  is useless when --application is not empty\nACL error 161002",
+      "score": 0,
+      "type": "default",
+      "best_time": 3.71
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a27",
+      "time": null,
+      "precision_ratio": 0,
+      "testcase_status": "Skipped",
+      "score": 0,
+      "type": "default",
+      "best_time": 3.75
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a2b",
+      "time": null,
+      "precision_ratio": 0,
+      "testcase_status": "Skipped",
+      "score": 0,
+      "type": "default",
+      "best_time": 3.73
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a2f",
+      "time": null,
+      "precision_ratio": 0,
+      "testcase_status": "Skipped",
+      "score": 0,
+      "type": "default",
+      "best_time": 3.783333333333333
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a33",
+      "time": null,
+      "precision_ratio": 0,
+      "testcase_status": "Skipped",
+      "score": 0,
+      "type": "default",
+      "best_time": 3.66
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a37",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a3b",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a3f",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a43",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a47",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a4c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a50",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a54",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a58",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a5c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a60",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a64",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a68",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a6c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a70",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a74",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a78",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a7c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a80",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a84",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a88",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a8c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a90",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a94",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a98",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a9c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2aa0",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2aa4",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2aa8",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2aac",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ab0",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ab4",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ab8",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2abc",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ac0",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ac4",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ac8",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2acc",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ad0",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ad4",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ad8",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2adc",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ae0",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ae4",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ae8",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    }
+  ],
+  "files": [
+    {
+      "path": "op_host/pad_v3_grad_def.cpp",
+      "key": "op_host/pad_v3_grad_def.cpp",
+      "label": "op_host/pad_v3_grad_def.cpp",
+      "content": "/*!\n * \\file pad_v3_grad_def.cpp\n * \\brief PadV3Grad 算子定义\n */\n#include \"register/op_def_registry.h\"\n\nnamespace ops {\nclass PadV3Grad : public OpDef {\npublic:\n    explicit PadV3Grad(const char* name) : OpDef(name)\n    {\n        this->Input(\"x\")\n            .ParamType(REQUIRED)\n            .DataType({ge::DT_FLOAT16, ge::DT_FLOAT})\n            .Format({ge::FORMAT_ND, ge::FORMAT_ND})\n            .UnknownShapeFormat({ge::FORMAT_ND, ge::FORMAT_ND})\n            .AutoContiguous();\n        this->Input(\"paddings\")\n            .ParamType(REQUIRED)\n            .DataType({ge::DT_INT32, ge::DT_INT64})\n            .Format({ge::FORMAT_ND, ge::FORMAT_ND})\n            .UnknownShapeFormat({ge::FORMAT_ND, ge::FORMAT_ND})\n            .AutoContiguous();\n        this->Output(\"y\")\n            .ParamType(REQUIRED)\n            .DataType({ge::DT_FLOAT16, ge::DT_FLOAT})\n            .Format({ge::FORMAT_ND, ge::FORMAT_ND})\n            .UnknownShapeFormat({ge::FORMAT_ND, ge::FORMAT_ND})\n            .AutoContiguous();\n        this->Attr(\"mode\")\n            .AttrType(OPTIONAL)\n            .String(\"reflect\");\n        this->Attr(\"paddings_contiguous\")\n            .AttrType(OPTIONAL)\n            .Bool(1);\n        this->AICore().AddConfig(\"ascend910b\");\n    }\n};\nOP_ADD(PadV3Grad);\n} // namespace ops\n",
+      "editable": true
+    },
+    {
+      "path": "op_host/pad_v3_grad_infershape.cpp",
+      "key": "op_host/pad_v3_grad_infershape.cpp",
+      "label": "op_host/pad_v3_grad_infershape.cpp",
+      "content": "/*!\n * \\file pad_v3_grad_infershape.cpp\n * \\brief PadV3Grad 算子形状推导实现\n */\n\n#include \"register/op_impl_registry.h\"\n#include \"exe_graph/runtime/infer_shape_context.h\"\n\nusing namespace ge;\n\nnamespace ops {\n\nstatic ge::graphStatus InferShapePadV3Grad(gert::InferShapeContext* context)\n{\n    // TODO: 实现形状推导逻辑\n    const gert::Shape* input_shape = (2 > 0) ? context->GetInputShape(0) : nullptr;\n    // 注意：无输入算子时 input_shape 为 nullptr，需在此处手动设置输出 shape\n\n    for (size_t i = 0; i < 1; i++) {\n        gert::Shape* output_shape = context->GetOutputShape(i);\n        if (output_shape == nullptr) {\n            return ge::GRAPH_FAILED;\n        }\n        const gert::Shape* in_shape = (i < 2) ? context->GetInputShape(i) : input_shape;\n        if (in_shape == nullptr) {\n            in_shape = input_shape;\n        }\n        if (in_shape != nullptr) {\n            *output_shape = *in_shape;\n        }\n    }\n    return ge::GRAPH_SUCCESS;\n}\n\nIMPL_OP_INFERSHAPE(PadV3Grad).InferShape(InferShapePadV3Grad);\n\n} // namespace ops\n",
+      "editable": true
+    },
+    {
+      "path": "op_host/pad_v3_grad_tiling.cpp",
+      "key": "op_host/pad_v3_grad_tiling.cpp",
+      "label": "op_host/pad_v3_grad_tiling.cpp",
+      "content": "/*!\n * \\file pad_v3_grad_tiling.cpp\n * \\brief PadV3Grad 算子 Tiling 实现\n */\n\n#include \"register/op_def_registry.h\"\n#include \"op_common/log/log.h\"\n#include \"op_common/op_host/util/math_util.h\"\n#include \"op_common/op_host/util/platform_util.h\"\n#include \"../op_kernel/pad_v3_grad_tiling_data.h\"\n#include \"../op_kernel/pad_v3_grad_tiling_key.h\"\n\nnamespace optiling {\n\nusing Ops::Base::CeilDiv;\nusing Ops::Base::CeilAlign;\nusing Ops::Base::FloorDiv;\nusing Ops::Base::FloorAlign;\nusing Ops::Base::GetUbBlockSize;\n\nconstexpr uint32_t WS_SYS_SIZE = 0U;\nconstexpr int64_t TYPE_SIZE = 4;\nconstexpr int64_t MIN_SPLIT_THRESHOLD = 1024;\n\nstatic const gert::Shape g_vec_1_shape = {1};\n\nstatic inline const gert::Shape EnsureNotScalar(const gert::Shape& in_shape) {\n    if (in_shape.GetDimNum() == 0) {\n        return g_vec_1_shape;\n    }\n    return in_shape;\n}\n\nstatic ge::graphStatus GetPlatformInfo(gert::TilingContext* context, uint64_t& ubSize, int64_t& coreNum)\n{\n    fe::PlatFormInfos* platformInfoPtr = context->GetPlatformInfo();\n    OP_CHECK_NULL_WITH_CONTEXT(context, platformInfoPtr);\n    auto ascendcPlatform = platform_ascendc::PlatformAscendC(platformInfoPtr);\n    coreNum = ascendcPlatform.GetCoreNumAiv();\n    OP_CHECK_IF(coreNum == 0, OP_LOGE(context, \"coreNum is 0\"), return ge::GRAPH_FAILED);\n    ascendcPlatform.GetCoreMemSize(platform_ascendc::CoreMemType::UB, ubSize);\n    OP_CHECK_IF(ubSize == 0, OP_LOGE(context, \"ubSize is 0\"), return ge::GRAPH_FAILED);\n    return ge::GRAPH_SUCCESS;\n}\n\nstatic ge::graphStatus GetWorkspaceSize(gert::TilingContext* context)\n{\n    size_t* currentWorkspace = context->GetWorkspaceSizes(1);\n    OP_CHECK_NULL_WITH_CONTEXT(context, currentWorkspace);\n    currentWorkspace[0] = WS_SYS_SIZE;\n    return ge::GRAPH_SUCCESS;\n}\n\nstatic ge::graphStatus PadV3GradTilingFunc(gert::TilingContext* context)\n{\n    // TODO: 实现 Tiling 逻辑\n    uint64_t ubSize;\n    int64_t coreNum;\n    OP_CHECK_IF(\n        GetPlatformInfo(context, ubSize, coreNum) != ge::GRAPH_SUCCESS,\n        OP_LOGE(context, \"GetPlatformInfo error\"),\n        return ge::GRAPH_FAILED);\n\n    OP_CHECK_IF(\n        GetWorkspaceSize(context) != ge::GRAPH_SUCCESS,\n        OP_LOGE(context, \"GetWorkspaceSize error\"),\n        return ge::GRAPH_FAILED);\n\n    PadV3GradTilingData* tiling = context->GetTilingData<PadV3GradTilingData>();\n    OP_CHECK_NULL_WITH_CONTEXT(context, tiling);\n\n    // TODO: 设置 tiling 数据\n    tiling->totalNum = 0;\n    tiling->blockFactor = 1;\n    tiling->ubFactor = 0;\n\n    context->SetBlockDim(1);\n\n    // 根据输入 dtype 选择 tilingKey\n    uint64_t tilingKey;\n    auto inputDesc = context->GetInputDesc(0);\n    if (inputDesc != nullptr && (inputDesc->GetDataType() == ge::DT_FLOAT16 || inputDesc->GetDataType() == ge::DT_BF16)) {\n        tilingKey = GET_TPL_TILING_KEY(PADV3GRAD_TPL_SCH_MODE_0);\n    } else {\n        tilingKey = GET_TPL_TILING_KEY(PADV3GRAD_TPL_SCH_MODE_1);\n    }\n    context->SetTilingKey(tilingKey);\n    return ge::GRAPH_SUCCESS;\n}\n\nstatic ge::graphStatus TilingParseForPadV3Grad([[maybe_unused]] gert::TilingParseContext* context)\n{\n    return ge::GRAPH_SUCCESS;\n}\n\nstruct PadV3GradCompileInfo {};\n\nIMPL_OP_OPTILING(PadV3Grad).Tiling(PadV3GradTilingFunc).TilingParse<PadV3GradCompileInfo>(TilingParseForPadV3Grad);\n\n} // namespace optiling\n",
+      "editable": true
+    },
+    {
+      "path": "op_kernel/pad_v3_grad_tiling_data.h",
+      "key": "op_kernel/pad_v3_grad_tiling_data.h",
+      "label": "op_kernel/pad_v3_grad_tiling_data.h",
+      "content": "/*!\n * \\file pad_v3_grad_tiling_data.h\n * \\brief tiling data struct\n */\n\n#ifndef _PADV3GRAD_TILING_DATA_H_\n#define _PADV3GRAD_TILING_DATA_H_\n\nstruct PadV3GradTilingData {\n    int64_t totalNum = 0;     // 总元素数量\n    int64_t blockFactor = 1;  // 每个核处理的元素数量\n    int64_t ubFactor = 0;     // 每次 UB 循环处理的元素数量\n};\n#endif\n",
+      "editable": true
+    },
+    {
+      "path": "op_kernel/pad_v3_grad_tiling_key.h",
+      "key": "op_kernel/pad_v3_grad_tiling_key.h",
+      "label": "op_kernel/pad_v3_grad_tiling_key.h",
+      "content": "/*!\n * \\file pad_v3_grad_tiling_key.h\n * \\brief Tiling 模板参数定义\n */\n\n#ifndef __PADV3GRAD_TILING_KEY_H__\n#define __PADV3GRAD_TILING_KEY_H__\n\n#include \"ascendc/host_api/tiling/template_argument.h\"\n\n#define PADV3GRAD_TPL_SCH_MODE_0 0\n#define PADV3GRAD_TPL_SCH_MODE_1 1\n\nASCENDC_TPL_ARGS_DECL(\n    PadV3Grad,\n    ASCENDC_TPL_UINT_DECL(schMode, 1, ASCENDC_TPL_UI_LIST, PADV3GRAD_TPL_SCH_MODE_0, PADV3GRAD_TPL_SCH_MODE_1));\n\nASCENDC_TPL_SEL(ASCENDC_TPL_ARGS_SEL(\n    ASCENDC_TPL_UINT_SEL(schMode, ASCENDC_TPL_UI_LIST, PADV3GRAD_TPL_SCH_MODE_0, PADV3GRAD_TPL_SCH_MODE_1)));\n\n#endif\n",
+      "editable": true
+    },
+    {
+      "path": "op_kernel/pad_v3_grad.cpp",
+      "key": "op_kernel/pad_v3_grad.cpp",
+      "label": "op_kernel/pad_v3_grad.cpp",
+      "content": "/*!\n * \\file pad_v3_grad.cpp\n * \\brief PadV3Grad 算子 kernel 入口\n */\n\n#include \"pad_v3_grad.h\"\n\nenum class PadV3GradTilingKey : uint32_t\n{\n    TILING_KEY_PADV3GRAD_MODE_0 = 0,\n    TILING_KEY_PADV3GRAD_MODE_1 = 1,\n};\n\ntemplate <uint32_t schMode>\n__global__ __aicore__ void pad_v3_grad(GM_ADDR x, GM_ADDR paddings, GM_ADDR y, GM_ADDR workspace, GM_ADDR tiling)\n{\n    REGISTER_TILING_DEFAULT(PadV3GradTilingData);\n    GET_TILING_DATA_WITH_STRUCT(PadV3GradTilingData, tilingData, tiling);\n    if constexpr (schMode == static_cast<uint32_t>(PadV3GradTilingKey::TILING_KEY_PADV3GRAD_MODE_0)) {\n        NsPadV3Grad::PadV3Grad<half> op;\n        op.Init(x, paddings, y, &tilingData);\n        op.Process();\n    }\n    if constexpr (schMode == static_cast<uint32_t>(PadV3GradTilingKey::TILING_KEY_PADV3GRAD_MODE_1)) {\n        NsPadV3Grad::PadV3Grad<float> op;\n        op.Init(x, paddings, y, &tilingData);\n        op.Process();\n    }\n}\n",
+      "editable": true
+    },
+    {
+      "path": "op_kernel/pad_v3_grad.h",
+      "key": "op_kernel/pad_v3_grad.h",
+      "label": "op_kernel/pad_v3_grad.h",
+      "content": "/*!\n * \\file pad_v3_grad.h\n * \\brief PadV3Grad 算子 kernel 类定义\n */\n\n#ifndef PADV3GRAD_H\n#define PADV3GRAD_H\n\n#include \"kernel_operator.h\"\n#include \"kernel_tiling/kernel_tiling.h\"\n#include \"pad_v3_grad_tiling_data.h\"\n#include \"pad_v3_grad_tiling_key.h\"\n\nnamespace NsPadV3Grad {\n\nusing namespace AscendC;\n\nconstexpr int32_t BUFFER_NUM = 2;\n\ntemplate <typename T>\nclass PadV3Grad {\npublic:\n    __aicore__ inline PadV3Grad(){};\n\n    __aicore__ inline void Init(GM_ADDR x, GM_ADDR paddings, GM_ADDR y, const PadV3GradTilingData* tilingData);\n    __aicore__ inline void Process();\n\nprivate:\n    __aicore__ inline void CopyIn(int64_t progress, int64_t currentNum);\n    __aicore__ inline void CopyOut(int64_t progress, int64_t currentNum);\n    __aicore__ inline void Compute(int64_t currentNum);\n\nprivate:\n    TPipe pipe;\n    TQue<QuePosition::VECIN, BUFFER_NUM> inputQueueX;\n    TQue<QuePosition::VECOUT, BUFFER_NUM> outputQueueY;\n\n    GlobalTensor<T> inputGMX;\n    GlobalTensor<T> outputGMY;\n\n    int64_t blockLength_ = 0;\n    int64_t ubLength_ = 0;\n};\n\n// TODO: 实现具体的 kernel 逻辑\ntemplate <typename T>\n__aicore__ inline void PadV3Grad<T>::Init(GM_ADDR x, GM_ADDR paddings, GM_ADDR y, const PadV3GradTilingData* tilingData)\n{\n    // TODO: 实现 Init 逻辑\n}\n\ntemplate <typename T>\n__aicore__ inline void PadV3Grad<T>::CopyIn(int64_t progress, int64_t currentNum)\n{\n    // TODO: 实现 CopyIn 逻辑\n}\n\ntemplate <typename T>\n__aicore__ inline void PadV3Grad<T>::Compute(int64_t currentNum)\n{\n    // TODO: 实现 Compute 逻辑\n}\n\ntemplate <typename T>\n__aicore__ inline void PadV3Grad<T>::CopyOut(int64_t progress, int64_t currentNum)\n{\n    // TODO: 实现 CopyOut 逻辑\n}\n\ntemplate <typename T>\n__aicore__ inline void PadV3Grad<T>::Process()\n{\n    // TODO: 实现 Process 逻辑\n}\n\n} // namespace NsPadV3Grad\n#endif // PADV3GRAD_H\n",
+      "editable": true
+    }
+  ],
+  "_publication": {
+    "source_file": "official_6afb19ad6bd0f9be37aab735.json",
+    "source_sha256": "43ff03dab27c536f77789a4fb10f0e5eef561252c129f782003034b48e35c3e8",
+    "official_endpoint": "https://cannjudge.cn/api/submissions/6afb19ad6bd0f9be37aab735",
+    "extraction": "Explicit field selection; numeric metrics and selected source text are unchanged. Original complete response retained in machine A evidence archive.",
+    "retained_fields": [
+      "_id",
+      "ID",
+      "problem_id",
+      "create_time",
+      "status",
+      "judge_revision",
+      "public_only",
+      "valid",
+      "theory_score",
+      "total_testcase_count",
+      "judge_missing_cases",
+      "result",
+      "files"
+    ],
+    "omitted_nonmetric_fields": [
+      "user_id",
+      "__v",
+      "problem",
+      "contest",
+      "group",
+      "user",
+      "can_view_code",
+      "tiling_h",
+      "tiling_key_h",
+      "tiling_key_cpp",
+      "host_cpp",
+      "kernel_cpp"
+    ],
+    "files_scope": "Only 7 actual submitted editable files; all 38 official file hashes are preserved in the associated manifest."
+  }
+}

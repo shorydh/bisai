@@ -1,0 +1,26 @@
+--- 6af0c3936bd0f9be37dc3c7b/op_kernel/pad_v3_grad.h
++++ 6af0c5606bd0f9be37df4557/op_kernel/pad_v3_grad.h
+@@ -493,22 +493,13 @@
+         }
+         outLocal_.SetValue(k, PadConvert<T>::FromFloat(val));
+         if (k + 1 < chunkLen) {
+-            /* 多下标 +1；只有发生变化的维度需要重算 group（进位链上每一维都变了）。 */
++            /* DIAG_ONLY：只保留下标推进，跳过每元素的 UpdateDimGroups 与 elemOk 重扫。 */
+             for (int64_t d = rank_ - 1; d >= 0; --d) {
+                 ++iDec_[d];
+                 if (iDec_[d] < outDims_[d]) {
+-                    UpdateDimGroups(d);
+                     break;
+                 }
+                 iDec_[d] = 0;
+-                UpdateDimGroups(d);
+-            }
+-            elemOk = true;
+-            for (int64_t d = 0; d < rank_; ++d) {
+-                if (dimCnt_[d] <= 0) {
+-                    elemOk = false;
+-                    break;
+-                }
+             }
+         }
+     }

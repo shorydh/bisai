@@ -1,0 +1,40 @@
+{
+  "built_at": "2026-11-16T16:00:34.053984+00:00",
+  "source_archive_label": "machine A handoffs/06_PadV3Grad/历史盘点复核_20261116/A",
+  "source_jsonl_sha256": "cef68445668df288fdb083af61dbae538643d9fcf5d78ecafe0c8f23efe049d0",
+  "source_summary_sha256": "b41de550925ab2a070d6c8c08ddb869587c83cc87dac0c022b2de9b737cf9543",
+  "original_official_files_byte_checked": 1140,
+  "excluded_categories": [
+    "unrelated ranking rows",
+    "other operators submission history",
+    "nonmetric account/team profiles",
+    "personal Library references",
+    "noneditable official template/sample/test contents"
+  ],
+  "preserved_numeric_metrics": true,
+  "published_editable_version_count": 21,
+  "source_record_count": 30,
+  "source_fields": [
+    "experiment_id",
+    "operator",
+    "round_id",
+    "agent_id",
+    "task_id",
+    "base_version",
+    "candidate_version",
+    "hypothesis",
+    "change",
+    "official_task_id",
+    "official_result_ref",
+    "evaluated_at",
+    "evaluation_protocol",
+    "official_status",
+    "official_metrics",
+    "baseline_official_result_ref",
+    "comparison",
+    "finding_status",
+    "applicability",
+    "artifacts",
+    "notes"
+  ]
+}

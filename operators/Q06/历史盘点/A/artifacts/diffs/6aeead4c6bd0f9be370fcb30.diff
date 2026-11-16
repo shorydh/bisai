@@ -1,0 +1,67 @@
+--- 6aee884a6bd0f9be378c2837/op_kernel/pad_v3_grad.h
++++ 6aeead4c6bd0f9be370fcb30/op_kernel/pad_v3_grad.h
+@@ -109,6 +109,7 @@
+ 
+ private:
+     __aicore__ inline bool BuildGroups(int64_t flat);
++    __aicore__ inline bool BuildGroupsFromDec();
+     __aicore__ inline void AddGroup(int64_t slot, int64_t r, int64_t step, int64_t jlo, int64_t jhi);
+     __aicore__ inline int64_t GroupJ(int64_t d, int64_t k) const;
+     __aicore__ inline void ComputeChunk(int64_t chunkStart, int64_t chunkLen);
+@@ -336,9 +337,19 @@
+         iDec_[d] = rem % n;
+         rem /= n;
+     }
+-
++    return BuildGroupsFromDec();
++}
++
++/* exp7_odometer：直接使用已维护的 iDec_（ComputeChunk 增量推进），跳过每元素的
++ * rank 层 div/mod。语义与 BuildGroups(flat) 完全一致。 */
++template <typename T>
++__aicore__ inline bool PadV3Grad<T>::BuildGroupsFromDec()
++{
+     for (int64_t d = 0; d < rank_; ++d) {
+         const int64_t n = outDims_[d];
++        if (n <= 0) {
++            return false;   /* 与 BuildGroups 的解码校验保持一致 */
++        }
+         const int64_t jlo = -front_[d];
+         const int64_t jhi = n + back_[d];
+         const int64_t s0 = 2 * d;
+@@ -414,9 +425,17 @@
+ template <typename T>
+ __aicore__ inline void PadV3Grad<T>::ComputeChunk(int64_t chunkStart, int64_t chunkLen)
+ {
++    /* exp7_odometer：chunkStart 的多下标只解码一次，之后逐元素 +1 进位。
++     * 旧实现对每个元素重做 rank 层 div/mod（`rem % n` + `rem /= n`）。 */
++    int64_t remDec = chunkStart;
++    for (int64_t d = rank_ - 1; d >= 0; --d) {
++        const int64_t n = outDims_[d];
++        iDec_[d] = (n > 0) ? (remDec % n) : 0;
++        remDec = (n > 0) ? (remDec / n) : 0;
++    }
+     for (int64_t k = 0; k < chunkLen; ++k) {
+         float val = 0.0f;
+-        if (BuildGroups(chunkStart + k)) {
++        if (BuildGroupsFromDec()) {
+             for (int64_t d = 0; d < rank_; ++d) {
+                 pos_[d] = 0;
+             }
+@@ -447,6 +466,16 @@
+             val = hi + comp;
+         }
+         outLocal_.SetValue(k, PadConvert<T>::FromFloat(val));
++        if (k + 1 < chunkLen) {
++            /* 多下标 +1（与 BuildGroups 的解码顺序一致） */
++            for (int64_t d = rank_ - 1; d >= 0; --d) {
++                ++iDec_[d];
++                if (iDec_[d] < outDims_[d]) {
++                    break;
++                }
++                iDec_[d] = 0;
++            }
++        }
+     }
+ }
+ 

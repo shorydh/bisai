@@ -1,0 +1,20 @@
+{
+  "artifacts/auxiliary/pad_check.py": {
+    "source_file": "context/06_PadV3Grad/local_verify/pad_check.py",
+    "source_sha256": "3abbfedf40bbe8e2791695336bc6507a091df36c8f9a7bb526c7bbfb95717769",
+    "official_endpoint": null,
+    "extraction": "Explicit field selection; numeric metrics and selected source text are unchanged. Original complete response retained in machine A evidence archive."
+  },
+  "artifacts/auxiliary/local_model_check.log": {
+    "source_file": "prior_evidence/local_model_check.log",
+    "source_sha256": "8582719b442a53857afe9a4434b02ccd92f0fd2bd15336f331032db672da05d1",
+    "official_endpoint": null,
+    "extraction": "Explicit field selection; numeric metrics and selected source text are unchanged. Original complete response retained in machine A evidence archive."
+  },
+  "artifacts/auxiliary/platform_log.md": {
+    "source_file": "context/06_PadV3Grad/platform_log.md",
+    "source_sha256": "5dedd5048917badb745eedfb8aaff16cbc564f3ccddf664f34b88ac7364612f9",
+    "official_endpoint": null,
+    "extraction": "Explicit field selection; numeric metrics and selected source text are unchanged. Original complete response retained in machine A evidence archive."
+  }
+}

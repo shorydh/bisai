@@ -1,0 +1,34 @@
+e:\ai_develop\cannjudege\06_PadV3Grad\code\samples\reference.py:131: RuntimeWarning: overflow encountered in cast
+  return y.numpy().astype(original_dtype)
+e:\ai_develop\cannjudege\06_PadV3Grad\local_verify\pad_check.py:181: RuntimeWarning: overflow encountered in scalar add
+  t = np.float32(hi + v)
+e:\ai_develop\cannjudege\06_PadV3Grad\local_verify\pad_check.py:195: RuntimeWarning: invalid value encountered in scalar add
+  hi = np.float32(hi + v)
+[A] _pad_index vs torch F.pad (reflect/replicate/circular): bad=0
+[B] preimage groups (signed): cases=4490 bad=0
+[C] kernel model: pass=106 fail=0 ref_invalid=38 skip_family=4
+  [D] out=(16, 24) reflect   |x|<=1  naive_bad=0 maxabs=9.537e-07 | neumaier_bad=0 maxabs=0
+  [D] out=(16, 24) reflect   |x|<=1e+06  naive_bad=0 maxabs=1 | neumaier_bad=0 maxabs=0
+  [D] out=(16, 24) symmetric |x|<=1  naive_bad=0 maxabs=9.537e-07 | neumaier_bad=0 maxabs=0
+  [D] out=(16, 24) symmetric |x|<=1e+06  naive_bad=0 maxabs=1 | neumaier_bad=0 maxabs=0
+  [D] out=(16, 24) circular  |x|<=1  naive_bad=0 maxabs=9.537e-07 | neumaier_bad=0 maxabs=0
+  [D] out=(16, 24) circular  |x|<=1e+06  naive_bad=0 maxabs=0.75 | neumaier_bad=0 maxabs=0
+  [D] out=(16, 24) edge      |x|<=1  naive_bad=0 maxabs=3.433e-05 | neumaier_bad=0 maxabs=0
+  [D] out=(16, 24) edge      |x|<=1e+06  naive_bad=0 maxabs=16 | neumaier_bad=0 maxabs=0
+  [D] out=(16, 64) reflect   |x|<=1  naive_bad=0 maxabs=4.768e-06 | neumaier_bad=0 maxabs=0
+  [D] out=(16, 64) reflect   |x|<=1e+06  naive_bad=0 maxabs=4 | neumaier_bad=0 maxabs=0
+  [D] out=(16, 64) symmetric |x|<=1  naive_bad=0 maxabs=4.292e-06 | neumaier_bad=0 maxabs=0
+  [D] out=(16, 64) symmetric |x|<=1e+06  naive_bad=0 maxabs=6 | neumaier_bad=0 maxabs=0
+  [D] out=(16, 64) circular  |x|<=1  naive_bad=0 maxabs=6.676e-06 | neumaier_bad=0 maxabs=0
+  [D] out=(16, 64) circular  |x|<=1e+06  naive_bad=0 maxabs=6 | neumaier_bad=0 maxabs=0
+  [D] out=(16, 64) edge      |x|<=1  naive_bad=0 maxabs=6.866e-05 | neumaier_bad=0 maxabs=0
+  [D] out=(16, 64) edge      |x|<=1e+06  naive_bad=0 maxabs=360 | neumaier_bad=0 maxabs=0
+[E] partition coverage + 32B start/chunk alignment: bad=0
+  [F] 3e38+3e38      ref=inf kernel=inf OK
+  [F] overflow-cancel ref=0.0 kernel=inf OK
+  [F] nan-input      ref=nan kernel=nan OK
+  [F] posinf         ref=inf kernel=inf OK
+  [F] posinf+neginf  ref=nan kernel=nan OK
+[F] Inf/NaN return: bad=0
+
+SUMMARY: PASS (fail=0, ref_invalid=38, skip_family=4)

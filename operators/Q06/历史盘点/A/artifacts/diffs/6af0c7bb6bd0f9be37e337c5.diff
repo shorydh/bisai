@@ -1,0 +1,37 @@
+--- 6af0c6166bd0f9be37e0648f/op_kernel/pad_v3_grad.h
++++ 6af0c7bb6bd0f9be37e337c5/op_kernel/pad_v3_grad.h
+@@ -381,6 +381,34 @@
+         gcnt_[s0] = 0;
+         gcnt_[s0 + 1] = 0;
+ 
++        /* exp15_identfast：最内维每元素都要跑下面的分支树 + 两次 AddGroup(含取模)，
++         * 实测「每元素簿记」占 06 总耗时的 48%。中间位置的映射是恒等单点，
++         * 直接写掉分组即可（表示法与 mode1 的恒等分支完全一致，GroupJ 结果相同）。
++         * 判据由 numpy 模型穷举验证：误判 0 例；守卫之外一律走原路径。 */
++        if (d == rank_ - 1 && mode_ >= 2 && n >= 8 && front_[d] >= 0 && back_[d] >= 0 &&
++            front_[d] + back_[d] + 4 <= n) {
++            const int64_t ivF = iDec_[d];
++            bool idFast;
++            if (mode_ == 2) {
++                idFast = (ivF == 0 || ivF >= front_[d] + 1) &&
++                         (ivF == n - 1 || ivF <= n - 2 - back_[d]);
++            } else {
++                idFast = (ivF >= front_[d]) && (ivF <= n - 1 - back_[d]);
++            }
++            if (idFast) {
++                gr_[s0] = 0;
++                gs_[s0] = 1;
++                gt0_[s0] = ivF;
++                gcnt_[s0] = 1;
++                const int64_t oldCntF = dimCnt_[d];
++                dimCnt_[d] = 1;
++                if ((dimCnt_[d] <= 0) != (oldCntF <= 0)) {
++                    badDims_ += (dimCnt_[d] <= 0) ? 1 : -1;
++                }
++                return true;
++            }
++        }
++
+         if (n == 1) {
+             /* 所有 padded 位置都映射到 0（含 edge；reflect/symmetric/circular 同） */
+             if (jhi > jlo) {

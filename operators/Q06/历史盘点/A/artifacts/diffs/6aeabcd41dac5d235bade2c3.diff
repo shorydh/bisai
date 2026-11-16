@@ -1,0 +1,11 @@
+--- 6aeabc161dac5d235bac53db/op_host/pad_v3_grad_infershape.cpp
++++ 6aeabcd41dac5d235bade2c3/op_host/pad_v3_grad_infershape.cpp
+@@ -35,7 +35,7 @@
+ namespace ops {
+ 
+ #ifndef PADV3_INFER_FROM_PADDINGS
+-#define PADV3_INFER_FROM_PADDINGS 1
++#define PADV3_INFER_FROM_PADDINGS 0
+ #endif
+ 
+ static constexpr size_t PADV3_INFER_MAX_RANK = 8;

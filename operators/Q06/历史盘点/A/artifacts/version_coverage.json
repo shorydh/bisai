@@ -1,0 +1,294 @@
+{
+  "checked_at": "2026-11-16T15:54:26.087538+00:00",
+  "scope": "Offline audit of archived official evidence and current local code, no network requests",
+  "records": 30,
+  "unique_versions": 21,
+  "status_counts": {
+    "Runtime Error": 5,
+    "Pass": 23,
+    "Wrong Answer": 2
+  },
+  "official_files_checked": 1140,
+  "local": [
+    {
+      "path": "backup\\06_PadV3Grad\\exp0_baseline",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "185b58a0bd6e1a5989de12367d4a46b53415d59a9aef70562c5cee43ad3c256c",
+      "tree9": "4569ebc58d5b5280254c2f3f3c51a986573edf675dc4cc9d20477d10564bc1d7",
+      "official_task_ids": [
+        "6afb19ad6bd0f9be37aab735"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp10_rowdma_cand",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "78b5b1091849378634e5292e2c3933cda9c6d93242b3643ccbf75c7867ac2528",
+      "tree9": "085cf896bedc07e9b61a7ecf9d7934a52ff57e7ed22fca7679c8811f7ec1528f",
+      "official_task_ids": [
+        "6af0bd126bd0f9be37d16d5b"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp11_rowdma_full_cand",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "4bcc5e205a33ef30988e80f8a436c006e34f175e627fd08c033a82d0d63ca83a",
+      "tree9": "2731742ff1b344c26746f83c59f3d09c6316fbb2d107249efe2495ccbf4723c7",
+      "official_task_ids": [
+        "6af0bdc86bd0f9be37d29d3b"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp12_blkdma_cand",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "bdfd5a6df839d722d8b7fbedd43889ba6a21c16817821475b3a216c2df9a8b4e",
+      "tree9": "443c42a6431036747aada10da412588274869a85b3d95d311a072634f60f3936",
+      "official_task_ids": [
+        "6af0bf356bd0f9be37d50465"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp13_iddma_cand",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "d4c08ce012943d539ce1dc6caaa38f490ebfd3b5ebc7a415496a4596300e1595",
+      "tree9": "510adc085a3a5f4c0b0f0d4d1a303721b37d6a36e32535b1948f7c6bbbda041d",
+      "official_task_ids": [
+        "6af0c2dd6bd0f9be37db01c9"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp14_validcnt_cand",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "118b069cd24fd298e3d0d1df17b66d2a8a85dc2fff93948c8f1d71560cc0f288",
+      "tree9": "7bc82c421352f4dfd0552841a92ac0c0e2911382b1561e6e0a3591b10baff402",
+      "official_task_ids": [
+        "6af0c6166bd0f9be37e0648f"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp15_identfast_cand",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "7cadaf33b7d495267d5bba8df324641cf122c5991f7c422ef20d2c97e49f404b",
+      "tree9": "c7726f223dea8cd04b176b3e866a3a34ccbbbf6a50a6c461c59a3e237c0f879b",
+      "official_task_ids": [
+        "6af0c7bb6bd0f9be37e337c5",
+        "6af0c9476bd0f9be37e59a72",
+        "6af0cb9c6bd0f9be37e918ec"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp16_identcopy_cand",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "635916fc922bb26b5227c7e8e8e9915aeea9790adc7085867cff47b41c87b297",
+      "tree9": "0b64cddc531ca28b4e59644ca55c04ef375454e47849f8a297c7c77bcee4a992",
+      "official_task_ids": [
+        "6af0c8916bd0f9be37e482b7"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp16_u64src_cand",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "7cadaf33b7d495267d5bba8df324641cf122c5991f7c422ef20d2c97e49f404b",
+      "tree9": "c7726f223dea8cd04b176b3e866a3a34ccbbbf6a50a6c461c59a3e237c0f879b",
+      "official_task_ids": [
+        "6af0c7bb6bd0f9be37e337c5",
+        "6af0c9476bd0f9be37e59a72",
+        "6af0cb9c6bd0f9be37e918ec"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp17_plaincopy_cand",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "8c1981df66b3b8522182bafdc19d6b931a92c41b55c61100507e3088d1f41ea7",
+      "tree9": "f392206b610f578abd5ba6eeae07bac39718afe375a80aec41f25bff2f9d022c",
+      "official_task_ids": [
+        "6af0cae66bd0f9be37e81243"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp1_pad_neumaier",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "78950a80c94607b1438edcd76f07bf506273df81c07b8d4bdc8d6216d4f87281",
+      "tree9": "3441c53b985a924d949ae7cee930ca75ac17f4a2c452dfb2d230840edb150a28",
+      "official_task_ids": [
+        "6afb1a756bd0f9be37ac4b1d"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp2_infer_paddings",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "4ef5ceb9e426e1e15379c242dd11bfcc506678ae7a454a8ab0cca04e30d72db3",
+      "tree9": "ab77786d98997f03a612fffe4895252fb492705c1a47a612b99b018eee5b977e",
+      "official_task_ids": [
+        "6afb1b336bd0f9be37addda5"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp3_def4",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "5e3fcac8ed5c3c845172202e71444a58c6f8c058e2cf1f08e38c3e791dcc4438",
+      "tree9": "ae25f2de435b86fa404651dcea698595856883a133ec434e13e7e289908a93da",
+      "official_task_ids": [
+        "6aeabc161dac5d235bac53db"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp4_no_infer",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "d83984eda220083350746cad5e36cb822be1ca8d9939e4acd603514c25aa4428",
+      "tree9": "b79f00d40827d75e69fb04b7079602946428d791d30f0bb036cf342c38b27f37",
+      "official_task_ids": [
+        "6aeabcd41dac5d235bade2c3"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp5_no_valuedepend",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "11bb802ef346fd11a4c9d157e0bb1b56591fd125a6fed93c4992b8cd3d5e4330",
+      "tree9": "07cde4321057f036f183c097b64c3c79731a9b2cec774a330b25ae4dba6a0b55",
+      "official_task_ids": [
+        "6aeabeb51dac5d235bb1c0cd",
+        "6aee14d16bd0f9be378dfb6b",
+        "6aee884a6bd0f9be378c2837",
+        "6afb1beb6bd0f9be37af3fc5"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp6_batchrun_cand",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "d6b8cfcb28ba0d77bcf2208fb7807c97eb4d4ebd5699bbc9b6b0226f88c3e160",
+      "tree9": "f806892c06b659393bcf7ff6620620ab0ca24fc2dbfcc12d8b036fa0b2b2ff2e",
+      "official_task_ids": [
+        "6aee86db6bd0f9be3785ad1f"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp7_odometer_cand",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "2d357c22d92267e0d3ac7f516de7dc484374c0a79345a9a1a29dcf99ab070853",
+      "tree9": "974bdc9adf18962d889f0e32477127980d408232b4facd8fe3b260f4d54ae8b3",
+      "official_task_ids": [
+        "6aeead4c6bd0f9be370fcb30"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp8_incgroup_cand",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "2d0f873125923bbdae4fcc9e8c9271100796e557ba6dc2b7c3ac147d1bda7322",
+      "tree9": "2560dbe18c1f049d8fee8651e4d580a508b48a4519db76d1b94800a94e73e42e",
+      "official_task_ids": [
+        "6aeeb18d6bd0f9be37188007"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\exp9_constodo_cand",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "3f6d951cd4cd6483023d7108559e1591f6a6262625751ab81932c29b676f4f5d",
+      "tree9": "9aff1d8572159f20c94423c9b653cc06ce296804b56b7bef8325324e2076c282",
+      "official_task_ids": [
+        "6aeeb3b26bd0f9be371ce6a2",
+        "6af0bfea6bd0f9be37d61185",
+        "6af0c3936bd0f9be37dc3c7b"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\history_A_20261116_u64src",
+      "kind": "backup",
+      "missing_files": [],
+      "tree7": "119a5a5b9e4c1589e595a391c8867e75eb5901e192183c4ac5ad7a2a90ea1b86",
+      "tree9": "b27f7db486227dae70282e48599d45d371b5217dbd2ab83730dff8f1fbf551f3",
+      "official_task_ids": [
+        "6af151866bd0f9be37b22149",
+        "6afb0d156bd0f9be37912e71",
+        "6afb1ca86bd0f9be37b0b7cd"
+      ]
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\readonly_baseline",
+      "kind": "backup",
+      "missing_files": [
+        "op_host/pad_v3_grad_infershape.cpp",
+        "op_host/pad_v3_grad_tiling.cpp",
+        "op_kernel/pad_v3_grad_tiling_data.h",
+        "op_kernel/pad_v3_grad_tiling_key.h",
+        "op_kernel/pad_v3_grad.cpp",
+        "op_kernel/pad_v3_grad.h"
+      ],
+      "tree7": null,
+      "tree9": null,
+      "official_task_ids": []
+    },
+    {
+      "path": "backup\\06_PadV3Grad\\readonly_baseline_before_def_20261104",
+      "kind": "backup",
+      "missing_files": [
+        "op_host/pad_v3_grad_infershape.cpp",
+        "op_host/pad_v3_grad_tiling.cpp",
+        "op_kernel/pad_v3_grad_tiling_data.h",
+        "op_kernel/pad_v3_grad_tiling_key.h",
+        "op_kernel/pad_v3_grad.cpp",
+        "op_kernel/pad_v3_grad.h",
+        "op_host/CMakeLists.txt",
+        "op_kernel/CMakeLists.txt"
+      ],
+      "tree7": null,
+      "tree9": null,
+      "official_task_ids": []
+    },
+    {
+      "path": "06_PadV3Grad\\code",
+      "kind": "live",
+      "missing_files": [],
+      "tree7": "119a5a5b9e4c1589e595a391c8867e75eb5901e192183c4ac5ad7a2a90ea1b86",
+      "tree9": "b27f7db486227dae70282e48599d45d371b5217dbd2ab83730dff8f1fbf551f3",
+      "official_task_ids": [
+        "6af151866bd0f9be37b22149",
+        "6afb0d156bd0f9be37912e71",
+        "6afb1ca86bd0f9be37b0b7cd"
+      ]
+    },
+    {
+      "path": "_external_ai_pack\\06_PadV3Grad\\code",
+      "kind": "export",
+      "missing_files": [],
+      "tree7": "119a5a5b9e4c1589e595a391c8867e75eb5901e192183c4ac5ad7a2a90ea1b86",
+      "tree9": "b27f7db486227dae70282e48599d45d371b5217dbd2ab83730dff8f1fbf551f3",
+      "official_task_ids": [
+        "6af151866bd0f9be37b22149",
+        "6afb0d156bd0f9be37912e71",
+        "6afb1ca86bd0f9be37b0b7cd"
+      ]
+    },
+    {
+      "path": "out\\cannjudge_06_template\\project\\code",
+      "kind": "template",
+      "missing_files": [],
+      "tree7": "185b58a0bd6e1a5989de12367d4a46b53415d59a9aef70562c5cee43ad3c256c",
+      "tree9": "4569ebc58d5b5280254c2f3f3c51a986573edf675dc4cc9d20477d10564bc1d7",
+      "official_task_ids": [
+        "6afb19ad6bd0f9be37aab735"
+      ]
+    }
+  ],
+  "issues": [],
+  "source_report_sha256": "6997c5e4c85180a55d3bcfd97e35d795100dfbc8c5768fb0a8017dd03e3ed728",
+  "note": "Local path labels are relative to machine A project; this independent audit is auxiliary evidence, not official benchmark data."
+}

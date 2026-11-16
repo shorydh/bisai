@@ -1,0 +1,20 @@
+--- 6af0cb9c6bd0f9be37e918ec/op_kernel/pad_v3_grad.h
++++ 6af151866bd0f9be37b22149/op_kernel/pad_v3_grad.h
+@@ -512,7 +512,7 @@
+                 for (int64_t d = 0; d < rank_; ++d) {
+                     src += (GroupJ(d, pos_[d]) + front_[d]) * strides_[d];
+                 }
+-                const float v = PadConvert<T>::ToFloat(xGm_.GetValue(static_cast<uint32_t>(src)));
++                const float v = PadConvert<T>::ToFloat(xGm_.GetValue(static_cast<uint64_t>(src)));
+                 hi = PadAccStep(hi, comp, v);
+ 
+                 int64_t dd = rank_ - 1;
+@@ -574,7 +574,7 @@
+     }
+     for (int64_t k = 0; k < chunkLen; ++k) {
+         outLocal_.SetValue(k,
+-            PadConvert<T>::FromFloat(PadConvert<T>::ToFloat(xGm_.GetValue(static_cast<uint32_t>(src)))));
++            PadConvert<T>::FromFloat(PadConvert<T>::ToFloat(xGm_.GetValue(static_cast<uint64_t>(src)))));
+         if (k + 1 < chunkLen && rank_ > 0) {
+             ++iDec_[rank_ - 1];
+             if (iDec_[rank_ - 1] < outDims_[rank_ - 1]) {

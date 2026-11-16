@@ -1,0 +1,32 @@
+--- 6af0c9476bd0f9be37e59a72/op_kernel/pad_v3_grad.h
++++ 6af0cae66bd0f9be37e81243/op_kernel/pad_v3_grad.h
+@@ -601,13 +601,22 @@
+ __aicore__ inline void PadV3Grad<T>::CopyOutChunk(int64_t chunkStart, int64_t chunkLen)
+ {
+     PipeBarrier<PIPE_ALL>();
+-    DataCopyExtParams p;
+-    p.blockCount = 1;
+-    p.blockLen = static_cast<uint32_t>(chunkLen * static_cast<int64_t>(sizeof(T)));
+-    p.srcStride = 0;
+-    p.dstStride = 0;
+-    p.rsv = 0;
+-    DataCopyPad(yGm_[chunkStart], outLocal_, p);
++    /* exp17_plaincopy：原来无条件用 DataCopyPad（要构造 pad 描述符，比普通 DataCopy 贵）。
++     * chunk 起点与长度都是 32B 整倍数时直接用 DataCopy；否则才退回 DataCopyPad。
++     * 数值完全一致（同一段连续内存、无 padding 语义）。 */
++    const int64_t bytes = chunkLen * static_cast<int64_t>(sizeof(T));
++    if ((bytes % 32) == 0 &&
++        ((chunkStart * static_cast<int64_t>(sizeof(T))) % 32) == 0) {
++        DataCopy(yGm_[chunkStart], outLocal_, static_cast<uint32_t>(chunkLen));
++    } else {
++        DataCopyExtParams p;
++        p.blockCount = 1;
++        p.blockLen = static_cast<uint32_t>(bytes);
++        p.srcStride = 0;
++        p.dstStride = 0;
++        p.rsv = 0;
++        DataCopyPad(yGm_[chunkStart], outLocal_, p);
++    }
+     PipeBarrier<PIPE_ALL>();
+ }
+ 

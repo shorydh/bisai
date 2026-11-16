@@ -1,0 +1,68 @@
+--- 6aeeb3b26bd0f9be371ce6a2/op_kernel/pad_v3_grad.h
++++ 6af0bd126bd0f9be37d16d5b/op_kernel/pad_v3_grad.h
+@@ -526,6 +526,65 @@
+         }
+         return;
+     }
++    /* exp10_rowdma：mode 0（常数填充）且「最内维没有 padding」时，输出的一整行对应输入的
++     * 连续一段，原本逐元素 GM 标量读 + UB 标量写可以整行换成一次 DataCopyPad。
++     * 所有条件都在运行时判定，任一不满足就原样走下面的逐元素里程表循环（行为与性能都不变），
++     * 因此这条快路径不会改变数值结果：
++     *   - 最内维 front_[last]==0 且 outDims==inDims ⇒ 行内元素与输入一一对应且连续；
++     *   - 行长按 32B 对齐 ⇒ outLocal_[kf] 与 Duplicate 的目的地址始终 32B 对齐；
++     *   - chunkLen 是整行数 ⇒ 不会出现「不足 32B 的尾行」这种向量指令不合法的情况。 */
++    if (rank_ >= 1 && outDims_[rank_ - 1] > 0 &&
++        front_[rank_ - 1] == 0 && outDims_[rank_ - 1] == xDims_[rank_ - 1] &&
++        (outDims_[rank_ - 1] * static_cast<int64_t>(sizeof(T))) % 32 == 0 &&
++        chunkStart % outDims_[rank_ - 1] == 0 &&
++        chunkLen % outDims_[rank_ - 1] == 0) {
++        const int64_t rowLen = outDims_[rank_ - 1];
++        int64_t remF = chunkStart;
++        for (int64_t d = rank_ - 1; d >= 0; --d) {
++            const int64_t n = outDims_[d];
++            iDec_[d] = (n > 0) ? (remF % n) : 0;
++            remF = (n > 0) ? (remF / n) : 0;
++        }
++        for (int64_t kf = 0; kf < chunkLen; kf += rowLen) {
++            bool interior = true;
++            for (int64_t d = 0; d < rank_ - 1; ++d) {
++                if (iDec_[d] < front_[d] || iDec_[d] >= front_[d] + xDims_[d]) {
++                    interior = false;
++                    break;
++                }
++            }
++            if (interior) {
++                int64_t srcF = 0;
++                for (int64_t d = 0; d < rank_; ++d) {
++                    srcF += (iDec_[d] + front_[d]) * strides_[d];
++                }
++                DataCopyExtParams pf;
++                pf.blockCount = 1;
++                pf.blockLen = static_cast<uint32_t>(rowLen * static_cast<int64_t>(sizeof(T)));
++                pf.srcStride = 0;
++                pf.dstStride = 0;
++                pf.rsv = 0;
++                DataCopyPadExtParams<T> pp{};
++                pp.isPad = false;
++                pp.leftPadding = 0;
++                pp.rightPadding = 0;
++                DataCopyPad(outLocal_[kf], xGm_[srcF], pf, pp);
++            } else {
++                Duplicate(outLocal_[kf], PadConvert<T>::FromFloat(0.0f),
++                          static_cast<int32_t>(rowLen));
++            }
++            iDec_[rank_ - 1] = 0;
++            for (int64_t d = rank_ - 2; d >= 0; --d) {
++                ++iDec_[d];
++                if (iDec_[d] < outDims_[d]) {
++                    break;
++                }
++                iDec_[d] = 0;
++            }
++        }
++        PipeBarrier<PIPE_ALL>();
++        return;
++    }
+     for (int64_t d = 0; d < rank_; ++d) {
+         iDec_[d] = 0;
+     }

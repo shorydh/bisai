@@ -1,0 +1,417 @@
+{
+  "_id": "6af0bdc86bd0f9be37d29d3b",
+  "ID": 1231875,
+  "problem_id": "6ad9ab403ff2fef7e80e2a1d",
+  "create_time": "2026-11-08T18:22:00.418Z",
+  "status": "Pass",
+  "judge_revision": 0,
+  "public_only": false,
+  "valid": true,
+  "theory_score": 0,
+  "total_testcase_count": 50,
+  "judge_missing_cases": false,
+  "result": [
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a22",
+      "time": 14.573333333333334,
+      "precision_ratio": 1,
+      "testcase_status": "Pass",
+      "score": 0,
+      "type": "default",
+      "best_time": 3.71
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a27",
+      "time": 16.196666666666665,
+      "precision_ratio": 1,
+      "testcase_status": "Pass",
+      "score": 0,
+      "type": "default",
+      "best_time": 3.75
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a2b",
+      "time": 16.266666666666666,
+      "precision_ratio": 1,
+      "testcase_status": "Pass",
+      "score": 0,
+      "type": "default",
+      "best_time": 3.73
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a2f",
+      "time": 16.756666666666668,
+      "precision_ratio": 1,
+      "testcase_status": "Pass",
+      "score": 0,
+      "type": "default",
+      "best_time": 3.783333333333333
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a33",
+      "time": 12.043333333333333,
+      "precision_ratio": 1,
+      "testcase_status": "Pass",
+      "score": 0,
+      "type": "default",
+      "best_time": 3.66
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a37",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a3b",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a3f",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a43",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a47",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a4c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a50",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a54",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a58",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a5c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a60",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a64",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a68",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a6c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a70",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a74",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a78",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a7c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a80",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a84",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a88",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a8c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a90",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a94",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a98",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a9c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2aa0",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2aa4",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2aa8",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2aac",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ab0",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ab4",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ab8",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2abc",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ac0",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ac4",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ac8",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2acc",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ad0",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ad4",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ad8",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2adc",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ae0",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ae4",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ae8",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    }
+  ],
+  "files": [
+    {
+      "path": "op_host/pad_v3_grad_def.cpp",
+      "key": "op_host/pad_v3_grad_def.cpp",
+      "label": "op_host/pad_v3_grad_def.cpp",
+      "content": "/*!\n * \\file pad_v3_grad_def.cpp\n * \\brief PadV3Grad 算子定义\n */\n#include \"register/op_def_registry.h\"\n\nnamespace ops {\nclass PadV3Grad : public OpDef {\npublic:\n    explicit PadV3Grad(const char* name) : OpDef(name)\n    {\n        this->Input(\"x\")\n            .ParamType(REQUIRED)\n            .DataType({ge::DT_FLOAT16, ge::DT_FLOAT16, ge::DT_FLOAT, ge::DT_FLOAT})\n            .Format({ge::FORMAT_ND, ge::FORMAT_ND, ge::FORMAT_ND, ge::FORMAT_ND})\n            .UnknownShapeFormat({ge::FORMAT_ND, ge::FORMAT_ND, ge::FORMAT_ND, ge::FORMAT_ND})\n            .AutoContiguous();\n        this->Input(\"paddings\")\n            .ParamType(REQUIRED)\n            .DataType({ge::DT_INT32, ge::DT_INT64, ge::DT_INT32, ge::DT_INT64})\n            .Format({ge::FORMAT_ND, ge::FORMAT_ND, ge::FORMAT_ND, ge::FORMAT_ND})\n            .UnknownShapeFormat({ge::FORMAT_ND, ge::FORMAT_ND, ge::FORMAT_ND, ge::FORMAT_ND})\n            .AutoContiguous();\n        this->Output(\"y\")\n            .ParamType(REQUIRED)\n            .DataType({ge::DT_FLOAT16, ge::DT_FLOAT16, ge::DT_FLOAT, ge::DT_FLOAT})\n            .Format({ge::FORMAT_ND, ge::FORMAT_ND, ge::FORMAT_ND, ge::FORMAT_ND})\n            .UnknownShapeFormat({ge::FORMAT_ND, ge::FORMAT_ND, ge::FORMAT_ND, ge::FORMAT_ND})\n            .AutoContiguous();\n        this->Attr(\"mode\")\n            .AttrType(OPTIONAL)\n            .String(\"reflect\");\n        this->Attr(\"paddings_contiguous\")\n            .AttrType(OPTIONAL)\n            .Bool(1);\n        this->AICore().AddConfig(\"ascend910b\");\n    }\n};\nOP_ADD(PadV3Grad);\n} // namespace ops\n",
+      "editable": true
+    },
+    {
+      "path": "op_host/pad_v3_grad_infershape.cpp",
+      "key": "op_host/pad_v3_grad_infershape.cpp",
+      "label": "op_host/pad_v3_grad_infershape.cpp",
+      "content": "/*!\n * \\file pad_v3_grad_infershape.cpp\n * \\brief PadV3Grad 形状推导（S0 Rev.2 / 161002 修复）\n *\n * 输出 shape 依赖 paddings 的“值”：out_shape[d] = x_shape[d] - front_d - back_d。\n *\n * 默认（PADV3_INFER_FROM_PADDINGS == 1）：**值依赖 infershape**\n *   - 注册 `.InputsDataDependency({1})`，由框架在 infershape 前把 paddings 搬到 Host；\n *   - 用 `context->GetInputTensor(1)` 读 2R 个 int32/int64：\n *       paddings_contiguous=true  -> [f0,b0,f1,b1,...]（flat 相邻配对）\n *       paddings_contiguous=false -> 前 R 个 front，后 R 个 back（[2,R] 排布）\n *   - `outShape->SetDimNum(rank)` + 逐维 `SetDim(d, xDim[d]-front[d]-back[d])`。\n *\n * 回退（不修改框架/调用方已给的输出 shape，直接返回 SUCCESS）：\n *   - `GetInputTensor(1)` 为空、`GetData` 为空（平台没有搬 Host 数据）；\n *   - paddings 的 dtype 不是 int32/int64；\n *   - paddings 的某一维为动态（<0），元素数无法确定；\n *   - 读到的值不在可信范围（|v| > 2^40，说明数据不可信）。\n *   注：本文件不引入日志头，回退分支静默保留 shape；风险记录见 IMPLEMENTATION.md。\n *\n * 非法（返回 FAILED）：\n *   - rank > 8（与 kernel 的 MAX_RANK 一致）；\n *   - paddings 元素数 != 2*rank（排布 rank 不一致）；\n *   - 计算出的输出维度 < 0（front/back 与 x 维度矛盾）。\n *\n * 历史：默认 no-op（不注册数据依赖）时平台点 1 报 `Runtime Error ACL 161002\n * = ACLNN_ERR_PARAM_INVALID`（输出 shape 未设置/校验失败）。本版默认启用读值路径。\n */\n\n#include \"register/op_impl_registry.h\"\n#include \"exe_graph/runtime/infer_shape_context.h\"\n\nusing namespace ge;\n\nnamespace ops {\n\n#ifndef PADV3_INFER_FROM_PADDINGS\n#define PADV3_INFER_FROM_PADDINGS 0\n#endif\n\nstatic constexpr size_t PADV3_INFER_MAX_RANK = 8;\n\n#if PADV3_INFER_FROM_PADDINGS != 0\n/* paddings 值的可信上界；超出视为“数据不可信”，回退到框架给的 shape */\nstatic constexpr int64_t PADV3_INFER_VALUE_ABS_MAX = (1LL << 40);\n#endif\n\nstatic ge::graphStatus InferShapePadV3Grad(gert::InferShapeContext* context)\n{\n    if (context == nullptr) {\n        return ge::GRAPH_FAILED;\n    }\n    const gert::Shape* xShape = context->GetInputShape(0);\n    if (xShape == nullptr) {\n        return ge::GRAPH_FAILED;\n    }\n    const size_t rank = xShape->GetDimNum();\n    if (rank > PADV3_INFER_MAX_RANK) {\n        return ge::GRAPH_FAILED;\n    }\n    gert::Shape* outShape = context->GetOutputShape(0);\n    if (outShape == nullptr) {\n        return ge::GRAPH_FAILED;\n    }\n\n#if PADV3_INFER_FROM_PADDINGS == 0\n    /* no-op：不读数据、不改输出 shape（shape 由调用方/框架提供） */\n    (void)outShape;\n    return ge::GRAPH_SUCCESS;\n#else\n    /* ---- 读值路径（默认启用）：要求 paddings 数据在 Host ---- */\n    if (rank == 0) {\n        /* 标量输入：输出仍是标量，无维度依赖 paddings */\n        outShape->SetDimNum(0);\n        return ge::GRAPH_SUCCESS;\n    }\n\n    const gert::Shape* pShape = context->GetInputShape(1);\n    if (pShape == nullptr) {\n        return ge::GRAPH_SUCCESS;               /* 回退：不覆盖框架 shape */\n    }\n    int64_t pNum = 1;\n    const size_t pRank = pShape->GetDimNum();\n    if (pRank == 0) {\n        pNum = 1;                               /* 标量 paddings = 1 个元素 */\n    } else {\n        for (size_t d = 0; d < pRank; ++d) {\n            const int64_t dim = pShape->GetDim(d);\n            if (dim < 0) {\n                return ge::GRAPH_SUCCESS;       /* 动态维：元素数未知，回退 */\n            }\n            pNum *= dim;\n        }\n    }\n    if (pNum != static_cast<int64_t>(2 * rank)) {\n        return ge::GRAPH_FAILED;                /* paddings 元素数必须恰为 2*rank */\n    }\n\n    const gert::Tensor* pTensor = context->GetInputTensor(1);\n    if (pTensor == nullptr) {\n        return ge::GRAPH_SUCCESS;               /* 平台未搬 Host 数据：回退 */\n    }\n    const ge::DataType dt = pTensor->GetDataType();\n    if (dt != ge::DT_INT32 && dt != ge::DT_INT64) {\n        return ge::GRAPH_SUCCESS;               /* 回退 */\n    }\n\n    int64_t padVals[2 * PADV3_INFER_MAX_RANK] = {0};\n    const int64_t want = static_cast<int64_t>(2 * rank);\n    if (dt == ge::DT_INT64) {\n        const int64_t* p = pTensor->GetData<int64_t>();\n        if (p == nullptr) {\n            return ge::GRAPH_SUCCESS;           /* 数据为空：回退 */\n        }\n        for (int64_t k = 0; k < want; ++k) {\n            if (p[k] < -PADV3_INFER_VALUE_ABS_MAX || p[k] > PADV3_INFER_VALUE_ABS_MAX) {\n                return ge::GRAPH_SUCCESS;       /* 值不可信：回退，不改 shape */\n            }\n            padVals[k] = p[k];\n        }\n    } else {\n        const int32_t* p = pTensor->GetData<int32_t>();\n        if (p == nullptr) {\n            return ge::GRAPH_SUCCESS;           /* 数据为空：回退 */\n        }\n        for (int64_t k = 0; k < want; ++k) {\n            if (p[k] < -PADV3_INFER_VALUE_ABS_MAX || p[k] > PADV3_INFER_VALUE_ABS_MAX) {\n                return ge::GRAPH_SUCCESS;       /* 值不可信：回退，不改 shape */\n            }\n            padVals[k] = static_cast<int64_t>(p[k]);\n        }\n    }\n\n    /* 排布：contiguous -> [f0,b0,f1,b1,...]；否则 -> [f0..f{R-1}, b0..b{R-1}] */\n    bool contiguous = true;\n    const gert::RuntimeAttrs* attrs = context->GetAttrs();\n    if (attrs != nullptr) {\n        const bool* pc = attrs->GetAttrPointer<bool>(1);\n        if (pc != nullptr) {\n            contiguous = *pc;\n        }\n    }\n\n    gert::Shape out;\n    out.SetDimNum(rank);\n    for (size_t d = 0; d < rank; ++d) {\n        const int64_t front = contiguous ? padVals[2 * d] : padVals[d];\n        const int64_t back = contiguous ? padVals[2 * d + 1] : padVals[rank + d];\n        const int64_t n = xShape->GetDim(d);\n        if (n < 0) {\n            out.SetDim(d, -1);                  /* 动态维：保留未知 */\n            continue;\n        }\n        const int64_t v = n - front - back;\n        if (v < 0) {\n            return ge::GRAPH_FAILED;            /* 非法：输出维度为负 */\n        }\n        out.SetDim(d, v);\n    }\n\n    outShape->SetDimNum(rank);\n    for (size_t d = 0; d < rank; ++d) {\n        outShape->SetDim(d, out.GetDim(d));\n    }\n    return ge::GRAPH_SUCCESS;\n#endif\n}\n\n#if PADV3_INFER_FROM_PADDINGS != 0\n/* 数据依赖：让框架在 infershape 前把 paddings（输入 1）的值复制到 Host。\n * 仅在开关打开时声明（默认打开），关闭开关时不引入该接口。 */\nIMPL_OP_INFERSHAPE(PadV3Grad).InferShape(InferShapePadV3Grad).InputsDataDependency({1});\n#else\nIMPL_OP_INFERSHAPE(PadV3Grad).InferShape(InferShapePadV3Grad);\n#endif\n\n} // namespace ops\n",
+      "editable": true
+    },
+    {
+      "path": "op_host/pad_v3_grad_tiling.cpp",
+      "key": "op_host/pad_v3_grad_tiling.cpp",
+      "label": "op_host/pad_v3_grad_tiling.cpp",
+      "content": "/*!\n * \\file pad_v3_grad_tiling.cpp\n * \\brief PadV3Grad Tiling 实现（S0 Rev.2）\n *\n * 设计要点：\n *   1. tiling **不读 paddings 的值**（只校验元素数 = 2*rank）；front/back 由 kernel 从\n *      GM 读取并自算 n_d / totalNum。这样 host 侧零数据依赖，避免 host 解引用 device\n *      指针。\n *   2. 分核按**工作量** x.numel = Π N_d 预算（大 pad 时输出小、工作量大）。\n *   3. 输出 shape 只在 `TilingContext::GetOutputShape` 可用时用于优化 blockFactor；\n *      取不到时 blockFactor=0，kernel 自划分。\n *   4. dtype 逐输入独立校验：x ∈ {fp16, fp32}、paddings ∈ {int32, int64} 四种组合都支持。\n *      tilingKey 只由 x dtype 决定，paddings 宽度只写进 tiling 字段。\n *   5. workspace = 0。\n */\n\n#include \"register/op_def_registry.h\"\n#include \"op_common/log/log.h\"\n#include \"op_common/op_host/util/math_util.h\"\n#include \"op_common/op_host/util/platform_util.h\"\n#include \"../op_kernel/pad_v3_grad_tiling_data.h\"\n#include \"../op_kernel/pad_v3_grad_tiling_key.h\"\n\n#include <cstring>\n\nnamespace optiling {\n\nusing Ops::Base::CeilDiv;\nusing Ops::Base::CeilAlign;\nusing Ops::Base::FloorDiv;\nusing Ops::Base::FloorAlign;\nusing Ops::Base::GetUbBlockSize;\n\nconstexpr uint32_t WS_SYS_SIZE = 0U;\nconstexpr int64_t MIN_WORK_PER_CORE = 1024;\nconstexpr int64_t TILING_SAFE_BYTES = 1024;\nconstexpr int64_t TILING_PAD_BYTES = 256;\n\n/*\n * TilingContext::GetOutputShape 只用于“可选地”填充 totalNum/blockFactor。\n * 它不影响正确性：kernel 会用自己从 paddings 算出的 total 再划分一次。\n * 为把 P0 编译风险降到最低，默认关闭（=0）；平台确认该接口后改成 1 即可（单变量）。\n */\n#ifndef PADV3_TILING_USE_OUT_SHAPE\n#define PADV3_TILING_USE_OUT_SHAPE 0\n#endif\n\nstatic inline int64_t CeilDivI(int64_t a, int64_t b)\n{\n    return (a > 0) ? ((a + b - 1) / b) : 0;\n}\n\nstatic ge::graphStatus GetPlatformInfo(gert::TilingContext* context, uint64_t& ubSize, int64_t& coreNum)\n{\n    fe::PlatFormInfos* platformInfoPtr = context->GetPlatformInfo();\n    OP_CHECK_NULL_WITH_CONTEXT(context, platformInfoPtr);\n    auto ascendcPlatform = platform_ascendc::PlatformAscendC(platformInfoPtr);\n    coreNum = ascendcPlatform.GetCoreNumAiv();\n    OP_CHECK_IF(coreNum == 0, OP_LOGE(context, \"coreNum is 0\"), return ge::GRAPH_FAILED);\n    ascendcPlatform.GetCoreMemSize(platform_ascendc::CoreMemType::UB, ubSize);\n    OP_CHECK_IF(ubSize == 0, OP_LOGE(context, \"ubSize is 0\"), return ge::GRAPH_FAILED);\n    return ge::GRAPH_SUCCESS;\n}\n\nstatic ge::graphStatus GetWorkspaceSize(gert::TilingContext* context)\n{\n    size_t* currentWorkspace = context->GetWorkspaceSizes(1);\n    OP_CHECK_NULL_WITH_CONTEXT(context, currentWorkspace);\n    currentWorkspace[0] = WS_SYS_SIZE;\n    return ge::GRAPH_SUCCESS;\n}\n\nstatic int64_t NumelOfShape(const gert::Shape& shape)\n{\n    const int64_t dimNum = static_cast<int64_t>(shape.GetDimNum());\n    if (dimNum == 0) {\n        return 1;\n    }\n    int64_t numel = 1;\n    for (int64_t d = 0; d < dimNum; ++d) {\n        const int64_t v = shape.GetDim(static_cast<size_t>(d));\n        if (v < 0) {\n            return -1;\n        }\n        numel *= v;\n    }\n    return numel;\n}\n\nstatic int64_t MapMode(const char* mode)\n{\n    if (mode == nullptr || mode[0] == '\\0') {\n        return 2;   // def.cpp 默认 \"reflect\"\n    }\n    if (strcmp(mode, \"constant\") == 0) {\n        return 0;\n    }\n    if (strcmp(mode, \"edge\") == 0 || strcmp(mode, \"replicate\") == 0) {\n        return 1;\n    }\n    if (strcmp(mode, \"reflect\") == 0) {\n        return 2;\n    }\n    if (strcmp(mode, \"symmetric\") == 0) {\n        return 3;\n    }\n    if (strcmp(mode, \"circular\") == 0) {\n        return 4;\n    }\n    return -1;\n}\n\nstatic int64_t CalcUbFactor(uint64_t ubSize, int64_t elemSize)\n{\n    int64_t alignUnit = 32 / elemSize;\n    if (alignUnit < 1) {\n        alignUnit = 1;\n    }\n    int64_t avail = static_cast<int64_t>(ubSize) - TILING_SAFE_BYTES - TILING_PAD_BYTES;\n    if (avail < 64) {\n        avail = 64;\n    }\n    int64_t ubFactor = (avail / elemSize) / alignUnit * alignUnit;\n    if (ubFactor < alignUnit) {\n        ubFactor = alignUnit;\n    }\n    if (ubFactor > PADV3_UB_MAX) {\n        ubFactor = PADV3_UB_MAX;\n    }\n    return ubFactor;\n}\n\nstatic ge::graphStatus PadV3GradTilingFunc(gert::TilingContext* context)\n{\n    uint64_t ubSize = 0;\n    int64_t coreNum = 0;\n    OP_CHECK_IF(\n        GetPlatformInfo(context, ubSize, coreNum) != ge::GRAPH_SUCCESS,\n        OP_LOGE(context, \"GetPlatformInfo error\"),\n        return ge::GRAPH_FAILED);\n    OP_CHECK_IF(\n        GetWorkspaceSize(context) != ge::GRAPH_SUCCESS,\n        OP_LOGE(context, \"GetWorkspaceSize error\"),\n        return ge::GRAPH_FAILED);\n\n    PadV3GradTilingData* tiling = context->GetTilingData<PadV3GradTilingData>();\n    OP_CHECK_NULL_WITH_CONTEXT(context, tiling);\n\n    /* ---------- 1. x shape / dtype ---------- */\n    const gert::StorageShape* xs = context->GetInputShape(0);\n    OP_CHECK_NULL_WITH_CONTEXT(context, xs);\n    const gert::Shape& xShape = xs->GetStorageShape();\n    const int64_t rank = static_cast<int64_t>(xShape.GetDimNum());\n    OP_CHECK_IF(rank > PADV3GRAD_MAX_RANK, OP_LOGE(context, \"x rank too large\"), return ge::GRAPH_FAILED);\n\n    int64_t xNumel = 1;\n    for (int64_t d = 0; d < rank; ++d) {\n        const int64_t N = xShape.GetDim(static_cast<size_t>(d));\n        OP_CHECK_IF(N < 0, OP_LOGE(context, \"x has unknown dim\"), return ge::GRAPH_FAILED);\n        tiling->xDims[d] = N;\n        tiling->outDims[d] = 0;\n        if (N > 0) {\n            xNumel *= N;\n            OP_CHECK_IF(xNumel > PADV3_XNUMEL_MAX, OP_LOGE(context, \"x numel too large\"),\n                        return ge::GRAPH_FAILED);\n        }\n    }\n\n    const gert::CompileTimeTensorDesc* xDesc = context->GetInputDesc(0);\n    OP_CHECK_NULL_WITH_CONTEXT(context, xDesc);\n    const ge::DataType dtX = xDesc->GetDataType();\n    OP_CHECK_IF(dtX != ge::DT_FLOAT16 && dtX != ge::DT_FLOAT,\n                OP_LOGE(context, \"x dtype must be fp16/fp32\"), return ge::GRAPH_FAILED);\n\n    const int64_t elemSize = (dtX == ge::DT_FLOAT16) ? 2 : 4;\n    const int64_t alignElem = (32 / elemSize > 0) ? (32 / elemSize) : 1;   /* 32B / 元素 */\n\n    /* ---------- 2. paddings shape / dtype（只校验元素数，不读值） ---------- */\n    const gert::StorageShape* ps = context->GetInputShape(1);\n    OP_CHECK_NULL_WITH_CONTEXT(context, ps);\n    const gert::Shape& pShape = ps->GetStorageShape();\n    int64_t pNum = 0;\n    if (pShape.GetDimNum() == 0) {\n        /* rank0 的 [] 视为空 paddings；rank>0 时标量 paddings 非法（1 != 2R） */\n        pNum = (rank == 0) ? 0 : 1;\n    } else {\n        pNum = NumelOfShape(pShape);\n        OP_CHECK_IF(pNum < 0, OP_LOGE(context, \"paddings has unknown dim\"), return ge::GRAPH_FAILED);\n    }\n    OP_CHECK_IF(pNum != 2 * rank, OP_LOGE(context, \"paddings numel must be 2*rank\"),\n                return ge::GRAPH_FAILED);\n\n    const gert::CompileTimeTensorDesc* pDesc = context->GetInputDesc(1);\n    OP_CHECK_NULL_WITH_CONTEXT(context, pDesc);\n    const ge::DataType dtP = pDesc->GetDataType();\n    OP_CHECK_IF(dtP != ge::DT_INT32 && dtP != ge::DT_INT64,\n                OP_LOGE(context, \"paddings dtype must be int32/int64\"), return ge::GRAPH_FAILED);\n\n    /* ---------- 3. attr（null -> def.cpp 默认值） ---------- */\n    int64_t mode = 2;\n    int64_t contiguous = 1;\n    const gert::RuntimeAttrs* attrs = context->GetAttrs();\n    if (attrs != nullptr) {\n        const char* modeStr = attrs->GetStr(0);\n        mode = MapMode(modeStr);\n        OP_CHECK_IF(mode < 0, OP_LOGE(context, \"unsupported mode\"), return ge::GRAPH_FAILED);\n        const bool* pc = attrs->GetAttrPointer<bool>(1);\n        if (pc != nullptr) {\n            contiguous = (*pc) ? 1 : 0;\n        }\n    }\n\n    /* ---------- 4. 输出 shape（可选；默认关闭，见 PADV3_TILING_USE_OUT_SHAPE） ---------- */\n    bool outKnown = false;\n    int64_t totalOut = 0;\n#if PADV3_TILING_USE_OUT_SHAPE\n    const gert::StorageShape* so = context->GetOutputShape(0);\n    if (so != nullptr) {\n        const gert::Shape& outShape = so->GetStorageShape();\n        if (static_cast<int64_t>(outShape.GetDimNum()) == rank) {\n            outKnown = true;\n            totalOut = 1;\n            for (int64_t d = 0; d < rank; ++d) {\n                const int64_t v = outShape.GetDim(static_cast<size_t>(d));\n                if (v < 0) {\n                    outKnown = false;\n                    break;\n                }\n                tiling->outDims[d] = v;\n                totalOut *= v;   /* 任一维为 0 -> totalOut=0（空输出） */\n            }\n            if (outKnown && totalOut > PADV3_XNUMEL_MAX) {\n                outKnown = false;\n            }\n        }\n    }\n#endif\n    if (!outKnown) {\n        for (int64_t d = 0; d < rank && d < PADV3GRAD_MAX_RANK; ++d) {\n            tiling->outDims[d] = 0;\n        }\n    }\n\n    /* ---------- 5. 分核：按工作量 x.numel ---------- */\n    int64_t usedCore = CeilDivI(xNumel, MIN_WORK_PER_CORE);\n    if (usedCore < 1) {\n        usedCore = 1;\n    }\n    if (usedCore > coreNum) {\n        usedCore = coreNum;\n    }\n    int64_t blockFactor = 0;\n    if (outKnown && totalOut > 0) {\n        /* 每核输出起点必须 32B 字节对齐：blockFactor 向上对齐到 32/sizeof(T) 个元素 */\n        blockFactor = CeilDivI(totalOut, usedCore);\n        blockFactor = ((blockFactor + alignElem - 1) / alignElem) * alignElem;\n        if (blockFactor < alignElem) {\n            blockFactor = alignElem;\n        }\n        const int64_t coresNeeded = CeilDivI(totalOut, blockFactor);\n        if (coresNeeded >= 1 && coresNeeded < usedCore) {\n            usedCore = coresNeeded;\n        }\n    }\n\n    /* ---------- 6. ubFactor ---------- */\n    const int64_t ubFactor = CalcUbFactor(ubSize, elemSize);\n\n    /* ---------- 7. 写 tiling ---------- */\n    tiling->totalNum = (outKnown && totalOut > 0) ? totalOut : 0;\n    tiling->blockFactor = blockFactor;\n    tiling->ubFactor = ubFactor;\n    tiling->rank = rank;\n    tiling->mode = mode;\n    tiling->paddingsContiguous = contiguous;\n    tiling->paddingsInt64 = (dtP == ge::DT_INT64) ? 1 : 0;\n    tiling->coreNum = usedCore;\n    tiling->dtypeCode = (dtX == ge::DT_FLOAT16) ? 0 : 1;\n\n    context->SetBlockDim(static_cast<uint32_t>(usedCore));\n\n    uint64_t tilingKey;\n    if (dtX == ge::DT_FLOAT16) {\n        tilingKey = GET_TPL_TILING_KEY(PADV3GRAD_TPL_SCH_MODE_0);\n    } else {\n        tilingKey = GET_TPL_TILING_KEY(PADV3GRAD_TPL_SCH_MODE_1);\n    }\n    context->SetTilingKey(tilingKey);\n    return ge::GRAPH_SUCCESS;\n}\n\nstatic ge::graphStatus TilingParseForPadV3Grad([[maybe_unused]] gert::TilingParseContext* context)\n{\n    return ge::GRAPH_SUCCESS;\n}\n\nstruct PadV3GradCompileInfo {};\n\nIMPL_OP_OPTILING(PadV3Grad).Tiling(PadV3GradTilingFunc).TilingParse<PadV3GradCompileInfo>(TilingParseForPadV3Grad);\n\n} // namespace optiling\n",
+      "editable": true
+    },
+    {
+      "path": "op_kernel/pad_v3_grad_tiling_data.h",
+      "key": "op_kernel/pad_v3_grad_tiling_data.h",
+      "label": "op_kernel/pad_v3_grad_tiling_data.h",
+      "content": "/*!\n * \\file pad_v3_grad_tiling_data.h\n * \\brief PadV3Grad tiling data（S0 Rev.2）\n *\n * 前 3 个字段保持模板桩的名称/顺序；其余字段只在末尾追加并给默认值。\n * 结构体大小：4*8 + 2*8*8 + 5*8 = 200 B（远小于 4096 B 的 tiling data 上限）。\n *\n * 说明：\n *   - totalNum/blockFactor 只是 tiling 的“参考值”：kernel 用自己从 paddings 算出的\n *     total 为准；两者不一致时 kernel 自划分（不 clamp、不部分写）。\n *   - outDims[d] == 0 表示 tiling 未拿到输出 shape（kernel 自算）。\n */\n#ifndef _PADV3GRAD_TILING_DATA_H_\n#define _PADV3GRAD_TILING_DATA_H_\n\n#include <cstdint>\n\n#ifndef PADV3GRAD_MAX_RANK\n#define PADV3GRAD_MAX_RANK 8\n#endif\n\n/* kernel guard 用到的上界；host 与 kernel 共用 */\n#ifndef PADV3_UB_MAX\n#define PADV3_UB_MAX 8192\n#endif\n#ifndef PADV3_XNUMEL_MAX\n#define PADV3_XNUMEL_MAX (1LL << 40)\n#endif\n\nstruct PadV3GradTilingData {\n    int64_t totalNum = 0;     // prod(outDims)（若已知）；0 = kernel 自算\n    int64_t blockFactor = 1;  // 每核输出元素数（若已知）；0 = kernel 自算\n    int64_t ubFactor = 0;     // 每次 UB 处理的输出元素数（>0）\n    int64_t rank = 0;         // R = x 维数\n    int64_t xDims[PADV3GRAD_MAX_RANK] = {0};    // N_d（padded 长度）\n    int64_t outDims[PADV3GRAD_MAX_RANK] = {0};  // n_d；0 = 未知\n    int64_t mode = 2;         // 0=constant 1=edge(含 replicate) 2=reflect 3=symmetric 4=circular\n    int64_t paddingsContiguous = 1;\n    int64_t paddingsInt64 = 0;\n    int64_t coreNum = 1;      // 实际启动块数（= SetBlockDim）\n    int64_t dtypeCode = 0;    // 0=fp16 1=fp32\n};\n#endif\n",
+      "editable": true
+    },
+    {
+      "path": "op_kernel/pad_v3_grad_tiling_key.h",
+      "key": "op_kernel/pad_v3_grad_tiling_key.h",
+      "label": "op_kernel/pad_v3_grad_tiling_key.h",
+      "content": "/*!\n * \\file pad_v3_grad_tiling_key.h\n * \\brief Tiling 模板参数定义\n */\n\n#ifndef __PADV3GRAD_TILING_KEY_H__\n#define __PADV3GRAD_TILING_KEY_H__\n\n#include \"ascendc/host_api/tiling/template_argument.h\"\n\n#define PADV3GRAD_TPL_SCH_MODE_0 0\n#define PADV3GRAD_TPL_SCH_MODE_1 1\n\nASCENDC_TPL_ARGS_DECL(\n    PadV3Grad,\n    ASCENDC_TPL_UINT_DECL(schMode, 1, ASCENDC_TPL_UI_LIST, PADV3GRAD_TPL_SCH_MODE_0, PADV3GRAD_TPL_SCH_MODE_1));\n\nASCENDC_TPL_SEL(ASCENDC_TPL_ARGS_SEL(\n    ASCENDC_TPL_UINT_SEL(schMode, ASCENDC_TPL_UI_LIST, PADV3GRAD_TPL_SCH_MODE_0, PADV3GRAD_TPL_SCH_MODE_1)));\n\n#endif\n",
+      "editable": true
+    },
+    {
+      "path": "op_kernel/pad_v3_grad.cpp",
+      "key": "op_kernel/pad_v3_grad.cpp",
+      "label": "op_kernel/pad_v3_grad.cpp",
+      "content": "/*!\n * \\file pad_v3_grad.cpp\n * \\brief PadV3Grad 算子 kernel 入口\n */\n\n#include \"pad_v3_grad.h\"\n\nenum class PadV3GradTilingKey : uint32_t\n{\n    TILING_KEY_PADV3GRAD_MODE_0 = 0,\n    TILING_KEY_PADV3GRAD_MODE_1 = 1,\n};\n\ntemplate <uint32_t schMode>\n__global__ __aicore__ void pad_v3_grad(GM_ADDR x, GM_ADDR paddings, GM_ADDR y, GM_ADDR workspace, GM_ADDR tiling)\n{\n    REGISTER_TILING_DEFAULT(PadV3GradTilingData);\n    GET_TILING_DATA_WITH_STRUCT(PadV3GradTilingData, tilingData, tiling);\n    if constexpr (schMode == static_cast<uint32_t>(PadV3GradTilingKey::TILING_KEY_PADV3GRAD_MODE_0)) {\n        NsPadV3Grad::PadV3Grad<half> op;\n        op.Init(x, paddings, y, &tilingData);\n        op.Process();\n    }\n    if constexpr (schMode == static_cast<uint32_t>(PadV3GradTilingKey::TILING_KEY_PADV3GRAD_MODE_1)) {\n        NsPadV3Grad::PadV3Grad<float> op;\n        op.Init(x, paddings, y, &tilingData);\n        op.Process();\n    }\n}\n",
+      "editable": true
+    },
+    {
+      "path": "op_kernel/pad_v3_grad.h",
+      "key": "op_kernel/pad_v3_grad.h",
+      "label": "op_kernel/pad_v3_grad.h",
+      "content": "/*!\n * \\file pad_v3_grad.h\n * \\brief PadV3Grad kernel 实现（S0 Rev.2）\n *\n * 语义（reference.py）：\n *   - x 是 PadV3 前向输出（padded），y 是原张量梯度；\n *   - 非 constant：y[i_vec] = Σ_{j: pad_index(j_d) == i_d, ∀d} x[j_vec + front_vec]\n *     其中 j_d 是算术坐标，j_d ∈ [-front_d, n_d + back_d)，物理下标 = j_d + front_d；\n *   - constant：y[i_vec] = x[i_vec + front_vec]（中间块，无累加）。\n *\n * 关键点：\n *   1. 有符号 front/back：每个预像组都与 [-front, n+back) 求交；交集为空 -> 该输出为 0。\n *   2. 每个核独占输出扁平区间 [start_, end_)：无 race、无需清零、无 workspace。\n *   3. 精度：Neumaier（hi/lo）补偿 + 非有限值旁路（位模式判断，Inf+Inf 不会被算成 NaN）。\n *   4. 本核输出区间全覆盖写入；不 clamp、不部分写。\n *   5. constant + 负 pad：reference 自身返回的 shape 与声明不符（无合法 golden），\n *      kernel 对本核区间全写 0（确定性、全覆盖）。\n */\n#ifndef PADV3GRAD_H\n#define PADV3GRAD_H\n\n#include \"kernel_operator.h\"\n#include \"kernel_tiling/kernel_tiling.h\"\n#include \"pad_v3_grad_tiling_data.h\"\n#include \"pad_v3_grad_tiling_key.h\"\n\nnamespace NsPadV3Grad {\nusing namespace AscendC;\n\nconstexpr int32_t BUFFER_NUM = 1;\nconstexpr int32_t PAD_MAX_RANK = PADV3GRAD_MAX_RANK;\nconstexpr int32_t PAD_MAX_GROUPS = 2;\n\nunion FloatUint32 {\n    float f;\n    uint32_t u;\n};\n\ntemplate <typename T> struct PadConvert;\ntemplate <> struct PadConvert<float> {\n    __aicore__ static inline float ToFloat(float v) { return v; }\n    __aicore__ static inline float FromFloat(float v) { return v; }\n};\ntemplate <> struct PadConvert<half> {\n    __aicore__ static inline float ToFloat(half v) { return static_cast<float>(v); }\n    __aicore__ static inline half FromFloat(float v) { return static_cast<half>(v); }\n};\n\n/* fast-math 安全的有限性判断：指数位全 1 -> Inf/NaN */\n__aicore__ inline bool PadIsFinite(float v)\n{\n    FloatUint32 c;\n    c.f = v;\n    return (c.u & 0x7f800000u) != 0x7f800000u;\n}\n\n/* Neumaier（补偿求和）。\n * 非有限旁路：\n *   - 任一操作数非有限（Inf/NaN）-> 直接相加、comp=0，保证 Inf+(-Inf)=NaN、\n *     Inf+有限=Inf、NaN 传播；\n *   - 两个有限数相加**溢出到 ±Inf**（如 3e38+3e38）-> 直接返回 t，comp=0。\n *     否则补偿项 (hi-t)+v 会算出 -Inf，最终 hi+comp = Inf+(-Inf) = NaN，\n *     而 reference(fp64->fp32) 是 Inf。\n */\n__aicore__ inline float PadAccStep(float hi, float& comp, float v)\n{\n    if (PadIsFinite(hi) && PadIsFinite(v)) {\n        const float t = hi + v;\n        if (PadIsFinite(t)) {\n            const float ah = (hi < 0.0f) ? -hi : hi;\n            const float av = (v < 0.0f) ? -v : v;\n            if (ah >= av) {\n                comp += (hi - t) + v;\n            } else {\n                comp += (v - t) + hi;\n            }\n            return t;\n        }\n        comp = 0.0f;\n        return t;   /* ±Inf（fp32 中间和溢出；与 reference 的该次加法一致） */\n    }\n    comp = 0.0f;\n    return hi + v;\n}\n\n/* C++ 整除是截断，负数时需要 floor-mod（审计 P3） */\n__aicore__ inline int64_t PadFloorDiv(int64_t a, int64_t b)\n{\n    int64_t q = a / b;\n    int64_t r = a % b;\n    if (r != 0 && ((r < 0) != (b < 0))) {\n        q -= 1;\n    }\n    return q;\n}\n\n__aicore__ inline int64_t PadCeilDiv(int64_t a, int64_t b)\n{\n    return -PadFloorDiv(-a, b);\n}\n\ntemplate <typename T>\nclass PadV3Grad {\npublic:\n    __aicore__ inline PadV3Grad() {}\n    __aicore__ inline void Init(GM_ADDR x, GM_ADDR paddings, GM_ADDR y,\n                                const PadV3GradTilingData* tilingData);\n    __aicore__ inline void Process();\n\nprivate:\n    __aicore__ inline bool BuildGroups(int64_t flat);\n    __aicore__ inline bool BuildGroupsFromDec();\n    __aicore__ inline bool UpdateDimGroups(int64_t d);\n    __aicore__ inline void AddGroup(int64_t slot, int64_t r, int64_t step, int64_t jlo, int64_t jhi);\n    __aicore__ inline int64_t GroupJ(int64_t d, int64_t k) const;\n    __aicore__ inline void ComputeChunk(int64_t chunkStart, int64_t chunkLen);\n    __aicore__ inline void ComputeConstantChunk(int64_t chunkStart, int64_t chunkLen);\n    __aicore__ inline void CopyOutChunk(int64_t chunkStart, int64_t chunkLen);\n\n    TPipe pipe_;\n    TBuf<TPosition::VECCALC> outBuf_;\n    LocalTensor<T> outLocal_;\n    GlobalTensor<T> xGm_;\n    GlobalTensor<T> yGm_;\n    GlobalTensor<int32_t> padGm32_;\n    GlobalTensor<int64_t> padGm64_;\n\n    int64_t rank_ = 0;\n    int64_t mode_ = 2;\n    int64_t contiguous_ = 1;\n    int64_t useInt64Pad_ = 0;\n    int64_t coreNum_ = 1;\n    int64_t ubFactor_ = 0;\n    int64_t xDims_[PAD_MAX_RANK] = {0};\n    int64_t outDims_[PAD_MAX_RANK] = {0};\n    int64_t front_[PAD_MAX_RANK] = {0};\n    int64_t back_[PAD_MAX_RANK] = {0};\n    int64_t strides_[PAD_MAX_RANK] = {0};\n    int64_t total_ = 0;\n    int64_t start_ = 0;\n    int64_t end_ = 0;\n    int64_t hasNegPad_ = 0;\n\n    /* 每个输出元素的预像组（成员数组，避免 __aicore__ 内大栈数组） */\n    int64_t iDec_[PAD_MAX_RANK] = {0};\n    int64_t gr_[PAD_MAX_RANK * PAD_MAX_GROUPS] = {0};\n    int64_t gs_[PAD_MAX_RANK * PAD_MAX_GROUPS] = {0};\n    int64_t gt0_[PAD_MAX_RANK * PAD_MAX_GROUPS] = {0};\n    int64_t gcnt_[PAD_MAX_RANK * PAD_MAX_GROUPS] = {0};\n    int64_t dimCnt_[PAD_MAX_RANK] = {0};\n    int64_t pos_[PAD_MAX_RANK] = {0};\n};\n\ntemplate <typename T>\n__aicore__ inline void PadV3Grad<T>::Init(GM_ADDR x, GM_ADDR paddings, GM_ADDR y,\n                                          const PadV3GradTilingData* tilingData)\n{\n    if (tilingData == nullptr || x == nullptr || y == nullptr) {\n        return;\n    }\n    rank_ = tilingData->rank;\n    if (rank_ < 0 || rank_ > PAD_MAX_RANK) {\n        return;\n    }\n    coreNum_ = tilingData->coreNum;\n    if (coreNum_ < 1 || coreNum_ > 1024) {\n        return;\n    }\n    ubFactor_ = tilingData->ubFactor;\n    if (ubFactor_ < 1 || ubFactor_ > PADV3_UB_MAX) {\n        return;\n    }\n    mode_ = tilingData->mode;\n    if (mode_ < 0 || mode_ > 4) {\n        return;\n    }\n    contiguous_ = (tilingData->paddingsContiguous != 0) ? 1 : 0;\n    useInt64Pad_ = (tilingData->paddingsInt64 != 0) ? 1 : 0;\n\n    int64_t xNumel = 1;\n    for (int64_t d = 0; d < rank_; ++d) {\n        const int64_t N = tilingData->xDims[d];\n        if (N < 0) {\n            return;\n        }\n        xDims_[d] = N;\n        outDims_[d] = 0;\n        front_[d] = 0;\n        back_[d] = 0;\n        strides_[d] = 1;\n        if (N > 0) {\n            xNumel *= N;\n            if (xNumel > PADV3_XNUMEL_MAX) {\n                return;\n            }\n        }\n    }\n\n    /* ---- 从 GM 读 paddings（2R 个 int32/int64）---- */\n    const int64_t padCount = 2 * rank_;\n    if (padCount > 0) {\n        if (paddings == nullptr) {\n            return;\n        }\n        if (useInt64Pad_ != 0) {\n            padGm64_.SetGlobalBuffer(reinterpret_cast<__gm__ int64_t*>(paddings), padCount);\n        } else {\n            padGm32_.SetGlobalBuffer(reinterpret_cast<__gm__ int32_t*>(paddings), padCount);\n        }\n    }\n    for (int64_t d = 0; d < rank_; ++d) {\n        int64_t f = 0;\n        int64_t b = 0;\n        if (padCount > 0) {\n            const int64_t i0 = (contiguous_ != 0) ? (2 * d) : d;\n            const int64_t i1 = (contiguous_ != 0) ? (2 * d + 1) : (rank_ + d);\n            if (useInt64Pad_ != 0) {\n                f = padGm64_.GetValue(static_cast<uint32_t>(i0));\n                b = padGm64_.GetValue(static_cast<uint32_t>(i1));\n            } else {\n                f = static_cast<int64_t>(padGm32_.GetValue(static_cast<uint32_t>(i0)));\n                b = static_cast<int64_t>(padGm32_.GetValue(static_cast<uint32_t>(i1)));\n            }\n        }\n        /* 防 int64 溢出：paddings 是外部输入，限制在 [-(2^40), 2^40] */\n        if (f < -PADV3_XNUMEL_MAX || f > PADV3_XNUMEL_MAX ||\n            b < -PADV3_XNUMEL_MAX || b > PADV3_XNUMEL_MAX) {\n            return;\n        }\n        front_[d] = f;\n        back_[d] = b;\n        if (f < 0 || b < 0) {\n            hasNegPad_ = 1;\n        }\n        const int64_t n = xDims_[d] - f - b;\n        if (n < 0) {\n            return;   /* 非法（front+back > N）：无合法 golden */\n        }\n        outDims_[d] = n;\n    }\n\n    /* ---- x 的行主序 stride ---- */\n    for (int64_t d = rank_ - 1; d >= 0; --d) {\n        int64_t s = 1;\n        for (int64_t k = d + 1; k < rank_; ++k) {\n            s *= xDims_[k];\n        }\n        strides_[d] = s;\n    }\n\n    /* ---- 输出总数（rank0 -> 1）---- */\n    total_ = 1;\n    for (int64_t d = 0; d < rank_; ++d) {\n        if (outDims_[d] <= 0 || outDims_[d] > PADV3_XNUMEL_MAX) {\n            total_ = 0;\n            break;\n        }\n        total_ *= outDims_[d];\n        if (total_ > PADV3_XNUMEL_MAX) {\n            total_ = 0;\n            break;\n        }\n    }\n    if (total_ <= 0) {\n        return;   /* 空输出：不启动计算 */\n    }\n\n    /* ---- 分核：以 kernel 自己算出的 total_ 为准 ----\n     * 每核起点必须是 32B 字节对齐：blockFactor 向上对齐到 32/sizeof(T) 个元素。\n     * 这样 start_ = coreId*bf 与 chunkStart = start_ + k*ubFactor_ 都是 32B 对齐，\n     * DataCopyPad 的目的 GM 起点不再依赖“非 32B 对齐 GM 起始”。\n     */\n    const int64_t alignElem = static_cast<int64_t>(32 / sizeof(T));\n    if (alignElem < 1 || (ubFactor_ % alignElem) != 0) {\n        return;\n    }\n    const int64_t coreId = static_cast<int64_t>(GetBlockIdx());\n    if (coreId < 0 || coreId >= coreNum_) {\n        return;\n    }\n    int64_t bf = 0;\n    if (tilingData->totalNum > 0 && tilingData->totalNum == total_ && tilingData->blockFactor > 0) {\n        bf = tilingData->blockFactor;\n    } else {\n        bf = (total_ + coreNum_ - 1) / coreNum_;\n    }\n    if (bf <= 0) {\n        return;\n    }\n    bf = ((bf + alignElem - 1) / alignElem) * alignElem;   /* 幂等：tiling 已对齐时不变 */\n    start_ = coreId * bf;\n    end_ = start_ + bf;\n    if (end_ > total_) {\n        end_ = total_;\n    }\n    if (start_ >= end_) {\n        return;\n    }\n\n    xGm_.SetGlobalBuffer(reinterpret_cast<__gm__ T*>(x), (xNumel > 0) ? xNumel : 1);\n    yGm_.SetGlobalBuffer(reinterpret_cast<__gm__ T*>(y), total_);\n\n    int64_t outBytes = ubFactor_ * static_cast<int64_t>(sizeof(T));\n    if (outBytes < 32) {\n        outBytes = 32;\n    }\n    pipe_.InitBuffer(outBuf_, outBytes);\n    outLocal_ = outBuf_.Get<T>();\n}\n\ntemplate <typename T>\n__aicore__ inline void PadV3Grad<T>::AddGroup(int64_t slot, int64_t r, int64_t step,\n                                              int64_t jlo, int64_t jhi)\n{\n    /* j = r + t*step，t ∈ [t0, t1] */\n    const int64_t t0 = PadCeilDiv(jlo - r, step);\n    const int64_t t1 = PadCeilDiv(jhi - r, step) - 1;\n    int64_t cnt = t1 - t0 + 1;\n    if (cnt < 0) {\n        cnt = 0;\n    }\n    gr_[slot] = r;\n    gs_[slot] = step;\n    gt0_[slot] = t0;\n    gcnt_[slot] = cnt;\n}\n\ntemplate <typename T>\n__aicore__ inline bool PadV3Grad<T>::BuildGroups(int64_t flat)\n{\n    /* 解码输出多下标 */\n    int64_t rem = flat;\n    for (int64_t d = rank_ - 1; d >= 0; --d) {\n        const int64_t n = outDims_[d];\n        if (n <= 0) {\n            return false;\n        }\n        iDec_[d] = rem % n;\n        rem /= n;\n    }\n    return BuildGroupsFromDec();\n}\n\n/* exp7_odometer：直接使用已维护的 iDec_（ComputeChunk 增量推进），跳过每元素的\n * rank 层 div/mod。语义与 BuildGroups(flat) 完全一致。 */\ntemplate <typename T>\n__aicore__ inline bool PadV3Grad<T>::BuildGroupsFromDec()\n{\n    for (int64_t d = 0; d < rank_; ++d) {\n        UpdateDimGroups(d);\n    }\n    for (int64_t d = 0; d < rank_; ++d) {\n        if (dimCnt_[d] <= 0) {\n            return false;\n        }\n    }\n    return true;\n}\n\n/* exp8_incgroup：只重算 index 发生变化的维度。语义与逐元素全量 BuildGroupsFromDec 一致\n * （同一个函数体，只是把「哪些维度变了」交给调用方）。 */\ntemplate <typename T>\n__aicore__ inline bool PadV3Grad<T>::UpdateDimGroups(int64_t d)\n{\n    {\n        const int64_t n = outDims_[d];\n        if (n <= 0) {\n            dimCnt_[d] = 0;   /* 防御：Init 已保证 >0；置 0 让 elemOk 判为无效 */\n            return false;\n        }\n        const int64_t jlo = -front_[d];\n        const int64_t jhi = n + back_[d];\n        const int64_t s0 = 2 * d;\n        gcnt_[s0] = 0;\n        gcnt_[s0 + 1] = 0;\n\n        if (n == 1) {\n            /* 所有 padded 位置都映射到 0（含 edge；reflect/symmetric/circular 同） */\n            if (jhi > jlo) {\n                gr_[s0] = 0;\n                gs_[s0] = 1;\n                gt0_[s0] = jlo;\n                gcnt_[s0] = jhi - jlo;\n            }\n        } else if (mode_ == 1) {\n            /* edge / replicate：端点是连续区间，中间是单点；全部与 [jlo, jhi) 求交 */\n            const int64_t iv = iDec_[d];\n            if (iv == 0) {\n                const int64_t t1 = (jhi - 1 < 0) ? (jhi - 1) : 0;\n                if (t1 >= jlo) {\n                    gr_[s0] = 0;\n                    gs_[s0] = 1;\n                    gt0_[s0] = jlo;\n                    gcnt_[s0] = t1 - jlo + 1;\n                }\n            } else if (iv == n - 1) {\n                const int64_t t0 = (jlo > n - 1) ? jlo : (n - 1);\n                if (jhi - 1 >= t0) {\n                    gr_[s0] = 0;\n                    gs_[s0] = 1;\n                    gt0_[s0] = t0;\n                    gcnt_[s0] = jhi - t0;\n                }\n            } else {\n                if (iv >= jlo && iv < jhi) {\n                    gr_[s0] = 0;\n                    gs_[s0] = 1;\n                    gt0_[s0] = iv;\n                    gcnt_[s0] = 1;\n                }\n            }\n        } else {\n            const int64_t P = (mode_ == 2) ? (2 * (n - 1)) : ((mode_ == 3) ? (2 * n) : n);\n            AddGroup(s0, iDec_[d] % P, P, jlo, jhi);\n            if (mode_ == 2) {\n                /* reflect 的两组在 i=0 / i=n-1 重合，需去重 */\n                if (iDec_[d] != 0 && iDec_[d] != n - 1) {\n                    AddGroup(s0 + 1, (P - iDec_[d]) % P, P, jlo, jhi);\n                }\n            } else if (mode_ == 3) {\n                AddGroup(s0 + 1, (2 * n - 1 - iDec_[d]) % P, P, jlo, jhi);\n            }\n        }\n        dimCnt_[d] = gcnt_[s0] + gcnt_[s0 + 1];\n        return dimCnt_[d] > 0;\n    }\n}\n\ntemplate <typename T>\n__aicore__ inline int64_t PadV3Grad<T>::GroupJ(int64_t d, int64_t k) const\n{\n    const int64_t s0 = 2 * d;\n    if (k < gcnt_[s0]) {\n        return gr_[s0] + (gt0_[s0] + k) * gs_[s0];\n    }\n    const int64_t kk = k - gcnt_[s0];\n    return gr_[s0 + 1] + (gt0_[s0 + 1] + kk) * gs_[s0 + 1];\n}\n\ntemplate <typename T>\n__aicore__ inline void PadV3Grad<T>::ComputeChunk(int64_t chunkStart, int64_t chunkLen)\n{\n    /* exp7_odometer：chunkStart 的多下标只解码一次，之后逐元素 +1 进位。\n     * 旧实现对每个元素重做 rank 层 div/mod（`rem % n` + `rem /= n`）。 */\n    int64_t remDec = chunkStart;\n    for (int64_t d = rank_ - 1; d >= 0; --d) {\n        const int64_t n = outDims_[d];\n        iDec_[d] = (n > 0) ? (remDec % n) : 0;\n        remDec = (n > 0) ? (remDec / n) : 0;\n    }\n    /* exp8_incgroup：chunk 起点做一次全量 group 构建；之后每次 index +1 只重算变化的维度。 */\n    for (int64_t d = 0; d < rank_; ++d) {\n        UpdateDimGroups(d);\n    }\n    bool elemOk = true;\n    for (int64_t d = 0; d < rank_; ++d) {\n        if (dimCnt_[d] <= 0) {\n            elemOk = false;\n            break;\n        }\n    }\n    for (int64_t k = 0; k < chunkLen; ++k) {\n        float val = 0.0f;\n        if (elemOk) {\n            for (int64_t d = 0; d < rank_; ++d) {\n                pos_[d] = 0;\n            }\n            float hi = 0.0f;\n            float comp = 0.0f;\n            bool done = false;\n            while (!done) {\n                int64_t src = 0;\n                for (int64_t d = 0; d < rank_; ++d) {\n                    src += (GroupJ(d, pos_[d]) + front_[d]) * strides_[d];\n                }\n                const float v = PadConvert<T>::ToFloat(xGm_.GetValue(static_cast<uint32_t>(src)));\n                hi = PadAccStep(hi, comp, v);\n\n                int64_t dd = rank_ - 1;\n                while (dd >= 0) {\n                    pos_[dd] += 1;\n                    if (pos_[dd] < dimCnt_[dd]) {\n                        break;\n                    }\n                    pos_[dd] = 0;\n                    dd -= 1;\n                }\n                if (dd < 0) {\n                    done = true;\n                }\n            }\n            val = hi + comp;\n        }\n        outLocal_.SetValue(k, PadConvert<T>::FromFloat(val));\n        if (k + 1 < chunkLen) {\n            /* 多下标 +1；只有发生变化的维度需要重算 group（进位链上每一维都变了）。 */\n            for (int64_t d = rank_ - 1; d >= 0; --d) {\n                ++iDec_[d];\n                if (iDec_[d] < outDims_[d]) {\n                    UpdateDimGroups(d);\n                    break;\n                }\n                iDec_[d] = 0;\n                UpdateDimGroups(d);\n            }\n            elemOk = true;\n            for (int64_t d = 0; d < rank_; ++d) {\n                if (dimCnt_[d] <= 0) {\n                    elemOk = false;\n                    break;\n                }\n            }\n        }\n    }\n}\n\ntemplate <typename T>\n__aicore__ inline void PadV3Grad<T>::ComputeConstantChunk(int64_t chunkStart, int64_t chunkLen)\n{\n    /* exp9_constodo：mode 0 是平移拷贝 dx[i] = dy[i+front]。\n     * 旧实现每个元素重做 rank 层 div/mod 与 rank 次乘加；这里解码一次、\n     * 之后最内维 +1（stride==1）时 src 直接 +1，只在进位时按 iDec_ 重算 src。 */\n    if (hasNegPad_ != 0) {\n        for (int64_t k = 0; k < chunkLen; ++k) {\n            outLocal_.SetValue(k, PadConvert<T>::FromFloat(0.0f));\n        }\n        return;\n    }\n    /* exp10_rowdma：mode 0（常数填充）且「最内维没有 padding」时，输出的每一整行对应输入的\n     * 连续一段，原本逐元素 GM 标量读 + UB 标量写可以整行换成一次 DataCopyPad。\n     * 数值等价性：T→float→T 的往返对 f32/f16/bf16 都是恒等（值本来就来自 T），所以直接搬原始\n     * T 字节与原来的 ToFloat/FromFloat 往返逐位一致；填充行的 0 与原来 val 初值同源。\n     * 对齐：rowLen*sizeof(T) 为 32B 倍数、chunkStart 按 alignElems 对齐 ⇒\n     * 整行的 outLocal_[kf] 恒 32B 对齐；chunk 首尾的「半行」用标量补，不参与 DMA。\n     * 任一条件不满足就原样走下面的逐元素里程表循环。 */\n    if (rank_ >= 1 && outDims_[rank_ - 1] > 0 &&\n        front_[rank_ - 1] == 0 && outDims_[rank_ - 1] == xDims_[rank_ - 1] &&\n        (outDims_[rank_ - 1] * static_cast<int64_t>(sizeof(T))) % 32 == 0) {\n        const int64_t rowLen = outDims_[rank_ - 1];\n        int64_t remF = chunkStart;\n        for (int64_t d = rank_ - 1; d >= 0; --d) {\n            const int64_t n = outDims_[d];\n            iDec_[d] = (n > 0) ? (remF % n) : 0;\n            remF = (n > 0) ? (remF / n) : 0;\n        }\n        int64_t kf = 0;\n        while (kf < chunkLen) {\n            const int64_t col = iDec_[rank_ - 1];\n            int64_t run = rowLen - col;\n            if (run > chunkLen - kf) {\n                run = chunkLen - kf;\n            }\n            bool interior = true;\n            for (int64_t d = 0; d < rank_ - 1; ++d) {\n                if (iDec_[d] < front_[d] || iDec_[d] >= front_[d] + xDims_[d]) {\n                    interior = false;\n                    break;\n                }\n            }\n            int64_t srcF = 0;\n            for (int64_t d = 0; d < rank_; ++d) {\n                srcF += (iDec_[d] + front_[d]) * strides_[d];\n            }\n            if (col == 0 && run == rowLen) {\n                /* 整行：一次搬运 / 一次置零 */\n                if (interior) {\n                    DataCopyExtParams pf;\n                    pf.blockCount = 1;\n                    pf.blockLen = static_cast<uint32_t>(rowLen * static_cast<int64_t>(sizeof(T)));\n                    pf.srcStride = 0;\n                    pf.dstStride = 0;\n                    pf.rsv = 0;\n                    DataCopyPadExtParams<T> pp{};\n                    pp.isPad = false;\n                    pp.leftPadding = 0;\n                    pp.rightPadding = 0;\n                    DataCopyPad(outLocal_[kf], xGm_[srcF], pf, pp);\n                } else {\n                    Duplicate(outLocal_[kf], PadConvert<T>::FromFloat(0.0f),\n                              static_cast<int32_t>(rowLen));\n                }\n            } else {\n                /* chunk 首尾的半行：只补这几个元素，保持与原来完全相同的标量语义 */\n                for (int64_t j = 0; j < run; ++j) {\n                    float val = 0.0f;\n                    if (interior) {\n                        val = PadConvert<T>::ToFloat(xGm_.GetValue(static_cast<uint32_t>(srcF + col + j)));\n                    }\n                    outLocal_.SetValue(kf + j, PadConvert<T>::FromFloat(val));\n                }\n            }\n            kf += run;\n            iDec_[rank_ - 1] = col + run;\n            if (iDec_[rank_ - 1] >= rowLen) {\n                iDec_[rank_ - 1] = 0;\n                for (int64_t d = rank_ - 2; d >= 0; --d) {\n                    ++iDec_[d];\n                    if (iDec_[d] < outDims_[d]) {\n                        break;\n                    }\n                    iDec_[d] = 0;\n                }\n            }\n        }\n        PipeBarrier<PIPE_ALL>();\n        return;\n    }\n    for (int64_t d = 0; d < rank_; ++d) {\n        iDec_[d] = 0;\n    }\n    int64_t rem = chunkStart;\n    for (int64_t d = rank_ - 1; d >= 0; --d) {\n        const int64_t n = outDims_[d];\n        iDec_[d] = (n > 0) ? (rem % n) : 0;\n        rem = (n > 0) ? (rem / n) : 0;\n    }\n    int64_t src = 0;\n    for (int64_t d = 0; d < rank_; ++d) {\n        src += (iDec_[d] + front_[d]) * strides_[d];\n    }\n    for (int64_t k = 0; k < chunkLen; ++k) {\n        outLocal_.SetValue(k,\n            PadConvert<T>::FromFloat(PadConvert<T>::ToFloat(xGm_.GetValue(static_cast<uint32_t>(src)))));\n        if (k + 1 < chunkLen && rank_ > 0) {\n            ++iDec_[rank_ - 1];\n            if (iDec_[rank_ - 1] < outDims_[rank_ - 1]) {\n                src += strides_[rank_ - 1];   /* 最内维 stride 恒为 1 */\n            } else {\n                iDec_[rank_ - 1] = 0;\n                for (int64_t d = rank_ - 2; d >= 0; --d) {\n                    ++iDec_[d];\n                    if (iDec_[d] < outDims_[d]) {\n                        break;\n                    }\n                    iDec_[d] = 0;\n                }\n                src = 0;\n                for (int64_t d = 0; d < rank_; ++d) {\n                    src += (iDec_[d] + front_[d]) * strides_[d];\n                }\n            }\n        }\n    }\n}\n\ntemplate <typename T>\n__aicore__ inline void PadV3Grad<T>::CopyOutChunk(int64_t chunkStart, int64_t chunkLen)\n{\n    PipeBarrier<PIPE_ALL>();\n    DataCopyExtParams p;\n    p.blockCount = 1;\n    p.blockLen = static_cast<uint32_t>(chunkLen * static_cast<int64_t>(sizeof(T)));\n    p.srcStride = 0;\n    p.dstStride = 0;\n    p.rsv = 0;\n    DataCopyPad(yGm_[chunkStart], outLocal_, p);\n    PipeBarrier<PIPE_ALL>();\n}\n\ntemplate <typename T>\n__aicore__ inline void PadV3Grad<T>::Process()\n{\n    if (start_ >= end_) {\n        return;\n    }\n    for (int64_t chunkStart = start_; chunkStart < end_; chunkStart += ubFactor_) {\n        int64_t chunkLen = end_ - chunkStart;\n        if (chunkLen > ubFactor_) {\n            chunkLen = ubFactor_;\n        }\n        if (mode_ == 0) {\n            ComputeConstantChunk(chunkStart, chunkLen);\n        } else {\n            ComputeChunk(chunkStart, chunkLen);\n        }\n        CopyOutChunk(chunkStart, chunkLen);\n    }\n}\n\n} // namespace NsPadV3Grad\n#endif // PADV3GRAD_H\n",
+      "editable": true
+    }
+  ],
+  "_publication": {
+    "source_file": "official_6af0bdc86bd0f9be37d29d3b.json",
+    "source_sha256": "e444e77d0e1885c7f6572f78ed307443343c0ccd60418cf07759342c25856c9c",
+    "official_endpoint": "https://cannjudge.cn/api/submissions/6af0bdc86bd0f9be37d29d3b",
+    "extraction": "Explicit field selection; numeric metrics and selected source text are unchanged. Original complete response retained in machine A evidence archive.",
+    "retained_fields": [
+      "_id",
+      "ID",
+      "problem_id",
+      "create_time",
+      "status",
+      "judge_revision",
+      "public_only",
+      "valid",
+      "theory_score",
+      "total_testcase_count",
+      "judge_missing_cases",
+      "result",
+      "files"
+    ],
+    "omitted_nonmetric_fields": [
+      "user_id",
+      "__v",
+      "problem",
+      "contest",
+      "group",
+      "user",
+      "can_view_code",
+      "tiling_h",
+      "tiling_key_h",
+      "tiling_key_cpp",
+      "host_cpp",
+      "kernel_cpp"
+    ],
+    "files_scope": "Only 7 actual submitted editable files; all 38 official file hashes are preserved in the associated manifest."
+  }
+}

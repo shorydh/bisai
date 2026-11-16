@@ -1,0 +1,91 @@
+--- 6af0bfea6bd0f9be37d61185/op_kernel/pad_v3_grad.h
++++ 6af0c2dd6bd0f9be37db01c9/op_kernel/pad_v3_grad.h
+@@ -459,7 +459,79 @@
+             break;
+         }
+     }
+-    for (int64_t k = 0; k < chunkLen; ++k) {
++    /* exp13_iddma：实测 gather 占该题 67% 的耗时。mode 1（edge）的中间段、
++     * mode 2/3 的深处内部，每一维的分组都是「恒等单点」，此时连续 64 个输出元素
++     * 对应的输入也是一段连续内存，可以一次 DataCopyPad 搬完。判据直接复用代码
++     * 自己的分组结果（gcnt_/gr_/gs_/gt0_），不手推 iv 区间：
++     *   gcnt_[2d]==1 && gcnt_[2d+1]==0 && gr_[2d]==0 && gs_[2d]==1 && gt0_[2d]==iDec_[d]
++     * 块首块尾各判一次；任一维不满足就走原来的组求和循环，数值路径完全不变。 */
++    constexpr int64_t PAD_BLK = 64;
++    constexpr int64_t PAD_ALIGN = 32 / static_cast<int64_t>(sizeof(T));
++    int64_t k = 0;
++    while (k < chunkLen) {
++        if (rank_ >= 1 && chunkLen - k >= PAD_BLK && (k % PAD_ALIGN) == 0 && elemOk &&
++            iDec_[rank_ - 1] + PAD_BLK <= outDims_[rank_ - 1]) {
++            bool idOk = true;
++            for (int64_t d = 0; d < rank_; ++d) {
++                if (!(gcnt_[2 * d] == 1 && gcnt_[2 * d + 1] == 0 && gr_[2 * d] == 0 &&
++                      gs_[2 * d] == 1 && gt0_[2 * d] == iDec_[d])) {
++                    idOk = false;
++                    break;
++                }
++            }
++            const int64_t ivSave = iDec_[rank_ - 1];
++            if (idOk) {
++                iDec_[rank_ - 1] = ivSave + PAD_BLK - 1;
++                UpdateDimGroups(rank_ - 1);
++                for (int64_t d = 0; d < rank_; ++d) {
++                    if (!(gcnt_[2 * d] == 1 && gcnt_[2 * d + 1] == 0 && gr_[2 * d] == 0 &&
++                          gs_[2 * d] == 1 && gt0_[2 * d] == iDec_[d])) {
++                        idOk = false;
++                        break;
++                    }
++                }
++                iDec_[rank_ - 1] = ivSave;
++                UpdateDimGroups(rank_ - 1);
++            }
++            if (idOk) {
++                int64_t src0 = 0;
++                for (int64_t d = 0; d < rank_; ++d) {
++                    src0 += (GroupJ(d, 0) + front_[d]) * strides_[d];
++                }
++                DataCopyExtParams pf;
++                pf.blockCount = 1;
++                pf.blockLen = static_cast<uint32_t>(PAD_BLK * static_cast<int64_t>(sizeof(T)));
++                pf.srcStride = 0;
++                pf.dstStride = 0;
++                pf.rsv = 0;
++                DataCopyPadExtParams<T> pp{};
++                pp.isPad = false;
++                pp.leftPadding = 0;
++                pp.rightPadding = 0;
++                DataCopyPad(outLocal_[k], xGm_[src0], pf, pp);
++                iDec_[rank_ - 1] = ivSave + PAD_BLK;
++                for (int64_t d = rank_ - 1; d >= 0; --d) {
++                    if (iDec_[d] < outDims_[d]) {
++                        UpdateDimGroups(d);
++                        break;
++                    }
++                    iDec_[d] = 0;
++                    UpdateDimGroups(d);
++                    if (d > 0) {
++                        ++iDec_[d - 1];
++                    }
++                }
++                elemOk = true;
++                for (int64_t d = 0; d < rank_; ++d) {
++                    if (dimCnt_[d] <= 0) {
++                        elemOk = false;
++                        break;
++                    }
++                }
++                k += PAD_BLK;
++                continue;
++            }
++        }
+         float val = 0.0f;
+         if (elemOk) {
+             for (int64_t d = 0; d < rank_; ++d) {
+@@ -511,6 +583,7 @@
+                 }
+             }
+         }
++        ++k;
+     }
+ }
+ 

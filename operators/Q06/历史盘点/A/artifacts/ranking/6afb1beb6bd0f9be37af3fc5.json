@@ -1,0 +1,336 @@
+{
+  "row": {
+    "rank": 296,
+    "submission_id": "6afb1beb6bd0f9be37af3fc5",
+    "submission": {
+      "_id": "6afb1beb6bd0f9be37af3fc5",
+      "ID": 1367540,
+      "status": "Pass",
+      "create_time": "2026-11-16T15:06:19.428Z"
+    },
+    "status": "Pass",
+    "create_time": "2026-11-16T15:06:19.428Z",
+    "score": 14.74,
+    "result": [
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a22",
+        "time": 16.090166666666665,
+        "precision_ratio": 1,
+        "testcase_status": "Pass",
+        "score": 0
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a27",
+        "time": 18.787,
+        "precision_ratio": 1,
+        "testcase_status": "Pass",
+        "score": 0
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a2b",
+        "time": 19.094,
+        "precision_ratio": 1,
+        "testcase_status": "Pass",
+        "score": 0
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a2f",
+        "time": 19.6505,
+        "precision_ratio": 1,
+        "testcase_status": "Pass",
+        "score": 0
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a33",
+        "time": 12.926666666666666,
+        "precision_ratio": 1,
+        "testcase_status": "Pass",
+        "score": 0
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a37",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a3b",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a3f",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a43",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a47",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a4c",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a50",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a54",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a58",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a5c",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a60",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a64",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a68",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a6c",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a70",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a74",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a78",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a7c",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a80",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a84",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a88",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a8c",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a90",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a94",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a98",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a9c",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2aa0",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2aa4",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2aa8",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2aac",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ab0",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ab4",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ab8",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2abc",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ac0",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ac4",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ac8",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2acc",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ad0",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ad4",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ad8",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2adc",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ae0",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ae4",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ae8",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      }
+    ]
+  },
+  "provenance": {
+    "source_file": "ranking_exp5_common_baseline.json",
+    "source_sha256": "2e3ac336aaecd6b73d97c445e0b5e00b0980d55f6cae76496a378a9ed6795dc2",
+    "official_endpoint": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d/ranking",
+    "extraction": "Explicit field selection; numeric metrics and selected source text are unchanged. Original complete response retained in machine A evidence archive.",
+    "matching_submission_id": "6afb1beb6bd0f9be37af3fc5",
+    "selection_rule": "Select exactly one original row by submission_id; retain rank/submission/status/create_time/score/result; omit all unrelated rows and user/submitter/team display profiles.",
+    "observation": {
+      "queried_at": "2026-11-16T15:08:08.686868+00:00",
+      "endpoint": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d/ranking",
+      "page": 6,
+      "size": 50
+    }
+  }
+}

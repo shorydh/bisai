@@ -1,0 +1,74 @@
+--- 6aeeb18d6bd0f9be37188007/op_kernel/pad_v3_grad.h
++++ 6aeeb3b26bd0f9be371ce6a2/op_kernel/pad_v3_grad.h
+@@ -517,28 +517,50 @@
+ template <typename T>
+ __aicore__ inline void PadV3Grad<T>::ComputeConstantChunk(int64_t chunkStart, int64_t chunkLen)
+ {
++    /* exp9_constodo：mode 0 是平移拷贝 dx[i] = dy[i+front]。
++     * 旧实现每个元素重做 rank 层 div/mod 与 rank 次乘加；这里解码一次、
++     * 之后最内维 +1（stride==1）时 src 直接 +1，只在进位时按 iDec_ 重算 src。 */
++    if (hasNegPad_ != 0) {
++        for (int64_t k = 0; k < chunkLen; ++k) {
++            outLocal_.SetValue(k, PadConvert<T>::FromFloat(0.0f));
++        }
++        return;
++    }
++    for (int64_t d = 0; d < rank_; ++d) {
++        iDec_[d] = 0;
++    }
++    int64_t rem = chunkStart;
++    for (int64_t d = rank_ - 1; d >= 0; --d) {
++        const int64_t n = outDims_[d];
++        iDec_[d] = (n > 0) ? (rem % n) : 0;
++        rem = (n > 0) ? (rem / n) : 0;
++    }
++    int64_t src = 0;
++    for (int64_t d = 0; d < rank_; ++d) {
++        src += (iDec_[d] + front_[d]) * strides_[d];
++    }
+     for (int64_t k = 0; k < chunkLen; ++k) {
+-        float val = 0.0f;
+-        if (hasNegPad_ == 0) {
+-            const int64_t flat = chunkStart + k;
+-            int64_t rem = flat;
+-            for (int64_t d = rank_ - 1; d >= 0; --d) {
+-                const int64_t n = outDims_[d];
+-                if (n <= 0) {
+-                    rem = 0;
+-                    break;
+-                }
+-                iDec_[d] = rem % n;
+-                rem /= n;
+-            }
+-            int64_t src = 0;
+-            for (int64_t d = 0; d < rank_; ++d) {
+-                src += (iDec_[d] + front_[d]) * strides_[d];
+-            }
+-            val = PadConvert<T>::ToFloat(xGm_.GetValue(static_cast<uint32_t>(src)));
+-        }
+-        /* constant + 负 pad：reference 无合法 golden，本核区间全写 0 */
+-        outLocal_.SetValue(k, PadConvert<T>::FromFloat(val));
++        outLocal_.SetValue(k,
++            PadConvert<T>::FromFloat(PadConvert<T>::ToFloat(xGm_.GetValue(static_cast<uint32_t>(src)))));
++        if (k + 1 < chunkLen && rank_ > 0) {
++            ++iDec_[rank_ - 1];
++            if (iDec_[rank_ - 1] < outDims_[rank_ - 1]) {
++                src += strides_[rank_ - 1];   /* 最内维 stride 恒为 1 */
++            } else {
++                iDec_[rank_ - 1] = 0;
++                for (int64_t d = rank_ - 2; d >= 0; --d) {
++                    ++iDec_[d];
++                    if (iDec_[d] < outDims_[d]) {
++                        break;
++                    }
++                    iDec_[d] = 0;
++                }
++                src = 0;
++                for (int64_t d = 0; d < rank_; ++d) {
++                    src += (iDec_[d] + front_[d]) * strides_[d];
++                }
++            }
++        }
+     }
+ }
+ 

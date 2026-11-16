@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-16T14:59:12.449397+00:00",
+  "type": "HTTPError",
+  "message": "429 Client Error: Too Many Requests for url: https://cannjudge.cn/api/submissions/submit",
+  "status_code": 429,
+  "response": {
+    "code": 429,
+    "msg": "提交过于频繁，请在 33 秒后再提交",
+    "message": "提交过于频繁，请在 33 秒后再提交",
+    "data": {
+      "reason": "cooldown",
+      "retry_after_seconds": 33,
+      "limit": 50,
+      "used": 2,
+      "remaining": 48,
+      "reset_at": "2026-11-16T16:00:00.000Z"
+    }
+  }
+}

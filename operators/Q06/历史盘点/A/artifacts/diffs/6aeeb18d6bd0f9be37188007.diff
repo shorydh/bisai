@@ -1,0 +1,98 @@
+--- 6aeead4c6bd0f9be370fcb30/op_kernel/pad_v3_grad.h
++++ 6aeeb18d6bd0f9be37188007/op_kernel/pad_v3_grad.h
+@@ -110,6 +110,7 @@
+ private:
+     __aicore__ inline bool BuildGroups(int64_t flat);
+     __aicore__ inline bool BuildGroupsFromDec();
++    __aicore__ inline bool UpdateDimGroups(int64_t d);
+     __aicore__ inline void AddGroup(int64_t slot, int64_t r, int64_t step, int64_t jlo, int64_t jhi);
+     __aicore__ inline int64_t GroupJ(int64_t d, int64_t k) const;
+     __aicore__ inline void ComputeChunk(int64_t chunkStart, int64_t chunkLen);
+@@ -346,9 +347,26 @@
+ __aicore__ inline bool PadV3Grad<T>::BuildGroupsFromDec()
+ {
+     for (int64_t d = 0; d < rank_; ++d) {
++        UpdateDimGroups(d);
++    }
++    for (int64_t d = 0; d < rank_; ++d) {
++        if (dimCnt_[d] <= 0) {
++            return false;
++        }
++    }
++    return true;
++}
++
++/* exp8_incgroup：只重算 index 发生变化的维度。语义与逐元素全量 BuildGroupsFromDec 一致
++ * （同一个函数体，只是把「哪些维度变了」交给调用方）。 */
++template <typename T>
++__aicore__ inline bool PadV3Grad<T>::UpdateDimGroups(int64_t d)
++{
++    {
+         const int64_t n = outDims_[d];
+         if (n <= 0) {
+-            return false;   /* 与 BuildGroups 的解码校验保持一致 */
++            dimCnt_[d] = 0;   /* 防御：Init 已保证 >0；置 0 让 elemOk 判为无效 */
++            return false;
+         }
+         const int64_t jlo = -front_[d];
+         const int64_t jhi = n + back_[d];
+@@ -404,11 +422,8 @@
+             }
+         }
+         dimCnt_[d] = gcnt_[s0] + gcnt_[s0 + 1];
+-        if (dimCnt_[d] <= 0) {
+-            return false;   /* 该维无预像 -> 该输出为 0 */
+-        }
+-    }
+-    return true;
++        return dimCnt_[d] > 0;
++    }
+ }
+ 
+ template <typename T>
+@@ -433,9 +448,20 @@
+         iDec_[d] = (n > 0) ? (remDec % n) : 0;
+         remDec = (n > 0) ? (remDec / n) : 0;
+     }
++    /* exp8_incgroup：chunk 起点做一次全量 group 构建；之后每次 index +1 只重算变化的维度。 */
++    for (int64_t d = 0; d < rank_; ++d) {
++        UpdateDimGroups(d);
++    }
++    bool elemOk = true;
++    for (int64_t d = 0; d < rank_; ++d) {
++        if (dimCnt_[d] <= 0) {
++            elemOk = false;
++            break;
++        }
++    }
+     for (int64_t k = 0; k < chunkLen; ++k) {
+         float val = 0.0f;
+-        if (BuildGroupsFromDec()) {
++        if (elemOk) {
+             for (int64_t d = 0; d < rank_; ++d) {
+                 pos_[d] = 0;
+             }
+@@ -467,13 +493,22 @@
+         }
+         outLocal_.SetValue(k, PadConvert<T>::FromFloat(val));
+         if (k + 1 < chunkLen) {
+-            /* 多下标 +1（与 BuildGroups 的解码顺序一致） */
++            /* 多下标 +1；只有发生变化的维度需要重算 group（进位链上每一维都变了）。 */
+             for (int64_t d = rank_ - 1; d >= 0; --d) {
+                 ++iDec_[d];
+                 if (iDec_[d] < outDims_[d]) {
++                    UpdateDimGroups(d);
+                     break;
+                 }
+                 iDec_[d] = 0;
++                UpdateDimGroups(d);
++            }
++            elemOk = true;
++            for (int64_t d = 0; d < rank_; ++d) {
++                if (dimCnt_[d] <= 0) {
++                    elemOk = false;
++                    break;
++                }
+             }
+         }
+     }

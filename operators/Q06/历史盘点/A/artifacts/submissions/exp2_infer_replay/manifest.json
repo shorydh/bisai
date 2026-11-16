@@ -1,0 +1,42 @@
+{
+  "prepared_at": "2026-11-16T15:03:09.263373+00:00",
+  "editable_text_tree_sha256": "4ef5ceb9e426e1e15379c242dd11bfcc506678ae7a454a8ab0cca04e30d72db3",
+  "files": [
+    {
+      "path": "op_host/pad_v3_grad_def.cpp",
+      "raw_sha256": "790f247ef685f4458798bdc52c17e3687cee5b7b50af7516fa6be9125677ebf3",
+      "submitted_utf8_sha256": "790f247ef685f4458798bdc52c17e3687cee5b7b50af7516fa6be9125677ebf3"
+    },
+    {
+      "path": "op_host/pad_v3_grad_infershape.cpp",
+      "raw_sha256": "6e0f96e989495bed093fa23c3caab48e51d540f82f69576ee1055d1ff951784a",
+      "submitted_utf8_sha256": "6e0f96e989495bed093fa23c3caab48e51d540f82f69576ee1055d1ff951784a"
+    },
+    {
+      "path": "op_host/pad_v3_grad_tiling.cpp",
+      "raw_sha256": "a4a501b93b0bd3e19441c88be41e2057db1df02dbf3933f68386ae7105749187",
+      "submitted_utf8_sha256": "a4a501b93b0bd3e19441c88be41e2057db1df02dbf3933f68386ae7105749187"
+    },
+    {
+      "path": "op_kernel/pad_v3_grad_tiling_data.h",
+      "raw_sha256": "c1dfdd71ddd72b0ee9ddc83f2d5537cca93191c4b997d0ca839c3d76e2b4cdea",
+      "submitted_utf8_sha256": "c1dfdd71ddd72b0ee9ddc83f2d5537cca93191c4b997d0ca839c3d76e2b4cdea"
+    },
+    {
+      "path": "op_kernel/pad_v3_grad_tiling_key.h",
+      "raw_sha256": "15621b2dd6a6ab2ba5de75c8071b8ec768dfb6df99e3ddbb19769d514a18d8b3",
+      "submitted_utf8_sha256": "15621b2dd6a6ab2ba5de75c8071b8ec768dfb6df99e3ddbb19769d514a18d8b3"
+    },
+    {
+      "path": "op_kernel/pad_v3_grad.cpp",
+      "raw_sha256": "feda948da66feadfe92e768845e9b31d55ae9b81297089e1cf84aca72a6a4cf1",
+      "submitted_utf8_sha256": "feda948da66feadfe92e768845e9b31d55ae9b81297089e1cf84aca72a6a4cf1"
+    },
+    {
+      "path": "op_kernel/pad_v3_grad.h",
+      "raw_sha256": "057a13829c28369f1532b353ed361b5f5ce1a3f378e1251a3b933e66daf06d80",
+      "submitted_utf8_sha256": "057a13829c28369f1532b353ed361b5f5ce1a3f378e1251a3b933e66daf06d80"
+    }
+  ],
+  "source_snapshot_label": "exp2_infer_replay"
+}

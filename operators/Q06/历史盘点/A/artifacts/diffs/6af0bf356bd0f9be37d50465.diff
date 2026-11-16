@@ -1,0 +1,143 @@
+--- 6aeeb3b26bd0f9be371ce6a2/op_kernel/pad_v3_grad.h
++++ 6af0bf356bd0f9be37d50465/op_kernel/pad_v3_grad.h
+@@ -526,6 +526,140 @@
+         }
+         return;
+     }
++    /* exp12_blkdma：mode 0 的 gather 实测占该题 67% 的耗时（诊断提交：跳过 gather
++     * 后 14.57µs → 4.82µs）。原来的 gather 是逐元素 GM 标量读 + UB 标量写；但只要
++     * 「一个 32B 块整块落在同一输出行的内部区间」，它对应的输入也是一段连续内存，
++     * 可以一次 DataCopyPad 搬完。填充占比很小，所以绝大多数块都能走 DMA。
++     *
++     * 对齐：块大小取 alignElems（32B），块起点 kf 恒为 alignElems 倍数 ⇒
++     * outLocal_[kf] 恒 32B 对齐；跨行块与 chunk 尾部（不足一块）保留标量语义。
++     * 数值：T→float→T 往返对 f32/f16/bf16 都是恒等，所以直接搬 T 字节与原来逐位一致。 */
++    if (rank_ >= 1 && outDims_[rank_ - 1] > 0 && xDims_[rank_ - 1] > 0) {
++        const int64_t rowLen = outDims_[rank_ - 1];
++        const int64_t blk = 32 / static_cast<int64_t>(sizeof(T));
++        if (blk > 0 && chunkStart % blk == 0) {
++            int64_t remF = chunkStart;
++            for (int64_t d = rank_ - 1; d >= 0; --d) {
++                const int64_t n = outDims_[d];
++                iDec_[d] = (n > 0) ? (remF % n) : 0;
++                remF = (n > 0) ? (remF / n) : 0;
++            }
++            int64_t kf = 0;
++            while (kf < chunkLen) {
++                int64_t nb = blk;
++                if (nb > chunkLen - kf) {
++                    nb = chunkLen - kf;
++                }
++                const int64_t col = iDec_[rank_ - 1];
++                bool blkOk = (nb == blk) && (col + blk <= rowLen) &&
++                             (col >= front_[rank_ - 1]) &&
++                             (col + blk <= front_[rank_ - 1] + xDims_[rank_ - 1]);
++                for (int64_t d = 0; d < rank_ - 1 && blkOk; ++d) {
++                    if (iDec_[d] < front_[d] || iDec_[d] >= front_[d] + xDims_[d]) {
++                        blkOk = false;
++                    }
++                }
++                bool advDone = false;
++                if (nb == blk) {
++                    int64_t srcF = 0;
++                    for (int64_t d = 0; d < rank_; ++d) {
++                        srcF += (iDec_[d] + front_[d]) * strides_[d];
++                    }
++                    if (blkOk) {
++                        DataCopyExtParams pf;
++                        pf.blockCount = 1;
++                        pf.blockLen = static_cast<uint32_t>(blk * static_cast<int64_t>(sizeof(T)));
++                        pf.srcStride = 0;
++                        pf.dstStride = 0;
++                        pf.rsv = 0;
++                        DataCopyPadExtParams<T> pp{};
++                        pp.isPad = false;
++                        pp.leftPadding = 0;
++                        pp.rightPadding = 0;
++                        DataCopyPad(outLocal_[kf], xGm_[srcF], pf, pp);
++                    } else {
++                        /* 该块含填充：逐元素判定（最多 blk 个） */
++                        for (int64_t j = 0; j < blk; ++j) {
++                            bool ok = true;
++                            for (int64_t d = 0; d < rank_; ++d) {
++                                if (iDec_[d] < front_[d] || iDec_[d] >= front_[d] + xDims_[d]) {
++                                    ok = false;
++                                    break;
++                                }
++                            }
++                            float val = 0.0f;
++                            if (ok) {
++                                int64_t sv = 0;
++                                for (int64_t d = 0; d < rank_; ++d) {
++                                    sv += (iDec_[d] + front_[d]) * strides_[d];
++                                }
++                                val = PadConvert<T>::ToFloat(xGm_.GetValue(static_cast<uint32_t>(sv)));
++                            }
++                            outLocal_.SetValue(kf + j, PadConvert<T>::FromFloat(val));
++                            if (j + 1 < blk) {
++                                for (int64_t d = rank_ - 1; d >= 0; --d) {
++                                    ++iDec_[d];
++                                    if (iDec_[d] < outDims_[d]) {
++                                        break;
++                                    }
++                                    iDec_[d] = 0;
++                                }
++                            }
++                        }
++                        advDone = true;   /* 标量分支已逐元素推进过下标 */
++                    }
++                    kf += blk;
++                } else {
++                    /* chunk 尾部不足一个 32B 块：逐元素收尾 */
++                    for (int64_t j = 0; j < nb; ++j) {
++                        bool ok = true;
++                        for (int64_t d = 0; d < rank_; ++d) {
++                            if (iDec_[d] < front_[d] || iDec_[d] >= front_[d] + xDims_[d]) {
++                                ok = false;
++                                break;
++                            }
++                        }
++                        float val = 0.0f;
++                        if (ok) {
++                            int64_t sv = 0;
++                            for (int64_t d = 0; d < rank_; ++d) {
++                                sv += (iDec_[d] + front_[d]) * strides_[d];
++                            }
++                            val = PadConvert<T>::ToFloat(xGm_.GetValue(static_cast<uint32_t>(sv)));
++                        }
++                        outLocal_.SetValue(kf + j, PadConvert<T>::FromFloat(val));
++                        if (j + 1 < nb) {
++                            for (int64_t d = rank_ - 1; d >= 0; --d) {
++                                ++iDec_[d];
++                                if (iDec_[d] < outDims_[d]) {
++                                    break;
++                                }
++                                iDec_[d] = 0;
++                            }
++                        }
++                    }
++                    kf += nb;
++                }
++                /* 块推进后的下标：DMA 分支没有逐元素推进，这里统一前进 blk/nb */
++                if (nb == blk && !advDone) {
++                    iDec_[rank_ - 1] += blk;
++                    for (int64_t d = rank_ - 1; d >= 0; --d) {
++                        if (iDec_[d] < outDims_[d]) {
++                            break;
++                        }
++                        if (d > 0) {
++                            iDec_[d] = 0;
++                            ++iDec_[d - 1];
++                        } else {
++                            iDec_[d] = 0;
++                        }
++                    }
++                }
++            }
++            PipeBarrier<PIPE_ALL>();
++            return;
++        }
++    }
+     for (int64_t d = 0; d < rank_; ++d) {
+         iDec_[d] = 0;
+     }

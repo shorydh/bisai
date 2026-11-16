@@ -1,0 +1,152 @@
+--- 6aee14d16bd0f9be378dfb6b/op_kernel/pad_v3_grad.h
++++ 6aee86db6bd0f9be3785ad1f/op_kernel/pad_v3_grad.h
+@@ -113,6 +113,8 @@
+     __aicore__ inline int64_t GroupJ(int64_t d, int64_t k) const;
+     __aicore__ inline void ComputeChunk(int64_t chunkStart, int64_t chunkLen);
+     __aicore__ inline void ComputeConstantChunk(int64_t chunkStart, int64_t chunkLen);
++    // exp6_batchrun：mode 0 下最内维连续 run 的批量搬运（head 标量 / middle DMA / tail 标量）
++    __aicore__ inline void FillConstantRun(int64_t k, int64_t src, int64_t run);
+     __aicore__ inline void CopyOutChunk(int64_t chunkStart, int64_t chunkLen);
+ 
+     TPipe pipe_;
+@@ -450,31 +452,120 @@
+     }
+ }
+ 
++/* exp6_batchrun：mode 0（constant）本质是平移拷贝 dx[i] = dy[i + front]。
++ * 旧实现每个输出元素都重做一次 rank 层 div/mod + rank 次乘加 + 一次 GM 标量读
++ * （`xGm_.GetValue`，GM 标量读延迟高）。新实现沿最内维（stride=1）按 run 批量 DMA：
++ *   head  : ≤31B 标量，把 UB 目的偏移顶到 32B 边界；
++ *   middle: 32B 整数倍，一次或多次 T 型 DataCopyPad（GM 源可非对齐，UB 目的必须对齐）；
++ *   tail  : <32B 标量。
++ * 与 01_ConcatD exp11、02_ConfusionTransposeD exp_batchwidth 同型（01 已平台验证）。 */
++template <typename T>
++__aicore__ inline void PadV3Grad<T>::FillConstantRun(int64_t k, int64_t src, int64_t run)
++{
++    const int64_t es = static_cast<int64_t>(sizeof(T));
++    int64_t jCur = k * es;
++    int64_t sCur = src * es;
++    int64_t left = run * es;
++
++    if ((jCur & 31) != 0) {
++        int64_t head = 32 - (jCur & 31);
++        if (head > left) {
++            head = left;
++        }
++        const int64_t k0 = jCur / es;
++        const int64_t q0 = sCur / es;
++        const int64_t n = head / es;
++        for (int64_t i = 0; i < n; ++i) {
++            outLocal_.SetValue(static_cast<uint32_t>(k0 + i),
++                               xGm_.GetValue(static_cast<uint32_t>(q0 + i)));
++        }
++        jCur += head;
++        sCur += head;
++        left -= head;
++    }
++
++    while (left >= 32) {
++        int64_t chunk = left & ~static_cast<int64_t>(31);
++        if (chunk > 65504) {
++            chunk = 65504;
++        }
++        DataCopyExtParams p;
++        p.blockCount = 1;
++        p.blockLen = static_cast<uint32_t>(chunk);
++        p.srcStride = 0;
++        p.dstStride = 0;
++        p.rsv = 0;
++        DataCopyPadExtParams<T> pp;
++        pp.isPad = false;
++        pp.leftPadding = 0;
++        pp.rightPadding = 0;
++        DataCopyPad(outLocal_[static_cast<int32_t>(jCur / es)],
++                    xGm_[static_cast<uint32_t>(sCur / es)], p, pp);
++        jCur += chunk;
++        sCur += chunk;
++        left -= chunk;
++    }
++
++    if (left > 0) {
++        const int64_t k0 = jCur / es;
++        const int64_t q0 = sCur / es;
++        const int64_t n = left / es;
++        for (int64_t i = 0; i < n; ++i) {
++            outLocal_.SetValue(static_cast<uint32_t>(k0 + i),
++                               xGm_.GetValue(static_cast<uint32_t>(q0 + i)));
++        }
++    }
++}
++
+ template <typename T>
+ __aicore__ inline void PadV3Grad<T>::ComputeConstantChunk(int64_t chunkStart, int64_t chunkLen)
+ {
+-    for (int64_t k = 0; k < chunkLen; ++k) {
+-        float val = 0.0f;
+-        if (hasNegPad_ == 0) {
+-            const int64_t flat = chunkStart + k;
+-            int64_t rem = flat;
+-            for (int64_t d = rank_ - 1; d >= 0; --d) {
+-                const int64_t n = outDims_[d];
+-                if (n <= 0) {
+-                    rem = 0;
++    if (hasNegPad_ != 0) {
++        /* constant + 负 pad：reference 无合法 golden，本核区间全写 0（保持原路径） */
++        for (int64_t k = 0; k < chunkLen; ++k) {
++            outLocal_.SetValue(k, PadConvert<T>::FromFloat(0.0f));
++        }
++        return;
++    }
++    if (rank_ == 0) {
++        FillConstantRun(0, 0, chunkLen);
++        return;
++    }
++    // 本 chunk 起点的 odometer（避免每元素重新 div/mod）
++    int64_t rem = chunkStart;
++    for (int64_t d = rank_ - 1; d >= 0; --d) {
++        const int64_t n = outDims_[d];
++        iDec_[d] = (n > 0) ? (rem % n) : 0;
++        rem = (n > 0) ? (rem / n) : 0;
++    }
++    int64_t k = 0;
++    while (k < chunkLen) {
++        const int64_t inner = outDims_[rank_ - 1];
++        int64_t run = (inner > 0) ? (inner - iDec_[rank_ - 1]) : 1;
++        if (run > chunkLen - k) {
++            run = chunkLen - k;
++        }
++        if (run <= 0) {
++            run = 1;
++        }
++        int64_t src = 0;
++        for (int64_t d = 0; d < rank_; ++d) {
++            src += (iDec_[d] + front_[d]) * strides_[d];
++        }
++        FillConstantRun(k, src, run);
++        k += run;
++        // odometer += run（只可能进位到更高维）
++        iDec_[rank_ - 1] += run;
++        if (iDec_[rank_ - 1] >= inner) {
++            iDec_[rank_ - 1] = 0;
++            for (int64_t d = rank_ - 2; d >= 0; --d) {
++                ++iDec_[d];
++                if (iDec_[d] < outDims_[d]) {
+                     break;
+                 }
+-                iDec_[d] = rem % n;
+-                rem /= n;
+-            }
+-            int64_t src = 0;
+-            for (int64_t d = 0; d < rank_; ++d) {
+-                src += (iDec_[d] + front_[d]) * strides_[d];
+-            }
+-            val = PadConvert<T>::ToFloat(xGm_.GetValue(static_cast<uint32_t>(src)));
+-        }
+-        /* constant + 负 pad：reference 无合法 golden，本核区间全写 0 */
+-        outLocal_.SetValue(k, PadConvert<T>::FromFloat(val));
++                iDec_[d] = 0;
++            }
++        }
+     }
+ }
+ 

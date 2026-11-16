@@ -1,0 +1,68 @@
+--- 6af0c7bb6bd0f9be37e337c5/op_kernel/pad_v3_grad.h
++++ 6af0c8916bd0f9be37e482b7/op_kernel/pad_v3_grad.h
+@@ -148,10 +148,14 @@
+     int64_t gt0_[PAD_MAX_RANK * PAD_MAX_GROUPS] = {0};
+     int64_t gcnt_[PAD_MAX_RANK * PAD_MAX_GROUPS] = {0};
+     int64_t dimCnt_[PAD_MAX_RANK] = {0};
++    bool wasIdent_[PAD_MAX_RANK] = {false};
+     /* exp14_validcnt：dimCnt_[d] <= 0 的维度个数。
+      * 原来每个元素都要全 rank 重扫一遍算 elemOk（诊断实测：ComputeChunk 里
+      * 「簿记」占 48% 的耗时，gather 只占 19%）。改成在 UpdateDimGroups 里增量维护。 */
+     int64_t badDims_ = 0;
++    /* exp16_identcopy：dimCnt_==1 且 GroupJ(d,0)==iDec_[d] 不成立的维度个数。
++     * 恒等位置占 99.47%，这种位置的组求和是空转。 */
++    int64_t nonIdent_ = 0;
+     int64_t pos_[PAD_MAX_RANK] = {0};
+ };
+ 
+@@ -405,6 +409,10 @@
+                 if ((dimCnt_[d] <= 0) != (oldCntF <= 0)) {
+                     badDims_ += (dimCnt_[d] <= 0) ? 1 : -1;
+                 }
++                if (!wasIdent_[d]) {
++                    wasIdent_[d] = true;
++                    --nonIdent_;
++                }
+                 return true;
+             }
+         }
+@@ -462,6 +470,12 @@
+             if ((dimCnt_[d] <= 0) != (oldCnt <= 0)) {
+                 badDims_ += (dimCnt_[d] <= 0) ? 1 : -1;
+             }
++            const bool isIdNow = (dimCnt_[d] == 1) &&
++                                 ((gr_[s0] + gt0_[s0] * gs_[s0]) == iDec_[d]);
++            if (isIdNow != wasIdent_[d]) {
++                wasIdent_[d] = isIdNow;
++                nonIdent_ += isIdNow ? -1 : 1;
++            }
+         }
+         return dimCnt_[d] > 0;
+     }
+@@ -491,8 +505,10 @@
+     }
+     /* exp8_incgroup：chunk 起点做一次全量 group 构建；之后每次 index +1 只重算变化的维度。 */
+     badDims_ = 0;
++    nonIdent_ = 0;
+     for (int64_t d = 0; d < rank_; ++d) {
+         dimCnt_[d] = 1;   /* 占位 >0，让 badDims_ 的增量维护从 0 起算 */
++        wasIdent_[d] = false;
+     }
+     for (int64_t d = 0; d < rank_; ++d) {
+         UpdateDimGroups(d);
+@@ -500,7 +516,14 @@
+     bool elemOk = (badDims_ == 0);
+     for (int64_t k = 0; k < chunkLen; ++k) {
+         float val = 0.0f;
+-        if (elemOk) {
++        if (elemOk && nonIdent_ == 0) {
++            /* 每一维都是恒等单点：源地址就是 Σ(iDec_+front_)*stride，读一次即可 */
++            int64_t srcId = 0;
++            for (int64_t d = 0; d < rank_; ++d) {
++                srcId += (iDec_[d] + front_[d]) * strides_[d];
++            }
++            val = PadConvert<T>::ToFloat(xGm_.GetValue(static_cast<uint32_t>(srcId)));
++        } else if (elemOk) {
+             for (int64_t d = 0; d < rank_; ++d) {
+                 pos_[d] = 0;
+             }

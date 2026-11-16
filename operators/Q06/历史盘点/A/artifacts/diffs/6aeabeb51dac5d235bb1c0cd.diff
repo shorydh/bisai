@@ -1,0 +1,10 @@
+--- 6aeabcd41dac5d235bade2c3/op_host/pad_v3_grad_def.cpp
++++ 6aeabeb51dac5d235bb1c0cd/op_host/pad_v3_grad_def.cpp
+@@ -17,7 +17,6 @@
+             .AutoContiguous();
+         this->Input("paddings")
+             .ParamType(REQUIRED)
+-            .ValueDepend(OPTIONAL)
+             .DataType({ge::DT_INT32, ge::DT_INT64, ge::DT_INT32, ge::DT_INT64})
+             .Format({ge::FORMAT_ND, ge::FORMAT_ND, ge::FORMAT_ND, ge::FORMAT_ND})
+             .UnknownShapeFormat({ge::FORMAT_ND, ge::FORMAT_ND, ge::FORMAT_ND, ge::FORMAT_ND})
