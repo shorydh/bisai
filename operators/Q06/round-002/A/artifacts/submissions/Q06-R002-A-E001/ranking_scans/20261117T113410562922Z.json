@@ -1,0 +1,22 @@
+{
+  "official_task_id": "6afc3b166bd0f9be377f93c5",
+  "scans": [
+    {
+      "page": 1,
+      "size": 100,
+      "total": 364,
+      "rows_returned": 100,
+      "response_sha256": "2cca9aea1011779407d66919f79aeef9cb1e4eafc057de56722181f915ecf63e",
+      "observed_at": "2026-11-17T11:34:11.419951+00:00"
+    },
+    {
+      "page": 2,
+      "size": 100,
+      "total": 364,
+      "rows_returned": 100,
+      "response_sha256": "7ae0c2d7ae00a3ff7427bce2fe10a5cd34cd2972d57845930c17cdb035c09ef3",
+      "observed_at": "2026-11-17T11:34:11.817363+00:00"
+    }
+  ],
+  "found": true
+}

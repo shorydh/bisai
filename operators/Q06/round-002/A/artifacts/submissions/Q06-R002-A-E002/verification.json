@@ -1,0 +1,11 @@
+{
+  "observed_at": "2026-11-17T11:37:08.904640+00:00",
+  "official_task_id": "6afc3bd16bd0f9be3780fbd0",
+  "ID": 1381889,
+  "status": "Pass",
+  "valid": true,
+  "judge_revision": 0,
+  "files_count": 38,
+  "editable_match": true,
+  "all_38_match": true
+}

@@ -1,0 +1,40 @@
+{
+  "frozen_at": "2026-11-17T11:30:27.172436+00:00",
+  "task_id": "Q06-R002-A-OFFICIAL-COMPARABILITY-20261117",
+  "round_id": "round-002",
+  "operator": "PadV3Grad",
+  "agent_id": "A",
+  "base_commit": "cb4016d4406b245461f57998f693d7feacc0e297",
+  "no_operator_changes": true,
+  "hypothesis": "Published official protocol, exact source/template identity and valid completed results permit bounded observed-score comparison; opaque backend details are not an infinite prerequisite.",
+  "reuse_P": {
+    "experiment_id": "Q06-R001-A-E003",
+    "round_id": "round-001",
+    "task_id": "Q06-R001-A-BASELINE-20261117",
+    "official_task_id": "6afb3e276bd0f9be37ed9f96",
+    "ID": 1369815,
+    "initial_score": 29.67,
+    "new_run": false,
+    "conditions": "Refresh valid/revision/all38 files/current config/public testcase IDs and exact TBest plus exact ranking observation before reusing."
+  },
+  "new_official_runs": [
+    {
+      "experiment_id": "Q06-R002-A-E001",
+      "version": "PL",
+      "hypothesis": "Independently reproduce frozen PL and acquire native valid/revision and exact case/ranking bindings; compare observed score with P."
+    },
+    {
+      "experiment_id": "Q06-R002-A-E002",
+      "version": "F",
+      "hypothesis": "Acquire same publicly documented protocol evidence for friend-original local control, rather than filling four arms with old UI scores."
+    },
+    {
+      "experiment_id": "Q06-R002-A-E003",
+      "version": "L",
+      "hypothesis": "Acquire native effective-result and score evidence for frozen L to close bounded four-arm comparison."
+    }
+  ],
+  "formal_comparison_boundary": "Compare only actual official scores with observation times; preserve dynamic TBest and all repetitions, no hidden metrics or speedup inference.",
+  "baseline_gate": "C original-dependency reference and NPU judgment remain unresolved; no central baseline approval.",
+  "stop_rule": "Complete evidence for all selected arms, then summarize. Do not repeat submissions to substitute for unavailable protocol details."
+}

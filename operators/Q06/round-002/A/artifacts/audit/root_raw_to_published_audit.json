@@ -1,0 +1,46 @@
+{
+  "status": "pass",
+  "records": [
+    {
+      "arm": "P",
+      "experiment_id": "Q06-R002-A-E001",
+      "official_numeric_id": 1381855,
+      "official_task_id": "6afc3b166bd0f9be377f93c5",
+      "score": 29.35,
+      "source_files_matched": 38,
+      "raw_official_projection_matched": true,
+      "ranking_and_public_scale_matched": true
+    },
+    {
+      "arm": "PL",
+      "experiment_id": "Q06-R002-A-E002",
+      "official_numeric_id": 1381889,
+      "official_task_id": "6afc3bd16bd0f9be3780fbd0",
+      "score": 29.36,
+      "source_files_matched": 38,
+      "raw_official_projection_matched": true,
+      "ranking_and_public_scale_matched": true
+    },
+    {
+      "arm": "F",
+      "experiment_id": "Q06-R002-A-E003",
+      "official_numeric_id": 1381929,
+      "official_task_id": "6afc3ca46bd0f9be3782644c",
+      "score": 28.98,
+      "source_files_matched": 38,
+      "raw_official_projection_matched": true,
+      "ranking_and_public_scale_matched": true
+    },
+    {
+      "arm": "L",
+      "experiment_id": "Q06-R002-A-E004",
+      "official_numeric_id": 1381993,
+      "official_task_id": "6afc3d976bd0f9be378432b7",
+      "score": 28.77,
+      "source_files_matched": 38,
+      "raw_official_projection_matched": true,
+      "ranking_and_public_scale_matched": true
+    }
+  ],
+  "raw_to_published_checks": "Native metrics, exact ranking SID, all 152 source files, public scale same-response projection, configuration, timestamps, arithmetic, schema and references independently verified."
+}

@@ -1,0 +1,274 @@
+{
+  "checked_at": "2026-11-17T11:45:09.262900+00:00",
+  "task_id": "Q06-R002-A-OFFICIAL-COMPARABILITY-20261117",
+  "pairs": [
+    {
+      "candidate": "PL",
+      "control": "P",
+      "candidate_task": "6afc3bd16bd0f9be3780fbd0",
+      "control_task": "6afc3b166bd0f9be377f93c5",
+      "candidate_score": 29.36,
+      "control_score": 29.35,
+      "checks": {
+        "both_pass": true,
+        "both_valid": true,
+        "same_problem": true,
+        "same_judge_revision": true,
+        "same_public_only": true,
+        "same_total_testcase_count": true,
+        "no_missing_cases": true,
+        "same_visible_case_ids_and_best_time": true,
+        "both_visible_cases_pass": true,
+        "same_ranking_public_scoring_scale": true,
+        "ranking_scale_matches_terminal": true,
+        "same_before_after_problem_config": true,
+        "same_readonly_template": true,
+        "both_bound_numeric_ranking_scores": true
+      },
+      "bounded_comparison_status": "verified",
+      "observed_score_difference": 0.01,
+      "scope": "Observed official score difference only; no additive/causal speedup inference"
+    },
+    {
+      "candidate": "L",
+      "control": "F",
+      "candidate_task": "6afc3d976bd0f9be378432b7",
+      "control_task": "6afc3ca46bd0f9be3782644c",
+      "candidate_score": 28.77,
+      "control_score": 28.98,
+      "checks": {
+        "both_pass": true,
+        "both_valid": true,
+        "same_problem": true,
+        "same_judge_revision": true,
+        "same_public_only": true,
+        "same_total_testcase_count": true,
+        "no_missing_cases": true,
+        "same_visible_case_ids_and_best_time": true,
+        "both_visible_cases_pass": true,
+        "same_ranking_public_scoring_scale": true,
+        "ranking_scale_matches_terminal": true,
+        "same_before_after_problem_config": true,
+        "same_readonly_template": true,
+        "both_bound_numeric_ranking_scores": true
+      },
+      "bounded_comparison_status": "verified",
+      "observed_score_difference": -0.21,
+      "scope": "Observed official score difference only; no additive/causal speedup inference"
+    },
+    {
+      "candidate": "P",
+      "control": "F",
+      "candidate_task": "6afc3b166bd0f9be377f93c5",
+      "control_task": "6afc3ca46bd0f9be3782644c",
+      "candidate_score": 29.35,
+      "control_score": 28.98,
+      "checks": {
+        "both_pass": true,
+        "both_valid": true,
+        "same_problem": true,
+        "same_judge_revision": true,
+        "same_public_only": true,
+        "same_total_testcase_count": true,
+        "no_missing_cases": true,
+        "same_visible_case_ids_and_best_time": true,
+        "both_visible_cases_pass": true,
+        "same_ranking_public_scoring_scale": true,
+        "ranking_scale_matches_terminal": true,
+        "same_before_after_problem_config": true,
+        "same_readonly_template": true,
+        "both_bound_numeric_ranking_scores": true
+      },
+      "bounded_comparison_status": "verified",
+      "observed_score_difference": 0.37,
+      "scope": "Observed official score difference only; no additive/causal speedup inference"
+    },
+    {
+      "candidate": "PL",
+      "control": "F",
+      "candidate_task": "6afc3bd16bd0f9be3780fbd0",
+      "control_task": "6afc3ca46bd0f9be3782644c",
+      "candidate_score": 29.36,
+      "control_score": 28.98,
+      "checks": {
+        "both_pass": true,
+        "both_valid": true,
+        "same_problem": true,
+        "same_judge_revision": true,
+        "same_public_only": true,
+        "same_total_testcase_count": true,
+        "no_missing_cases": true,
+        "same_visible_case_ids_and_best_time": true,
+        "both_visible_cases_pass": true,
+        "same_ranking_public_scoring_scale": true,
+        "ranking_scale_matches_terminal": true,
+        "same_before_after_problem_config": true,
+        "same_readonly_template": true,
+        "both_bound_numeric_ranking_scores": true
+      },
+      "bounded_comparison_status": "verified",
+      "observed_score_difference": 0.38,
+      "scope": "Observed official score difference only; no additive/causal speedup inference"
+    }
+  ],
+  "baseline_approval": "pending C original-dependency reference and NPU judgment; central decides",
+  "stable_best": null,
+  "all_observations": [
+    {
+      "experiment_id": "Q06-R002-A-E001",
+      "arm": "P",
+      "official_task_id": "6afc3b166bd0f9be377f93c5",
+      "ranking_observations": [
+        {
+          "ref": "artifacts/ranking/6afc3b166bd0f9be377f93c5_20261117T113410562922Z.json",
+          "observed_at": "2026-11-17T11:34:11.828525+00:00",
+          "score": 29.35
+        }
+      ],
+      "public_case_and_tbest_signature": [
+        [
+          "6ad9ab403ff2fef7e80e2a22",
+          "default",
+          3.71
+        ],
+        [
+          "6ad9ab403ff2fef7e80e2a27",
+          "default",
+          3.7466666666666666
+        ],
+        [
+          "6ad9ab403ff2fef7e80e2a2b",
+          "default",
+          3.67
+        ],
+        [
+          "6ad9ab403ff2fef7e80e2a2f",
+          "default",
+          3.776666666666667
+        ],
+        [
+          "6ad9ab403ff2fef7e80e2a33",
+          "default",
+          3.6533333333333333
+        ]
+      ]
+    },
+    {
+      "experiment_id": "Q06-R002-A-E002",
+      "arm": "PL",
+      "official_task_id": "6afc3bd16bd0f9be3780fbd0",
+      "ranking_observations": [
+        {
+          "ref": "artifacts/ranking/6afc3bd16bd0f9be3780fbd0_20261117T113710825003Z.json",
+          "observed_at": "2026-11-17T11:37:17.870345+00:00",
+          "score": 29.36
+        }
+      ],
+      "public_case_and_tbest_signature": [
+        [
+          "6ad9ab403ff2fef7e80e2a22",
+          "default",
+          3.71
+        ],
+        [
+          "6ad9ab403ff2fef7e80e2a27",
+          "default",
+          3.7466666666666666
+        ],
+        [
+          "6ad9ab403ff2fef7e80e2a2b",
+          "default",
+          3.67
+        ],
+        [
+          "6ad9ab403ff2fef7e80e2a2f",
+          "default",
+          3.776666666666667
+        ],
+        [
+          "6ad9ab403ff2fef7e80e2a33",
+          "default",
+          3.6533333333333333
+        ]
+      ]
+    },
+    {
+      "experiment_id": "Q06-R002-A-E003",
+      "arm": "F",
+      "official_task_id": "6afc3ca46bd0f9be3782644c",
+      "ranking_observations": [
+        {
+          "ref": "artifacts/ranking/6afc3ca46bd0f9be3782644c_20261117T114028027507Z.json",
+          "observed_at": "2026-11-17T11:40:32.992345+00:00",
+          "score": 28.98
+        }
+      ],
+      "public_case_and_tbest_signature": [
+        [
+          "6ad9ab403ff2fef7e80e2a22",
+          "default",
+          3.71
+        ],
+        [
+          "6ad9ab403ff2fef7e80e2a27",
+          "default",
+          3.7466666666666666
+        ],
+        [
+          "6ad9ab403ff2fef7e80e2a2b",
+          "default",
+          3.67
+        ],
+        [
+          "6ad9ab403ff2fef7e80e2a2f",
+          "default",
+          3.776666666666667
+        ],
+        [
+          "6ad9ab403ff2fef7e80e2a33",
+          "default",
+          3.6533333333333333
+        ]
+      ]
+    },
+    {
+      "experiment_id": "Q06-R002-A-E004",
+      "arm": "L",
+      "official_task_id": "6afc3d976bd0f9be378432b7",
+      "ranking_observations": [
+        {
+          "ref": "artifacts/ranking/6afc3d976bd0f9be378432b7_20261117T114449556459Z.json",
+          "observed_at": "2026-11-17T11:44:50.886420+00:00",
+          "score": 28.77
+        }
+      ],
+      "public_case_and_tbest_signature": [
+        [
+          "6ad9ab403ff2fef7e80e2a22",
+          "default",
+          3.71
+        ],
+        [
+          "6ad9ab403ff2fef7e80e2a27",
+          "default",
+          3.7466666666666666
+        ],
+        [
+          "6ad9ab403ff2fef7e80e2a2b",
+          "default",
+          3.67
+        ],
+        [
+          "6ad9ab403ff2fef7e80e2a2f",
+          "default",
+          3.776666666666667
+        ],
+        [
+          "6ad9ab403ff2fef7e80e2a33",
+          "default",
+          3.6533333333333333
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,471 @@
+{
+  "checked_at": "2026-11-17T11:30:07.466431+00:00",
+  "scope": "Read-only fixed B commit 00e523a0871993a333c18b7b5224afab3b96e7ef archive audit. No official requests/submissions performed. No frozen code edited.",
+  "source_restore": "artifacts/audit/restoration_identity.json",
+  "records": [
+    {
+      "original_experiment_id": "B-HIST-1362811",
+      "original_round_id": "历史盘点",
+      "original_task_id": null,
+      "arm": "F",
+      "official_task_id": 1362811,
+      "submission_id": "6afae80f6bd0f9be37477997",
+      "official_result_ref": "https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6afae80f6bd0f9be37477997",
+      "source_seven_sha256": "700af8da3ef6679f48ebf8bbfa9d2f145d9357e9b6fd2e4f288542c662a1969b",
+      "source_package_sha256": "c4c08a32f730a69e8b64f260493093981f752dcb99b541463080cd6b2da1f244",
+      "archived_status": "Pass",
+      "archived_total_score": 28.61,
+      "ranking_score_matches_jsonl": true,
+      "raw_json_score_present": false,
+      "ranking_row_has_submission_id": false,
+      "ranking_submission_time_displayed": "2026/11/16 19:25:03",
+      "official_submitted_at": "2026-11-16T19:25:03+08:00",
+      "evaluated_at": null,
+      "observed_at": "2026-11-16T14:47:35.410Z",
+      "native_valid": null,
+      "native_judge_revision": null,
+      "native_testcase_ids": null,
+      "full_precision_best_time": null,
+      "best_time_displayed": [
+        "3.71μs",
+        "3.75μs",
+        "3.73μs",
+        "3.78μs",
+        "3.66μs"
+      ],
+      "public_case_count": 5,
+      "source_identity_archive_checked": true,
+      "raw_result_keys": [
+        "id",
+        "url",
+        "index_label",
+        "submission_header",
+        "status",
+        "table_text",
+        "read_at"
+      ],
+      "artifacts": [
+        {
+          "sha256": "0c1ea60569b342ddb4dc55df366a70d063692e13834c8a9cc771970e7e95accd",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1362811.json",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1362811.json"
+        },
+        {
+          "sha256": "0cf53748d82fd0f1926ae1b874ac081c5bf3d269e3315a273cd918cefec56369",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1362811-identity.json",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1362811-identity.json"
+        },
+        {
+          "sha256": "303382ce6c34514db006748bba9b3a83420516b0e52682de697feee6562d3b76",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1362811-ranking-saved.txt",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1362811-ranking-saved.txt"
+        }
+      ],
+      "scope": "Offline archive audit; not a new official measurement. Ranking row is linked by stored submission timestamp and displayed public timings; it does not itself carry submission_id. UI rounded TBest cannot establish exact backend vector equality."
+    },
+    {
+      "original_experiment_id": "B-HIST-1362890",
+      "original_round_id": "历史盘点",
+      "original_task_id": null,
+      "arm": "L",
+      "official_task_id": 1362890,
+      "submission_id": "6afae96e6bd0f9be374a1e96",
+      "official_result_ref": "https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6afae96e6bd0f9be374a1e96",
+      "source_seven_sha256": "d3174f99553a7ba700a726f77370e1e287e1084cd2bc9768d4bbbcbd66ce9d24",
+      "source_package_sha256": "c04bc9bcc87d9c52dafbc964d87acc709f2bc0369463f32126f80593af2c04ba",
+      "archived_status": "Pass",
+      "archived_total_score": 29.23,
+      "ranking_score_matches_jsonl": true,
+      "raw_json_score_present": false,
+      "ranking_row_has_submission_id": false,
+      "ranking_submission_time_displayed": "2026/11/16 19:30:54",
+      "official_submitted_at": "2026-11-16T19:30:54+08:00",
+      "evaluated_at": null,
+      "observed_at": "2026-11-16T14:47:33.516Z",
+      "native_valid": null,
+      "native_judge_revision": null,
+      "native_testcase_ids": null,
+      "full_precision_best_time": null,
+      "best_time_displayed": [
+        "3.71μs",
+        "3.75μs",
+        "3.73μs",
+        "3.78μs",
+        "3.66μs"
+      ],
+      "public_case_count": 5,
+      "source_identity_archive_checked": true,
+      "raw_result_keys": [
+        "id",
+        "url",
+        "index_label",
+        "submission_header",
+        "status",
+        "table_text",
+        "read_at"
+      ],
+      "artifacts": [
+        {
+          "sha256": "38417ac719d2dce190189ae56b7347be435b423df80a3d2c0892b14e4c9e0326",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1362890.json",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1362890.json"
+        },
+        {
+          "sha256": "1e33fda8728553d07846ea25d695fc916a3efea5b969a96b1d9bae266f200eeb",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1362890-identity.json",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1362890-identity.json"
+        },
+        {
+          "sha256": "a6b5d7e0d3c360ee9884495a7c803d2b2b7efa2a22971ba5ee5082425e334a2b",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1362890-ranking-saved.txt",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1362890-ranking-saved.txt"
+        }
+      ],
+      "scope": "Offline archive audit; not a new official measurement. Ranking row is linked by stored submission timestamp and displayed public timings; it does not itself carry submission_id. UI rounded TBest cannot establish exact backend vector equality."
+    },
+    {
+      "original_experiment_id": "B-HIST-1364006",
+      "original_round_id": "历史盘点",
+      "original_task_id": null,
+      "arm": "L",
+      "official_task_id": 1364006,
+      "submission_id": "6afaf9e36bd0f9be3769c389",
+      "official_result_ref": "https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6afaf9e36bd0f9be3769c389",
+      "source_seven_sha256": "d3174f99553a7ba700a726f77370e1e287e1084cd2bc9768d4bbbcbd66ce9d24",
+      "source_package_sha256": "55bd90c09f96a9f2a30ecf84196a496757b8c4b4249a5def973e0326c3217a3e",
+      "archived_status": "Pass",
+      "archived_total_score": 28.84,
+      "ranking_score_matches_jsonl": true,
+      "raw_json_score_present": false,
+      "ranking_row_has_submission_id": false,
+      "ranking_submission_time_displayed": "2026/11/16 20:41:07",
+      "official_submitted_at": "2026-11-16T20:41:07+08:00",
+      "evaluated_at": null,
+      "observed_at": "2026-11-16T14:47:11.940Z",
+      "native_valid": null,
+      "native_judge_revision": null,
+      "native_testcase_ids": null,
+      "full_precision_best_time": null,
+      "best_time_displayed": [
+        "3.71μs",
+        "3.75μs",
+        "3.73μs",
+        "3.78μs",
+        "3.66μs"
+      ],
+      "public_case_count": 5,
+      "source_identity_archive_checked": true,
+      "raw_result_keys": [
+        "id",
+        "url",
+        "index_label",
+        "submission_header",
+        "status",
+        "table_text",
+        "read_at"
+      ],
+      "artifacts": [
+        {
+          "sha256": "0cb265f774831f9121ab90bb788a6002cf2d4343f89bdbc4e7027232b6abfc03",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1364006.json",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1364006.json"
+        },
+        {
+          "sha256": "f25c83504513671da78492e88b963aee782e3a42160be8cecf47ebf5fa3b7fa6",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1364006-identity.json",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1364006-identity.json"
+        },
+        {
+          "sha256": "8dfd3cfe81dc3cd5f682710b5996b28a8ae292febedd6967edaabf570696e587",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1364006-ranking-saved.txt",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1364006-ranking-saved.txt"
+        }
+      ],
+      "scope": "Offline archive audit; not a new official measurement. Ranking row is linked by stored submission timestamp and displayed public timings; it does not itself carry submission_id. UI rounded TBest cannot establish exact backend vector equality."
+    },
+    {
+      "original_experiment_id": "B-HIST-1367558",
+      "original_round_id": "历史盘点",
+      "original_task_id": null,
+      "arm": "F",
+      "official_task_id": 1367558,
+      "submission_id": "6afb1c176bd0f9be37af982a",
+      "official_result_ref": "https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6afb1c176bd0f9be37af982a",
+      "source_seven_sha256": "700af8da3ef6679f48ebf8bbfa9d2f145d9357e9b6fd2e4f288542c662a1969b",
+      "source_package_sha256": "cbb5fa762f71555d27ce59414de73b30f37a24218e9f608edb91b09584b233df",
+      "archived_status": "Pass",
+      "archived_total_score": 28.66,
+      "ranking_score_matches_jsonl": true,
+      "raw_json_score_present": true,
+      "ranking_row_has_submission_id": false,
+      "ranking_submission_time_displayed": "2026/11/16 23:07:03",
+      "official_submitted_at": "2026-11-16T23:07:03+08:00",
+      "evaluated_at": null,
+      "observed_at": "2026-11-16T15:09:47.767Z",
+      "native_valid": null,
+      "native_judge_revision": null,
+      "native_testcase_ids": null,
+      "full_precision_best_time": null,
+      "best_time_displayed": [
+        "3.71μs",
+        "3.75μs",
+        "3.73μs",
+        "3.78μs",
+        "3.66μs"
+      ],
+      "public_case_count": 5,
+      "source_identity_archive_checked": true,
+      "raw_result_keys": [
+        "name",
+        "source",
+        "id",
+        "url",
+        "header",
+        "status",
+        "table_text",
+        "read_at",
+        "ranking_row",
+        "score"
+      ],
+      "artifacts": [
+        {
+          "sha256": "61f3bd7d4f617fab7f7081ae2089c0ee9b4cdc83e6d794b4ae728eee2405017c",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1367558.json",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1367558.json"
+        },
+        {
+          "sha256": "2eb30f126362078e6bc532715872830668763549f9df815b603459bfb5c06a0a",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1367558-identity.json",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1367558-identity.json"
+        },
+        {
+          "sha256": "4632e8657da639fb6541414af204ea1b18237333cb72044d5e35814d6559a064",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1367558-ranking.txt",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1367558-ranking.txt"
+        }
+      ],
+      "scope": "Offline archive audit; not a new official measurement. Ranking row is linked by stored submission timestamp and displayed public timings; it does not itself carry submission_id. UI rounded TBest cannot establish exact backend vector equality."
+    },
+    {
+      "original_experiment_id": "B-HIST-1367629",
+      "original_round_id": "历史盘点",
+      "original_task_id": null,
+      "arm": "P",
+      "official_task_id": 1367629,
+      "submission_id": "6afb1d006bd0f9be37b15ed8",
+      "official_result_ref": "https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6afb1d006bd0f9be37b15ed8",
+      "source_seven_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+      "source_package_sha256": "954863ed68a2f5334ceae862c49c1af2969449ddb98ea093e373cf370a3c8d3b",
+      "archived_status": "Pass",
+      "archived_total_score": 29.59,
+      "ranking_score_matches_jsonl": true,
+      "raw_json_score_present": true,
+      "ranking_row_has_submission_id": false,
+      "ranking_submission_time_displayed": "2026/11/16 23:10:56",
+      "official_submitted_at": "2026-11-16T23:10:56+08:00",
+      "evaluated_at": null,
+      "observed_at": "2026-11-16T15:14:06.765Z",
+      "native_valid": null,
+      "native_judge_revision": null,
+      "native_testcase_ids": null,
+      "full_precision_best_time": null,
+      "best_time_displayed": [
+        "3.71μs",
+        "3.75μs",
+        "3.73μs",
+        "3.78μs",
+        "3.66μs"
+      ],
+      "public_case_count": 5,
+      "source_identity_archive_checked": true,
+      "raw_result_keys": [
+        "name",
+        "source",
+        "id",
+        "url",
+        "header",
+        "status",
+        "table_text",
+        "read_at",
+        "ranking_row",
+        "score"
+      ],
+      "artifacts": [
+        {
+          "sha256": "4484cd8c177b4690aca38d4d07c089974f4afd839fd699e86f6ebfcfccfccd32",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1367629.json",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1367629.json"
+        },
+        {
+          "sha256": "bea2c8acd88a0d851bd948be8094cb50f95118c7d27b84f2c944efd64fe686cc",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1367629-identity.json",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1367629-identity.json"
+        },
+        {
+          "sha256": "dc31473cdb2376a3a130693e1cc5441df74ba8f7667f0c27fd8b3f7cfe821114",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1367629-ranking.txt",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1367629-ranking.txt"
+        }
+      ],
+      "scope": "Offline archive audit; not a new official measurement. Ranking row is linked by stored submission timestamp and displayed public timings; it does not itself carry submission_id. UI rounded TBest cannot establish exact backend vector equality."
+    },
+    {
+      "original_experiment_id": "B-HIST-1367774",
+      "original_round_id": "历史盘点",
+      "original_task_id": null,
+      "arm": "P",
+      "official_task_id": 1367774,
+      "submission_id": "6afb1ec66bd0f9be37b4e0f3",
+      "official_result_ref": "https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6afb1ec66bd0f9be37b4e0f3",
+      "source_seven_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+      "source_package_sha256": "18679dad71f9ea7723ca524599b0d9363861aeadf8f8032202f6391199a5a85a",
+      "archived_status": "Pass",
+      "archived_total_score": 29.39,
+      "ranking_score_matches_jsonl": true,
+      "raw_json_score_present": true,
+      "ranking_row_has_submission_id": false,
+      "ranking_submission_time_displayed": "2026/11/16 23:18:30",
+      "official_submitted_at": "2026-11-16T23:18:30+08:00",
+      "evaluated_at": null,
+      "observed_at": "2026-11-16T15:22:45.356Z",
+      "native_valid": null,
+      "native_judge_revision": null,
+      "native_testcase_ids": null,
+      "full_precision_best_time": null,
+      "best_time_displayed": [
+        "3.71μs",
+        "3.75μs",
+        "3.73μs",
+        "3.78μs",
+        "3.66μs"
+      ],
+      "public_case_count": 5,
+      "source_identity_archive_checked": true,
+      "raw_result_keys": [
+        "name",
+        "source",
+        "id",
+        "url",
+        "header",
+        "status",
+        "table_text",
+        "read_at",
+        "ranking_row",
+        "score"
+      ],
+      "artifacts": [
+        {
+          "sha256": "3d92586b5e260506690f02003e7e1c7d62fc3f4df386ce95c4619a6d68fc61c4",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1367774.json",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1367774.json"
+        },
+        {
+          "sha256": "249eb2ed6de373220e8b79f6bfd75de380d6f788fc621dfbb37e3bba2e90e79c",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1367774-identity.json",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1367774-identity.json"
+        },
+        {
+          "sha256": "fa1d178c639c4049573cd024ddb26c5956643973184cc8fc4eb8c25b4dd87332",
+          "machine_A_source_file": "source-b-r001/artifacts/reporting/history/1367774-ranking.txt",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/reporting/history/1367774-ranking.txt"
+        }
+      ],
+      "scope": "Offline archive audit; not a new official measurement. Ranking row is linked by stored submission timestamp and displayed public timings; it does not itself carry submission_id. UI rounded TBest cannot establish exact backend vector equality."
+    },
+    {
+      "original_experiment_id": "Q06-R001-B-E001",
+      "original_round_id": "round-001",
+      "original_task_id": "Q06-R001-B-COMBINE-20261117",
+      "arm": "PL",
+      "official_task_id": 1369663,
+      "submission_id": "6afb3b076bd0f9be37e856f6",
+      "official_result_ref": "https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6afb3b076bd0f9be37e856f6",
+      "source_seven_sha256": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41",
+      "source_package_sha256": "3daa6a7751fdcabafca6a98cd95e3b13e6958c2161aac828fa73a61244aadcb5",
+      "archived_status": "Pass",
+      "archived_total_score": 29.2,
+      "ranking_score_matches_jsonl": true,
+      "raw_json_score_present": true,
+      "ranking_row_has_submission_id": false,
+      "ranking_submission_time_displayed": "2026/11/17 01:19:03",
+      "official_submitted_at": "2026-11-17T01:19:03+08:00",
+      "evaluated_at": null,
+      "observed_at": "2026-11-16T17:21:33.532Z",
+      "native_valid": null,
+      "native_judge_revision": null,
+      "native_testcase_ids": null,
+      "full_precision_best_time": null,
+      "best_time_displayed": [
+        "3.71μs",
+        "3.75μs",
+        "3.73μs",
+        "3.78μs",
+        "3.66μs"
+      ],
+      "public_case_count": 5,
+      "source_identity_archive_checked": true,
+      "raw_result_keys": [
+        "id",
+        "url",
+        "status",
+        "score",
+        "submitted_at",
+        "evaluated_at",
+        "read_at",
+        "header",
+        "table_text",
+        "source_identity_verified",
+        "identity_evidence",
+        "notes",
+        "ranking_observed_at",
+        "ranking_evidence",
+        "ranking_row"
+      ],
+      "artifacts": [
+        {
+          "sha256": "39ba9356f46b4b66b659371d819197a2a20cb15b24de6b62dd29e729e306941e",
+          "machine_A_source_file": "source-b-r001/artifacts/official/1369663.json",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/official/1369663.json"
+        },
+        {
+          "sha256": "11e20ef6d191e1ed73c5e196f31551f976bc26e23338e666a5ed2a3cf2ad7493",
+          "machine_A_source_file": "source-b-r001/artifacts/official/1369663-identity.json",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/official/1369663-identity.json"
+        },
+        {
+          "sha256": "155427a2604167fe0e38017519811fc9ac9b6eb018ee8a2d4cb59c2fd697ae59",
+          "machine_A_source_file": "source-b-r001/artifacts/official/1369663-ranking.txt",
+          "source_url": "https://github.com/shorydh/bisai/blob/00e523a0871993a333c18b7b5224afab3b96e7ef/operators/Q06/round-001/B/artifacts/official/1369663-ranking.txt"
+        }
+      ],
+      "scope": "Offline archive audit; not a new official measurement. Ranking row is linked by stored submission timestamp and displayed public timings; it does not itself carry submission_id. UI rounded TBest cannot establish exact backend vector equality."
+    }
+  ],
+  "source_changed_files": {
+    "F->P": [
+      "op_kernel/pad_v3_grad.h"
+    ],
+    "F->L": [
+      "op_kernel/pad_v3_grad.h"
+    ],
+    "P->PL": [
+      "op_kernel/pad_v3_grad.h"
+    ],
+    "L->PL": [
+      "op_kernel/pad_v3_grad.h"
+    ]
+  },
+  "limitations": [
+    "The B saved JSON files are UI projections, not complete native API result payloads. Missing native valid/revision/testcase IDs must not be filled by analyst inference.",
+    "An analyst-created official_valid_observation flag elsewhere in the archive is not a native server valid field.",
+    "Displayed rounded best_time cannot establish full-precision TBest equality.",
+    "Historical rows retain original experiment/round/task identity and do not count as round-002 measurements.",
+    "Stored status and public/source identity evidence can be reused with scope stated; comparable scoring protocol requires the current audit or necessary official replays by the parent agent."
+  ],
+  "_publication": {
+    "machine_A_raw_file": "audit_restore/historical_evidence_audit.json",
+    "source_sha256": "56a3d7e059261f09e4ed30d8b0cd9aa09cd02ff92e6633096737d3b43e19ebe2",
+    "official_endpoint": null,
+    "extraction": "Explicit projection; all retained numeric metrics/source text unchanged. Full raw response remains on machine A; account/profile and unrelated rows omitted."
+  }
+}

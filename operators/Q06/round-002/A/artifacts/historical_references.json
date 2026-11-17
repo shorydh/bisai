@@ -1,0 +1,18 @@
+{
+  "A_previous_P": {
+    "original_experiment_id": "Q06-R001-A-E003",
+    "original_round_id": "round-001",
+    "original_task_id": "Q06-R001-A-BASELINE-20261117",
+    "official_task_id": "6afb3e276bd0f9be37ed9f96",
+    "official_numeric_id": 1369815,
+    "archived_total_score": 29.67,
+    "source_commit": "cb4016d4406b245461f57998f693d7feacc0e297",
+    "source_package_url": "https://github.com/shorydh/bisai/tree/cb4016d4406b245461f57998f693d7feacc0e297/operators/Q06/round-001/A",
+    "record_kind": "Historical reference and GET refresh; not a new evaluation",
+    "current_exact_ranking_found": false,
+    "old_official_validity_still_pass": true
+  },
+  "B_records_ref": "artifacts/audit/historical_evidence_audit.json",
+  "historical_rounds_and_task_ids_preserved": true,
+  "B_rendered_evidence_limit": "Stored displayed time/score rows do not natively contain valid/revision/testcase IDs or exact submission_id ranking bindings. No historical metrics promoted to new runs."
+}

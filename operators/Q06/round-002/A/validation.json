@@ -1,0 +1,47 @@
+{
+  "checked_at": "2026-11-17T11:48:51.948737+00:00",
+  "status": "PASS",
+  "scope": "Offline evidence consistency only; no official evaluation, timing-rule verification, stable-gain proof, or baseline approval",
+  "records": 4,
+  "fixed_fields": [
+    "experiment_id",
+    "operator",
+    "round_id",
+    "agent_id",
+    "task_id",
+    "base_version",
+    "candidate_version",
+    "hypothesis",
+    "change",
+    "official_task_id",
+    "official_result_ref",
+    "evaluated_at",
+    "evaluation_protocol",
+    "official_status",
+    "official_metrics",
+    "baseline_official_result_ref",
+    "comparison",
+    "finding_status",
+    "applicability",
+    "artifacts",
+    "notes"
+  ],
+  "status_counts": {
+    "Pass": 4
+  },
+  "unique_editable_versions": 4,
+  "official_manifest_entries": 152,
+  "editable_content_checks": 28,
+  "ranking_observations": 4,
+  "local_control_official_task_id": "6afc3b166bd0f9be377f93c5",
+  "central_baseline_approved_by_this_validator": false,
+  "bounded_official_score_comparisons_verified": 4,
+  "four_arm_pair_comparisons": 4,
+  "limitations": [
+    "The omitted 31 template files require a matching official template for restoration.",
+    "Hashes of original responses provide provenance; this tool validates published projections and cannot independently attest the server.",
+    "Matched public conditions support bounded official score observations, not stable causal improvement or operator speedup.",
+    "Exact backend timing and hidden-case values remain unknown; obtaining them is not a prerequisite invented by this validator.",
+    "C's original-dependency reference and NPU judgment remain unresolved; no central baseline is approved."
+  ]
+}

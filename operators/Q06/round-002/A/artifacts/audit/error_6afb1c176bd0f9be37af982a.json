@@ -1,0 +1,10 @@
+{
+  "label": "F",
+  "official_task_id": "6afb1c176bd0f9be37af982a",
+  "observed_at": "2026-11-17T11:30:30.088192+00:00",
+  "error_type": "HTTPError",
+  "http_status": 403,
+  "official_error": {
+    "message": "无权查看他人的提交记录"
+  }
+}

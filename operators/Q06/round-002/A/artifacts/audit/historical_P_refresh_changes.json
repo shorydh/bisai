@@ -1,0 +1,54 @@
+{
+  "official_task_id": "6afb3e276bd0f9be37ed9f96",
+  "scope": "GET refresh of existing task, not a new evaluation",
+  "changes": [
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a27",
+      "changed": {
+        "best_time": {
+          "archive": 3.75,
+          "refreshed": 3.7466666666666666
+        }
+      }
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a2b",
+      "changed": {
+        "best_time": {
+          "archive": 3.73,
+          "refreshed": 3.67
+        }
+      }
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a2f",
+      "changed": {
+        "best_time": {
+          "archive": 3.783333333333333,
+          "refreshed": 3.776666666666667
+        }
+      }
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a33",
+      "changed": {
+        "best_time": {
+          "archive": 3.66,
+          "refreshed": 3.6533333333333333
+        }
+      }
+    }
+  ],
+  "old_evidence": "A fixed cb4016 round001 official task1369815",
+  "refreshed_at": "2026-11-17T11:30:29.495414+00:00",
+  "new_run": false,
+  "_publication": {
+    "machine_A_raw_file": "audit_comparison/historical_P_refresh_changes.json",
+    "source_sha256": "a9f3d0a50905bd2d059f7381872d1d9be1034152c0ed96f56bedd603e2c3609e",
+    "official_endpoint": null,
+    "extraction": "Explicit projection; all retained numeric metrics/source text unchanged. Full raw response remains on machine A; account/profile and unrelated rows omitted."
+  },
+  "archive_result_ref": "https://github.com/shorydh/bisai/blob/cb4016d4406b245461f57998f693d7feacc0e297/operators/Q06/round-001/A/artifacts/official/6afb3e276bd0f9be37ed9f96.json",
+  "refreshed_result_ref": "artifacts/reuse/P/official_refreshed.json",
+  "discovery_order": "Difference analysis discovered after E001 submission; not the pre-submission reason for amendment. Pre-submission reason was exact historical P rank missing."
+}

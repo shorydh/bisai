@@ -1,0 +1,201 @@
+{
+  "task_id": "Q06-R002-A-OFFICIAL-COMPARABILITY-20261117",
+  "operator": "PadV3Grad",
+  "round_id": "round-002",
+  "agent_id": "A",
+  "observed_at": "2026-11-17T11:32:02.390257+00:00",
+  "operation": "Read-only protocol refresh and fixed-source audit; no official submissions, source edits, CPU reference reruns or NPU runs by this auditor",
+  "current_protocol_refresh": {
+    "task_id": "Q06-R002-A-OFFICIAL-COMPARABILITY-20261117",
+    "observed_at": "2026-11-17T11:26:47.089645+00:00",
+    "operation": "GET only; no official submissions or code changes",
+    "sources": {
+      "problem": {
+        "url": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d",
+        "observed_at": "2026-11-17T11:26:46.740545+00:00",
+        "http_status": 200,
+        "source_sha256": "bf45d9729959a9228a157dcde6a103382b5528fa7e110b936ffbb605c3459b8d",
+        "machine_A_raw_file": "audit_protocol/raw/problem.json"
+      },
+      "default_scoring": {
+        "url": "https://cannjudge.cn/js/pages/scoring-rules-content.js",
+        "observed_at": "2026-11-17T11:26:47.074676+00:00",
+        "http_status": 200,
+        "source_sha256": "403196242914b295dd27e81e1faa542649f5a4f940f79258ad5c7807093ba60a",
+        "machine_A_raw_file": "audit_protocol/raw/scoring-rules-content.js",
+        "matches_round001_sha256": true,
+        "round001_sha256": "403196242914b295dd27e81e1faa542649f5a4f940f79258ad5c7807093ba60a"
+      }
+    },
+    "current_config": {
+      "_id": "6ad9ab403ff2fef7e80e2a1d",
+      "version_no": 1,
+      "version_label": "v1",
+      "code_template": "gitcode_template_noopapi",
+      "cann_version": "9.1.0",
+      "judge_revision": 0,
+      "score_mode": 1,
+      "use_baseline": false,
+      "iterations": 5,
+      "ranking_submission_mode": "latest",
+      "ranking_testcase_count": null,
+      "judge_baseline_verified": false,
+      "difficulty": 3
+    },
+    "same_config_as_round001": true,
+    "current_description": "#### **赛题概述**\r\n参考昇腾版本内置PadV3Grad算子的 TBE 实现，在昇腾 NPU 上基于 Ascend C 编程语言实现功能一致的算子, 完成算子设计、开发、测试全流程工作。\r\n##### **功能实现要求**\r\n与原 TBE 算子核心功能完全对齐，支持原算子对应的所有数据类型、数据格式，并且比较方式从二进制比较改为逻辑值比较。\r\n必须实现算子泛化功能，满足各类合法输入场景的计算需求。\r\n##### **测试标准**\r\n需参考内置 TBE 算子自行设计全场景自验证用例，测试阶段将采用泛化数据进行功能、精度、性能全维度验证，所有测试用例执行通过。\r\n##### **精度要求**\r\n算子计算精度需满足 CANN Judge平台对应题目精度默认阈值（float : 1e-4, half : 1e-3, int类型:0）。\r\n##### **问题答疑**\r\n相关技术问题请到对应开源仓提交issue：[https://gitcode.com/cann/ops-math/issues](https://gitcode.com/cann/ops-math/issues)",
+    "same_description_as_round001": null,
+    "prior_rule_evidence_commit": "cb4016d4406b245461f57998f693d7feacc0e297"
+  },
+  "prior_protocol_source": {
+    "commit": "cb4016d4406b245461f57998f693d7feacc0e297",
+    "path": "operators/Q06/round-001/A/artifacts/rules/report.md",
+    "url": "https://github.com/shorydh/bisai/blob/cb4016d4406b245461f57998f693d7feacc0e297/operators/Q06/round-001/A/artifacts/rules/report.md"
+  },
+  "bounded_comparison": {
+    "definition": "Compare the server-returned official total scores for precisely identified valid submissions at their recorded observation times, under the verified public scoring protocol. This is not a claim of constant hidden TBest or stable speedup.",
+    "required_checks": [
+      "Exact problem_id and recoverable seven editable sources with all 38-file/template identity",
+      "Official terminal status Pass and valid=true, judge_revision and public_only/total/missing-case flags recorded",
+      "Current public protocol/config consistency; any known change is recorded and comparison limited accordingly",
+      "Exact submission_id-bound official ranking score and source/observation time; preserve every repeated observation",
+      "Public testcase identities and full numeric TBest when available; missing or rounded display precision must be explicit"
+    ],
+    "acceptable_unknowns_not_preconditions": [
+      "Hidden inputs and hidden per-case times/TBest values",
+      "Backend implementation details and undisclosed warmup/synchronization/aggregation/hardware-load data",
+      "Undisclosed degradation threshold; do not invent one"
+    ],
+    "allowed_conclusions": [
+      "Raw official score and arithmetic score difference with exact tasks and times",
+      "Ranking of the recorded observations only",
+      "Retention/prioritization recommendation qualified by separate correctness and stability gates"
+    ],
+    "disallowed_conclusions": [
+      "Derive an operator speedup or hidden metrics from total score",
+      "Claim unchanged hidden scale, fixed backend timing, statistical significance or stable causal improvement",
+      "Treat official Pass alone as proof of all legal input boundaries or approve the central baseline"
+    ],
+    "dynamic_tbest_handling": "Same public TBest values support observed consistency only. No visible drift is not proof of hidden immutability; the official dynamic-score comparison remains bounded to its observation timestamps.",
+    "historical_reuse": "Reuse a fully identified prior official task when its required evidence is adequate; keep original round_id/task_id/experiment_id and do not count a read as a new run.",
+    "B_existing_record_gap": "The supplied B rendered archive does not independently establish valid/judge_revision and only carries displayed TBest precision. Parent run audit decides exact usable records. A own authorized replay is a finite way to fill these concrete missing official fields, without B credentials.",
+    "four_arm_scope": "A formal F/L/P/PL comparison requires the same evidence checks for all four arms. If only P/PL qualify, report that pair and leave the four-arm combination conclusion pending; old F/L scores cannot fill it by assumption."
+  },
+  "remaining_unknowns": {
+    "exact_timing_definition": null,
+    "warmup_count": null,
+    "synchronization": null,
+    "aggregation_statistic": null,
+    "official_hardware_and_shared_load": null,
+    "degradation_threshold": null,
+    "formula_zero_negative_or_clamp_edge_behavior": null,
+    "hidden_tbest_fixed_across_times": null
+  },
+  "C_numeric_gate": {
+    "source_commit": "9f0c24f6609a8641f083249a815bdaddef4147cf",
+    "source_task_id": "Q06-R001-C-BOUNDARY-20261117",
+    "source_experiment_id": "Q06-R001-C-E004",
+    "source_round_id": "round-001",
+    "classification": "pending; the previous verified official-reference qualification must not be reused",
+    "source_evidence": {
+      "sources": [
+        {
+          "source_commit": "9f0c24f6609a8641f083249a815bdaddef4147cf",
+          "repository_path": "operators/Q06/round-001/C/summary.md",
+          "sha256": "b7a871c1e95d4b7892c5ca5162c3d0d05aad53cdc628714504b588eddda1fa25",
+          "local_export": "source-c-summary/operators/Q06/round-001/C/summary.md"
+        },
+        {
+          "source_commit": "9f0c24f6609a8641f083249a815bdaddef4147cf",
+          "repository_path": "operators/Q06/round-001/C/experiments.jsonl",
+          "sha256": "e219636ddb880067e6a9cf7de3ccc61a34ed3108c0bc0bbad72561039dce2eee",
+          "local_export": "source-c-summary/operators/Q06/round-001/C/experiments.jsonl"
+        },
+        {
+          "source_commit": "9f0c24f6609a8641f083249a815bdaddef4147cf",
+          "repository_path": "artifacts/tests/README.md",
+          "sha256": "a299e3f121893be17ea47e36d6ec3db8a72d7bbc59fd2996367bc85d98cffe0d",
+          "local_export": "source-c-summary/artifacts/tests/README.md"
+        },
+        {
+          "source_commit": "9f0c24f6609a8641f083249a815bdaddef4147cf",
+          "repository_path": "artifacts/tests/reference_minimal_case.py",
+          "sha256": "19f69cf916908b6d6aeb4533fcaf3783bb8ad2c38ac3dae11c5b8c690d351b65",
+          "local_export": "source-c-summary/artifacts/tests/reference_minimal_case.py"
+        },
+        {
+          "source_commit": "9f0c24f6609a8641f083249a815bdaddef4147cf",
+          "repository_path": "artifacts/results/E004-reference-minimal.json",
+          "sha256": "094091cec68b2a73926152e90c3aa956d2c8f944b1d97029b086d3a16e92000b",
+          "local_export": "source-c-summary/artifacts/results/E004-reference-minimal.json"
+        },
+        {
+          "source_commit": "9f0c24f6609a8641f083249a815bdaddef4147cf",
+          "repository_path": "artifacts/logs/E004-reference-minimal.log",
+          "sha256": "daab3a0f1b535b7c74a7268864d667bfdc6caa01911475d38e45a89c87e43543",
+          "local_export": "source-c-summary/artifacts/logs/E004-reference-minimal.log"
+        }
+      ],
+      "official_reference_sha256": "1542d63e602aa3aaa60242e91ea0d6a8ac038bab788c6898dc4777557f040ed3",
+      "reference_source": "B official 1367774.zip code/samples/reference.py",
+      "analysis_scope": "Static dependency/control-flow audit only. No reference rerun, model test or NPU execution."
+    },
+    "source_readme_note": "Fixed C commit has no operators/Q06/round-001/C/README.md (git show and ls-tree checked); artifacts/tests/README.md is present and was read/exported.",
+    "script_evidence": {
+      "url": "https://github.com/shorydh/bisai/blob/9f0c24f6609a8641f083249a815bdaddef4147cf/artifacts/tests/reference_minimal_case.py",
+      "dependency_stub_lines": [
+        32,
+        33,
+        34,
+        35
+      ],
+      "hardcoded_summary_lines": [
+        83,
+        102,
+        106,
+        108
+      ]
+    },
+    "defect": "The wrapper replaces ml_dtypes.bfloat16 with np.dtype(float32) when absent from sys.modules. The unmodified official reference compares x.dtype against bfloat16, so a float32 input is sent through torch.bfloat16 conversion; this changes reference execution and input values before float64 accumulation.",
+    "secondary_defect": "The wrapper hardcodes official_zero=0.0 and derives official_reference_output/candidate_abs_error from it instead of taking the recorded official output. Four reference_runs do record zero for that altered-dependency run, but this does not validate the intended dependency path.",
+    "inference_limit": "This static defect does not prove the real-dependency reference output differs, and it does not prove r6 fails on NPU.",
+    "required_closure": [
+      "C reruns the exact reference SHA1542d63e602aa3aaa60242e91ea0d6a8ac038bab788c6898dc4777557f040ed3 with real dependencies and recorded versions, without the stub or changed golden",
+      "C derives assertions and summary values from the actual reference outputs for the preserved input bytes, dtype, padding dtype/layout",
+      "C records the frozen implementation actual NPU output and invocation/branch evidence for the legal cancellation candidate, with matched reference inputs and official precision semantics",
+      "Any actual fix gets a new immutable snapshot and its own official validation before central consideration"
+    ],
+    "impact": "This specific unresolved correctness gate blocks unconditional team-baseline endorsement. It does not prevent bounded reporting of valid official score observations.",
+    "candidate_input_sha256": "daa2b4341c6f1f56616b24a8195cbfd4bdd8ede0201f9370f72d415c7e4559b7",
+    "official_result_for_candidate": null,
+    "real_dependency_reference_result": null,
+    "actual_npu_result": null
+  },
+  "publication_scope": "evidence.json and report.md contain the selected public facts. raw/ and source-c-summary exports remain local; original fixed-commit source URLs and hashes provide provenance. Do not re-publish unrelated participant data or credentials.",
+  "findings": [
+    {
+      "id": "protocol-current",
+      "finding_status": "verified",
+      "evidence": "current_protocol_refresh",
+      "condition": "The named public config fields and exact default-scoring JS bytes, as observed by GET at the recorded time; not a complete backend implementation audit."
+    },
+    {
+      "id": "bounded-score-comparison",
+      "finding_status": "verified",
+      "evidence": "prior_protocol_source; current_protocol_refresh",
+      "condition": "Apply bounded_comparison.required_checks separately to each official record before reporting that comparison; actual task eligibility is decided by the parent run audit."
+    },
+    {
+      "id": "C-E004-reference-qualification",
+      "finding_status": "invalid",
+      "evidence": "C_numeric_gate.script_evidence; C_numeric_gate.source_evidence",
+      "condition": "The old E004 run uses the altered ml_dtypes identity and cannot qualify as the original-dependency reference result."
+    },
+    {
+      "id": "C-real-reference-and-NPU",
+      "finding_status": "pending",
+      "evidence": "C_numeric_gate.required_closure",
+      "condition": "Await C original-dependency reference and matched actual NPU outputs; do not infer a kernel failure or repaired baseline from this static audit."
+    }
+  ]
+}

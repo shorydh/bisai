@@ -1,0 +1,373 @@
+{
+  "observed_at": "2026-11-17T11:30:30.818362+00:00",
+  "problem_id": "6ad9ab403ff2fef7e80e2a1d",
+  "tasks": [
+    {
+      "_id": "6afb3e276bd0f9be37ed9f96",
+      "ID": 1369815,
+      "problem_id": "6ad9ab403ff2fef7e80e2a1d",
+      "status": "Pass",
+      "valid": true,
+      "judge_revision": 0,
+      "create_time": "2026-11-16T17:32:23.279Z",
+      "theory_score": 0,
+      "total_testcase_count": 50,
+      "judge_missing_cases": false,
+      "label": "P",
+      "observed_at": "2026-11-17T11:30:29.495414+00:00",
+      "editable_tree": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+      "files": 38,
+      "matches_expected": true,
+      "result": [
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a22",
+          "time": 6.593333333333334,
+          "precision_ratio": 1,
+          "testcase_status": "Pass",
+          "score": 0,
+          "type": "default",
+          "best_time": 3.71
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a27",
+          "time": 6.926666666666667,
+          "precision_ratio": 1,
+          "testcase_status": "Pass",
+          "score": 0,
+          "type": "default",
+          "best_time": 3.7466666666666666
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a2b",
+          "time": 7.1433333333333335,
+          "precision_ratio": 1,
+          "testcase_status": "Pass",
+          "score": 0,
+          "type": "default",
+          "best_time": 3.67
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a2f",
+          "time": 8.976666666666667,
+          "precision_ratio": 1,
+          "testcase_status": "Pass",
+          "score": 0,
+          "type": "default",
+          "best_time": 3.776666666666667
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a33",
+          "time": 6.69,
+          "precision_ratio": 1,
+          "testcase_status": "Pass",
+          "score": 0,
+          "type": "default",
+          "best_time": 3.6533333333333333
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a37",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a3b",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a3f",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a43",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a47",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a4c",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a50",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a54",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a58",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a5c",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a60",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a64",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a68",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a6c",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a70",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a74",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a78",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a7c",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a80",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a84",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a88",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a8c",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a90",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a94",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a98",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2a9c",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2aa0",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2aa4",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2aa8",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2aac",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2ab0",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2ab4",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2ab8",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2abc",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2ac0",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2ac4",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2ac8",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2acc",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2ad0",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2ad4",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2ad8",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2adc",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2ae0",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2ae4",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        },
+        {
+          "testcase_id": "6ad9ab403ff2fef7e80e2ae8",
+          "testcase_status": "Hidden",
+          "time": null,
+          "precision_ratio": null
+        }
+      ]
+    },
+    {
+      "label": "PL",
+      "official_task_id": "6afb3b076bd0f9be37e856f6",
+      "observed_at": "2026-11-17T11:30:29.899570+00:00",
+      "error_type": "HTTPError",
+      "http_status": 403,
+      "official_error": {
+        "message": "无权查看他人的提交记录"
+      }
+    },
+    {
+      "label": "F",
+      "official_task_id": "6afb1c176bd0f9be37af982a",
+      "observed_at": "2026-11-17T11:30:30.088192+00:00",
+      "error_type": "HTTPError",
+      "http_status": 403,
+      "official_error": {
+        "message": "无权查看他人的提交记录"
+      }
+    },
+    {
+      "label": "L",
+      "official_task_id": "6afae96e6bd0f9be374a1e96",
+      "observed_at": "2026-11-17T11:30:30.336984+00:00",
+      "error_type": "HTTPError",
+      "http_status": 403,
+      "official_error": {
+        "message": "无权查看他人的提交记录"
+      }
+    }
+  ],
+  "history_total_returned": 50,
+  "pad_rows": 10,
+  "history_may_be_truncated": true
+}
