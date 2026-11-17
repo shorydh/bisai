@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-11-17T11:48:52.005291+00:00",
+  "created_at": "2026-11-17T12:19:17.603498+00:00",
   "algorithm": "SHA256 of exact file bytes",
   "excluded": [
     "publication-manifest.json (self-reference)"
@@ -59,6 +59,31 @@
       "path": "artifacts/audit/root_restoration_audit.json",
       "sha256": "08013fcf6ae26ff40ca68919648ec64a1b60c4a4e4211fbf7073d560dcdf905f",
       "size": 2279
+    },
+    {
+      "path": "artifacts/cannlab/connection_probe.json",
+      "sha256": "51c8cb62661b9c87a53a5ab07313a39e0d6fb9ac73b0a3c8c71120d4eb7b8be1",
+      "size": 338
+    },
+    {
+      "path": "artifacts/cannlab/preparation.json",
+      "sha256": "55a074addec3d3a7ce933d1aec6923ed49ce15c7099ae7d3546eafc49f416f2c",
+      "size": 260
+    },
+    {
+      "path": "artifacts/cannlab/remote_build.py",
+      "sha256": "be61a5b083bb538b6dd621faf6d0efde1a7fe35bb038ab9abfb1734007c33537",
+      "size": 4257
+    },
+    {
+      "path": "artifacts/cannlab/source_manifest.json",
+      "sha256": "000542eb09d5a0ce7b40d9cd6034ae3bab0debe064643e1c1cad02c565e0d910",
+      "size": 17579
+    },
+    {
+      "path": "artifacts/cannlab/status.json",
+      "sha256": "ee6326965eb3584ba0bf78442903568bc6e8e4bdf71ee562bb689013df66d776",
+      "size": 1424
     },
     {
       "path": "artifacts/code/700af8da3ef6679f48ebf8bbfa9d2f145d9357e9b6fd2e4f288542c662a1969b/op_host/pad_v3_grad_def.cpp",
@@ -492,8 +517,8 @@
     },
     {
       "path": "experiments.jsonl",
-      "sha256": "3f1518172a6a6455bf55355e0524f660c53493f27fce84cdc5a41e996158b3ad",
-      "size": 48908
+      "sha256": "bda8b7e765b73c05792ee32544c549c06452e7c7e14c294bd40b7d736f36f76a",
+      "size": 50516
     },
     {
       "path": "README.md",
@@ -502,8 +527,8 @@
     },
     {
       "path": "summary.md",
-      "sha256": "75930679eb1483d612d9169505858b2c13fd76cc2a037835a4b61311769bd822",
-      "size": 9676
+      "sha256": "3bb5667b4d8d24c4ba6636a503c3df50e8b8e36f9ceed5c56ef09a9e87a0c083",
+      "size": 10702
     },
     {
       "path": "tools/restore_sources.py",
@@ -517,7 +542,7 @@
     },
     {
       "path": "validation.json",
-      "sha256": "922f965da8014d806ccc437d5002cf23104f87e581fe6dd523c1d62057a0f9a9",
+      "sha256": "7e45030797aa540dce0a12b23b85d49ff6b92c7ed6e8c33244308b8319f3053c",
       "size": 1691
     }
   ]

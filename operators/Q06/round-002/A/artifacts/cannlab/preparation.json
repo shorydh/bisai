@@ -1,0 +1,13 @@
+{
+  "bundle": "source_bundle.tar.gz",
+  "sha256": "ac068efdea96652e6544504ca3dcb136a5f6285d7524d3fa230cd2bd16627983",
+  "source_files": 152,
+  "versions": [
+    "P",
+    "PL",
+    "F",
+    "L"
+  ],
+  "uploaded": false,
+  "build_executed": false
+}

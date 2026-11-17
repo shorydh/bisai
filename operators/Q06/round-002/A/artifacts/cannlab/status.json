@@ -1,0 +1,13 @@
+{
+  "recorded_at": "2026-11-17T12:19:16.940170+00:00",
+  "task_id": "Q06-R002-A-OFFICIAL-COMPARABILITY-20261117",
+  "status": "pending",
+  "build_executed": false,
+  "official_runs_added": 0,
+  "reason_for_original_omission": "The executor treated cloud debugging as optional and completed only the frozen-source official replay. This connection investigation occurred after that handoff and is not the historical reason for omitting cloud compilation.",
+  "current_blocker": "Configured CANNLab localhost SSH tunnel at 127.0.0.1:31640 is not listening; TCP probe returned WinError10061. SSH probe timed out at 20 seconds. No build was started.",
+  "web_ui_attempt": "Existing Edge issue page was readable; two navigation attempts were rejected by the UI tool because it detected user input. Current CANNLab instance state was not established from that historical issue.",
+  "prepared": "Four exact 38-file projects and a sequential bash build.sh -j4 collector; original sources remain unchanged. Local source_bundle.tar.gz has not been uploaded.",
+  "next_step": "Restore the existing CANNLab connection; inspect actual CANN environment, use a new isolated directory, verify source hashes before/after and retain actual compiler exit codes/logs/output hashes.",
+  "scope": "Supplemental cloud compilation after official evaluations, not a replacement for official metrics and not a new official experiment."
+}
