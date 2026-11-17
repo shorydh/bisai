@@ -1,0 +1,6 @@
+# Preserve exact official source and test bytes on every checkout.
+r6-frozen/** -text
+friend-baseline/** -text
+a-u64src/** -text
+tests/official-1367774/** -text
+results/r6-vs-friend.diff -text

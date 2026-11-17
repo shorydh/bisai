@@ -1,0 +1,179 @@
+{
+  "source": {
+    "operator": "PadV3Grad",
+    "r6_official_task_id": 1367774,
+    "r6_seven_source_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+    "r6_package_sha256": "18679dad71f9ea7723ca524599b0d9363861aeadf8f8032202f6391199a5a85a"
+  },
+  "limits": {
+    "device_execution": false,
+    "official_submission": false,
+    "reason": "No local Ascend/CANN device was detected; model checks are not device evidence."
+  },
+  "experiments": [
+    {
+      "name": "E001-index-and-outer-state",
+      "kind": "cpu-model",
+      "index_cases": 65910,
+      "constant_signed_reference_ambiguous_cases": 3236,
+      "signed_exploratory_cases": 95004,
+      "signed_exploratory_mismatches": [],
+      "state_cases": 747,
+      "mismatches": []
+    },
+    {
+      "name": "E002-fp32-overflow-cancellation",
+      "kind": "cpu-model",
+      "finite_sequences": 25994,
+      "layout_cases": 48,
+      "failures": [
+        {
+          "values": [
+            1.6999999760721821e+38,
+            1.0,
+            -1.6999999760721821e+38
+          ],
+          "reference": 0.0,
+          "r6_scalar_model": 1.0
+        },
+        {
+          "values": [
+            1.6999999760721821e+38,
+            -1.0,
+            -1.6999999760721821e+38
+          ],
+          "reference": 0.0,
+          "r6_scalar_model": -1.0
+        },
+        {
+          "values": [
+            -3.0000000054977558e+38,
+            1.0,
+            3.0000000054977558e+38
+          ],
+          "reference": 0.0,
+          "r6_scalar_model": 1.0
+        },
+        {
+          "values": [
+            1.0,
+            -1.6999999760721821e+38,
+            1.6999999760721821e+38
+          ],
+          "reference": 0.0,
+          "r6_scalar_model": 1.0
+        },
+        {
+          "values": [
+            3.0000000054977558e+38,
+            -1.0,
+            -3.0000000054977558e+38
+          ],
+          "reference": 0.0,
+          "r6_scalar_model": -1.0
+        },
+        {
+          "values": [
+            -1.0,
+            3.0000000054977558e+38,
+            -3.0000000054977558e+38
+          ],
+          "reference": 0.0,
+          "r6_scalar_model": -1.0
+        },
+        {
+          "values": [
+            3.0000000054977558e+38,
+            1.0,
+            -3.0000000054977558e+38
+          ],
+          "reference": 0.0,
+          "r6_scalar_model": 1.0
+        },
+        {
+          "values": [
+            1.0,
+            1.6999999760721821e+38,
+            -1.6999999760721821e+38
+          ],
+          "reference": 0.0,
+          "r6_scalar_model": 1.0
+        },
+        {
+          "values": [
+            1.0,
+            3.0000000054977558e+38,
+            -3.0000000054977558e+38
+          ],
+          "reference": 0.0,
+          "r6_scalar_model": 1.0
+        },
+        {
+          "values": [
+            -1.0,
+            -1.6999999760721821e+38,
+            1.6999999760721821e+38
+          ],
+          "reference": 0.0,
+          "r6_scalar_model": -1.0
+        },
+        {
+          "values": [
+            -3.0000000054977558e+38,
+            -1.0,
+            3.0000000054977558e+38
+          ],
+          "reference": 0.0,
+          "r6_scalar_model": -1.0
+        },
+        {
+          "values": [
+            -1.6999999760721821e+38,
+            -1.0,
+            1.6999999760721821e+38
+          ],
+          "reference": 0.0,
+          "r6_scalar_model": -1.0
+        },
+        {
+          "input_shape": [
+            1,
+            1,
+            1,
+            6
+          ],
+          "output_shape": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "front_back": [
+            1,
+            3
+          ],
+          "mode": "reflect",
+          "pattern": "cancel",
+          "output": 0,
+          "sources": [
+            1,
+            3,
+            5
+          ],
+          "reference": 0.0,
+          "r6_scalar_model": 1.0
+        }
+      ]
+    },
+    {
+      "name": "E003-large-index-symbolic",
+      "kind": "cpu-model-no-allocation",
+      "checks": 16,
+      "maximum_byte_index": 276023230464,
+      "exceeds_uint32_bytes": true,
+      "below_int64_bytes": true,
+      "mismatches": [],
+      "note": "No NPU allocation or device execution was performed."
+    }
+  ]
+}

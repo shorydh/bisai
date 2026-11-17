@@ -1,0 +1,39 @@
+{
+  "name": "E005-dispatch-boundary-matrix",
+  "kind": "static-source-model",
+  "checks": 30,
+  "mismatches": [],
+  "covered": {
+    "thresholds": [
+      8192,
+      256,
+      128,
+      64,
+      32
+    ],
+    "rank_cases": [
+      0,
+      1,
+      4
+    ],
+    "prefix_cases": [
+      "none",
+      "partial",
+      "all-before-last"
+    ],
+    "padding_dtypes": [
+      "int32",
+      "int64"
+    ],
+    "padding_layouts": [
+      "contiguous",
+      "split"
+    ],
+    "same_shape_different_padding": true
+  },
+  "limits": {
+    "device_execution": false,
+    "official_submission": false,
+    "note": "Static decision mirror only; no Ascend compiler or NPU was available."
+  }
+}

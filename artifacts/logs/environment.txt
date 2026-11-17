@@ -1,0 +1,8 @@
+Captured=2026-11-17T11:36:49.2280827+08:00
+Computer=DESKTOP-NKCLQ43
+OS=Microsoft Windows NT 10.0.26200.0
+Python=Python 3.13.5
+NPU_SMI=not found
+CANN_HOME=not set
+WSL=no WSL distribution
+DeviceExecution=not attempted: no local Ascend/CANN device detected

@@ -1,0 +1,164 @@
+{
+  "case": "minimal-finite-cancellation",
+  "source": {
+    "r6_official_task_id": 1367774,
+    "r6_package_sha256": "18679dad71f9ea7723ca524599b0d9363861aeadf8f8032202f6391199a5a85a",
+    "reference_root": "D:\\������8\\work\\Q06\\round-001\\C-runtime\\1367774\\code\\samples",
+    "torch_version": "2.15.0+cpu"
+  },
+  "input": {
+    "tensor_shape": [
+      1,
+      1,
+      1,
+      6
+    ],
+    "tensor_dtype": "float32",
+    "tensor_sha256": "daa2b4341c6f1f56616b24a8195cbfd4bdd8ede0201f9370f72d415c7e4559b7",
+    "mode": "reflect",
+    "finite_values": true
+  },
+  "reference_runs": [
+    {
+      "paddings_dtype": "int32",
+      "paddings_contiguous": true,
+      "paddings": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "output_shape": [
+        1,
+        1,
+        1,
+        2
+      ],
+      "output": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "paddings_dtype": "int32",
+      "paddings_contiguous": false,
+      "paddings": [
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          3
+        ]
+      ],
+      "output_shape": [
+        1,
+        1,
+        1,
+        2
+      ],
+      "output": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "paddings_dtype": "int64",
+      "paddings_contiguous": true,
+      "paddings": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "output_shape": [
+        1,
+        1,
+        1,
+        2
+      ],
+      "output": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "paddings_dtype": "int64",
+      "paddings_contiguous": false,
+      "paddings": [
+        [
+          0,
+          0,
+          0,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          3
+        ]
+      ],
+      "output_shape": [
+        1,
+        1,
+        1,
+        2
+      ],
+      "output": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "output_0_sources": [
+    1,
+    3,
+    5
+  ],
+  "output_0_values_in_source_order": [
+    1.6999999760721821e+38,
+    1.0,
+    -1.6999999760721821e+38
+  ],
+  "official_reference_output": [
+    0.0,
+    0.0
+  ],
+  "independent_fp64_sum_before_cast": 0.0,
+  "r6_scalar_model_output_0": 1.0,
+  "official_float_abs_tolerance": 0.0001,
+  "candidate_abs_error": 1.0,
+  "candidate_within_tolerance": false,
+  "scope": "The official Python reference was executed on CPU. r6_scalar_model is a source-mirror model, not an NPU result.",
+  "baseline_relation": "The friend baseline has the same AddScalar and numerical fallback; r6 differs only by the outer-prefix optimization."
+}
