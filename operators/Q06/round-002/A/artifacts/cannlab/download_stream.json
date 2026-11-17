@@ -1,0 +1,7 @@
+{
+  "started_at": "2026-11-17T12:30:23.597666+00:00",
+  "ended_at": "2026-11-17T12:30:25.662723+00:00",
+  "exit_code": 0,
+  "command": "ssh -F \"$HOME/.atomgitdevenv/.ssh/config\" -o BatchMode=yes -o ConnectTimeout=15 -o ProxyCommand=none -o HostName=127.0.0.1 -o Port=31640 devenvc_cqjbt.6f03672c932a41d697bbe7c90e658d43.atomgit.0 'cat /mnt/workspace/q06_r002_a_cloud_20261117T122457Z_6d76e79b/cloud_results.tar.gz'",
+  "log": "download_stream.log"
+}

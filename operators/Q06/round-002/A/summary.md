@@ -42,7 +42,7 @@
 - 历史记录保留原 experiment_id、round_id、task_id，见 [历史引用](artifacts/historical_references.json)；B 旧 PL 29.20、F/L/P旧观察不冒充本轮数据。
 - 官方没有给实际完成时间，所以 evaluated_at=null；提交时间、请求时间、终态观察时间、排名观察时间分别保留。冻结与请求先后顺序依据客户端记录；服务器 create_time 与客户端时间存在数秒偏移，不用它推断完成时刻或改写操作顺序。
 - 精确计时/预热/同步/聚合、硬件与负载、退化阈值、公式边界及隐藏TBest固定性仍未知。这些限制稳定性能归因，不阻止本轮已满足条件的有界总分比较；不自定门槛、不为这些未知无限重提。
-- 模板 -e 仅首个 seed42 FP32 样例；旧 -u fixture 和 README 静态不一致。没有本地 NPU 编译、全精度、云性能或 Profiler 运行声明；编译/运行状态以对应官方任务为准，平台没提供的独立日志不造。
+- 模板 -e 仅首个 seed42 FP32 样例；旧 -u fixture 和 README 静态不一致。首次交接时没有云端编译、全精度、云性能或 Profiler 运行声明；之后用户恢复连接，本轮补充 CANNLab 原样构建，结果见末节。没有执行云端 NPU 样例、精度、性能或 Profiler 测试，平台没提供的独立官方日志不造。
 - 下一步交中央保留选择并等待 C 的真实 reference/NPU 裁决；B 可继续其缓存可达性/成本路线。P/PL冻结双臂已由A完成，其他路线无需为本次结论重复同一提交。
 
 ## 材料位置
@@ -55,4 +55,25 @@
 
 此前未执行云端构建的原因是执行者将云环境步骤视为可选，本轮只做冻结版本官方复测；不是当时已经验证了云端不可用。用户追问后，2026-11-17 12:18:23 UTC 实测项目配置的本机 SSH 隧道 127.0.0.1:31640 返回 WinError 10061，另一次 SSH 探测20秒超时。网页工具未能完成环境页导航，历史 issue 不能用于推断当前实例状态。
 
-四份冻结工程及顺序构建记录脚本已准备，但尚未上传、未执行编译，因此 CANNLab 构建为 **pending／未执行**，编译退出码及日志均为 null；不能写成构建失败或编译通过。恢复既有连接后，按实际 CANN 环境在新目录运行原样 `bash build.sh -j4`，记录完整日志和前后源码哈希。见 [补查记录](artifacts/cannlab/status.json)及[连接探测](artifacts/cannlab/connection_probe.json)。既有四条官方结果、总分比较及 C 数值门保持原结论，未新增官方实验。
+该次补查时，四份冻结工程及顺序构建记录脚本已准备，但尚未上传、未执行编译，因此当时 CANNLab 构建为 **pending／未执行**，编译退出码及日志均为 null；这属于接入受阻，不是构建失败。见 [当时补查记录](artifacts/cannlab/status_before_connection_restored.json)及[连接探测](artifacts/cannlab/connection_probe.json)。随后用户恢复既有连接，实际构建结果见下一节。既有四条官方结果、总分比较及 C 数值门保持原结论，未新增官方实验。
+
+## 连接恢复后的 CANNLab 实际构建
+
+以下构建在四次官方评测之后补做，使用原样冻结源码和实际 CANN 环境；没有新增官方提交，也没有用云数据改写官方分数。先前未执行记录保留为历史状态。
+
+| 版本 | 云构建退出码 | 构建结果 | 38文件前后身份 | 证据 |
+|---|---:|---|---|---|
+| P | 0 | 通过；非空安装包及内核目标文件已生成 | 全部一致 | [日志](artifacts/cannlab/completed/P.log)／[记录](artifacts/cannlab/completed/P.json) |
+| PL | 0 | 通过；非空安装包及内核目标文件已生成 | 全部一致 | [日志](artifacts/cannlab/completed/PL.log)／[记录](artifacts/cannlab/completed/PL.json) |
+| F | 0 | 通过；非空安装包及内核目标文件已生成 | 全部一致 | [日志](artifacts/cannlab/completed/F.log)／[记录](artifacts/cannlab/completed/F.json) |
+| L | 0 | 通过；非空安装包及内核目标文件已生成 | 全部一致 | [日志](artifacts/cannlab/completed/L.log)／[记录](artifacts/cannlab/completed/L.json) |
+
+真实命令为各独立工程内 `bash build.sh -j4`，默认目标 ascend910b；CMake 安装位置为各工程自身 build/。实际工具链、版本文件、环境路径和 NPU 只读快照见 [云环境记录](artifacts/cannlab/completed/environment.json)。日志中的构建时长不是算子耗时。`source_tree_sha256` 表示七源码树，完整38文件身份另以逐文件SHA映射记录。
+
+初次 SCP 传输认证失败、随后一次 SSH 传输连接关闭；这些发生在编译之前，记录保留，不计作构建失败。已就绪隧道下的后续传输成功，远端验证源码包SHA后才启动构建。
+
+本次未运行 `-e` 单样例、`-u`、全量精度、性能测试或 Profiler；C 的真实依赖 reference 与 NPU 数值门仍未关闭。官方四任务与分数比较保持原结论。
+
+四臂每臂生成1个安装包与4个内核目标文件，共20个产物已下载到本机并重新计算大小和SHA256，全部与远端构建记录吻合：[产物核验](artifacts/cannlab/compiled_output_audit.json)／[编译产物归档](artifacts/cannlab/compiled_artifacts.tar.gz)。原样保留的四份日志均有同一条自动生成代码警告：`autogen/aclnn_pad_v3_grad.cpp:236` 的 `static char *modeOptionalDef = "reflect";` 触发 `-Wwrite-strings`；未导致失败，没有为消除警告修改冻结源码。
+
+[独立云构建审计](artifacts/cannlab/independent_cloud_audit.json)再次复核152个源码、四个七源码树与官方任务绑定、四份日志及20个下载产物的大小与SHA256，全部通过。此检查仅证明构建证据一致，不证明NPU运行正确性。

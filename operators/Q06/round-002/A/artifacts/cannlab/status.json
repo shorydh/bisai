@@ -1,13 +1,16 @@
 {
-  "recorded_at": "2026-11-17T12:19:16.940170+00:00",
+  "recorded_at": "2026-11-17T12:31:48.034837+00:00",
   "task_id": "Q06-R002-A-OFFICIAL-COMPARABILITY-20261117",
-  "status": "pending",
-  "build_executed": false,
+  "status": "completed",
+  "build_executed": true,
+  "all_builds_pass": true,
   "official_runs_added": 0,
   "reason_for_original_omission": "The executor treated cloud debugging as optional and completed only the frozen-source official replay. This connection investigation occurred after that handoff and is not the historical reason for omitting cloud compilation.",
-  "current_blocker": "Configured CANNLab localhost SSH tunnel at 127.0.0.1:31640 is not listening; TCP probe returned WinError10061. SSH probe timed out at 20 seconds. No build was started.",
-  "web_ui_attempt": "Existing Edge issue page was readable; two navigation attempts were rejected by the UI tool because it detected user input. Current CANNLab instance state was not established from that historical issue.",
-  "prepared": "Four exact 38-file projects and a sequential bash build.sh -j4 collector; original sources remain unchanged. Local source_bundle.tar.gz has not been uploaded.",
-  "next_step": "Restore the existing CANNLab connection; inspect actual CANN environment, use a new isolated directory, verify source hashes before/after and retain actual compiler exit codes/logs/output hashes.",
-  "scope": "Supplemental cloud compilation after official evaluations, not a replacement for official metrics and not a new official experiment."
+  "prior_blocker_ref": "artifacts/cannlab/status_before_connection_restored.json",
+  "connection_restored_by": "User confirmed restoring existing CANNLab connection; actual SSH command then succeeded.",
+  "result_ref": "artifacts/cannlab/completed/summary.json",
+  "runner_ref": "artifacts/cannlab/remote_build_v2.py",
+  "bundle_sha256": "78b122ee0e898061519aa0344be0e4328b2d56b0e931a865dc1bf91b2e02d59e",
+  "source_tree_sha256_meaning": "Hash of the seven editable source files; complete source identity is the separate 38-file SHA256 mapping.",
+  "scope": "Supplemental cloud compilation only, after official evaluations; no NPU example, accuracy, performance or profiler execution, and C numerical gate remains pending."
 }

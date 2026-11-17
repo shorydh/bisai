@@ -1,0 +1,7 @@
+{
+  "started_at": "2026-11-17T12:26:37.706404+00:00",
+  "ended_at": "2026-11-17T12:26:39.804402+00:00",
+  "exit_code": 0,
+  "command": "ssh -F \"$HOME/.atomgitdevenv/.ssh/config\" -o BatchMode=yes -o ConnectTimeout=15 -o ProxyCommand=none -o HostName=127.0.0.1 -o Port=31640 devenvc_cqjbt.6f03672c932a41d697bbe7c90e658d43.atomgit.0 'cd /mnt/workspace/q06_r002_a_cloud_20261117T122457Z_6d76e79b && python3 -c '\"'\"'import hashlib,tarfile,pathlib; p=pathlib.Path('\"'\"'\"'\"'\"'\"'\"'\"'source_bundle.tar.gz'\"'\"'\"'\"'\"'\"'\"'\"'); assert hashlib.sha256(p.read_bytes()).hexdigest()=='\"'\"'\"'\"'\"'\"'\"'\"'78b122ee0e898061519aa0344be0e4328b2d56b0e931a865dc1bf91b2e02d59e'\"'\"'\"'\"'\"'\"'\"'\"'; t=tarfile.open(p); assert len(t.getmembers())==154 and all(m.isfile() and not m.name.startswith('\"'\"'\"'\"'\"'\"'\"'\"'/'\"'\"'\"'\"'\"'\"'\"'\"') and '\"'\"'\"'\"'\"'\"'\"'\"'..'\"'\"'\"'\"'\"'\"'\"'\"' not in pathlib.PurePosixPath(m.name).parts for m in t.getmembers()); t.extractall('\"'\"'\"'\"'\"'\"'\"'\"'.'\"'\"'\"'\"'\"'\"'\"'\"'); print('\"'\"'\"'\"'\"'\"'\"'\"'REMOTE_BUNDLE_HASH_AND_MEMBERS_VERIFIED'\"'\"'\"'\"'\"'\"'\"'\"')'\"'\"''",
+  "log": "remote_unpack.log"
+}

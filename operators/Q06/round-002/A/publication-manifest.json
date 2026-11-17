@@ -1,5 +1,5 @@
 {
-  "created_at": "2026-11-17T12:19:17.603498+00:00",
+  "created_at": "2026-11-17T12:33:21.513512+00:00",
   "algorithm": "SHA256 of exact file bytes",
   "excluded": [
     "publication-manifest.json (self-reference)"
@@ -61,9 +61,114 @@
       "size": 2279
     },
     {
+      "path": "artifacts/cannlab/build_console.json",
+      "sha256": "03d7db10421260181655ec7a485b659aa7612700e3e0b976b639a5b4316c0a37",
+      "size": 590
+    },
+    {
+      "path": "artifacts/cannlab/build_console.log",
+      "sha256": "626dd579d12908a884149f1258ab464def7e01242be1c2014c42754594728de8",
+      "size": 633
+    },
+    {
+      "path": "artifacts/cannlab/cloud_driver.py",
+      "sha256": "a3465605aa9d81c3cd5d5299d0829236c5bd917fe879f2459ab1d405b8f7c46c",
+      "size": 5384
+    },
+    {
+      "path": "artifacts/cannlab/collect_outputs.py",
+      "sha256": "7104a3d16e3acc0cdb0176574838a20491bda9e9c1a9f4be4ab24ca06ac39329",
+      "size": 2416
+    },
+    {
+      "path": "artifacts/cannlab/compiled_artifacts.tar.gz",
+      "sha256": "214c7688e0174d20d972085146bebedbb3b471e0669cf8759364620aa38210d8",
+      "size": 4600501
+    },
+    {
+      "path": "artifacts/cannlab/compiled_output_audit.json",
+      "sha256": "9ae5e85b819baea552763ef54dab0e64e6af02e1596b59cb82cf4a3b111285ab",
+      "size": 6151
+    },
+    {
+      "path": "artifacts/cannlab/completed/environment.json",
+      "sha256": "49dd5f225a3f4bb14a626e5502b317ac686729c98714e21dd3d8f9e248385677",
+      "size": 4205
+    },
+    {
+      "path": "artifacts/cannlab/completed/F.json",
+      "sha256": "7decd85f33e257d26fc3c7434dfb7261035ee672a6bedaadc5a0353de52607a8",
+      "size": 10113
+    },
+    {
+      "path": "artifacts/cannlab/completed/F.log",
+      "sha256": "436f9565f8435d06b9aa08af142957df7e901fd2a69846327377610addfc7a0d",
+      "size": 17040
+    },
+    {
+      "path": "artifacts/cannlab/completed/L.json",
+      "sha256": "1c62b30838ae9d62ad188b3e62675aed216e9e342a44448cc10660133985cee4",
+      "size": 10114
+    },
+    {
+      "path": "artifacts/cannlab/completed/L.log",
+      "sha256": "2d63b103bdd64e33809809632db7586215b4f6f80aa6e02b0fc939b562a4d8d0",
+      "size": 17040
+    },
+    {
+      "path": "artifacts/cannlab/completed/P.json",
+      "sha256": "f1348ee11702d4d586364fd1ee1b2fded65f7e2574411175b0108d8ba0867e7f",
+      "size": 10114
+    },
+    {
+      "path": "artifacts/cannlab/completed/P.log",
+      "sha256": "e1fd63f6fb42fe9c9eff53d9c3059710e064436e6cdf4d77914da662472a0f7b",
+      "size": 17039
+    },
+    {
+      "path": "artifacts/cannlab/completed/PL.json",
+      "sha256": "03954d58ca56bb979bb7af95b4b523a3e49d172002fe2800b6617d9289bcdb63",
+      "size": 10121
+    },
+    {
+      "path": "artifacts/cannlab/completed/PL.log",
+      "sha256": "0d4efc3c6aaf8b4826a8ec174423bf2d9213b480f43d55b02a6d0f2f109347a0",
+      "size": 17090
+    },
+    {
+      "path": "artifacts/cannlab/completed/summary.json",
+      "sha256": "f3d869e85d522f0a94ba6e96e86c05e50ee9b1282207d829f5a56b05e5c49739",
+      "size": 42711
+    },
+    {
+      "path": "artifacts/cannlab/completion.json",
+      "sha256": "2d85dbb6475cde0218c4cc3334fc5c3829f557d7f9fce95ea37aefb1a64105ae",
+      "size": 869
+    },
+    {
       "path": "artifacts/cannlab/connection_probe.json",
       "sha256": "51c8cb62661b9c87a53a5ab07313a39e0d6fb9ac73b0a3c8c71120d4eb7b8be1",
       "size": 338
+    },
+    {
+      "path": "artifacts/cannlab/connection_restored.json",
+      "sha256": "34e88b7d0ae4d876fa41e81a2443bff6d2dc4b605b11342555323c1d08c8429e",
+      "size": 2094
+    },
+    {
+      "path": "artifacts/cannlab/download_stream.json",
+      "sha256": "c8f7fcff3b251c78fbb251727bba1aa207447098a354f91eebee97e643069147",
+      "size": 459
+    },
+    {
+      "path": "artifacts/cannlab/download_stream.log",
+      "sha256": "927c29e5883eabfc4f4f6662e5248f1a2ba13b08c954990ac1c7e97ded285766",
+      "size": 308
+    },
+    {
+      "path": "artifacts/cannlab/independent_cloud_audit.json",
+      "sha256": "7a24c7fe054cbb10cdc04d4f1ebcb577f32195af7742250fe7f042b06eaf53a1",
+      "size": 11357
     },
     {
       "path": "artifacts/cannlab/preparation.json",
@@ -71,9 +176,29 @@
       "size": 260
     },
     {
+      "path": "artifacts/cannlab/preparation_v2.json",
+      "sha256": "35fd51e02ee2b8bc68246950019ea357d0f0aaafb42cf45caec55b5368bffe0d",
+      "size": 263
+    },
+    {
       "path": "artifacts/cannlab/remote_build.py",
       "sha256": "be61a5b083bb538b6dd621faf6d0efde1a7fe35bb038ab9abfb1734007c33537",
       "size": 4257
+    },
+    {
+      "path": "artifacts/cannlab/remote_build_v2.py",
+      "sha256": "40117f2eadea65640d5965714cd175c73fe46cc8e50d31b472dbc32b775d45b8",
+      "size": 5745
+    },
+    {
+      "path": "artifacts/cannlab/remote_unpack.json",
+      "sha256": "d7f8b51cecbff0ddc835f4cc90a3267137f67176383b13ccfdce3d70869b73ea",
+      "size": 1189
+    },
+    {
+      "path": "artifacts/cannlab/remote_unpack.log",
+      "sha256": "a8608398c90e0e7920e9cb0fb8a05c4584658298f06807bcc638652f1f2289be",
+      "size": 348
     },
     {
       "path": "artifacts/cannlab/source_manifest.json",
@@ -82,8 +207,48 @@
     },
     {
       "path": "artifacts/cannlab/status.json",
+      "sha256": "1a5c569b84bada8b422fcb561b6631ce3a17f303d6f530c8a399caff624d9e1d",
+      "size": 1225
+    },
+    {
+      "path": "artifacts/cannlab/status_before_connection_restored.json",
       "sha256": "ee6326965eb3584ba0bf78442903568bc6e8e4bdf71ee562bb689013df66d776",
       "size": 1424
+    },
+    {
+      "path": "artifacts/cannlab/transfer.json",
+      "sha256": "ab5f3297f0bd036f029a8aca3a6994b3473085f6239ab1fbfe4633ff599079a6",
+      "size": 319
+    },
+    {
+      "path": "artifacts/cannlab/upload.json",
+      "sha256": "0d05d7aba0b3ff7f947788b45fd879249c2038a6f1e4fc1e63d2ea551a25a2f5",
+      "size": 471
+    },
+    {
+      "path": "artifacts/cannlab/upload.log",
+      "sha256": "503c43f53846c1699629d36104c9427d2d5bad0a89fceb605baab5a4a17b317d",
+      "size": 394
+    },
+    {
+      "path": "artifacts/cannlab/upload_stream.json",
+      "sha256": "4ba80b1e4e7b0f48d1cefaf3b83688b07a02ee6dc8eb40a9a70bed2f21039310",
+      "size": 620
+    },
+    {
+      "path": "artifacts/cannlab/upload_stream.log",
+      "sha256": "927c29e5883eabfc4f4f6662e5248f1a2ba13b08c954990ac1c7e97ded285766",
+      "size": 308
+    },
+    {
+      "path": "artifacts/cannlab/upload_stream_attempt1.json",
+      "sha256": "231884e3463706e3152dad7ca46ddd497507f74d9059331bad61829056edd963",
+      "size": 565
+    },
+    {
+      "path": "artifacts/cannlab/upload_stream_attempt1.log",
+      "sha256": "728856fc5b7f2b45248ff2c66093d870fab4bf40367e9eee0b31b22ecebc1987",
+      "size": 43
     },
     {
       "path": "artifacts/code/700af8da3ef6679f48ebf8bbfa9d2f145d9357e9b6fd2e4f288542c662a1969b/op_host/pad_v3_grad_def.cpp",
@@ -517,18 +682,18 @@
     },
     {
       "path": "experiments.jsonl",
-      "sha256": "bda8b7e765b73c05792ee32544c549c06452e7c7e14c294bd40b7d736f36f76a",
-      "size": 50516
+      "sha256": "a3c0ed5793a31e43a2e63ed4f6b92ab12894717cbadd27eecf6530dcec39d168",
+      "size": 54875
     },
     {
       "path": "README.md",
-      "sha256": "4acd64f68a38af90cd33e016f9ddeb84c3437427d0153ca8717e254ab284907c",
-      "size": 2366
+      "sha256": "04753d807fe8b3b60d55bf3a787a75d98c692d84ed87c6507b971060371de45a",
+      "size": 2697
     },
     {
       "path": "summary.md",
-      "sha256": "3bb5667b4d8d24c4ba6636a503c3df50e8b8e36f9ceed5c56ef09a9e87a0c083",
-      "size": 10702
+      "sha256": "476fe7ddbb443663eb910242fe97b65ecef2c4238c3a855f90a1e70e729a48f3",
+      "size": 13531
     },
     {
       "path": "tools/restore_sources.py",
@@ -542,7 +707,7 @@
     },
     {
       "path": "validation.json",
-      "sha256": "7e45030797aa540dce0a12b23b85d49ff6b92c7ed6e8c33244308b8319f3053c",
+      "sha256": "7ec56b3169a90ee62c7119e08d8d249d7f524bcb3f11e0017ebbe8e0b4c851f9",
       "size": 1691
     }
   ]

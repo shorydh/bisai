@@ -1,0 +1,129 @@
+{
+  "verified_at": "2026-11-17T12:31:15.674022+00:00",
+  "status": "PASS",
+  "files": [
+    {
+      "path": "P/build/custom_opp_ubuntu_aarch64.run",
+      "bytes": 814198,
+      "sha256": "11c46d199d15e19b715610f4e3ff1a153498fa5c0283b2e1b5ea93475b0bc3be",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "P/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_22587b9da8f27bd0f4b532d5daf93888.o",
+      "bytes": 162752,
+      "sha256": "14766e33a57de25302afcb20415cbb4ae5f92dd4932714bb50b4e4704cd933d3",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "P/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_2bfeba299148d69c93a6b63c6cebd524.o",
+      "bytes": 162752,
+      "sha256": "1eddec370d65ed551589f3bd531bf61ef76ae1e0975a39211e2698635f400e52",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "P/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_9afa82184aa429ef41dcf627b8e032e8.o",
+      "bytes": 162752,
+      "sha256": "97d0f4585d8abbd8f609ddc34dd210940698eca37124fc5ec8e5698fd72fed47",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "P/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_c274f09af1f975ed340c9ff457a87da8.o",
+      "bytes": 162752,
+      "sha256": "2faae8cf2b2ec9a35370bce3f76b532227a3ca5747d5b88b3e405196b6d0713d",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "PL/build/custom_opp_ubuntu_aarch64.run",
+      "bytes": 828061,
+      "sha256": "73e4887df675d3d2b837b1f76635c8cd1c4d63749e03e6b9f87cb9860fec1243",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "PL/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_22587b9da8f27bd0f4b532d5daf93888.o",
+      "bytes": 166848,
+      "sha256": "03895344a8ec96089660d690f3fc8cfaa1103146f86f98b933c95afcbac205bc",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "PL/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_2bfeba299148d69c93a6b63c6cebd524.o",
+      "bytes": 166848,
+      "sha256": "ed01b28b841a712c77e1806f048c1044cbb4cdcdb6bde9850f6377275e23f4b9",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "PL/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_9afa82184aa429ef41dcf627b8e032e8.o",
+      "bytes": 166848,
+      "sha256": "097ea75ab9907ad3559b50592ea223748ee6b2ae5bdbe342542968612300b1f9",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "PL/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_c274f09af1f975ed340c9ff457a87da8.o",
+      "bytes": 166848,
+      "sha256": "8fabc133bd75773fa6d4dde26989db8d4428a3378fc99a0a5357a779f89702b1",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "F/build/custom_opp_ubuntu_aarch64.run",
+      "bytes": 807245,
+      "sha256": "372fb2e4b329055acab652494710af8c40ecf6730553d81a8d1ef4b38a632d86",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "F/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_22587b9da8f27bd0f4b532d5daf93888.o",
+      "bytes": 158656,
+      "sha256": "3cbe1c1743349fe1288c89a3775e491e5a49d96a3c8fc9a138c7c4cb91c982ac",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "F/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_2bfeba299148d69c93a6b63c6cebd524.o",
+      "bytes": 158656,
+      "sha256": "d84b5747f2568701099ad1175a6fb119acd9c70fd97aac369595b24d4a9f34aa",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "F/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_9afa82184aa429ef41dcf627b8e032e8.o",
+      "bytes": 158656,
+      "sha256": "89d733bddbd8775758f4b7150879b55afd0cd3ff24f5953e50b3715e3a7240d2",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "F/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_c274f09af1f975ed340c9ff457a87da8.o",
+      "bytes": 158656,
+      "sha256": "4d92b0b7f4a05d51a27b39ed49b1545c0de12f4610f959e29a886c745519791f",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "L/build/custom_opp_ubuntu_aarch64.run",
+      "bytes": 819163,
+      "sha256": "9ddaf91b1719ea1917f122614cb70b3bbb5c733332584c37b7c135872b0cd237",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "L/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_22587b9da8f27bd0f4b532d5daf93888.o",
+      "bytes": 162752,
+      "sha256": "39128c35279b3051b5c4096309b0cdc0ca1b3b2db944f79000fd1b1633fdd406",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "L/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_2bfeba299148d69c93a6b63c6cebd524.o",
+      "bytes": 162752,
+      "sha256": "70cfa8c904c49bb147d484879cd775773de57828c2d62dfe8c661acfdfe5ce7d",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "L/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_9afa82184aa429ef41dcf627b8e032e8.o",
+      "bytes": 162752,
+      "sha256": "42174f82a9a73b0df293083106196c144dfc510922293d1eecf3961a9ecdbd0c",
+      "independently_verified_after_download": true
+    },
+    {
+      "path": "L/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_c274f09af1f975ed340c9ff457a87da8.o",
+      "bytes": 162752,
+      "sha256": "d5febffd783cc9a22da8bf82cf2976a2984a5c712775ab89ea61103183794125",
+      "independently_verified_after_download": true
+    }
+  ],
+  "archive_sha256": "214c7688e0174d20d972085146bebedbb3b471e0669cf8759364620aa38210d8",
+  "archive_bytes": 4600501,
+  "scope": "Downloaded build outputs independently match hashes in the remote build results; no execution of downloaded binaries."
+}

@@ -1,0 +1,8 @@
+{
+  "created_at": "2026-11-17T12:26:39.806181+00:00",
+  "remote_directory": "/mnt/workspace/q06_r002_a_cloud_20261117T122457Z_6d76e79b",
+  "bundle_sha256": "78b122ee0e898061519aa0344be0e4328b2d56b0e931a865dc1bf91b2e02d59e",
+  "bundle": "source_bundle_v2.tar.gz",
+  "uploaded": true,
+  "build_executed": false
+}

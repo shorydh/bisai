@@ -32,3 +32,7 @@ python -B tools/restore_sources.py --submission 6afc3b166bd0f9be377f93c5 --templ
 - publication-manifest.json、validation.json：交接一致性证明，不是新官方运行。
 
 完整raw只在机器A留存，引用的machine_A路径不是包内文件。31个官方只读模板/测试正文不重新分发；包内7源码原样，完整恢复需匹配模板。历史task不计新实验，evaluated_at未知保持null。
+
+## 补充 CANNLab 构建
+
+用户恢复连接后追加的实际日志、退出码、工具链和源码前后哈希位于 [artifacts/cannlab/completed](artifacts/cannlab/completed)。此前连接失败记录保留；这些云端构建发生于官方评测之后，不新增官方实验，也不构成NPU精度或性能验证。

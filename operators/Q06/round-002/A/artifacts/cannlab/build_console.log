@@ -1,0 +1,8 @@
+Warning: Permanently added '[127.0.0.1]:31640' (ED25519) to the list of known hosts.
+** WARNING: connection is not using a post-quantum key exchange algorithm.
+** This session may be vulnerable to "store now, decrypt later" attacks.
+** The server may need to be upgraded. See https://openssh.com/pq.html
+{"arm": "P", "exit_code": 0, "source_unchanged": true, "generated_artifacts": 5}
+{"arm": "PL", "exit_code": 0, "source_unchanged": true, "generated_artifacts": 5}
+{"arm": "F", "exit_code": 0, "source_unchanged": true, "generated_artifacts": 5}
+{"arm": "L", "exit_code": 0, "source_unchanged": true, "generated_artifacts": 5}

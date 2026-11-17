@@ -1,0 +1,219 @@
+{
+  "checked_at": "2026-11-17T12:32:56.342822+00:00",
+  "status": "PASS",
+  "auditor": "r002_cloud_audit",
+  "method": "Independent read-only checks of downloaded cloud result files, original published manifests, frozen local sources, actual downloaded compiler outputs, and complete build logs. No remote connection, compilation, test or official submission performed by auditor.",
+  "bundle_sha256": "78b122ee0e898061519aa0344be0e4328b2d56b0e931a865dc1bf91b2e02d59e",
+  "bundle_runner_matches_reviewed_script": true,
+  "source_files_verified": 152,
+  "compiled_files_verified": 20,
+  "results": [
+    {
+      "arm": "P",
+      "official_task_id": "6afc3b166bd0f9be377f93c5",
+      "editable_tree_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+      "source_files_before_and_after_match_original_manifest": 38,
+      "local_frozen_source_hashes_match": 38,
+      "editable_source_count": 7,
+      "exit_code": 0,
+      "build_pass": true,
+      "log_sha256_independently_matched": true,
+      "log_sha256": "e1fd63f6fb42fe9c9eff53d9c3059710e064436e6cdf4d77914da662472a0f7b",
+      "generated_artifacts": [
+        {
+          "path": "P/build/custom_opp_ubuntu_aarch64.run",
+          "bytes": 814198,
+          "sha256": "11c46d199d15e19b715610f4e3ff1a153498fa5c0283b2e1b5ea93475b0bc3be",
+          "downloaded_bytes_independently_matched": true
+        },
+        {
+          "path": "P/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_22587b9da8f27bd0f4b532d5daf93888.o",
+          "bytes": 162752,
+          "sha256": "14766e33a57de25302afcb20415cbb4ae5f92dd4932714bb50b4e4704cd933d3",
+          "downloaded_bytes_independently_matched": true
+        },
+        {
+          "path": "P/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_2bfeba299148d69c93a6b63c6cebd524.o",
+          "bytes": 162752,
+          "sha256": "1eddec370d65ed551589f3bd531bf61ef76ae1e0975a39211e2698635f400e52",
+          "downloaded_bytes_independently_matched": true
+        },
+        {
+          "path": "P/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_9afa82184aa429ef41dcf627b8e032e8.o",
+          "bytes": 162752,
+          "sha256": "97d0f4585d8abbd8f609ddc34dd210940698eca37124fc5ec8e5698fd72fed47",
+          "downloaded_bytes_independently_matched": true
+        },
+        {
+          "path": "P/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_c274f09af1f975ed340c9ff457a87da8.o",
+          "bytes": 162752,
+          "sha256": "2faae8cf2b2ec9a35370bce3f76b532227a3ca5747d5b88b3e405196b6d0713d",
+          "downloaded_bytes_independently_matched": true
+        }
+      ],
+      "warnings": [
+        "/mnt/workspace/q06_r002_a_cloud_20261117T122457Z_6d76e79b/P/build/autogen/aclnn_pad_v3_grad.cpp:236:40: warning: ISO C++ forbids converting a string constant to ‘char*’ [-Wwrite-strings]"
+      ],
+      "npu_test_executed": false
+    },
+    {
+      "arm": "PL",
+      "official_task_id": "6afc3bd16bd0f9be3780fbd0",
+      "editable_tree_sha256": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41",
+      "source_files_before_and_after_match_original_manifest": 38,
+      "local_frozen_source_hashes_match": 38,
+      "editable_source_count": 7,
+      "exit_code": 0,
+      "build_pass": true,
+      "log_sha256_independently_matched": true,
+      "log_sha256": "0d4efc3c6aaf8b4826a8ec174423bf2d9213b480f43d55b02a6d0f2f109347a0",
+      "generated_artifacts": [
+        {
+          "path": "PL/build/custom_opp_ubuntu_aarch64.run",
+          "bytes": 828061,
+          "sha256": "73e4887df675d3d2b837b1f76635c8cd1c4d63749e03e6b9f87cb9860fec1243",
+          "downloaded_bytes_independently_matched": true
+        },
+        {
+          "path": "PL/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_22587b9da8f27bd0f4b532d5daf93888.o",
+          "bytes": 166848,
+          "sha256": "03895344a8ec96089660d690f3fc8cfaa1103146f86f98b933c95afcbac205bc",
+          "downloaded_bytes_independently_matched": true
+        },
+        {
+          "path": "PL/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_2bfeba299148d69c93a6b63c6cebd524.o",
+          "bytes": 166848,
+          "sha256": "ed01b28b841a712c77e1806f048c1044cbb4cdcdb6bde9850f6377275e23f4b9",
+          "downloaded_bytes_independently_matched": true
+        },
+        {
+          "path": "PL/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_9afa82184aa429ef41dcf627b8e032e8.o",
+          "bytes": 166848,
+          "sha256": "097ea75ab9907ad3559b50592ea223748ee6b2ae5bdbe342542968612300b1f9",
+          "downloaded_bytes_independently_matched": true
+        },
+        {
+          "path": "PL/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_c274f09af1f975ed340c9ff457a87da8.o",
+          "bytes": 166848,
+          "sha256": "8fabc133bd75773fa6d4dde26989db8d4428a3378fc99a0a5357a779f89702b1",
+          "downloaded_bytes_independently_matched": true
+        }
+      ],
+      "warnings": [
+        "/mnt/workspace/q06_r002_a_cloud_20261117T122457Z_6d76e79b/PL/build/autogen/aclnn_pad_v3_grad.cpp:236:40: warning: ISO C++ forbids converting a string constant to ‘char*’ [-Wwrite-strings]"
+      ],
+      "npu_test_executed": false
+    },
+    {
+      "arm": "F",
+      "official_task_id": "6afc3ca46bd0f9be3782644c",
+      "editable_tree_sha256": "700af8da3ef6679f48ebf8bbfa9d2f145d9357e9b6fd2e4f288542c662a1969b",
+      "source_files_before_and_after_match_original_manifest": 38,
+      "local_frozen_source_hashes_match": 38,
+      "editable_source_count": 7,
+      "exit_code": 0,
+      "build_pass": true,
+      "log_sha256_independently_matched": true,
+      "log_sha256": "436f9565f8435d06b9aa08af142957df7e901fd2a69846327377610addfc7a0d",
+      "generated_artifacts": [
+        {
+          "path": "F/build/custom_opp_ubuntu_aarch64.run",
+          "bytes": 807245,
+          "sha256": "372fb2e4b329055acab652494710af8c40ecf6730553d81a8d1ef4b38a632d86",
+          "downloaded_bytes_independently_matched": true
+        },
+        {
+          "path": "F/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_22587b9da8f27bd0f4b532d5daf93888.o",
+          "bytes": 158656,
+          "sha256": "3cbe1c1743349fe1288c89a3775e491e5a49d96a3c8fc9a138c7c4cb91c982ac",
+          "downloaded_bytes_independently_matched": true
+        },
+        {
+          "path": "F/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_2bfeba299148d69c93a6b63c6cebd524.o",
+          "bytes": 158656,
+          "sha256": "d84b5747f2568701099ad1175a6fb119acd9c70fd97aac369595b24d4a9f34aa",
+          "downloaded_bytes_independently_matched": true
+        },
+        {
+          "path": "F/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_9afa82184aa429ef41dcf627b8e032e8.o",
+          "bytes": 158656,
+          "sha256": "89d733bddbd8775758f4b7150879b55afd0cd3ff24f5953e50b3715e3a7240d2",
+          "downloaded_bytes_independently_matched": true
+        },
+        {
+          "path": "F/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_c274f09af1f975ed340c9ff457a87da8.o",
+          "bytes": 158656,
+          "sha256": "4d92b0b7f4a05d51a27b39ed49b1545c0de12f4610f959e29a886c745519791f",
+          "downloaded_bytes_independently_matched": true
+        }
+      ],
+      "warnings": [
+        "/mnt/workspace/q06_r002_a_cloud_20261117T122457Z_6d76e79b/F/build/autogen/aclnn_pad_v3_grad.cpp:236:40: warning: ISO C++ forbids converting a string constant to ‘char*’ [-Wwrite-strings]"
+      ],
+      "npu_test_executed": false
+    },
+    {
+      "arm": "L",
+      "official_task_id": "6afc3d976bd0f9be378432b7",
+      "editable_tree_sha256": "d3174f99553a7ba700a726f77370e1e287e1084cd2bc9768d4bbbcbd66ce9d24",
+      "source_files_before_and_after_match_original_manifest": 38,
+      "local_frozen_source_hashes_match": 38,
+      "editable_source_count": 7,
+      "exit_code": 0,
+      "build_pass": true,
+      "log_sha256_independently_matched": true,
+      "log_sha256": "2d63b103bdd64e33809809632db7586215b4f6f80aa6e02b0fc939b562a4d8d0",
+      "generated_artifacts": [
+        {
+          "path": "L/build/custom_opp_ubuntu_aarch64.run",
+          "bytes": 819163,
+          "sha256": "9ddaf91b1719ea1917f122614cb70b3bbb5c733332584c37b7c135872b0cd237",
+          "downloaded_bytes_independently_matched": true
+        },
+        {
+          "path": "L/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_22587b9da8f27bd0f4b532d5daf93888.o",
+          "bytes": 162752,
+          "sha256": "39128c35279b3051b5c4096309b0cdc0ca1b3b2db944f79000fd1b1633fdd406",
+          "downloaded_bytes_independently_matched": true
+        },
+        {
+          "path": "L/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_2bfeba299148d69c93a6b63c6cebd524.o",
+          "bytes": 162752,
+          "sha256": "70cfa8c904c49bb147d484879cd775773de57828c2d62dfe8c661acfdfe5ce7d",
+          "downloaded_bytes_independently_matched": true
+        },
+        {
+          "path": "L/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_9afa82184aa429ef41dcf627b8e032e8.o",
+          "bytes": 162752,
+          "sha256": "42174f82a9a73b0df293083106196c144dfc510922293d1eecf3961a9ecdbd0c",
+          "downloaded_bytes_independently_matched": true
+        },
+        {
+          "path": "L/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_c274f09af1f975ed340c9ff457a87da8.o",
+          "bytes": 162752,
+          "sha256": "d5febffd783cc9a22da8bf82cf2976a2984a5c712775ab89ea61103183794125",
+          "downloaded_bytes_independently_matched": true
+        }
+      ],
+      "warnings": [
+        "/mnt/workspace/q06_r002_a_cloud_20261117T122457Z_6d76e79b/L/build/autogen/aclnn_pad_v3_grad.cpp:236:40: warning: ISO C++ forbids converting a string constant to ‘char*’ [-Wwrite-strings]"
+      ],
+      "npu_test_executed": false
+    }
+  ],
+  "environment": {
+    "cann": "9.1.0 from actual opp/version.info",
+    "architecture": "aarch64",
+    "environment_result_sha256": "49dd5f225a3f4bb14a626e5502b317ac686729c98714e21dd3d8f9e248385677",
+    "compiler": "ccec clang 15.0.5; g++ 9.4.0",
+    "cmake": "3.20.5",
+    "observed_npu": "910B3, npu-smi read-only snapshot only"
+  },
+  "warning_assessment": "Each arm has one identical -Wwrite-strings warning at generated build/autogen/aclnn_pad_v3_grad.cpp:236:40 (static char *modeOptionalDef = \"reflect\"). It did not fail compilation. This audit does not infer runtime correctness from absence of compile errors. Frozen source was not changed to suppress the warning.",
+  "scope_limits": [
+    "Supplemental cloud compilation occurred after the official evaluations.",
+    "No NPU precision test, NPU performance test, Profiler run, or new official evaluation is evidenced by these builds.",
+    "Build durations are compilation durations, not operator timings.",
+    "Existing official metrics and unresolved C original-dependency reference/NPU gate are not superseded."
+  ]
+}
