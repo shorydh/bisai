@@ -1,0 +1,12 @@
+{
+  "observed_at": "2026-11-18T12:26:27.1934184+08:00",
+  "host": "DESKTOP-NKCLQ43",
+  "npu_smi": "not found",
+  "msprof": "not found",
+  "ascend_home_path": null,
+  "wsl_distribution": "",
+  "ssh_config_present": false,
+  "cloud_connection_instructions_found": false,
+  "device_execution": false,
+  "reason": "No local Ascend/CANN/NPU or project-supplied cloud device connection profile was found."
+}

@@ -1,0 +1,5 @@
+# Preserve restored official and current-template bytes exactly.
+restored/** -text
+config/current-package/** -text
+rules/ops-math-evidence/** -text
+device-case/**/*.bin -text

@@ -1,0 +1,200 @@
+{
+  "official_task_id": 1367774,
+  "zip_path": "D:\\算子赛8\\work\\Q06\\round-002\\C\\operators\\Q06\\历史盘点\\B\\artifacts\\official\\1367774.zip",
+  "package_sha256": "18679dad71f9ea7723ca524599b0d9363861aeadf8f8032202f6391199a5a85a",
+  "file_count": 38,
+  "seven_source_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+  "all_files": [
+    {
+      "file": "build.sh",
+      "bytes": 4658,
+      "sha256": "3d1aec7a6644163f6db2924748843774f1d100b4289c986c3456e8214222e214"
+    },
+    {
+      "file": "CMakeLists.txt",
+      "bytes": 855,
+      "sha256": "e497dee58e2f9bb8faed63634be17513b3312aad0215e372e6f4437a27bb0195"
+    },
+    {
+      "file": "examples/CMakeLists.txt",
+      "bytes": 698,
+      "sha256": "59da02da218c3886d8de41b3c3314dc207bdd5f2e4dc2e52d5a35f50ca66d5ba"
+    },
+    {
+      "file": "examples/run.sh",
+      "bytes": 742,
+      "sha256": "46cb83c880d178112853b066c6cb30b763a2c8018be06ffdaa232b4a05e165f7"
+    },
+    {
+      "file": "examples/sample_support.h",
+      "bytes": 3051,
+      "sha256": "3af9ffac518aac44ec947fbc9fbbe947d68a6c53a080f28b7f926037fbb8e31e"
+    },
+    {
+      "file": "examples/test_aclnn_pad_v3_grad.cpp",
+      "bytes": 1670,
+      "sha256": "5ab9a12b4eb2fffcbf07fc2af599883f0a1b33de7c5e1d7858a31a55d92c8380"
+    },
+    {
+      "file": "op_host/CMakeLists.txt",
+      "bytes": 3609,
+      "sha256": "1de444d1f669aabeb63b73b636b64a1532d74d7e056956150ba1465073aed96b"
+    },
+    {
+      "file": "op_host/pad_v3_grad_def.cpp",
+      "bytes": 1725,
+      "sha256": "704380e0b489f02527514fa73ec5fc4b9dcbd32040fa0333a43d0d0c5b072a92"
+    },
+    {
+      "file": "op_host/pad_v3_grad_infershape.cpp",
+      "bytes": 4503,
+      "sha256": "908ac633c33c8506964e7ffa75fe2faa8f3ec415723572237509127fae9c385b"
+    },
+    {
+      "file": "op_host/pad_v3_grad_tiling.cpp",
+      "bytes": 12054,
+      "sha256": "de2cc09b5189b0201985ec79b1e077b74da8b7450535f1ffe4e847e7f715e689"
+    },
+    {
+      "file": "op_kernel/CMakeLists.txt",
+      "bytes": 377,
+      "sha256": "803fb189cb5bb83c1003e43e7df99db42fc838fa53ea8f0fce9dc6ccd3561d6b"
+    },
+    {
+      "file": "op_kernel/pad_v3_grad_tiling_data.h",
+      "bytes": 4035,
+      "sha256": "d98e018fb41fe5ec79fdcd2885a1db34530b489e6b505cafdc55b611cbbfe84e"
+    },
+    {
+      "file": "op_kernel/pad_v3_grad_tiling_key.h",
+      "bytes": 808,
+      "sha256": "464965d7728c9eecce949f3b1a79c7c06b1beed970b97df63d7096cec8f2e9ba"
+    },
+    {
+      "file": "op_kernel/pad_v3_grad.cpp",
+      "bytes": 3458,
+      "sha256": "c22da1fcbf8d4f4607356a004f72ad5c9a251459b97500a5cfd8dc61d6132468"
+    },
+    {
+      "file": "op_kernel/pad_v3_grad.h",
+      "bytes": 45310,
+      "sha256": "9739a0c61d4c545dd0d98c0203c7cf4c786acf745d3a4cdb8c1e099a841381bb"
+    },
+    {
+      "file": "README.md",
+      "bytes": 1495,
+      "sha256": "7f9bf3a841a3988ffb551f5ad168d00abc24e8f043be996c856d06c9d508e1a4"
+    },
+    {
+      "file": "samples/case.json",
+      "bytes": 1657,
+      "sha256": "4ed5b04487ac94773d32b92b72478a5b42200695d9a694a54b431c89903f75ec"
+    },
+    {
+      "file": "samples/reference.py",
+      "bytes": 7992,
+      "sha256": "1542d63e602aa3aaa60242e91ea0d6a8ac038bab788c6898dc4777557f040ed3"
+    },
+    {
+      "file": "samples/sample.py",
+      "bytes": 3364,
+      "sha256": "2950dfbede5aac86040755923f2282e8f29246e16c5f63b253bcc084d87249d8"
+    },
+    {
+      "file": "tests/ut/cmake/BuildGoogleTest.cmake",
+      "bytes": 662,
+      "sha256": "51270daff5b349ce5f21f73e18d0b561f179541864158cafdef440ac7f81de93"
+    },
+    {
+      "file": "tests/ut/CMakeLists.txt",
+      "bytes": 2173,
+      "sha256": "8c5e7a12fe0115ba81f6f3dc2e9d1184a2831f2507d42d8773db4d1dccceb3f3"
+    },
+    {
+      "file": "tests/ut/common/any_value.h",
+      "bytes": 3093,
+      "sha256": "94c3bc4b66b984c67565fa140a780154fc2423ee37164397590fc08dc57d07ca"
+    },
+    {
+      "file": "tests/ut/common/infershape_case_executor.cpp",
+      "bytes": 10151,
+      "sha256": "daa97c41fc64e205aa845f9cf248401d945424bc10da5893c286a87cb1a2866f"
+    },
+    {
+      "file": "tests/ut/common/infershape_case_executor.h",
+      "bytes": 473,
+      "sha256": "94b126cff506fe0340a887c135685b7ac2e3779cf20b1fcdf496e50924474423"
+    },
+    {
+      "file": "tests/ut/common/infershape_context_faker.cpp",
+      "bytes": 1469,
+      "sha256": "98e57a09b514b9473c712e3df49b74278519b4b433c0c70ef8fc07f09390bd94"
+    },
+    {
+      "file": "tests/ut/common/infershape_context_faker.h",
+      "bytes": 5293,
+      "sha256": "9acca6cc6c3078fc4734a6d5ca12a65c2db1af5664b0371793f89cd2bb0b4415"
+    },
+    {
+      "file": "tests/ut/common/tiling_case_executor.cpp",
+      "bytes": 44090,
+      "sha256": "c3e1fbc6c8bbd9ac4e1e4816e114a93ebf4bf226c13d051971cb4b1f86494516"
+    },
+    {
+      "file": "tests/ut/common/tiling_case_executor.h",
+      "bytes": 1119,
+      "sha256": "3046db4183f72778f3a4162617fde703d613dc9d7b5fbcbadf9cb45357ee4e5c"
+    },
+    {
+      "file": "tests/ut/common/tiling_context_faker.cpp",
+      "bytes": 2046,
+      "sha256": "62f60bb4fc01448dbe88383c0e383a9446c95b3ca3662cb1b41a16e4c4a5d192"
+    },
+    {
+      "file": "tests/ut/common/tiling_context_faker.h",
+      "bytes": 7386,
+      "sha256": "32fdc0c5bf68133fb37482413ae24dd3c0bda2cf314e9607fc6d8e174fc36ef3"
+    },
+    {
+      "file": "tests/ut/op_host/CMakeLists.txt",
+      "bytes": 2592,
+      "sha256": "6a7f5c6cc8a3ed906de7fd32299f467dd0a39a4b2262c765fb127957be30322f"
+    },
+    {
+      "file": "tests/ut/op_host/test_op_host_main.cpp",
+      "bytes": 1687,
+      "sha256": "e820cf19f2906a70776ebb363f571992a8874a87d35c86e545decb4d5265ff68"
+    },
+    {
+      "file": "tests/ut/op_host/test_pad_v3_grad_tiling.cpp",
+      "bytes": 3416,
+      "sha256": "0a425c4474bf351310634a3876d4b39da7ef97f9b9c160b5bb09aace4a6a70e4"
+    },
+    {
+      "file": "tests/ut/op_kernel/CMakeLists.txt",
+      "bytes": 3032,
+      "sha256": "fb479d1340207a931a7111cb97343d266b100c7f3d2a436c4f080b44ff224dd6"
+    },
+    {
+      "file": "tests/ut/op_kernel/pad_v3_grad_data/README.md",
+      "bytes": 97,
+      "sha256": "ffd9bb0b039727b52ed5ea3df627fb669ccd53b6752297d93bc8de786f76a934"
+    },
+    {
+      "file": "tests/ut/op_kernel/pad_v3_grad_tiling.h",
+      "bytes": 1021,
+      "sha256": "fbd6bdcf077919c7c93a44d9525cb4b13d7609e64aa13fa98f601ea8843e7681"
+    },
+    {
+      "file": "tests/ut/op_kernel/test_pad_v3_grad.cpp",
+      "bytes": 3642,
+      "sha256": "3cbc5015a836392c0f6604ac8d9e0a29a333cc8c395037d01b4a832d18c7ef61"
+    },
+    {
+      "file": "tests/ut/run.sh",
+      "bytes": 817,
+      "sha256": "8077868c31345d5c9cd3a3ff94d45c40fd5934aa18972673bb37dbd431a6be9c"
+    }
+  ],
+  "verified": true
+}
