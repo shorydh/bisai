@@ -1,0 +1,54 @@
+[
+  {
+    "version": "PL",
+    "official_submission_for_frozen_sources": "6afda28385ad43bbe043bf1c",
+    "seven_source_tree_sha256": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41",
+    "run": "20261118T135634269309Z_PL_repaired",
+    "modified_paths": [
+      "tests/ut/cmake/BuildGoogleTest.cmake",
+      "tests/ut/op_host/CMakeLists.txt",
+      "tests/ut/op_host/test_pad_v3_grad_tiling.cpp",
+      "tests/ut/op_kernel/CMakeLists.txt",
+      "tests/ut/op_kernel/pad_v3_grad_tiling.h",
+      "tests/ut/op_kernel/test_pad_v3_grad.cpp",
+      "tests/ut/run.sh"
+    ],
+    "all_restored_hashes_match_cannlab_manifest": 38,
+    "host_completed": [
+      "EdgeAsymmetricCompactFp32",
+      "ReflectTwoBlockCompactFp32"
+    ],
+    "kernel_completed": [
+      "EdgeAccumulatesRepeatedContributions",
+      "PublicReflectSample"
+    ],
+    "reflect_mismatches": 0,
+    "reflect_count": 16
+  },
+  {
+    "version": "PL-lazy",
+    "official_submission_for_frozen_sources": "6afda34285ad43bbe045172e",
+    "seven_source_tree_sha256": "03e6bc1bb81dc40ba71d4691aeb08feebdf38fe0a2ac12f2a59aeff0445afb39",
+    "run": "20261118T135634268482Z_PL-lazy_repaired",
+    "modified_paths": [
+      "tests/ut/cmake/BuildGoogleTest.cmake",
+      "tests/ut/op_host/CMakeLists.txt",
+      "tests/ut/op_host/test_pad_v3_grad_tiling.cpp",
+      "tests/ut/op_kernel/CMakeLists.txt",
+      "tests/ut/op_kernel/pad_v3_grad_tiling.h",
+      "tests/ut/op_kernel/test_pad_v3_grad.cpp",
+      "tests/ut/run.sh"
+    ],
+    "all_restored_hashes_match_cannlab_manifest": 38,
+    "host_completed": [
+      "EdgeAsymmetricCompactFp32",
+      "ReflectTwoBlockCompactFp32"
+    ],
+    "kernel_completed": [
+      "EdgeAccumulatesRepeatedContributions",
+      "PublicReflectSample"
+    ],
+    "reflect_mismatches": 0,
+    "reflect_count": 16
+  }
+]

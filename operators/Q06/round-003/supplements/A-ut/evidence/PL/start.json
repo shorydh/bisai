@@ -1,0 +1,8 @@
+{
+  "remote_work": "/mnt/workspace/q06_ut_20261118T135634269309Z_PL_repaired",
+  "version": "PL",
+  "label": "repaired",
+  "project_tar_sha256": "1cde1f69d3d9e0ef5ddd6bec52f9789e01553abcbf514d7b9c2581bc17ac4597",
+  "command": "bash build.sh -j4 -u",
+  "seven_source_tree_sha256": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41"
+}

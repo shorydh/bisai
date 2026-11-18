@@ -1,0 +1,8 @@
+{
+  "remote_work": "/mnt/workspace/q06_ut_20261118T135634268482Z_PL-lazy_repaired",
+  "version": "PL-lazy",
+  "label": "repaired",
+  "project_tar_sha256": "b3a24d53d332629aa6feb9eeddc5991c7e3b4a523eea71fffbddd1dd33c7d42e",
+  "command": "bash build.sh -j4 -u",
+  "seven_source_tree_sha256": "03e6bc1bb81dc40ba71d4691aeb08feebdf38fe0a2ac12f2a59aeff0445afb39"
+}

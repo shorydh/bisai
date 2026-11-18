@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="2" failures="0" disabled="0" errors="0" time="0.415" timestamp="2026-11-18T21:57:12" name="AllTests">
+  <testsuite name="PadV3GradKernelTest" tests="2" failures="0" disabled="0" errors="0" time="0.415" timestamp="2026-11-18T21:57:12">
+    <testcase name="PublicReflectSample" status="run" result="completed" time="0.251" timestamp="2026-11-18T21:57:12" classname="PadV3GradKernelTest" />
+    <testcase name="EdgeAccumulatesRepeatedContributions" status="run" result="completed" time="0.164" timestamp="2026-11-18T21:57:13" classname="PadV3GradKernelTest" />
+  </testsuite>
+</testsuites>

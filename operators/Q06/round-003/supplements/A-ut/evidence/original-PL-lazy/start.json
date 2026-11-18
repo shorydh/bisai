@@ -1,0 +1,8 @@
+{
+  "remote_work": "/mnt/workspace/q06_ut_20261118T135019350300Z_PL-lazy_original",
+  "version": "PL-lazy",
+  "label": "original",
+  "project_tar_sha256": "20b3f73905132cb6846f77609e92243d41ae68e11b68545b17bc3bc71173572f",
+  "command": "bash build.sh -j4 -u",
+  "seven_source_tree_sha256": "03e6bc1bb81dc40ba71d4691aeb08feebdf38fe0a2ac12f2a59aeff0445afb39"
+}

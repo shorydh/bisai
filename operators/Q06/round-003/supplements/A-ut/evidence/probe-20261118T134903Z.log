@@ -1,0 +1,24 @@
+ASCEND_HOME_PATH=/home/developer/Ascend/cann-9.1.0
+aarch64
+cmake version 3.20.5
+g++ (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0
+	NPU ID                         Chip ID                        Chip Logic ID                  Chip Name                     
+	3                              0                              0                              Ascend 910B3
+	3                              1                              -                              Mcu                           
+/home/developer/Ascend/cann-9.1.0/python/site-packages/pypto/lib/framework/3rd/include/nlohmann/json.hpp
+/home/developer/Ascend/cann-9.1.0/tools/tikicpulib/lib/cmake/cpudebug-config.cmake
+/home/developer/Ascend/cann-9.1.0/tools/tikicpulib/lib/cmake/tikicpulib-config.cmake
+/home/developer/Ascend/cann-9.1.0/tools/tikicpulib/lib/Ascend910B3
+/home/developer/Ascend/cann-9.1.0/tools/tikicpulib/cmake/cpudebug-config.cmake
+/home/developer/Ascend/cann-9.1.0/tools/tikicpulib/cmake/tikicpulib-config.cmake
+/home/developer/Ascend/cann-9.1.0/tools/tikicpulib/lib64/cmake/cpudebug-config.cmake
+/home/developer/Ascend/cann-9.1.0/tools/tikicpulib/lib64/cmake/tikicpulib-config.cmake
+/home/developer/Ascend/cann-9.1.0/tools/tikicpulib/lib64/Ascend910B3
+-rw-r--r-- 1 root root 887 Jan 26  2020 /usr/src/googletest/CMakeLists.txt
+-rw-r--r-- 1 root root 12087 Jan 29  2020 /usr/src/gtest/CMakeLists.txt
+-r-xr-x--- 1 developer developer 985248 Feb  9  2026 /home/developer/Ascend/cann-9.1.0/lib64/libmetadef.so
+-r-xr-x--- 1 developer developer 529564 Feb  9  2026 /home/developer/Ascend/cann-9.1.0/lib64/librt2_registry.a
+-r-xr-x--- 1 developer developer 3716310 Feb  9  2026 /home/developer/Ascend/cann-9.1.0/lib64/libtiling_api.a
+/home/developer/Ascend/cann-9.1.0/include/register/register.h
+/home/developer/Ascend/cann-9.1.0/aarch64-linux/include/register/register.h
+/home/developer/Ascend/cann-9.1.0/arm64-linux/include/register/register.h
