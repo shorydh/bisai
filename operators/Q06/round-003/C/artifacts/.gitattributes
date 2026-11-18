@@ -1,0 +1,4 @@
+# Preserve restored source and binary test-case bytes exactly.
+source/** -text
+device-case/**/*.bin -text
+reference/a-cannlab-facfb39/** -text

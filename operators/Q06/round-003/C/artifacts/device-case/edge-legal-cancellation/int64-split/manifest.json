@@ -1,0 +1,13 @@
+{
+  "case_id": "int64-split",
+  "input_x_sha256": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+  "paddings_sha256": "44ffef2caac31aa58c323e8d54c4969e805140a8068e54c6948106fdfcf39ffb",
+  "golden_y_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b",
+  "golden_y": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "expected_device": "all three FP32 outputs must be within 1e-4",
+  "source_model_expectation": "r6 AddScalar source model is 1 at output 0; this is not a device result"
+}

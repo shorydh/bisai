@@ -1,0 +1,468 @@
+{
+  "task_id": "Q06-R002-C-REFERENCE-DEVICE-20261117",
+  "case_family": "clean-fp32-reference-and-legality",
+  "source": {
+    "r6_package_sha256": "18679dad71f9ea7723ca524599b0d9363861aeadf8f8032202f6391199a5a85a",
+    "r6_seven_source_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+    "reference_path": "D:\\算子赛8\\work\\Q06\\round-002\\C\\operators\\Q06\\round-002\\C\\artifacts\\restored\\r6-1367774\\code\\samples\\reference.py",
+    "reference_sha256": "1542d63e602aa3aaa60242e91ea0d6a8ac038bab788c6898dc4777557f040ed3"
+  },
+  "dependencies": {
+    "python": {
+      "version": "3.11.16",
+      "implementation": "CPython",
+      "executable": "C:\\Users\\xi\\.conda\\envs\\ai\\python.exe"
+    },
+    "numpy": {
+      "version": "1.26.4",
+      "module_path": "C:\\Users\\xi\\.conda\\envs\\ai\\Lib\\site-packages\\numpy\\__init__.py",
+      "metadata": {
+        "name": "numpy",
+        "version": "1.26.4",
+        "dist_info": "C:\\Users\\xi\\.conda\\envs\\ai\\Lib\\site-packages\\numpy-1.26.4.dist-info",
+        "metadata_path": "C:\\Users\\xi\\.conda\\envs\\ai\\Lib\\site-packages\\numpy-1.26.4.dist-info\\METADATA",
+        "metadata_sha256": "5a27a0e272b1f6e597acbbf58e8da39ae350b2318db8df4cf49d72518e62eebc"
+      }
+    },
+    "torch": {
+      "version": "2.15.0+cpu",
+      "module_path": "D:\\算子赛8\\work\\Q06\\round-001\\C-runtime\\pydeps\\torch\\__init__.py",
+      "metadata": {
+        "name": "torch",
+        "version": "2.15.0+cpu",
+        "dist_info": "D:\\算子赛8\\work\\Q06\\round-001\\C-runtime\\pydeps\\torch-2.15.0+cpu.dist-info",
+        "metadata_path": "D:\\算子赛8\\work\\Q06\\round-001\\C-runtime\\pydeps\\torch-2.15.0+cpu.dist-info\\METADATA",
+        "metadata_sha256": "79b129cf5cfac786c4f6b07e50b593eba9bcf2507315578b717b338573892878"
+      }
+    },
+    "ml_dtypes": {
+      "version": "0.5.1",
+      "module_path": "D:\\算子赛8\\work\\Q06\\round-002-deps\\ml_dtypes\\__init__.py",
+      "metadata": {
+        "name": "ml_dtypes",
+        "version": "0.5.1",
+        "dist_info": "D:\\算子赛8\\work\\Q06\\round-002-deps\\ml_dtypes-0.5.1.dist-info",
+        "metadata_path": "D:\\算子赛8\\work\\Q06\\round-002-deps\\ml_dtypes-0.5.1.dist-info\\METADATA",
+        "metadata_sha256": "802ca875ce65305c551c0566c5d0574552918ea3fc2fb9be4bd4b8941bcf66ab"
+      },
+      "bfloat16_type": "<class 'ml_dtypes.bfloat16'>",
+      "float32_equals_bfloat16": false
+    }
+  },
+  "dispatch_checks": {
+    "reference_bfloat16_is_real_dependency": true,
+    "forbidden_bfloat16_branch_calls": 0,
+    "bfloat16_branch_not_taken": true
+  },
+  "cases": [
+    {
+      "case_id": "reflect-periodic-old-candidate",
+      "mode": "reflect",
+      "input_values": [
+        0.0,
+        1.7e+38,
+        0.0,
+        1.0,
+        0.0,
+        -1.7e+38
+      ],
+      "shape": [
+        1,
+        1,
+        1,
+        6
+      ],
+      "pads": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "legality": {
+        "status": "invalid-for-formal-legal-matrix",
+        "reason": "Current CANN ops-math reflect validation requires each pad to be less than inferredOutputShape; back pad 3 is not less than output dimension 2.",
+        "rule_source": "gitcode.com/cann/ops-math@3b2baac63624c32e03781bd9f0290f1a4584f0c7:conversion/pad_v3_grad/op_host/arch35/pad_v3_grad_tiling_arch35.cpp:548-558"
+      },
+      "input_sha256": "daa2b4341c6f1f56616b24a8195cbfd4bdd8ede0201f9370f72d415c7e4559b7",
+      "inferred_output_dimension": 2,
+      "output_0_sources": [
+        1,
+        3,
+        5
+      ],
+      "output_0_values_in_source_order": [
+        1.6999999760721821e+38,
+        1.0,
+        -1.6999999760721821e+38
+      ],
+      "reference_runs": [
+        {
+          "paddings_dtype": "int32",
+          "paddings_contiguous": true,
+          "paddings": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "output_shape": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "output_dtype": "float32",
+          "output": [
+            0.0,
+            0.0
+          ],
+          "output_sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+        },
+        {
+          "paddings_dtype": "int32",
+          "paddings_contiguous": false,
+          "paddings": [
+            [
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              3
+            ]
+          ],
+          "output_shape": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "output_dtype": "float32",
+          "output": [
+            0.0,
+            0.0
+          ],
+          "output_sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+        },
+        {
+          "paddings_dtype": "int64",
+          "paddings_contiguous": true,
+          "paddings": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "output_shape": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "output_dtype": "float32",
+          "output": [
+            0.0,
+            0.0
+          ],
+          "output_sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+        },
+        {
+          "paddings_dtype": "int64",
+          "paddings_contiguous": false,
+          "paddings": [
+            [
+              0,
+              0,
+              0,
+              1
+            ],
+            [
+              0,
+              0,
+              0,
+              3
+            ]
+          ],
+          "output_shape": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "output_dtype": "float32",
+          "output": [
+            0.0,
+            0.0
+          ],
+          "output_sha256": "af5570f5a1810b7af78caf4bc70a660f0df51e42baf91d4de5b2328de0e83dfc"
+        }
+      ],
+      "derived_summary": {
+        "all_runs_returned": true,
+        "all_shapes_expected": true,
+        "all_output_dtypes_float32": true,
+        "all_actual_outputs_equal": true,
+        "actual_reference_output_0": 0.0,
+        "exact_real_sum_of_float32_sources": 1.0,
+        "sequential_fp64_source_sum": 0.0,
+        "r6_scalar_model_output_0": 1.0,
+        "candidate_abs_error": 1.0,
+        "candidate_within_tolerance": false
+      }
+    },
+    {
+      "case_id": "edge-legal-cancellation",
+      "mode": "edge",
+      "input_values": [
+        1.7e+38,
+        1.0,
+        -1.7e+38,
+        0.0,
+        0.0
+      ],
+      "shape": [
+        1,
+        1,
+        1,
+        5
+      ],
+      "pads": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          0
+        ],
+        [
+          2,
+          0
+        ]
+      ],
+      "legality": {
+        "status": "legal-candidate",
+        "reason": "Edge mode; front pad 2 is less than inferred output dimension 3 and back pad is 0.",
+        "rule_source": "conversion/pad_v3_grad_replicate/README.md and aclnnReplicationPad2dBackward.md"
+      },
+      "input_sha256": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+      "inferred_output_dimension": 3,
+      "output_0_sources": [
+        0,
+        1,
+        2
+      ],
+      "output_0_values_in_source_order": [
+        1.6999999760721821e+38,
+        1.0,
+        -1.6999999760721821e+38
+      ],
+      "reference_runs": [
+        {
+          "paddings_dtype": "int32",
+          "paddings_contiguous": true,
+          "paddings": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          "output_shape": [
+            1,
+            1,
+            1,
+            3
+          ],
+          "output_dtype": "float32",
+          "output": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "output_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+        },
+        {
+          "paddings_dtype": "int32",
+          "paddings_contiguous": false,
+          "paddings": [
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "output_shape": [
+            1,
+            1,
+            1,
+            3
+          ],
+          "output_dtype": "float32",
+          "output": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "output_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+        },
+        {
+          "paddings_dtype": "int64",
+          "paddings_contiguous": true,
+          "paddings": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ],
+          "output_shape": [
+            1,
+            1,
+            1,
+            3
+          ],
+          "output_dtype": "float32",
+          "output": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "output_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+        },
+        {
+          "paddings_dtype": "int64",
+          "paddings_contiguous": false,
+          "paddings": [
+            [
+              0,
+              0,
+              0,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              0
+            ]
+          ],
+          "output_shape": [
+            1,
+            1,
+            1,
+            3
+          ],
+          "output_dtype": "float32",
+          "output": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "output_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+        }
+      ],
+      "derived_summary": {
+        "all_runs_returned": true,
+        "all_shapes_expected": true,
+        "all_output_dtypes_float32": true,
+        "all_actual_outputs_equal": true,
+        "actual_reference_output_0": 0.0,
+        "exact_real_sum_of_float32_sources": 1.0,
+        "sequential_fp64_source_sum": 0.0,
+        "r6_scalar_model_output_0": 1.0,
+        "candidate_abs_error": 1.0,
+        "candidate_within_tolerance": false
+      }
+    }
+  ],
+  "derived_summary": {
+    "reference_execution_ok": true,
+    "legal_candidate_count": 1,
+    "all_legal_candidates_within_tolerance": false,
+    "device_execution": false,
+    "process_exit_code": 1
+  },
+  "cpu_run": {
+    "started_at_utc": "2026-11-18T04:26:03.934374+00:00",
+    "finished_at_utc": "2026-11-18T04:26:03.956569+00:00",
+    "duration_seconds": 0.021888499992201105
+  },
+  "scope": {
+    "official_judge_submission": false,
+    "interpretation": "Real dependency and CPU official reference only. The periodic reflect candidate is retained but is outside the current formal reflect padding constraint. The edge case is a legal CPU-model counterexample candidate and still needs an NPU result."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "observed_at": "2026-11-18T21:30:21.0716990+08:00",
+  "local_npu_smi": false,
+  "local_msprof": false,
+  "local_ascend_home_path": null,
+  "git_bash_present": false,
+  "atomgit_ssh_config_present": false,
+  "cannlab_local_port_31640_open": false,
+  "ssh_agent": 1,
+  "device_execution": false,
+  "a_cannlab_reference": {
+    "commit": "facfb39ece01643fa7f9452d09971f9ca4d2b246",
+    "device": "910B3",
+    "build_pass": true,
+    "npu_test_executed": false
+  }
+}
