@@ -1,0 +1,9 @@
+{
+  "method": "GET",
+  "url": "https://cannjudge.cn/js/pages/scoring-rules-content.js",
+  "request_started_at": "2026-11-18T13:06:21.348573+00:00",
+  "observed_at": "2026-11-18T13:06:21.588331+00:00",
+  "http_status": 200,
+  "sha256": "403196242914b295dd27e81e1faa542649f5a4f940f79258ad5c7807093ba60a",
+  "bytes": 3919
+}

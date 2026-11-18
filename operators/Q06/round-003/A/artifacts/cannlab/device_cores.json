@@ -1,0 +1,27 @@
+{
+  "observed_at": "2026-11-18T13:03:35.270559+00:00",
+  "device_id": 0,
+  "aclInit_rc": 0,
+  "header_source": "CANN9.1.0 include/acl/acl_rt.h lines 637-645,3890",
+  "attributes": [
+    {
+      "name": "AICORE_CORE_NUM",
+      "attribute": 101,
+      "return_code": 0,
+      "value": 20
+    },
+    {
+      "name": "CUBE_CORE_NUM",
+      "attribute": 102,
+      "return_code": 0,
+      "value": 20
+    },
+    {
+      "name": "VECTOR_CORE_NUM",
+      "attribute": 201,
+      "return_code": 0,
+      "value": 40
+    }
+  ],
+  "aclFinalize_rc": 0
+}

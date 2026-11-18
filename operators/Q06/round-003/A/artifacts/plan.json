@@ -1,0 +1,22 @@
+{
+  "task_id": "Q06-R003-A-LAZY-OFFICIAL",
+  "round_id": "round-003",
+  "agent_id": "A",
+  "operator": "PadV3Grad",
+  "created_on": "2026-11-18",
+  "source_branch": "q06/r003/a-lazy-official",
+  "start_commit": "facfb39ece01643fa7f9452d09971f9ca4d2b246",
+  "hypothesis": "PL-lazy delayed construction versus its exact direct parent PL under the current public official protocol",
+  "reason_for_new_evaluations": "B 1379766 details returned HTTP 403 to the existing authorized account; current ranking scan returned no exact PL-lazy, PL or P rows. Old UI score cannot be rebound to today's detail or dynamic TBest. Reconstructed PL-lazy matches all user-supplied hashes and PL restoration matches archived 38 files.",
+  "inspection_ref": "raw_official/inspection/20261118T125854810978Z/inspection.json",
+  "runs": [
+    {"experiment_id": "Q06-R003-A-E001", "version": "PL", "role": "direct_parent_local_control", "source_tree_sha256": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41", "change": "No code change; independently restored frozen parent"},
+    {"experiment_id": "Q06-R003-A-E002", "version": "PL-lazy", "role": "frozen_candidate", "source_tree_sha256": "03e6bc1bb81dc40ba71d4691aeb08feebdf38fe0a2ac12f2a59aeff0445afb39", "change": "No new optimization; independently restored specified historical lazy-construction patch"}
+  ],
+  "comparison": "Capture each exact task ranking before the next POST. Compare valid terminal tasks with matching sources, template, configuration and same-response public scale. Raw total score differences are bounded observations only. Stable gain remains pending without sufficient repeated evidence.",
+  "no_claim_of_superiority_over_P": true,
+  "P_F_L_policy": "Reuse R002 evidence with original identities; no new P/F/L submissions in this plan. Team common baseline remains pending C real-device verdict.",
+  "cloud": "Perform required environment/build/example checks when connection available; separately record static UT fixture mismatch and availability of an actual performance runner. Cloud data does not replace official outcomes.",
+  "post_policy": "Persist request identity before POST, no automatic retry; on uncertainty reconcile receipt/history. Wait for terminal plus exact ranking before the next run.",
+  "evaluated_at_policy": "null unless official actual completion timestamp supplied; preserve request, submission, terminal-observation and ranking-observation timestamps separately"
+}

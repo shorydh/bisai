@@ -1,0 +1,78 @@
+{
+  "task_id": "Q06-R003-A-LAZY-OFFICIAL",
+  "checked_at": "2026-11-18T13:13:16.139940+00:00",
+  "status": "passed",
+  "errors": [],
+  "missing": [],
+  "scope": "Independent local source-to-public consistency audit only; no new official evaluation or network requests.",
+  "records": [
+    {
+      "experiment_id": "Q06-R003-A-E001",
+      "arm": "PL",
+      "submission_id": "6afda28385ad43bbe043bf1c",
+      "official_numeric_id": 1402250,
+      "source_files_verified": 38,
+      "editable_verified": 7,
+      "official_observations_retained": 7,
+      "exact_ranking_observations_retained": 1,
+      "ranking_scans_retained": 1,
+      "score": 29.65,
+      "public_only": false,
+      "judge_revision": 0,
+      "valid": true,
+      "evaluated_at": null,
+      "exact_decimal_score_delta": "0.00"
+    },
+    {
+      "experiment_id": "Q06-R003-A-E002",
+      "arm": "PL-lazy",
+      "submission_id": "6afda34285ad43bbe045172e",
+      "official_numeric_id": 1402299,
+      "source_files_verified": 38,
+      "editable_verified": 7,
+      "official_observations_retained": 8,
+      "exact_ranking_observations_retained": 1,
+      "ranking_scans_retained": 1,
+      "score": 29.97,
+      "public_only": false,
+      "judge_revision": 0,
+      "valid": true,
+      "evaluated_at": null,
+      "exact_decimal_score_delta": "0.32"
+    }
+  ],
+  "checked_publication_files": 173,
+  "checked_top_level_links": 20,
+  "jsonl_sha256": "477b96f88fbd31af0e5bf0d1b620e0e5c74e7e02748f243fb000bc0a12f26e51",
+  "builder_sha256": "51d4e2fa19f2eab2049bd542ba3d7d4738d6c644ef3ca8289eb896ef044b5346",
+  "stable_gain": null,
+  "common_baseline_approved": false,
+  "delivered_restore_script_test": {
+    "status": "passed",
+    "executed_at": "2026-11-18T13:13:16.849605+00:00",
+    "script_sha256": "9396857a9f735532356db991322b80526cc89b0819aa0d62e30be8007d1fa91a",
+    "invocation_ref": "prior_audit/package-restore-z3iqdu1c/invocation.json",
+    "result_ref": "prior_audit/package-restore-z3iqdu1c/evidence/restoration_audit.json",
+    "versions": [
+      {
+        "version": "PL",
+        "files": 38,
+        "all_bytes_identical_to_official_bound_package": true
+      },
+      {
+        "version": "PL-lazy",
+        "files": 38,
+        "all_bytes_identical_to_official_bound_package": true
+      }
+    ],
+    "scope": "Actual local restoration and exact byte comparison, no build, network or NPU run."
+  },
+  "audited_document_sha256": {
+    "summary.md": "50660b78dc28693756094bc53922827a3540fac41ec01add6a7789cd83e76718",
+    "README.md": "74d21b9e0e06b00cd61a1602053efd2237980b1213ebdca85eaa98d7cef617c6",
+    "experiments.jsonl": "477b96f88fbd31af0e5bf0d1b620e0e5c74e7e02748f243fb000bc0a12f26e51",
+    "publication-manifest.json": "d7029d625a0b4e8597755174812f26e13924f2626c3d83949856fc0352144fda",
+    "validation.json": "1883bc4db4d8d7f9f8ecd33a01c651eae80c962adea8741f1d42e329c9477579"
+  },
+  "audit_script_sha256": "ce60bdd9ddc6a6f982fedb8ad2c3a3c0cb46c2fbf4ac0efe82cbaade07cc48e4"
+}

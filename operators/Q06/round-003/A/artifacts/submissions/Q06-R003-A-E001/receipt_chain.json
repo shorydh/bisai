@@ -1,0 +1,9 @@
+{
+  "official_task_id": "6afda28385ad43bbe043bf1c",
+  "request_files_sha256": "869a11d10a3f129aced5a1f2788d99aa71306c6516c60654f625e12d30cd19f5",
+  "attempt_sha256": "b0ec08ccae5e170d501f472e52cc462ac50d7d023aeb0cbebcb8c62fd62e7cb1",
+  "raw_submit_response_sha256": "7d455133d1938db91b1679bf484b643ddf31f0f794e424b9da3777de42b42bdb",
+  "submit_response_meta_sha256": "4b5bb464448aa85655e7b8fd25b80c4709859bfb69c541a532bee3c9a3ce6c2e",
+  "receipt_sha256": "23ff5682d99aad3cc7685b47a6a03068c1eaf5a645ad412510028bdc4a249f46",
+  "submission_id_in_raw_response_matches_receipt": true
+}

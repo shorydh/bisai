@@ -1,0 +1,8 @@
+{
+  "observed_at": "2026-11-18T13:07:54.343379+00:00",
+  "exit_code": 0,
+  "output": "cloud_results_retry.tar.gz",
+  "bytes": 4012521,
+  "sha256": "482f6caba127a3f910fe3ef6c401d989b7d5b369188b98f438c1f58ea402284c",
+  "retry_scope": "Read existing completed archive only; no repeated build or NPU execution"
+}

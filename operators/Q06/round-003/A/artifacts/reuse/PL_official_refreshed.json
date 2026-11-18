@@ -1,0 +1,336 @@
+{
+  "_id": "6afc3bd16bd0f9be3780fbd0",
+  "ID": 1381889,
+  "problem_id": "6ad9ab403ff2fef7e80e2a1d",
+  "create_time": "2026-11-17T11:34:41.837Z",
+  "status": "Pass",
+  "valid": true,
+  "judge_revision": 0,
+  "public_only": false,
+  "judge_missing_cases": false,
+  "theory_score": 0,
+  "total_testcase_count": 50,
+  "result": [
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a22",
+      "time": 6.816666666666666,
+      "precision_ratio": 1,
+      "testcase_status": "Pass",
+      "score": 0,
+      "type": "default",
+      "best_time": 3.71
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a27",
+      "time": 7.133333333333334,
+      "precision_ratio": 1,
+      "testcase_status": "Pass",
+      "score": 0,
+      "type": "default",
+      "best_time": 3.7466666666666666
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a2b",
+      "time": 7.09,
+      "precision_ratio": 1,
+      "testcase_status": "Pass",
+      "score": 0,
+      "type": "default",
+      "best_time": 3.67
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a2f",
+      "time": 8.416666666666666,
+      "precision_ratio": 1,
+      "testcase_status": "Pass",
+      "score": 0,
+      "type": "default",
+      "best_time": 3.776666666666667
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a33",
+      "time": 6.883333333333334,
+      "precision_ratio": 1,
+      "testcase_status": "Pass",
+      "score": 0,
+      "type": "default",
+      "best_time": 3.6533333333333333
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a37",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a3b",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a3f",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a43",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a47",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a4c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a50",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a54",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a58",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a5c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a60",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a64",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a68",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a6c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a70",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a74",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a78",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a7c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a80",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a84",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a88",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a8c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a90",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a94",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a98",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2a9c",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2aa0",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2aa4",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2aa8",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2aac",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ab0",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ab4",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ab8",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2abc",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ac0",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ac4",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ac8",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2acc",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ad0",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ad4",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ad8",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2adc",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ae0",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ae4",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    },
+    {
+      "testcase_id": "6ad9ab403ff2fef7e80e2ae8",
+      "testcase_status": "Hidden",
+      "time": null,
+      "precision_ratio": null
+    }
+  ],
+  "_publication": {
+    "machine_A_raw_file": "raw_official/inspection/20261118T125854810978Z/PL_official.json",
+    "source_file_sha256": "3a94b781c5616582c98953bc5e1d1a885854b0b971ae744212770b785921e36a",
+    "official_endpoint": "https://cannjudge.cn/api/submissions/6afc3bd16bd0f9be3780fbd0",
+    "extraction": "Explicit projection; retained metrics are unchanged. Account/profile and unrelated ranking rows omitted."
+  }
+}

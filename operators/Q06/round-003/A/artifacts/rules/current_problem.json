@@ -1,0 +1,32 @@
+{
+  "_id": "6ad9ab403ff2fef7e80e2a1d",
+  "name": "padv3grad",
+  "title": "PadV3Grad",
+  "version_no": 1,
+  "version_label": "v1",
+  "code_template": "gitcode_template_noopapi",
+  "cann_version": "9.1.0",
+  "judge_revision": 0,
+  "score_mode": 1,
+  "use_baseline": false,
+  "iterations": 5,
+  "ranking_submission_mode": "latest",
+  "ranking_testcase_count": null,
+  "judge_baseline_verified": false,
+  "difficulty": 3,
+  "desc": "#### **赛题概述**\r\n参考昇腾版本内置PadV3Grad算子的 TBE 实现，在昇腾 NPU 上基于 Ascend C 编程语言实现功能一致的算子, 完成算子设计、开发、测试全流程工作。\r\n##### **功能实现要求**\r\n与原 TBE 算子核心功能完全对齐，支持原算子对应的所有数据类型、数据格式，并且比较方式从二进制比较改为逻辑值比较。\r\n必须实现算子泛化功能，满足各类合法输入场景的计算需求。\r\n##### **测试标准**\r\n需参考内置 TBE 算子自行设计全场景自验证用例，测试阶段将采用泛化数据进行功能、精度、性能全维度验证，所有测试用例执行通过。\r\n##### **精度要求**\r\n算子计算精度需满足 CANN Judge平台对应题目精度默认阈值（float : 1e-4, half : 1e-3, int类型:0）。\r\n##### **问题答疑**\r\n相关技术问题请到对应开源仓提交issue：[https://gitcode.com/cann/ops-math/issues](https://gitcode.com/cann/ops-math/issues)",
+  "response_metadata": {
+    "method": "GET",
+    "endpoint": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d",
+    "request_started_at": "2026-11-18T12:58:54.825116+00:00",
+    "observed_at": "2026-11-18T12:58:55.154522+00:00",
+    "http_status": 200,
+    "raw_response_sha256": "bf45d9729959a9228a157dcde6a103382b5528fa7e110b936ffbb605c3459b8d"
+  },
+  "_publication": {
+    "machine_A_raw_file": "raw_official/inspection/20261118T125854810978Z/problem.json",
+    "source_file_sha256": "bf45d9729959a9228a157dcde6a103382b5528fa7e110b936ffbb605c3459b8d",
+    "official_endpoint": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d",
+    "extraction": "Explicit projection; retained metrics are unchanged. Account/profile and unrelated ranking rows omitted."
+  }
+}

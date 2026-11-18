@@ -1,0 +1,23 @@
+{
+  "_id": "6ad9ab403ff2fef7e80e2a1d",
+  "name": "padv3grad",
+  "title": "PadV3Grad",
+  "version_no": 1,
+  "version_label": "v1",
+  "code_template": "gitcode_template_noopapi",
+  "cann_version": "9.1.0",
+  "judge_revision": 0,
+  "score_mode": 1,
+  "use_baseline": false,
+  "iterations": 5,
+  "ranking_submission_mode": "latest",
+  "ranking_testcase_count": null,
+  "judge_baseline_verified": false,
+  "difficulty": 3,
+  "_publication": {
+    "machine_A_raw_file": "raw_official/runs/Q06-R003-A-E001/problem_after.json",
+    "source_file_sha256": "bf45d9729959a9228a157dcde6a103382b5528fa7e110b936ffbb605c3459b8d",
+    "official_endpoint": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d",
+    "extraction": "Explicit projection; retained metrics are unchanged. Account/profile and unrelated ranking rows omitted."
+  }
+}

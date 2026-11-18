@@ -1,0 +1,28 @@
+[INFO] Start profiling....
+[INFO] Start export data in PROF_000001_20261118210807956_00007168BAIIAOEO.
+Wed 18 Nov 2026 21:08:14 [INFO] [MSVP] [7216] msprof_common.py: Start analyzing data in "/mnt/workspace/q06_r003_a_cloud_20261118T130133Z_0ce91dfd/profiler_results/PL/raw/PROF_000001_20261118210807956_00007168BAIIAOEO/host" ...
+Wed 18 Nov 2026 21:08:14 [INFO] [MSVP] [7216] msprof_common.py: It may take few minutes, please be patient ...
+Wed 18 Nov 2026 21:08:14 [INFO] [MSVP] [7216] msprof_common.py: Analysis data in "/mnt/workspace/q06_r003_a_cloud_20261118T130133Z_0ce91dfd/profiler_results/PL/raw/PROF_000001_20261118210807956_00007168BAIIAOEO/host" finished.
+Wed 18 Nov 2026 21:08:14 [INFO] [MSVP] [7216] msprof_common.py: Start analyzing data in "/mnt/workspace/q06_r003_a_cloud_20261118T130133Z_0ce91dfd/profiler_results/PL/raw/PROF_000001_20261118210807956_00007168BAIIAOEO/device_0" ...
+Wed 18 Nov 2026 21:08:14 [INFO] [MSVP] [7216] msprof_common.py: It may take few minutes, please be patient ...
+Wed 18 Nov 2026 21:08:14 [INFO] [MSVP] [7216] msprof_common.py: Analysis data in "/mnt/workspace/q06_r003_a_cloud_20261118T130133Z_0ce91dfd/profiler_results/PL/raw/PROF_000001_20261118210807956_00007168BAIIAOEO/device_0" finished.
+Wed 18 Nov 2026 21:08:14 [INFO] [MSVP] [7216] msprof_export.py: All collected data will be exported, path is: /mnt/workspace/q06_r003_a_cloud_20261118T130133Z_0ce91dfd/profiler_results/PL/raw/PROF_000001_20261118210807956_00007168BAIIAOEO/device_0.
+Wed 18 Nov 2026 21:08:16 [INFO] [MSVP] [7385] msprof_export.py: The data in "/mnt/workspace/q06_r003_a_cloud_20261118T130133Z_0ce91dfd/profiler_results/PL/raw/PROF_000001_20261118210807956_00007168BAIIAOEO/host" has been analyzed. Parsing phase will be skipped.
+Wed 18 Nov 2026 21:08:16 [INFO] [MSVP] [7385] msprof_export.py: The data in "/mnt/workspace/q06_r003_a_cloud_20261118T130133Z_0ce91dfd/profiler_results/PL/raw/PROF_000001_20261118210807956_00007168BAIIAOEO/device_0" has been analyzed. Parsing phase will be skipped.
+Wed 18 Nov 2026 21:08:16 [INFO] [MSVP] [7385] msprof_export.py: All collected data will be exported, path is: /mnt/workspace/q06_r003_a_cloud_20261118T130133Z_0ce91dfd/profiler_results/PL/raw/PROF_000001_20261118210807956_00007168BAIIAOEO/device_0.
+Wed 18 Nov 2026 21:08:16 [INFO] [MSVP] [7385] msprof_export.py: There is no summary data to export for "/mnt/workspace/q06_r003_a_cloud_20261118T130133Z_0ce91dfd/profiler_results/PL/raw/PROF_000001_20261118210807956_00007168BAIIAOEO/host"
+Wed 18 Nov 2026 21:08:16 [INFO] [MSVP] [7385] msprof_export.py: All collected data will be exported, path is: /mnt/workspace/q06_r003_a_cloud_20261118T130133Z_0ce91dfd/profiler_results/PL/raw/PROF_000001_20261118210807956_00007168BAIIAOEO/device_0.
+Wed 18 Nov 2026 21:08:16 [INFO] [MSVP] [7385] msprof_export.py: There is no summary data to export for "/mnt/workspace/q06_r003_a_cloud_20261118T130133Z_0ce91dfd/profiler_results/PL/raw/PROF_000001_20261118210807956_00007168BAIIAOEO/device_0"
+Wed 18 Nov 2026 21:08:16 [INFO] [MSVP] [7385] msprof_common.py: Start exporting summary output_file.
+Wed 18 Nov 2026 21:08:16 [INFO] [MSVP] [7385] msprof_common.py: End exporting summary output_file.The file is stored in the /mnt/workspace/q06_r003_a_cloud_20261118T130133Z_0ce91dfd/profiler_results/PL/raw/PROF_000001_20261118210807956_00007168BAIIAOEO/mindstudio_profiler_output path.
+[INFO] Export all data in PROF_000001_20261118210807956_00007168BAIIAOEO done.
+[INFO] Start query data in PROF_000001_20261118210807956_00007168BAIIAOEO.
+Job Info	Device ID	Dir Name	Collection Time           	Model ID	Iteration Number	Top Time Iteration	Rank ID	
+
+NA      	         	host    	2026-11-18 21:08:08.446399	N/A     	N/A             	N/A               	-1     	
+
+NA      	0        	device_0	2026-11-18 21:08:08.449386	N/A     	N/A             	N/A               	-1     	
+
+[INFO] Query all data in PROF_000001_20261118210807956_00007168BAIIAOEO done.
+[INFO] Profiling finished.
+[INFO] Process profiling data complete. Data is saved in /mnt/workspace/q06_r003_a_cloud_20261118T130133Z_0ce91dfd/profiler_results/PL/raw/PROF_000001_20261118210807956_00007168BAIIAOEO

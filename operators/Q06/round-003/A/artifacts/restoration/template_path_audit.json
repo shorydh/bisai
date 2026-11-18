@@ -1,0 +1,15 @@
+{
+  "template_source": "work/Q06/round-002/A/raw_official/initial/template.json",
+  "source_file_sha256": "df208e0e42081952ed1aaec6eec2460d4c423c4ba571ce9b07b3584eb89ad09b",
+  "file_count": 38,
+  "editable_paths": [
+    "op_host/pad_v3_grad_def.cpp",
+    "op_host/pad_v3_grad_infershape.cpp",
+    "op_host/pad_v3_grad_tiling.cpp",
+    "op_kernel/pad_v3_grad_tiling_data.h",
+    "op_kernel/pad_v3_grad_tiling_key.h",
+    "op_kernel/pad_v3_grad.cpp",
+    "op_kernel/pad_v3_grad.h"
+  ],
+  "path_and_editability_matches_r002_manifest": true
+}

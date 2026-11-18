@@ -1,0 +1,337 @@
+{
+  "files": [
+    {
+      "source": "cloud/public/environment.json",
+      "target": "artifacts/cannlab/environment.json",
+      "sha256": "7aea3e495af95b18bc68c7da2cde6e121de6f1841ee3613d6550e83b479ada77",
+      "bytes": 20931
+    },
+    {
+      "source": "cloud/device_cores.json",
+      "target": "artifacts/cannlab/device_cores.json",
+      "sha256": "776308e87c6b2759e435badbcdb5217e85463cd318cfbe27dd357bc8b21a77ec",
+      "bytes": 544
+    },
+    {
+      "source": "cloud/remote_run.py",
+      "target": "artifacts/cannlab/remote_run.py",
+      "sha256": "e56ae65b62814ed98c619df28b2c5a5fdc04ac5a47d68234e12f22852e3226f2",
+      "bytes": 6877
+    },
+    {
+      "source": "cloud/remote_profile.py",
+      "target": "artifacts/cannlab/remote_profile.py",
+      "sha256": "6a5f59d42a036dd8bc20df2cd593964f28c3eea1bb1fe45ff974595c14ac3ae8",
+      "bytes": 4557
+    },
+    {
+      "source": "cloud/completed/cloud_results/PL.json",
+      "target": "artifacts/cannlab/build/PL.json",
+      "sha256": "69f517811e94a95bf8d0278585212c454e9a3d2d4d6b261b5a91740131f8d71f",
+      "bytes": 10185
+    },
+    {
+      "source": "cloud/completed/cloud_results/PL_source_before.json",
+      "target": "artifacts/cannlab/build/PL_source_before.json",
+      "sha256": "e48d2b283d5c71be4d7403f0a1238bddc7dadf032d417d3a0dd88755667de63e",
+      "bytes": 9161
+    },
+    {
+      "source": "cloud/completed/cloud_results/PL_source_after.json",
+      "target": "artifacts/cannlab/build/PL_source_after.json",
+      "sha256": "e48d2b283d5c71be4d7403f0a1238bddc7dadf032d417d3a0dd88755667de63e",
+      "bytes": 9161
+    },
+    {
+      "source": "cloud/completed/cloud_results/PL_build.log",
+      "target": "artifacts/cannlab/build/PL_build.log",
+      "sha256": "24f86235c144f04258397543dd32f0bd54b4cdeb4ed7defe3786aa13be77401d",
+      "bytes": 17090
+    },
+    {
+      "source": "cloud/completed/cloud_results/PL_example.log",
+      "target": "artifacts/cannlab/build/PL_example.log",
+      "sha256": "3d84b2377d0232c1b7ae8ad37a69fa8c9a3f4ff02259ba941a3317833d839347",
+      "bytes": 16991
+    },
+    {
+      "source": "cloud/profiler_completed/profiler_results/PL/result.json",
+      "target": "artifacts/cannlab/profiler/PL/result.json",
+      "sha256": "bf3a9c6efcee397e03122dd97649c879b8b6955e77368f46b3402124c09f05e2",
+      "bytes": 9265
+    },
+    {
+      "source": "cloud/profiler_completed/profiler_results/PL/collection.log",
+      "target": "artifacts/cannlab/profiler/PL/collection.log",
+      "sha256": "8cb73e951c0d900da7c9c3f7cda6a3adedfad1714aaf8c6157dd200ab0fa0aad",
+      "bytes": 4162
+    },
+    {
+      "source": "cloud/profiler_completed/profiler_results/PL/verify.log",
+      "target": "artifacts/cannlab/profiler/PL/verify.log",
+      "sha256": "006bb07b79f5dc83b5d86c06132be3e53ba0a0c5fdd87841f0edfbb29e53c8fd",
+      "bytes": 365
+    },
+    {
+      "source": "cloud/completed/cloud_results/PL-lazy.json",
+      "target": "artifacts/cannlab/build/PL-lazy.json",
+      "sha256": "a2ddc88897c519b28874acc191480314f9ef70a7fd90db6e9246f9570c08baf8",
+      "bytes": 10255
+    },
+    {
+      "source": "cloud/completed/cloud_results/PL-lazy_source_before.json",
+      "target": "artifacts/cannlab/build/PL-lazy_source_before.json",
+      "sha256": "db7529117a143f6dfb9457818ba237a52d930377cbb30d52a4d6b45e47026774",
+      "bytes": 9161
+    },
+    {
+      "source": "cloud/completed/cloud_results/PL-lazy_source_after.json",
+      "target": "artifacts/cannlab/build/PL-lazy_source_after.json",
+      "sha256": "db7529117a143f6dfb9457818ba237a52d930377cbb30d52a4d6b45e47026774",
+      "bytes": 9161
+    },
+    {
+      "source": "cloud/completed/cloud_results/PL-lazy_build.log",
+      "target": "artifacts/cannlab/build/PL-lazy_build.log",
+      "sha256": "d0b363de522d24cb2cebb61839b750bb4c675c84ad38c741393266328dadccb7",
+      "bytes": 17340
+    },
+    {
+      "source": "cloud/completed/cloud_results/PL-lazy_example.log",
+      "target": "artifacts/cannlab/build/PL-lazy_example.log",
+      "sha256": "299d208e118011f1a7f42990dc9188e7afb674060e783f26e89cdf6aef04eb29",
+      "bytes": 17226
+    },
+    {
+      "source": "cloud/profiler_completed/profiler_results/PL-lazy/result.json",
+      "target": "artifacts/cannlab/profiler/PL-lazy/result.json",
+      "sha256": "ce4e2ebc96c9baa2fd27712dcf71edefb6bd9ef7f21f3947721fa9b8d6d07b63",
+      "bytes": 9319
+    },
+    {
+      "source": "cloud/profiler_completed/profiler_results/PL-lazy/collection.log",
+      "target": "artifacts/cannlab/profiler/PL-lazy/collection.log",
+      "sha256": "222d84af63148a6f2abc3aae0c28b9ac0c1658962dfbdd245314cac773b75467",
+      "bytes": 4227
+    },
+    {
+      "source": "cloud/profiler_completed/profiler_results/PL-lazy/verify.log",
+      "target": "artifacts/cannlab/profiler/PL-lazy/verify.log",
+      "sha256": "006bb07b79f5dc83b5d86c06132be3e53ba0a0c5fdd87841f0edfbb29e53c8fd",
+      "bytes": 365
+    },
+    {
+      "source": "cloud/public/compiled_sample_outputs.tar.gz",
+      "target": "artifacts/cannlab/compiled_sample_outputs.tar.gz",
+      "sha256": "5288209b1cbe634830dc9dd84bfd80a509e47e2e6396109ddf8df72d07e4e291",
+      "bytes": 3989459
+    },
+    {
+      "source": "cloud/profiler_results.tar.gz",
+      "target": "artifacts/cannlab/profiler_results.tar.gz",
+      "sha256": "78c924bb03def025d34e0bf4dc361d75a1bb11dfee4ab76108a7d62824eef7bd",
+      "bytes": 119269
+    },
+    {
+      "source": "cloud/public/archive_audit.json",
+      "target": "artifacts/cannlab/archive_audit.json",
+      "sha256": "d656772c33d2094be295d35ce341e9ffffdfc5618fff4bb9b11e18834db9e23a",
+      "bytes": 578
+    },
+    {
+      "source": "cloud/public/status.json",
+      "target": "artifacts/cannlab/status.json",
+      "sha256": "30f27632d1da8f9115de082b9022c9ec924d64ff18c27b96b686fd78340ee824",
+      "bytes": 7862
+    }
+  ],
+  "versions": {
+    "PL": {
+      "source_identity": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41",
+      "source_unchanged": true,
+      "build": {
+        "executed": true,
+        "exit_code": 0,
+        "evidence_ref": "artifacts/cannlab/build/PL.json",
+        "log": "artifacts/cannlab/build/PL_build.log"
+      },
+      "example": {
+        "executed": true,
+        "exit_code": 0,
+        "mismatched": 0,
+        "total": 16,
+        "scope": "First public FP32 reflect sample only; seed42; no general precision claim",
+        "log": "artifacts/cannlab/build/PL_example.log"
+      },
+      "ut": {
+        "executed": false,
+        "reason": "Frozen UT fixture references missing totalNum and incompatible initial tiling key/layout; dependencies separately observed. No fixture changes permitted in this frozen task.",
+        "exit_code": null
+      },
+      "profiler": {
+        "executed": true,
+        "exit_code": 0,
+        "op_summary_count": 1,
+        "scope": "Single first public FP32 reflect sample diagnostic; no warmup; one app/ACLNN call; no stable-speedup claim",
+        "warmup_calls": 0,
+        "application_calls": 1,
+        "ref": "artifacts/cannlab/profiler/PL/result.json",
+        "raw_archive": "artifacts/cannlab/profiler_results.tar.gz",
+        "actual_kernel_rows": [
+          {
+            "Device_id": "0",
+            "Model ID": "4294967295",
+            "Task ID": "0",
+            "Stream ID": "47",
+            "Op Name": "PadV3Grad",
+            "OP Type": "PadV3Grad",
+            "OP State": "dynamic",
+            "Task Type": "AI_VECTOR_CORE",
+            "Task Start Time(us)": "1795007289092739.610\t",
+            "Task Duration(us)": "9.480",
+            "Task Wait Time(us)": "0",
+            "Block Num": "2",
+            "Mix Block Num": "0",
+            "HF32 Eligible": "NO",
+            "Input Shapes": "\"1,1,8,8;4,2\"",
+            "Input Data Types": "FLOAT;INT32",
+            "Input Formats": "ND;ND",
+            "Output Shapes": "\"1,1,4,4\"",
+            "Output Data Types": "FLOAT",
+            "Output Formats": "ND",
+            "Context ID": "N/A",
+            "aicore_time(us)": "0.0",
+            "aic_total_cycles": "0",
+            "aic_mac_time(us)": "0.0",
+            "aic_mac_ratio": "0.0",
+            "aic_scalar_time(us)": "0.0",
+            "aic_scalar_ratio": "0.0",
+            "aic_mte1_time(us)": "0.0",
+            "aic_mte1_ratio": "0.0",
+            "aic_mte2_time(us)": "0.0",
+            "aic_mte2_ratio": "0.0",
+            "aic_fixpipe_time(us)": "0.0",
+            "aic_fixpipe_ratio": "0.0",
+            "aic_icache_miss_rate": "0.0",
+            "aiv_time(us)": "8.864",
+            "aiv_total_cycles": "31909",
+            "aiv_vec_time(us)": "0.346",
+            "aiv_vec_ratio": "0.039",
+            "aiv_scalar_time(us)": "4.611",
+            "aiv_scalar_ratio": "0.52",
+            "aiv_mte2_time(us)": "0.756",
+            "aiv_mte2_ratio": "0.085",
+            "aiv_mte3_time(us)": "0.163",
+            "aiv_mte3_ratio": "0.018",
+            "aiv_icache_miss_rate": "0.079",
+            "cube_utilization(%)": "0.000"
+          }
+        ],
+        "verification_exit_code": 0
+      },
+      "performance": {
+        "executed": false,
+        "scope": "No full repeated performance benchmark; single-call profiler diagnostics are recorded separately",
+        "reason": "Only one first-sample instrumented call was collected; no warmup/repeated statistical protocol or full case coverage",
+        "stable_gain": null
+      }
+    },
+    "PL-lazy": {
+      "source_identity": "03e6bc1bb81dc40ba71d4691aeb08feebdf38fe0a2ac12f2a59aeff0445afb39",
+      "source_unchanged": true,
+      "build": {
+        "executed": true,
+        "exit_code": 0,
+        "evidence_ref": "artifacts/cannlab/build/PL-lazy.json",
+        "log": "artifacts/cannlab/build/PL-lazy_build.log"
+      },
+      "example": {
+        "executed": true,
+        "exit_code": 0,
+        "mismatched": 0,
+        "total": 16,
+        "scope": "First public FP32 reflect sample only; seed42; no general precision claim",
+        "log": "artifacts/cannlab/build/PL-lazy_example.log"
+      },
+      "ut": {
+        "executed": false,
+        "reason": "Frozen UT fixture references missing totalNum and incompatible initial tiling key/layout; dependencies separately observed. No fixture changes permitted in this frozen task.",
+        "exit_code": null
+      },
+      "profiler": {
+        "executed": true,
+        "exit_code": 0,
+        "op_summary_count": 1,
+        "scope": "Single first public FP32 reflect sample diagnostic; no warmup; one app/ACLNN call; no stable-speedup claim",
+        "warmup_calls": 0,
+        "application_calls": 1,
+        "ref": "artifacts/cannlab/profiler/PL-lazy/result.json",
+        "raw_archive": "artifacts/cannlab/profiler_results.tar.gz",
+        "actual_kernel_rows": [
+          {
+            "Device_id": "0",
+            "Model ID": "4294967295",
+            "Task ID": "0",
+            "Stream ID": "47",
+            "Op Name": "PadV3Grad",
+            "OP Type": "PadV3Grad",
+            "OP State": "dynamic",
+            "Task Type": "AI_VECTOR_CORE",
+            "Task Start Time(us)": "1795007311242244.940\t",
+            "Task Duration(us)": "9.420",
+            "Task Wait Time(us)": "0",
+            "Block Num": "2",
+            "Mix Block Num": "0",
+            "HF32 Eligible": "NO",
+            "Input Shapes": "\"1,1,8,8;4,2\"",
+            "Input Data Types": "FLOAT;INT32",
+            "Input Formats": "ND;ND",
+            "Output Shapes": "\"1,1,4,4\"",
+            "Output Data Types": "FLOAT",
+            "Output Formats": "ND",
+            "Context ID": "N/A",
+            "aicore_time(us)": "0.0",
+            "aic_total_cycles": "0",
+            "aic_mac_time(us)": "0.0",
+            "aic_mac_ratio": "0.0",
+            "aic_scalar_time(us)": "0.0",
+            "aic_scalar_ratio": "0.0",
+            "aic_mte1_time(us)": "0.0",
+            "aic_mte1_ratio": "0.0",
+            "aic_mte2_time(us)": "0.0",
+            "aic_mte2_ratio": "0.0",
+            "aic_fixpipe_time(us)": "0.0",
+            "aic_fixpipe_ratio": "0.0",
+            "aic_icache_miss_rate": "0.0",
+            "aiv_time(us)": "8.815",
+            "aiv_total_cycles": "31734",
+            "aiv_vec_time(us)": "0.352",
+            "aiv_vec_ratio": "0.04",
+            "aiv_scalar_time(us)": "4.66",
+            "aiv_scalar_ratio": "0.529",
+            "aiv_mte2_time(us)": "0.776",
+            "aiv_mte2_ratio": "0.088",
+            "aiv_mte3_time(us)": "0.155",
+            "aiv_mte3_ratio": "0.018",
+            "aiv_icache_miss_rate": "0.085",
+            "cube_utilization(%)": "0.000"
+          }
+        ],
+        "verification_exit_code": 0
+      },
+      "performance": {
+        "executed": false,
+        "scope": "No full repeated performance benchmark; single-call profiler diagnostics are recorded separately",
+        "reason": "Only one first-sample instrumented call was collected; no warmup/repeated statistical protocol or full case coverage",
+        "stable_gain": null
+      }
+    }
+  },
+  "status": "build_and_first_sample_passed_single_call_profiler_collected",
+  "notes": [
+    "These are cloud measurements, not official results.",
+    "Raw single-call profiler times are not stable speedup evidence.",
+    "UT was not executed because the frozen fixture is incompatible; no frozen source or template was changed.",
+    "Original connection failure and later transfer failure remain archived locally."
+  ]
+}

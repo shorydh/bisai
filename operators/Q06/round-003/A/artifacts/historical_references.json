@@ -1,0 +1,15 @@
+{
+  "round_002_A_commit": "facfb39ece01643fa7f9452d09971f9ca4d2b246",
+  "round_002_A_ref": "https://github.com/shorydh/bisai/tree/facfb39ece01643fa7f9452d09971f9ca4d2b246/operators/Q06/round-002/A",
+  "B_1379766": {
+    "experiment_id": "Q06-R002-B-E004",
+    "round_id": "round-002",
+    "task_id": null,
+    "official_numeric_id": 1379766,
+    "submission_id": "6afc1e5b6bd0f9be374a4c6d",
+    "source": "User task plus access audit; original B task_id unavailable, not invented"
+  },
+  "C_fixed_commit": "622d7f0064073dff249c23424330466ce510e3e2",
+  "C_latest_published_evidence": "artifacts/prior_audit/reuse-audit.json",
+  "scope": "Historical records retain original IDs and times; GET refresh and references are not independent runs"
+}

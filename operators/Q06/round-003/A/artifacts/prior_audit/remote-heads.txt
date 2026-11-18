@@ -1,0 +1,9 @@
+562db68e0193c407dd714f5f071800911f378190	refs/heads/agent-a
+8e245dab91700555bd619e95c70fa780305b1b37	refs/heads/agent-b
+b62a68eb4096735299730c58d858f541fd8a270b	refs/heads/agent-c
+b62a68eb4096735299730c58d858f541fd8a270b	refs/heads/main
+cb4016d4406b245461f57998f693d7feacc0e297	refs/heads/q06/r001/a-baseline
+00e523a0871993a333c18b7b5224afab3b96e7ef	refs/heads/q06/r001/b-r6-lastplan
+9f0c24f6609a8641f083249a815bdaddef4147cf	refs/heads/q06/r001/c-boundary
+facfb39ece01643fa7f9452d09971f9ca4d2b246	refs/heads/q06/r002/a-official-comparability
+622d7f0064073dff249c23424330466ce510e3e2	refs/heads/q06/r002/c-reference-device

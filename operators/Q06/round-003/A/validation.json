@@ -1,0 +1,13 @@
+{
+  "builder_checked_at": "2026-11-18T13:12:25.810877+00:00",
+  "records": 2,
+  "fields_each": 21,
+  "source_files_each": 38,
+  "official_source_identity_matches": true,
+  "comparison_status": "verified",
+  "independent_review": {
+    "status": "passed",
+    "ref": "artifacts/audit/raw_to_public_audit.json",
+    "scope": "Official/raw source consistency plus actual package restoration; no new evaluation"
+  }
+}

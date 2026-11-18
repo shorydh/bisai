@@ -1,0 +1,145 @@
+{
+  "arm": "PL",
+  "started_at": "2026-11-18T13:01:55.163725+00:00",
+  "source_identity": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41",
+  "stages": [
+    {
+      "stage": "build",
+      "executed": true,
+      "command": [
+        "bash",
+        "build.sh",
+        "-j4"
+      ],
+      "device_id": null,
+      "started_at": "2026-11-18T13:01:55.592862+00:00",
+      "ended_at": "2026-11-18T13:02:51.674131+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 56.08126532693859,
+      "duration_scope": "Whole command wall time, NOT operator execution time",
+      "log": "PL_build.log",
+      "load_before": {
+        "command": [
+          "npu-smi",
+          "info"
+        ],
+        "exit_code": 0,
+        "stdout": "+------------------------------------------------------------------------------------------------+\n| npu-smi 25.5.0                   Version: 25.5.0                                               |\n+---------------------------+---------------+----------------------------------------------------+\n| NPU   Name                | Health        | Power(W)    Temp(C)           Hugepages-Usage(page)|\n| Chip                      | Bus-Id        | AICore(%)   Memory-Usage(MB)  HBM-Usage(MB)        |\n+===========================+===============+====================================================+\n| 3     910B3               | OK            | 82.1        34                0    / 0             |\n| 0                         | 0000:0A:00.0  | 0           0    / 0          3444 / 65536         |\n+===========================+===============+====================================================+\n+---------------------------+---------------+----------------------------------------------------+\n| NPU     Chip              | Process id    | Process name             | Process memory(MB)      |\n+===========================+===============+====================================================+\n| No running processes found in NPU 3                                                            |\n+===========================+===============+====================================================+\n",
+        "stderr": ""
+      },
+      "load_after": {
+        "command": [
+          "npu-smi",
+          "info"
+        ],
+        "exit_code": 0,
+        "stdout": "+------------------------------------------------------------------------------------------------+\n| npu-smi 25.5.0                   Version: 25.5.0                                               |\n+---------------------------+---------------+----------------------------------------------------+\n| NPU   Name                | Health        | Power(W)    Temp(C)           Hugepages-Usage(page)|\n| Chip                      | Bus-Id        | AICore(%)   Memory-Usage(MB)  HBM-Usage(MB)        |\n+===========================+===============+====================================================+\n| 3     910B3               | OK            | 82.2        34                0    / 0             |\n| 0                         | 0000:0A:00.0  | 0           0    / 0          3445 / 65536         |\n+===========================+===============+====================================================+\n+---------------------------+---------------+----------------------------------------------------+\n| NPU     Chip              | Process id    | Process name             | Process memory(MB)      |\n+===========================+===============+====================================================+\n| No running processes found in NPU 3                                                            |\n+===========================+===============+====================================================+\n",
+        "stderr": ""
+      }
+    },
+    {
+      "stage": "example",
+      "executed": true,
+      "command": [
+        "bash",
+        "build.sh",
+        "-j4",
+        "-e"
+      ],
+      "device_id": 0,
+      "started_at": "2026-11-18T13:02:52.537431+00:00",
+      "ended_at": "2026-11-18T13:04:21.663878+00:00",
+      "exit_code": 0,
+      "elapsed_seconds": 89.12644831696525,
+      "duration_scope": "Whole command wall time, NOT operator execution time",
+      "log": "PL_example.log",
+      "load_before": {
+        "command": [
+          "npu-smi",
+          "info"
+        ],
+        "exit_code": 0,
+        "stdout": "+------------------------------------------------------------------------------------------------+\n| npu-smi 25.5.0                   Version: 25.5.0                                               |\n+---------------------------+---------------+----------------------------------------------------+\n| NPU   Name                | Health        | Power(W)    Temp(C)           Hugepages-Usage(page)|\n| Chip                      | Bus-Id        | AICore(%)   Memory-Usage(MB)  HBM-Usage(MB)        |\n+===========================+===============+====================================================+\n| 3     910B3               | OK            | 82.2        34                0    / 0             |\n| 0                         | 0000:0A:00.0  | 0           0    / 0          3445 / 65536         |\n+===========================+===============+====================================================+\n+---------------------------+---------------+----------------------------------------------------+\n| NPU     Chip              | Process id    | Process name             | Process memory(MB)      |\n+===========================+===============+====================================================+\n| No running processes found in NPU 3                                                            |\n+===========================+===============+====================================================+\n",
+        "stderr": ""
+      },
+      "load_after": {
+        "command": [
+          "npu-smi",
+          "info"
+        ],
+        "exit_code": 0,
+        "stdout": "+------------------------------------------------------------------------------------------------+\n| npu-smi 25.5.0                   Version: 25.5.0                                               |\n+---------------------------+---------------+----------------------------------------------------+\n| NPU   Name                | Health        | Power(W)    Temp(C)           Hugepages-Usage(page)|\n| Chip                      | Bus-Id        | AICore(%)   Memory-Usage(MB)  HBM-Usage(MB)        |\n+===========================+===============+====================================================+\n| 3     910B3               | OK            | 82.3        35                0    / 0             |\n| 0                         | 0000:0A:00.0  | 0           0    / 0          3452 / 65536         |\n+===========================+===============+====================================================+\n+---------------------------+---------------+----------------------------------------------------+\n| NPU     Chip              | Process id    | Process name             | Process memory(MB)      |\n+===========================+===============+====================================================+\n| No running processes found in NPU 3                                                            |\n+===========================+===============+====================================================+\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "source_unchanged": true,
+  "artifacts": [
+    {
+      "path": "PL/build/_CPack_Packages/Linux/External/custom_opp_ubuntu_aarch64.run/custom_opp_ubuntu_aarch64.run",
+      "bytes": 828092,
+      "sha256": "426d3545ab35b53a4c52dd7fb77f7036198fc118652a94305794e4fae777e2f4"
+    },
+    {
+      "path": "PL/build/custom_opp_ubuntu_aarch64.run",
+      "bytes": 828092,
+      "sha256": "426d3545ab35b53a4c52dd7fb77f7036198fc118652a94305794e4fae777e2f4"
+    },
+    {
+      "path": "PL/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_22587b9da8f27bd0f4b532d5daf93888.o",
+      "bytes": 166848,
+      "sha256": "03895344a8ec96089660d690f3fc8cfaa1103146f86f98b933c95afcbac205bc"
+    },
+    {
+      "path": "PL/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_2bfeba299148d69c93a6b63c6cebd524.o",
+      "bytes": 166848,
+      "sha256": "ed01b28b841a712c77e1806f048c1044cbb4cdcdb6bde9850f6377275e23f4b9"
+    },
+    {
+      "path": "PL/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_9afa82184aa429ef41dcf627b8e032e8.o",
+      "bytes": 166848,
+      "sha256": "097ea75ab9907ad3559b50592ea223748ee6b2ae5bdbe342542968612300b1f9"
+    },
+    {
+      "path": "PL/build/op_kernel/ascendc_kernels/binary/ascend910b/pad_v3_grad/PadV3Grad_c274f09af1f975ed340c9ff457a87da8.o",
+      "bytes": 166848,
+      "sha256": "8fabc133bd75773fa6d4dde26989db8d4428a3378fc99a0a5357a779f89702b1"
+    },
+    {
+      "path": "PL/samples/build/golden/y.bin",
+      "bytes": 64,
+      "sha256": "ce0f32736dc03d7ee1c486792e8565279f810346dca27853186ef615a6021547"
+    },
+    {
+      "path": "PL/samples/build/input/paddings.bin",
+      "bytes": 32,
+      "sha256": "2a029532f5fb5ec198cf69e5e64013f37189f1674082f8f4eecaa95e716c6be9"
+    },
+    {
+      "path": "PL/samples/build/input/x.bin",
+      "bytes": 256,
+      "sha256": "fa69a50b6280241d7df2606f1a4bf93dc482e785362015f7fadf0ea977407cbd"
+    },
+    {
+      "path": "PL/samples/build/output/y.bin",
+      "bytes": 64,
+      "sha256": "2e8c10018ea7c0fbbc21b055dcaef900f5da6c23712f4c225a938d4dcdf08da3"
+    },
+    {
+      "path": "PL/examples/build/sample",
+      "bytes": 76360,
+      "sha256": "7256d1958d6b7ab9a06f31fa36293a628874fb1733e7ae949a2401995b15639a"
+    }
+  ],
+  "ut": {
+    "executed": false,
+    "reason": "Frozen UT fixture references missing totalNum and incompatible initial tiling key/layout; dependencies separately observed. No fixture changes permitted in this frozen task.",
+    "exit_code": null
+  },
+  "performance": {
+    "executed": false,
+    "reason": "Project example has one ACLNN call and no timer/warmup/repetition protocol; no general full-performance entry point provided. Profiler availability/help recorded separately.",
+    "operator_time": null
+  },
+  "ended_at": "2026-11-18T13:04:22.108092+00:00"
+}

@@ -1,0 +1,380 @@
+{
+  "official_task_id": "6afda34285ad43bbe045172e",
+  "row": {
+    "rank": 144,
+    "submission_id": "6afda34285ad43bbe045172e",
+    "status": "Pass",
+    "create_time": "2026-11-18T13:08:18.217Z",
+    "score": 29.97,
+    "result": [
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a22",
+        "time": 6.803333333333334,
+        "precision_ratio": 1,
+        "testcase_status": "Pass",
+        "score": 0
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a27",
+        "time": 7.316666666666666,
+        "precision_ratio": 1,
+        "testcase_status": "Pass",
+        "score": 0
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a2b",
+        "time": 7.193333333333333,
+        "precision_ratio": 1,
+        "testcase_status": "Pass",
+        "score": 0
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a2f",
+        "time": 8.64,
+        "precision_ratio": 1,
+        "testcase_status": "Pass",
+        "score": 0
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a33",
+        "time": 7.003333333333333,
+        "precision_ratio": 1,
+        "testcase_status": "Pass",
+        "score": 0
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a37",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a3b",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a3f",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a43",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a47",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a4c",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a50",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a54",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a58",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a5c",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a60",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a64",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a68",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a6c",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a70",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a74",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a78",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a7c",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a80",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a84",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a88",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a8c",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a90",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a94",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a98",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a9c",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2aa0",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2aa4",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2aa8",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2aac",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ab0",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ab4",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ab8",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2abc",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ac0",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ac4",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ac8",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2acc",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ad0",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ad4",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ad8",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2adc",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ae0",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ae4",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2ae8",
+        "testcase_status": "Hidden",
+        "time": null,
+        "precision_ratio": null
+      }
+    ],
+    "submission": {
+      "_id": "6afda34285ad43bbe045172e",
+      "ID": 1402299,
+      "status": "Pass",
+      "create_time": "2026-11-18T13:08:18.217Z"
+    }
+  },
+  "observed_at": "2026-11-18T13:10:43.047700+00:00",
+  "public_scoring_scale": [
+    {
+      "_id": "6ad9ab403ff2fef7e80e2a22",
+      "id": "6ad9ab403ff2fef7e80e2a22",
+      "ID": 19312,
+      "baseline": null,
+      "tbest": 3.71,
+      "type": "default"
+    },
+    {
+      "_id": "6ad9ab403ff2fef7e80e2a27",
+      "id": "6ad9ab403ff2fef7e80e2a27",
+      "ID": 19313,
+      "baseline": null,
+      "tbest": 3.7466666666666666,
+      "type": "default"
+    },
+    {
+      "_id": "6ad9ab403ff2fef7e80e2a2b",
+      "id": "6ad9ab403ff2fef7e80e2a2b",
+      "ID": 19314,
+      "baseline": null,
+      "tbest": 3.67,
+      "type": "default"
+    },
+    {
+      "_id": "6ad9ab403ff2fef7e80e2a2f",
+      "id": "6ad9ab403ff2fef7e80e2a2f",
+      "ID": 19315,
+      "baseline": null,
+      "tbest": 3.776666666666667,
+      "type": "default"
+    },
+    {
+      "_id": "6ad9ab403ff2fef7e80e2a33",
+      "id": "6ad9ab403ff2fef7e80e2a33",
+      "ID": 19316,
+      "baseline": null,
+      "tbest": 3.6533333333333333,
+      "type": "default"
+    }
+  ],
+  "source_response_sha256": "7b77a82bfa3c1a237275d743778c41376b79bc6e5eec3f753372a5d5df0cf580",
+  "source_response_ref_on_machine_A": "raw_official/runs/Q06-R003-A-E002/ranking_raw/20261118T131042603731Z_page_2.json",
+  "endpoint": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d/ranking",
+  "params": {
+    "page": 2,
+    "size": 100
+  },
+  "scope": "Exact task row and public testcase scale from the same HTTP response. Other accounts and hidden testcase definitions omitted.",
+  "_publication": {
+    "machine_A_raw_file": "raw_official/runs/Q06-R003-A-E002/ranking_exact/20261118T131042603731Z.json",
+    "source_file_sha256": "235fdec0a17131636a95c9aabb406b664e1b93576c3d6f5b258fe98f63380d16",
+    "official_endpoint": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d/ranking",
+    "extraction": "Explicit projection; retained metrics are unchanged. Account/profile and unrelated ranking rows omitted."
+  }
+}

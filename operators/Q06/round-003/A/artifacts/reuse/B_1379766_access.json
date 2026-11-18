@@ -1,0 +1,27 @@
+{
+  "original_experiment_id": "Q06-R002-B-E004",
+  "original_round_id": "round-002",
+  "official_numeric_id": 1379766,
+  "submission_id": "6afc1e5b6bd0f9be374a4c6d",
+  "request_metadata": {
+    "method": "GET",
+    "endpoint": "https://cannjudge.cn/api/submissions/6afc1e5b6bd0f9be374a4c6d",
+    "request_started_at": "2026-11-18T12:58:55.282840+00:00",
+    "observed_at": "2026-11-18T12:58:55.342031+00:00",
+    "http_status": 403,
+    "raw_response_sha256": "3fc00177917ad2f19357466dd30a20c4d2cd01510afb145ca8283378feb49438"
+  },
+  "response_message": "无权查看他人的提交记录",
+  "historical_user_reported_score": 29.64,
+  "historical_user_reported_status": "Pass",
+  "score_source": "User task text, not independently rebound to a current official ranking",
+  "current_score": null,
+  "original_score_observed_at": null,
+  "scope": "Read-only access/reuse audit; not a new evaluation",
+  "_publication": {
+    "machine_A_raw_file": "raw_official/inspection/20261118T125854810978Z/PL-lazy_official.json",
+    "source_file_sha256": "3fc00177917ad2f19357466dd30a20c4d2cd01510afb145ca8283378feb49438",
+    "official_endpoint": null,
+    "extraction": "Explicit projection; retained metrics are unchanged. Account/profile and unrelated ranking rows omitted."
+  }
+}

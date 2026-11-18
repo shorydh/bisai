@@ -1,0 +1,109 @@
+{
+  "observed_at": "2026-11-18T12:58:55.985720+00:00",
+  "configuration": {
+    "cann_version": "9.1.0",
+    "judge_revision": 0,
+    "score_mode": 1,
+    "iterations": 5,
+    "ranking_submission_mode": "latest",
+    "code_template": "gitcode_template_noopapi"
+  },
+  "tasks": [
+    {
+      "label": "PL-lazy",
+      "official_task_id": "6afc1e5b6bd0f9be374a4c6d",
+      "error_type": "HTTPError",
+      "observed_at": "2026-11-18T12:58:55.343979+00:00"
+    },
+    {
+      "_id": "6afc3bd16bd0f9be3780fbd0",
+      "ID": 1381889,
+      "status": "Pass",
+      "valid": true,
+      "judge_revision": 0,
+      "create_time": "2026-11-17T11:34:41.837Z",
+      "total_testcase_count": 50,
+      "judge_missing_cases": false,
+      "public_only": false,
+      "label": "PL",
+      "observed_at": "2026-11-18T12:58:55.477127+00:00",
+      "source_tree_sha256": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41",
+      "expected_tree_match": true,
+      "files_count": 38,
+      "readonly_matches_current_template": true,
+      "all_38_match_restored": true
+    },
+    {
+      "_id": "6afc3b166bd0f9be377f93c5",
+      "ID": 1381855,
+      "status": "Pass",
+      "valid": true,
+      "judge_revision": 0,
+      "create_time": "2026-11-17T11:31:34.843Z",
+      "total_testcase_count": 50,
+      "judge_missing_cases": false,
+      "public_only": false,
+      "label": "P",
+      "observed_at": "2026-11-18T12:58:55.585155+00:00",
+      "source_tree_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+      "expected_tree_match": true,
+      "files_count": 38,
+      "readonly_matches_current_template": true,
+      "all_38_match_restored": null
+    }
+  ],
+  "scans": [
+    {
+      "page": 1,
+      "rows": 100,
+      "total": 384,
+      "method": "GET",
+      "endpoint": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d/ranking",
+      "request_started_at": "2026-11-18T12:58:55.587192+00:00",
+      "observed_at": "2026-11-18T12:58:55.668947+00:00",
+      "http_status": 200,
+      "raw_response_sha256": "5dc8c4a7cccb9c6a6881a869b6c110ca51aa95e39cacaf0106d982472e47cae6"
+    },
+    {
+      "page": 2,
+      "rows": 100,
+      "total": 384,
+      "method": "GET",
+      "endpoint": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d/ranking",
+      "request_started_at": "2026-11-18T12:58:55.675454+00:00",
+      "observed_at": "2026-11-18T12:58:55.764592+00:00",
+      "http_status": 200,
+      "raw_response_sha256": "acd0a758bee070b374758181749c3071b243769f5b6137f1e79f445cb9b4fd8f"
+    },
+    {
+      "page": 3,
+      "rows": 100,
+      "total": 384,
+      "method": "GET",
+      "endpoint": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d/ranking",
+      "request_started_at": "2026-11-18T12:58:55.772484+00:00",
+      "observed_at": "2026-11-18T12:58:55.870699+00:00",
+      "http_status": 200,
+      "raw_response_sha256": "de3efb90b6c7fe9736eecbeb265d650d25440e257fcb45561a393817e0aa6541"
+    },
+    {
+      "page": 4,
+      "rows": 84,
+      "total": 384,
+      "method": "GET",
+      "endpoint": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d/ranking",
+      "request_started_at": "2026-11-18T12:58:55.877908+00:00",
+      "observed_at": "2026-11-18T12:58:55.979377+00:00",
+      "http_status": 200,
+      "raw_response_sha256": "34d65ba02b884a957f7eaa886ae95136fab8887680f40455481830d66f580bdf"
+    }
+  ],
+  "scope": "Current observations only; not backfilled historical score or a new evaluation",
+  "exact_ranking_matches": [],
+  "_publication": {
+    "machine_A_raw_file": "raw_official/inspection/20261118T125854810978Z/inspection.json",
+    "source_file_sha256": "486dfe82e430c94a197d67b370839cb6e67250814abb8d4bf2d34645dc3d7ff3",
+    "official_endpoint": null,
+    "extraction": "Explicit projection; retained metrics are unchanged. Account/profile and unrelated ranking rows omitted."
+  }
+}

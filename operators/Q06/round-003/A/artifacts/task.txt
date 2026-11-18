@@ -1,0 +1,114 @@
+第六题 PadV3Grad · 第 3 轮 · 执行者 A
+
+task_id 为 `Q06-R003-A-LAZY-OFFICIAL`，round_id 为 `round-003`，agent_id 为 `A`。任务类型为PL-lazy 独立恢复、官方比较与共同基线资格补证。在自己的机器从提交 `facfb39ece01643fa7f9452d09971f9ca4d2b246` 创建独立分支 `q06/r003/a-lazy-official`，或在 `work/Q06/round-003/A/` 恢复下述准确版本。承接 Q06-R002-A-OFFICIAL-COMPARABILITY-20261117；Q06-R002-B-E004。资料仓库为 [shorydh/bisai](https://github.com/shorydh/bisai)。
+
+## 假设、判据与工作范围
+
+你已完成 P、PL、F、L 四臂正式复测和原样云构建。A 的 1381855／P 29.35、1381889／PL 29.36、1381929／F 28.98、1381993／L 28.77 均为 Pass、valid=true。R002-B-E004 的 PL-lazy 官方 1379766 Pass／29.64，完整工程已绑定，但排行 UI 仅靠提交时间、账号、状态与五个公开耗时关联，缺独立 valid、revision 与同响应的精确评分标尺。新问题是候选相对直接父版 PL 能否完成同公开协议下的正式比较，以及现有证据对工作 P 的基线资格支持到哪里。
+
+1. 从起点提交的 operators/Q06/round-002/A/ 读取 summary.md、experiments.jsonl、artifacts/rules、artifacts/config、artifacts/ranking、artifacts/audit/bounded_comparison.json。先复用已验收的四臂，不再提交整套 F/L/P/PL，也不重复 exp5/u64 恢复。用现有授权入口核查 1379766 的实际终态、有效性和同一任务绑定的总分。动态 TBest 下对齐观察时刻，原时点字段不可得时保留空值，今天的详情读数不得回填昨日榜单。
+2. 独立恢复 PL 与 PL-lazy，冻结源文件、模板和参数。B 的交付可由用户转交 Q06-R002-B_1379766_delivery.zip（外层 SHA256 eaf4725017356393f77613b95747966af71bd026244da101d4ffb66a20895b31），内含 B/artifacts/official/1379766.zip、排行、diff、源码和 CPU 诊断。也可从题目已授权的 1379766 详情下载原工程；远程仓库未发布 B 的这个回包。若无法取得该附件或官方下载，文末提供相对准确 PL 的完整改动，可在独立 PL 副本内应用并验七源码、主头和全部 38 文件。不要把重建出的 ZIP 外层哈希当成官方 ZIP 的哈希。
+3. 仅在缺口影响判断时原样评测 PL-lazy 和必要的 PL 局部对照；已有同口径官方记录足够时直接引用。若主张优于 P，再复用足够可比的 P，否则补必要 P 对照。冻结比较方案并保留全部观测、有效性与精确任务行，区分局部 PL、工作 P 和未确立的团队基线。无需再次独立测试历史 F/L。这样可以检验“延迟构造在正式评测中带来可辨收益”；同口径分差仅支持当批方向，重复观测不一致或差异不足时把稳定收益记 pending。无效任务或源码错配排除相应比较。
+4. 允许修改取证和恢复脚本，算子保持冻结。B 负责目标设备缓存成本，C 已交回 R002-C-E001—E005（固定提交 622d7f0064073dff249c23424330466ce510e3e2），原依赖 reference 和合法 edge 四变体已核验。P 的基线资格只待该用例的 NPU 裁决。独立交付 PL-lazy 官方比较，若 C 已有真机结果，引用版本及证据。
+
+## 冻结版本与实际运行入口
+
+共同基线尚未确立。P/r6 为工作起点，七源码 d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949。PL 七源码 988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41 来自固定提交 00e523a0871993a333c18b7b5224afab3b96e7ef 的 operators/Q06/round-001/B/artifacts/official/1369663.zip，ZIP SHA256 3daa6a7751fdcabafca6a98cd95e3b13e6958c2161aac828fa73a61244aadcb5。P 可从提交 8e245dab91700555bd619e95c70fa780305b1b37 的 operators/Q06/历史盘点/B/artifacts/official/1367774.zip 恢复。PL-lazy 七源码 03e6bc1bb81dc40ba71d4691aeb08feebdf38fe0a2ac12f2a59aeff0445afb39，主头 676d61fc35ade7689f96fa8e1cc77c2973aab0820b949607d3480f847edcdcac，官方工程 1379766.zip 的 SHA256 为 c918cf4eaa6b61cb00d56f7abbd8b21fd02377678accf2bf54d860f3a86707d9。各实验明确写相对 P、局部对照或上一版本。
+
+在完整工程 code/ 下先读 README.md、build.sh、examples/、tests/ut/ 和 samples/reference.py。工程已有构建入口 `bash build.sh -j4`；先按实际 CANN 环境的 set_env.sh 配置。示例入口 `DEVICE_ID=<实际设备号> bash build.sh -j4 -e` 只运行首个样例。UT 入口为带本机实际 NLOHMANN_JSON_INCLUDE_DIR、GTEST_SOURCE_DIR 的 `bash build.sh -j4 -u`，先检查旧 fixture 字段与恢复工程是否吻合。reference SHA256 为 1542d63e602aa3aaa60242e91ea0d6a8ac038bab788c6898dc4777557f040ed3。公开首样例通过只说明该样例。项目材料未确认通用全量性能命令；先查当前入口，自建调用或 Profiler 测量要保留脚本、配置和原始数据。
+
+题目 ID 为 6ad9ab403ff2fef7e80e2a1d。先看当期题面和项目留存的规则证据，再用已有授权会话进入正式评测。官方精度阈值 float 1e-4、half 1e-3、int 0，遵从题面实际逻辑值比较；未公开的完整误差算法、计时/预热/同步方式和退化阈值保留未知。A 第 2 轮记录的配置为 CANN 9.1.0、revision 0、iterations 5、latest，公开默认评分按动态 TBest 计算。实际测量前复查，不从五个公开样例重算 50 点总分或算子加速比。[题面](https://cannjudge.cn/public/ictcompetition/padv3grad) · [提交入口](https://cannjudge.cn/public/ictcompetition/padv3grad/submit) · [A 规则归档](https://github.com/shorydh/bisai/blob/facfb39ece01643fa7f9452d09971f9ca4d2b246/operators/Q06/round-002/A/artifacts/rules/report.md)
+
+## 执行、设备与返回时机
+
+按「提出假设 → 修改代码 → 编译 → 精度测试 → 性能测试 → 记录结果」执行。一次尽量只检验一个主要假设。原样复测可写“无代码改动”，记录实际做过的步骤及未执行原因。云环境可探索、调试及定位瓶颈。先确认设备、驱动、CANN、可用核数、调用路径和是否共享；共享设备错开性能测量，记录并发负载。插桩与正式计时版本分别冻结。构建失败、运行错误、精度失败和性能退化分别保存。
+
+先完成 3～5 次有意义的实验，检查流程是否可靠，再自行决定汇总或继续。验证任务以目标完成为准，无需为凑次数改码。存在明确后续假设时可继续并定期检查，没有额外次数或时间上限。结论清晰、需要协作或遇到实际入口、额度、设备、访问或运行限制时，交代进展、证据和具体阻塞。
+
+最终汇总前，由你使用已有官方入口完成正式结论涉及的相关版本及必要基线评测。无须把每个中间改动都送评。检查题目、任务号、终态有效性、提交与完成时间、准确版本、源码回读、模板/配置、公开测试标尺和总分对应的排行行。保存全部观测及其时间。官方未给完成时间时 evaluated_at=null，其他时间记在 evaluation_protocol。正式性能比较、收益与最佳选择使用可比的有效官方结果；云数据保留测量来源，不能跨环境算收益。评测后改码另立版本。
+
+## 统一交接结构与位置
+
+按“题目／轮次／执行者”在你自己的可写仓库保存 `operators/Q06/round-003/A/summary.md` 和 `operators/Q06/round-003/A/experiments.jsonl`，本次完整代码、必要配置、差异和原始证据放同级 `artifacts/`。已有实验编号保持不变，新实验从 `Q06-R003-A-E001` 递增追加，不覆盖其他人的材料或删除失败记录。迟到第 2 轮结果保留原 task_id、round_id、实验号和原路径；同一官方结果的引用不算独立复现。
+
+交付时给出用户可转交的归档及 SHA256，或按既有授权提供可访问的固定分支提交与完整路径。核对包内相对链接、实际送测工程与清单。中央接收位置为其 incoming/Q06/round-003/A/；你只需交付可访问的包，毋须访问中央机器。固定填写 operator=PadV3Grad、round_id=round-003、agent_id=A、task_id=Q06-R003-A-LAZY-OFFICIAL。
+
+summary.md 包含：
+
+- 题目、轮次、执行者、task_id、任务和基线。
+- 统一实验表：实验编号、假设与改动、准确代码版本、测量来源、官方任务编号、官方状态及实际指标、与官方基线的比较、结论及证据位置。
+- 发现清单：已验证、待验证、已证伪或无效，并注明环境、条件和证据。
+- 当前最佳有效版本及其官方依据。
+- 值得继续探索、复测或组合的发现。
+- 异常、未完成事项、原因及下一步。
+- 对应代码、日志和结果材料的位置。
+
+experiments.jsonl 每行一个实验，固定字段为：
+
+~~~text
+experiment_id, operator, round_id, agent_id, task_id,
+base_version, candidate_version, hypothesis, change,
+official_task_id, official_result_ref, evaluated_at,
+evaluation_protocol, official_status, official_metrics,
+baseline_official_result_ref, comparison, finding_status,
+applicability, artifacts, notes
+~~~
+
+字段要求：
+
+- version 必须能恢复实际测试的代码，包含提交编号或源码快照，以及必要差异和配置。
+- official_result_ref 指向可核对的官方结果。
+- official_metrics 原样记录官方实际返回的指标。
+- comparison 只比较可比的官方结果，不能判断时说明原因。
+- finding_status 使用 verified／pending／invalid，并写清证据与适用条件。
+- 云环境日志、性能数据及 Profiler 材料保存在 artifacts 中，明确注明来源。
+- 缺失字段填 null，并说明原因；不补造数据。
+- 尚无官方结果的过程实验如实记录，不将云环境数据填写为官方指标。
+- 已取得官方结果不自动等于性能提升；仍需与有效基线比较。
+
+执行者最后应在对话中报告关键发现、官方结果、最佳有效版本、未完成事项及文件位置，不能只交文件路径。最佳有效版本无法裁定时注明原因。
+
+## 附录 · 缺少 B 的附件时独立恢复 PL-lazy
+
+在干净 PL 工程根目录把下列差异保存为补丁，在独立副本执行 `git -c core.autocrlf=false -c core.eol=lf apply --check lazy.patch` 检查，再执行 `git -c core.autocrlf=false -c core.eol=lf apply lazy.patch`。补丁文件名为 lazy.patch，保存为 UTF-8/LF。此处的 Git 选项只作用于单次命令，可避免 Windows 自动改写送测文件的 LF。保留原文件换行，核对主头 SHA 及七源码摘要，并逐字节确认其余 37 文件与 PL 相同。以此完成恢复；若有取证权限，仍需将官方实际评测工程与版本绑定。[原任务详情](https://cannjudge.cn/public/ictcompetition/padv3grad/submission/6afc1e5b6bd0f9be374a4c6d)
+
+~~~diff
+--- a/op_kernel/pad_v3_grad.h
++++ b/op_kernel/pad_v3_grad.h
+@@ -505,12 +505,6 @@ private:
+         constexpr int64_t lastPlanCapacity = 32;
+         const bool reuseLast = outputWidth_ <= lastPlanCapacity && count > outputWidth_;
+         Contributors lastPlans[lastPlanCapacity];
+-        if (reuseLast) {
+-            for (int64_t column = 0; column < outputWidth_; ++column) {
+-                lastPlans[column] = MakeContributors(column, inputWidth_, outputWidth_,
+-                    front_[rank_ - 1], data_->mode);
+-            }
+-        }
+         for (int64_t j = 0; j < count;) {
+             const int64_t output = begin_ + j;
+             const int64_t row = output / outputWidth_;
+@@ -519,9 +513,19 @@ private:
+             int64_t outerCount = 0;
+             bool planned = false;
+             for (int64_t c = 0; c < run; ++c) {
+-                const auto last = reuseLast ? lastPlans[column + c] :
+-                    MakeContributors(column + c, inputWidth_, outputWidth_,
+-                                     front_[rank_ - 1], data_->mode);
++                Contributors last;
++                if (reuseLast) {
++                    // The first outputWidth_ local visits cover every column,
++                    // including a range that starts in the middle of a row.
++                    if (j + c < outputWidth_) {
++                        lastPlans[column + c] = MakeContributors(column + c, inputWidth_, outputWidth_,
++                            front_[rank_ - 1], data_->mode);
++                    }
++                    last = lastPlans[column + c];
++                } else {
++                    last = MakeContributors(column + c, inputWidth_, outputWidth_,
++                        front_[rank_ - 1], data_->mode);
++                }
+                 const int64_t lastCount = last.Size();
+                 int64_t pass = 0;
+                 if (lastCount != 0) {
+~~~

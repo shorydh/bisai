@@ -1,0 +1,137 @@
+{
+  "task_id": "Q06-R003-A-LAZY-OFFICIAL",
+  "checked_at": "2026-11-18T13:06:21.604101+00:00",
+  "operation": "Read existing current inspection; one public scoring JS GET only. No history requery, official POST, device run or code modification.",
+  "prior_commit": "facfb39ece01643fa7f9452d09971f9ca4d2b246",
+  "sources": {
+    "current_problem": {
+      "ref": "raw_official/inspection/20261118T125854810978Z/problem.json",
+      "method": "GET",
+      "endpoint": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d",
+      "request_started_at": "2026-11-18T12:58:54.825116+00:00",
+      "observed_at": "2026-11-18T12:58:55.154522+00:00",
+      "http_status": 200,
+      "raw_response_sha256": "bf45d9729959a9228a157dcde6a103382b5528fa7e110b936ffbb605c3459b8d"
+    },
+    "current_template": {
+      "ref": "raw_official/inspection/20261118T125854810978Z/template.json",
+      "method": "GET",
+      "endpoint": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d/template",
+      "request_started_at": "2026-11-18T12:58:55.156570+00:00",
+      "observed_at": "2026-11-18T12:58:55.280390+00:00",
+      "http_status": 200,
+      "raw_response_sha256": "139b0995dc9e882b370a391e30ec84023837757cfabb790e2d7012bd361347d5"
+    },
+    "prior_rule_evidence": {
+      "path": "operators/Q06/round-002/A/artifacts/rules/evidence.json",
+      "sha256": "5c0257612249ceb1a3af059b8bd78932eaa4fe2b3da7256ad7702019316786dc",
+      "commit": "facfb39ece01643fa7f9452d09971f9ca4d2b246"
+    },
+    "prior_PL_configuration": {
+      "path": "operators/Q06/round-002/A/artifacts/config/Q06-R002-A-E002_before.json",
+      "sha256": "6109af138dcac7ce5cd83a2e85dedb43b823b865013b86d21a2d19bfd4fe481a",
+      "commit": "facfb39ece01643fa7f9452d09971f9ca4d2b246"
+    },
+    "current_default_scoring": {
+      "ref": "prior_audit/scoring-rules-content.js",
+      "method": "GET",
+      "url": "https://cannjudge.cn/js/pages/scoring-rules-content.js",
+      "request_started_at": "2026-11-18T13:06:21.348573+00:00",
+      "observed_at": "2026-11-18T13:06:21.588331+00:00",
+      "http_status": 200,
+      "sha256": "403196242914b295dd27e81e1faa542649f5a4f940f79258ad5c7807093ba60a",
+      "bytes": 3919
+    }
+  },
+  "configuration": {
+    "_id": "6ad9ab403ff2fef7e80e2a1d",
+    "version_no": 1,
+    "version_label": "v1",
+    "code_template": "gitcode_template_noopapi",
+    "cann_version": "9.1.0",
+    "judge_revision": 0,
+    "score_mode": 1,
+    "use_baseline": false,
+    "iterations": 5,
+    "ranking_submission_mode": "latest",
+    "ranking_testcase_count": null,
+    "judge_baseline_verified": false,
+    "difficulty": 3
+  },
+  "configuration_changes": {},
+  "problem_raw_bytes_match_R002_refresh": true,
+  "description_same_as_R002": true,
+  "description": "#### **赛题概述**\r\n参考昇腾版本内置PadV3Grad算子的 TBE 实现，在昇腾 NPU 上基于 Ascend C 编程语言实现功能一致的算子, 完成算子设计、开发、测试全流程工作。\r\n##### **功能实现要求**\r\n与原 TBE 算子核心功能完全对齐，支持原算子对应的所有数据类型、数据格式，并且比较方式从二进制比较改为逻辑值比较。\r\n必须实现算子泛化功能，满足各类合法输入场景的计算需求。\r\n##### **测试标准**\r\n需参考内置 TBE 算子自行设计全场景自验证用例，测试阶段将采用泛化数据进行功能、精度、性能全维度验证，所有测试用例执行通过。\r\n##### **精度要求**\r\n算子计算精度需满足 CANN Judge平台对应题目精度默认阈值（float : 1e-4, half : 1e-3, int类型:0）。\r\n##### **问题答疑**\r\n相关技术问题请到对应开源仓提交issue：[https://gitcode.com/cann/ops-math/issues](https://gitcode.com/cann/ops-math/issues)",
+  "contract": {
+    "logical_value_comparison": true,
+    "all_legal_input_generalization_required": true,
+    "stated_thresholds": {
+      "float": 0.0001,
+      "half": 0.001,
+      "int": 0
+    },
+    "actual_comparator_algorithm": null,
+    "scope": "Thresholds and logical-value comparison are stated in the current problem. Full comparator formula, relative/absolute combination, special-value policy and accumulation implementation are not supplied by this description; do not invent or relax them."
+  },
+  "template": {
+    "file_count": 38,
+    "editable_count": 7,
+    "same_path_set_as_archived_PL": true,
+    "same_editability_flags": true,
+    "readonly_count": 31,
+    "readonly_byte_hash_differences": [],
+    "note": "Seven current editable template stubs are not frozen PL/PL-lazy code. Compare frozen candidates using their own source hash and 38-file manifests."
+  },
+  "default_scoring": {
+    "current_sha256": "403196242914b295dd27e81e1faa542649f5a4f940f79258ad5c7807093ba60a",
+    "prior_sha256": "403196242914b295dd27e81e1faa542649f5a4f940f79258ad5c7807093ba60a",
+    "same_bytes_as_R002": true,
+    "scope": "Official public frontend default scoring explanation; not a proof of the full competition backend implementation.",
+    "known_from_fixed_explanation": "Per-case default 100/(1+log(time/TBest)/log(1.5)); ordinary operator score uses mean with two displayed decimals; TBest changes dynamically; latest selection configured for this problem.",
+    "backend_edge_cases": null
+  },
+  "current_inspection_public_scale": {
+    "observed_at": "2026-11-18T12:58:55.668947+00:00",
+    "ref": "raw_official/inspection/20261118T125854810978Z/ranking_raw/page_1.json",
+    "response_sha256": "5dc8c4a7cccb9c6a6881a869b6c110ca51aa95e39cacaf0106d982472e47cae6",
+    "values": [
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a22",
+        "type": "default",
+        "tbest": 3.71
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a27",
+        "type": "default",
+        "tbest": 3.7466666666666666
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a2b",
+        "type": "default",
+        "tbest": 3.67
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a2f",
+        "type": "default",
+        "tbest": 3.776666666666667
+      },
+      {
+        "testcase_id": "6ad9ab403ff2fef7e80e2a33",
+        "type": "default",
+        "tbest": 3.6533333333333333
+      }
+    ],
+    "same_public_values_as_R002_PL": true,
+    "scope": "Read-only inspection response has no target exact ranking row. Matching visible TBest values do not rebind old task score nor prove hidden-scale constancy."
+  },
+  "remaining_unknowns": {
+    "full_precision_comparator": null,
+    "warmup": null,
+    "synchronization": null,
+    "timing_aggregation": null,
+    "official_hardware_load": null,
+    "performance_degradation_threshold": null,
+    "hidden_TBest_constancy": null
+  },
+  "comparison_policy": "No observed public protocol change. Proceed with finite current PL/PL-lazy official comparison after exact source, validity, configuration and same-response ranking checks. Unknown hidden implementation is not an infinite prerequisite; raw score difference only, stability and common-baseline numeric gate remain separate."
+}

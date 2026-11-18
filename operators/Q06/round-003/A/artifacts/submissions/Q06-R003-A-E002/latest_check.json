@@ -1,0 +1,14 @@
+{
+  "_id": "6afda34285ad43bbe045172e",
+  "ID": 1402299,
+  "status": "Pass",
+  "valid": true,
+  "judge_revision": 0,
+  "create_time": "2026-11-18T13:08:18.217Z",
+  "total_testcase_count": 50,
+  "judge_missing_cases": false,
+  "observed_at": "2026-11-18T13:10:42.522889+00:00",
+  "official_ref": "observations/20261118T131042152810Z.json",
+  "all_38_match": true,
+  "source_tree_sha256": "03e6bc1bb81dc40ba71d4691aeb08feebdf38fe0a2ac12f2a59aeff0445afb39"
+}

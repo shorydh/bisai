@@ -1,0 +1,63 @@
+{
+  "task_id": "Q06-R003-A-LAZY-OFFICIAL",
+  "reviewed_at": "2026-11-18T13:04:11.345456+00:00",
+  "collector_sha256": "3352f3d27f1f8776f80a0831533d921ebb201da2fe4f3bbd7ee347eafc99ad67",
+  "plan_sha256": "d62dc5e11d362ad11174ed4a2430686c8fe4c86099500e1b7861a8bf3f572181",
+  "review_type": "Static review plus fully offline mock clients; no actual network/official POST or session loading.",
+  "tests": [
+    {
+      "name": "single_mock_submit_freezes_7_and_38_before_call_captures_raw_and_receipt_and_refuses_duplicate",
+      "passed": true,
+      "stdout": "{\"experiment_id\": \"Q06-R003-A-E001\", \"version\": \"PL\", \"submission_id\": \"000000000000000000000001\", \"event\": \"submitted\"}\n"
+    },
+    {
+      "name": "uncertain_mock_attempt_no_retry_and_requires_reconciliation",
+      "passed": true,
+      "stdout": ""
+    },
+    {
+      "name": "source_hash_mismatch_rejected_before_mock_mutation",
+      "passed": true,
+      "stdout": ""
+    },
+    {
+      "name": "readonly_template_mismatch_rejected_before_mock_mutation",
+      "passed": true,
+      "stdout": ""
+    },
+    {
+      "name": "poll_38_file_identity_and_exact_row_with_same_response_unrounded_TBest",
+      "passed": true,
+      "stdout": "{\"_id\": \"000000000000000000000001\", \"ID\": 1, \"status\": \"Pass\", \"valid\": true, \"judge_revision\": 0, \"create_time\": \"mock\", \"total_testcase_count\": 50, \"judge_missing_cases\": false, \"observed_at\": \"offline-mock-time\", \"official_ref\": \"observations/20261118T130411271065Z.json\", \"all_38_match\": true, \"source_tree_sha256\": \"988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41\"}\n{\"label\": \"Q06-R003-A-E001\", \"submission_id\": \"000000000000000000000001\", \"found\": true, \"score\": 29.123456789}\n"
+    },
+    {
+      "name": "E002_rejected_without_E001_terminal_and_exact_ranking",
+      "passed": true,
+      "stdout": ""
+    },
+    {
+      "name": "wrong_returned_task_ID_rejected_without_overwriting_terminal",
+      "passed": true,
+      "stdout": ""
+    }
+  ],
+  "all_tests_passed": true,
+  "frozen_plan_valid_for_stated_scope": true,
+  "observed_gap": "Archived inspection: B details403, all 3 target exact rows absent across four pages; today GET must not fill old UI score29.64.",
+  "blocking_bugs_for_manual_sequential_use": [],
+  "operator_checks_required": [
+    "Predecessor terminal and exact-ranking existence is enforced; operator/comparison audit must still evaluate validity and matching protocol before drawing conclusions.",
+    "poll records terminal responses even if source mismatch or valid=false. Comparison must explicitly check Pass/valid, all38 match, seven SHA, public_only, revision, missing-case flag, template/config and ranking score binding.",
+    "poll preserves timestamped details but problem_after.json is a latest snapshot overwritten on repeated terminal polls. Archive its prior value if intentionally refreshing terminal observations after a configuration change."
+  ],
+  "positive_checks": [
+    "SDK submit_payload makes exactly one post and does not retry; collector disables transport retries for submission.",
+    "Existing attempt directory blocks repeated mutation even without receipt; request, 38-file hashes and attempt identity persist before call.",
+    "Seven editable-source tree and 31 readonly template bytes must match before sending.",
+    "Raw POST response hook and receipt preserve returned submission ID; uncertainty writes requires_reconciliation.",
+    "rank selects exact submission_id, stores same-response testcases/unrounded tbest and response hash; all page raws preserved.",
+    "E002 is rejected unless E001 terminal and exact ranking have been captured; poll rejects wrong returned task/problem identity after saving raw response.",
+    "Plan contains only R003 PL and PL-lazy, no P/F/L runs; actual frozen constants differ from old round plan."
+  ],
+  "mock_artifacts_dir": "prior_audit/collector-offline-kdgcn13y"
+}

@@ -1,0 +1,38 @@
+{
+  "checked_at": "2026-11-18T13:12:25.018956+00:00",
+  "task_id": "Q06-R003-A-LAZY-OFFICIAL",
+  "PL_lazy_vs_PL": {
+    "baseline_official_task_id": "6afda28385ad43bbe043bf1c",
+    "baseline_role": "PL direct-parent local control; P remains historical work starting point, not team common baseline",
+    "metric": "Official exact-submission ranking row.score",
+    "candidate_score_raw": 29.97,
+    "baseline_score_raw": 29.65,
+    "observed_total_score_delta": 0.32,
+    "comparison_status": "verified",
+    "checks": {
+      "both_pass": true,
+      "both_valid": true,
+      "same_problem": true,
+      "same_revision": true,
+      "same_public_only": true,
+      "same_count": true,
+      "no_missing_cases": true,
+      "all_source_identity_verified": true,
+      "same_readonly_template": true,
+      "same_before_after_config": true,
+      "same_visible_terminal_scale": true,
+      "both_visible_pass": true,
+      "same_response_public_rank_scale": true,
+      "rank_scale_matches_terminal": true,
+      "both_exact_scores": true
+    },
+    "stable_gain": null,
+    "operator_speedup": null,
+    "team_baseline_qualification": "pending",
+    "scope": "Bounded observed official score difference only; no stable/causal gain, cross-environment speedup or superiority over P inferred",
+    "reason": "All listed public conditions matched"
+  },
+  "all_observations_retained": true,
+  "C_and_baseline_reference": "artifacts/prior_audit/reuse-audit.json",
+  "stable_best": null
+}

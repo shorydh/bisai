@@ -1,0 +1,9 @@
+{
+  "observed_at": "2026-11-18T13:10:23.177219+00:00",
+  "checked_output_count": 22,
+  "downloaded_output_hashes_match": true,
+  "remote_archive_sha256_matches": true,
+  "completed_archive_sha256": "482f6caba127a3f910fe3ef6c401d989b7d5b369188b98f438c1f58ea402284c",
+  "profiler_archive_sha256": "78c924bb03def025d34e0bf4dc361d75a1bb11dfee4ab76108a7d62824eef7bd",
+  "transport_anomaly": "First completed-build archive download failed with SSH Bad packet length / Connection corrupted; preserved locally. A read-only archive retry succeeded; no build or sample rerun."
+}

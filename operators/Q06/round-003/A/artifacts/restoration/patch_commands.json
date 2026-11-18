@@ -1,0 +1,33 @@
+[
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.eol=lf",
+      "apply",
+      "--check",
+      "E:\\ai_develop\\cannjudege\\work\\Q06\\round-003\\A\\restoration\\lazy.patch"
+    ],
+    "cwd": "PL-lazy",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "-c",
+      "core.autocrlf=false",
+      "-c",
+      "core.eol=lf",
+      "apply",
+      "E:\\ai_develop\\cannjudege\\work\\Q06\\round-003\\A\\restoration\\lazy.patch"
+    ],
+    "cwd": "PL-lazy",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

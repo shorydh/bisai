@@ -1,0 +1,316 @@
+{
+  "file_count": 38,
+  "editable_text_tree_sha256": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41",
+  "reference_sha256": "1542d63e602aa3aaa60242e91ea0d6a8ac038bab788c6898dc4777557f040ed3",
+  "main_header_sha256": "88f6164377498e6c2d89d1c52578c4f601d172c98faa82c291197392249fcc08",
+  "files": [
+    {
+      "path": "CMakeLists.txt",
+      "sha256": "e497dee58e2f9bb8faed63634be17513b3312aad0215e372e6f4437a27bb0195",
+      "bytes": 855,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "README.md",
+      "sha256": "7f9bf3a841a3988ffb551f5ad168d00abc24e8f043be996c856d06c9d508e1a4",
+      "bytes": 1495,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "build.sh",
+      "sha256": "3d1aec7a6644163f6db2924748843774f1d100b4289c986c3456e8214222e214",
+      "bytes": 4658,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "examples/CMakeLists.txt",
+      "sha256": "59da02da218c3886d8de41b3c3314dc207bdd5f2e4dc2e52d5a35f50ca66d5ba",
+      "bytes": 698,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "examples/run.sh",
+      "sha256": "46cb83c880d178112853b066c6cb30b763a2c8018be06ffdaa232b4a05e165f7",
+      "bytes": 742,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "examples/sample_support.h",
+      "sha256": "3af9ffac518aac44ec947fbc9fbbe947d68a6c53a080f28b7f926037fbb8e31e",
+      "bytes": 3051,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": true
+    },
+    {
+      "path": "examples/test_aclnn_pad_v3_grad.cpp",
+      "sha256": "5ab9a12b4eb2fffcbf07fc2af599883f0a1b33de7c5e1d7858a31a55d92c8380",
+      "bytes": 1670,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "op_host/CMakeLists.txt",
+      "sha256": "1de444d1f669aabeb63b73b636b64a1532d74d7e056956150ba1465073aed96b",
+      "bytes": 3609,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "op_host/pad_v3_grad_def.cpp",
+      "sha256": "704380e0b489f02527514fa73ec5fc4b9dcbd32040fa0333a43d0d0c5b072a92",
+      "bytes": 1725,
+      "editable": true,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "op_host/pad_v3_grad_infershape.cpp",
+      "sha256": "908ac633c33c8506964e7ffa75fe2faa8f3ec415723572237509127fae9c385b",
+      "bytes": 4503,
+      "editable": true,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "op_host/pad_v3_grad_tiling.cpp",
+      "sha256": "de2cc09b5189b0201985ec79b1e077b74da8b7450535f1ffe4e847e7f715e689",
+      "bytes": 12054,
+      "editable": true,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "op_kernel/CMakeLists.txt",
+      "sha256": "803fb189cb5bb83c1003e43e7df99db42fc838fa53ea8f0fce9dc6ccd3561d6b",
+      "bytes": 377,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "op_kernel/pad_v3_grad.cpp",
+      "sha256": "c22da1fcbf8d4f4607356a004f72ad5c9a251459b97500a5cfd8dc61d6132468",
+      "bytes": 3458,
+      "editable": true,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "op_kernel/pad_v3_grad.h",
+      "sha256": "88f6164377498e6c2d89d1c52578c4f601d172c98faa82c291197392249fcc08",
+      "bytes": 46032,
+      "editable": true,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "op_kernel/pad_v3_grad_tiling_data.h",
+      "sha256": "d98e018fb41fe5ec79fdcd2885a1db34530b489e6b505cafdc55b611cbbfe84e",
+      "bytes": 4035,
+      "editable": true,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "op_kernel/pad_v3_grad_tiling_key.h",
+      "sha256": "464965d7728c9eecce949f3b1a79c7c06b1beed970b97df63d7096cec8f2e9ba",
+      "bytes": 808,
+      "editable": true,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "samples/case.json",
+      "sha256": "4ed5b04487ac94773d32b92b72478a5b42200695d9a694a54b431c89903f75ec",
+      "bytes": 1657,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "samples/reference.py",
+      "sha256": "1542d63e602aa3aaa60242e91ea0d6a8ac038bab788c6898dc4777557f040ed3",
+      "bytes": 7992,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "samples/sample.py",
+      "sha256": "2950dfbede5aac86040755923f2282e8f29246e16c5f63b253bcc084d87249d8",
+      "bytes": 3364,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "tests/ut/CMakeLists.txt",
+      "sha256": "8c5e7a12fe0115ba81f6f3dc2e9d1184a2831f2507d42d8773db4d1dccceb3f3",
+      "bytes": 2173,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "tests/ut/cmake/BuildGoogleTest.cmake",
+      "sha256": "51270daff5b349ce5f21f73e18d0b561f179541864158cafdef440ac7f81de93",
+      "bytes": 662,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "tests/ut/common/any_value.h",
+      "sha256": "94c3bc4b66b984c67565fa140a780154fc2423ee37164397590fc08dc57d07ca",
+      "bytes": 3093,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": true
+    },
+    {
+      "path": "tests/ut/common/infershape_case_executor.cpp",
+      "sha256": "daa97c41fc64e205aa845f9cf248401d945424bc10da5893c286a87cb1a2866f",
+      "bytes": 10151,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": true
+    },
+    {
+      "path": "tests/ut/common/infershape_case_executor.h",
+      "sha256": "94b126cff506fe0340a887c135685b7ac2e3779cf20b1fcdf496e50924474423",
+      "bytes": 473,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": true
+    },
+    {
+      "path": "tests/ut/common/infershape_context_faker.cpp",
+      "sha256": "98e57a09b514b9473c712e3df49b74278519b4b433c0c70ef8fc07f09390bd94",
+      "bytes": 1469,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": true
+    },
+    {
+      "path": "tests/ut/common/infershape_context_faker.h",
+      "sha256": "9acca6cc6c3078fc4734a6d5ca12a65c2db1af5664b0371793f89cd2bb0b4415",
+      "bytes": 5293,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": true
+    },
+    {
+      "path": "tests/ut/common/tiling_case_executor.cpp",
+      "sha256": "c3e1fbc6c8bbd9ac4e1e4816e114a93ebf4bf226c13d051971cb4b1f86494516",
+      "bytes": 44090,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": true
+    },
+    {
+      "path": "tests/ut/common/tiling_case_executor.h",
+      "sha256": "3046db4183f72778f3a4162617fde703d613dc9d7b5fbcbadf9cb45357ee4e5c",
+      "bytes": 1119,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": true
+    },
+    {
+      "path": "tests/ut/common/tiling_context_faker.cpp",
+      "sha256": "62f60bb4fc01448dbe88383c0e383a9446c95b3ca3662cb1b41a16e4c4a5d192",
+      "bytes": 2046,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": true
+    },
+    {
+      "path": "tests/ut/common/tiling_context_faker.h",
+      "sha256": "32fdc0c5bf68133fb37482413ae24dd3c0bda2cf314e9607fc6d8e174fc36ef3",
+      "bytes": 7386,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": true
+    },
+    {
+      "path": "tests/ut/op_host/CMakeLists.txt",
+      "sha256": "6a7f5c6cc8a3ed906de7fd32299f467dd0a39a4b2262c765fb127957be30322f",
+      "bytes": 2592,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "tests/ut/op_host/test_op_host_main.cpp",
+      "sha256": "e820cf19f2906a70776ebb363f571992a8874a87d35c86e545decb4d5265ff68",
+      "bytes": 1687,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "tests/ut/op_host/test_pad_v3_grad_tiling.cpp",
+      "sha256": "0a425c4474bf351310634a3876d4b39da7ef97f9b9c160b5bb09aace4a6a70e4",
+      "bytes": 3416,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "tests/ut/op_kernel/CMakeLists.txt",
+      "sha256": "fb479d1340207a931a7111cb97343d266b100c7f3d2a436c4f080b44ff224dd6",
+      "bytes": 3032,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "tests/ut/op_kernel/pad_v3_grad_data/README.md",
+      "sha256": "ffd9bb0b039727b52ed5ea3df627fb669ccd53b6752297d93bc8de786f76a934",
+      "bytes": 97,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "tests/ut/op_kernel/pad_v3_grad_tiling.h",
+      "sha256": "fbd6bdcf077919c7c93a44d9525cb4b13d7609e64aa13fa98f601ea8843e7681",
+      "bytes": 1021,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "tests/ut/op_kernel/test_pad_v3_grad.cpp",
+      "sha256": "3cbc5015a836392c0f6604ac8d9e0a29a333cc8c395037d01b4a832d18c7ef61",
+      "bytes": 3642,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    },
+    {
+      "path": "tests/ut/run.sh",
+      "sha256": "8077868c31345d5c9cd3a3ff94d45c40fd5934aa18972673bb37dbd431a6be9c",
+      "bytes": 817,
+      "editable": false,
+      "utf8": true,
+      "contains_crlf": false
+    }
+  ],
+  "version": "PL",
+  "restored_from": "PL 38-file base",
+  "official_zip_sha256": null,
+  "official_zip_note": "No official ZIP fetched or generated by this script; reconstructed file identity only."
+}

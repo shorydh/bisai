@@ -1,0 +1,38 @@
+--- a/op_kernel/pad_v3_grad.h
++++ b/op_kernel/pad_v3_grad.h
+@@ -505,12 +505,6 @@ private:
+         constexpr int64_t lastPlanCapacity = 32;
+         const bool reuseLast = outputWidth_ <= lastPlanCapacity && count > outputWidth_;
+         Contributors lastPlans[lastPlanCapacity];
+-        if (reuseLast) {
+-            for (int64_t column = 0; column < outputWidth_; ++column) {
+-                lastPlans[column] = MakeContributors(column, inputWidth_, outputWidth_,
+-                    front_[rank_ - 1], data_->mode);
+-            }
+-        }
+         for (int64_t j = 0; j < count;) {
+             const int64_t output = begin_ + j;
+             const int64_t row = output / outputWidth_;
+@@ -519,9 +513,19 @@ private:
+             int64_t outerCount = 0;
+             bool planned = false;
+             for (int64_t c = 0; c < run; ++c) {
+-                const auto last = reuseLast ? lastPlans[column + c] :
+-                    MakeContributors(column + c, inputWidth_, outputWidth_,
+-                                     front_[rank_ - 1], data_->mode);
++                Contributors last;
++                if (reuseLast) {
++                    // The first outputWidth_ local visits cover every column,
++                    // including a range that starts in the middle of a row.
++                    if (j + c < outputWidth_) {
++                        lastPlans[column + c] = MakeContributors(column + c, inputWidth_, outputWidth_,
++                            front_[rank_ - 1], data_->mode);
++                    }
++                    last = lastPlans[column + c];
++                } else {
++                    last = MakeContributors(column + c, inputWidth_, outputWidth_,
++                        front_[rank_ - 1], data_->mode);
++                }
+                 const int64_t lastCount = last.Size();
+                 int64_t pass = 0;
+                 if (lastCount != 0) {

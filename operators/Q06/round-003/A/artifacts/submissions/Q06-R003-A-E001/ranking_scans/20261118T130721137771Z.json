@@ -1,0 +1,28 @@
+{
+  "official_task_id": "6afda28385ad43bbe043bf1c",
+  "found": true,
+  "scans": [
+    {
+      "page": 1,
+      "total": 384,
+      "rows_returned": 100,
+      "method": "GET",
+      "endpoint": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d/ranking",
+      "request_started_at": "2026-11-18T13:07:21.137822+00:00",
+      "observed_at": "2026-11-18T13:07:21.674846+00:00",
+      "http_status": 200,
+      "raw_response_sha256": "d1f78a994b679be9f1cb40f4bf3a0107be94b7caac173cfea6ee5c3351c263de"
+    },
+    {
+      "page": 2,
+      "total": 384,
+      "rows_returned": 100,
+      "method": "GET",
+      "endpoint": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d/ranking",
+      "request_started_at": "2026-11-18T13:07:21.680526+00:00",
+      "observed_at": "2026-11-18T13:07:21.941952+00:00",
+      "http_status": 200,
+      "raw_response_sha256": "0ddfcc4c091d42f3dc587d421a27e671d6fd0a1bff0a153770f76cdfff9e527d"
+    }
+  ]
+}

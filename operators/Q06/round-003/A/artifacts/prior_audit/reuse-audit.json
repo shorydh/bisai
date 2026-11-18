@@ -1,0 +1,490 @@
+{
+  "task_id": "Q06-R003-A-LAZY-OFFICIAL",
+  "checked_at": "2026-11-18T12:55:09.154045+00:00",
+  "mode": "Read-only fixed Git evidence and remote-ref discovery; no official GET/POST, no new experiment, no kernel/device execution.",
+  "round_002_A": {
+    "commit": "facfb39ece01643fa7f9452d09971f9ca4d2b246",
+    "all_four_records_consistent": true,
+    "all_21_fields": true,
+    "same_archived_public_configuration": {
+      "_id": "6ad9ab403ff2fef7e80e2a1d",
+      "name": "padv3grad",
+      "title": "PadV3Grad",
+      "version_no": 1,
+      "version_label": "v1",
+      "code_template": "gitcode_template_noopapi",
+      "cann_version": "9.1.0",
+      "judge_revision": 0,
+      "score_mode": 1,
+      "use_baseline": false,
+      "iterations": 5,
+      "ranking_submission_mode": "latest",
+      "ranking_testcase_count": null,
+      "judge_baseline_verified": false,
+      "difficulty": 3
+    },
+    "records": [
+      {
+        "experiment_id": "Q06-R002-A-E001",
+        "arm": "P",
+        "official_numeric_id": 1381855,
+        "submission_id": "6afc3b166bd0f9be377f93c5",
+        "seven_source_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+        "official_status": "Pass",
+        "valid": true,
+        "judge_revision": 0,
+        "official_result_ref": "operators/Q06/round-002/A/artifacts/official/6afc3b166bd0f9be377f93c5.json",
+        "submitted_at": "2026-11-17T11:31:34.843Z",
+        "evaluated_at": null,
+        "terminal_observed_at": "2026-11-17T11:34:10.218208+00:00",
+        "ranking_observations": [
+          {
+            "ref": "artifacts/ranking/6afc3b166bd0f9be377f93c5_20261117T113410562922Z.json",
+            "observed_at": "2026-11-17T11:34:11.828525+00:00",
+            "score": 29.35,
+            "public_signature": [
+              [
+                "6ad9ab403ff2fef7e80e2a22",
+                "default",
+                3.71
+              ],
+              [
+                "6ad9ab403ff2fef7e80e2a27",
+                "default",
+                3.7466666666666666
+              ],
+              [
+                "6ad9ab403ff2fef7e80e2a2b",
+                "default",
+                3.67
+              ],
+              [
+                "6ad9ab403ff2fef7e80e2a2f",
+                "default",
+                3.776666666666667
+              ],
+              [
+                "6ad9ab403ff2fef7e80e2a33",
+                "default",
+                3.6533333333333333
+              ]
+            ]
+          }
+        ],
+        "reuse_scope": "Archived valid official result and same-observation total score; not a new run or current ranking claim."
+      },
+      {
+        "experiment_id": "Q06-R002-A-E002",
+        "arm": "PL",
+        "official_numeric_id": 1381889,
+        "submission_id": "6afc3bd16bd0f9be3780fbd0",
+        "seven_source_sha256": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41",
+        "official_status": "Pass",
+        "valid": true,
+        "judge_revision": 0,
+        "official_result_ref": "operators/Q06/round-002/A/artifacts/official/6afc3bd16bd0f9be3780fbd0.json",
+        "submitted_at": "2026-11-17T11:34:41.837Z",
+        "evaluated_at": null,
+        "terminal_observed_at": "2026-11-17T11:37:08.904640+00:00",
+        "ranking_observations": [
+          {
+            "ref": "artifacts/ranking/6afc3bd16bd0f9be3780fbd0_20261117T113710825003Z.json",
+            "observed_at": "2026-11-17T11:37:17.870345+00:00",
+            "score": 29.36,
+            "public_signature": [
+              [
+                "6ad9ab403ff2fef7e80e2a22",
+                "default",
+                3.71
+              ],
+              [
+                "6ad9ab403ff2fef7e80e2a27",
+                "default",
+                3.7466666666666666
+              ],
+              [
+                "6ad9ab403ff2fef7e80e2a2b",
+                "default",
+                3.67
+              ],
+              [
+                "6ad9ab403ff2fef7e80e2a2f",
+                "default",
+                3.776666666666667
+              ],
+              [
+                "6ad9ab403ff2fef7e80e2a33",
+                "default",
+                3.6533333333333333
+              ]
+            ]
+          }
+        ],
+        "reuse_scope": "Archived valid official result and same-observation total score; not a new run or current ranking claim."
+      },
+      {
+        "experiment_id": "Q06-R002-A-E003",
+        "arm": "F",
+        "official_numeric_id": 1381929,
+        "submission_id": "6afc3ca46bd0f9be3782644c",
+        "seven_source_sha256": "700af8da3ef6679f48ebf8bbfa9d2f145d9357e9b6fd2e4f288542c662a1969b",
+        "official_status": "Pass",
+        "valid": true,
+        "judge_revision": 0,
+        "official_result_ref": "operators/Q06/round-002/A/artifacts/official/6afc3ca46bd0f9be3782644c.json",
+        "submitted_at": "2026-11-17T11:38:12.559Z",
+        "evaluated_at": null,
+        "terminal_observed_at": "2026-11-17T11:40:27.660997+00:00",
+        "ranking_observations": [
+          {
+            "ref": "artifacts/ranking/6afc3ca46bd0f9be3782644c_20261117T114028027507Z.json",
+            "observed_at": "2026-11-17T11:40:32.992345+00:00",
+            "score": 28.98,
+            "public_signature": [
+              [
+                "6ad9ab403ff2fef7e80e2a22",
+                "default",
+                3.71
+              ],
+              [
+                "6ad9ab403ff2fef7e80e2a27",
+                "default",
+                3.7466666666666666
+              ],
+              [
+                "6ad9ab403ff2fef7e80e2a2b",
+                "default",
+                3.67
+              ],
+              [
+                "6ad9ab403ff2fef7e80e2a2f",
+                "default",
+                3.776666666666667
+              ],
+              [
+                "6ad9ab403ff2fef7e80e2a33",
+                "default",
+                3.6533333333333333
+              ]
+            ]
+          }
+        ],
+        "reuse_scope": "Archived valid official result and same-observation total score; not a new run or current ranking claim."
+      },
+      {
+        "experiment_id": "Q06-R002-A-E004",
+        "arm": "L",
+        "official_numeric_id": 1381993,
+        "submission_id": "6afc3d976bd0f9be378432b7",
+        "seven_source_sha256": "d3174f99553a7ba700a726f77370e1e287e1084cd2bc9768d4bbbcbd66ce9d24",
+        "official_status": "Pass",
+        "valid": true,
+        "judge_revision": 0,
+        "official_result_ref": "operators/Q06/round-002/A/artifacts/official/6afc3d976bd0f9be378432b7.json",
+        "submitted_at": "2026-11-17T11:42:15.761Z",
+        "evaluated_at": null,
+        "terminal_observed_at": "2026-11-17T11:44:49.337874+00:00",
+        "ranking_observations": [
+          {
+            "ref": "artifacts/ranking/6afc3d976bd0f9be378432b7_20261117T114449556459Z.json",
+            "observed_at": "2026-11-17T11:44:50.886420+00:00",
+            "score": 28.77,
+            "public_signature": [
+              [
+                "6ad9ab403ff2fef7e80e2a22",
+                "default",
+                3.71
+              ],
+              [
+                "6ad9ab403ff2fef7e80e2a27",
+                "default",
+                3.7466666666666666
+              ],
+              [
+                "6ad9ab403ff2fef7e80e2a2b",
+                "default",
+                3.67
+              ],
+              [
+                "6ad9ab403ff2fef7e80e2a2f",
+                "default",
+                3.776666666666667
+              ],
+              [
+                "6ad9ab403ff2fef7e80e2a33",
+                "default",
+                3.6533333333333333
+              ]
+            ]
+          }
+        ],
+        "reuse_scope": "Archived valid official result and same-observation total score; not a new run or current ranking claim."
+      }
+    ],
+    "prior_bounded_pairs": [
+      {
+        "candidate": "PL",
+        "control": "P",
+        "candidate_task": "6afc3bd16bd0f9be3780fbd0",
+        "control_task": "6afc3b166bd0f9be377f93c5",
+        "candidate_score": 29.36,
+        "control_score": 29.35,
+        "checks": {
+          "both_pass": true,
+          "both_valid": true,
+          "same_problem": true,
+          "same_judge_revision": true,
+          "same_public_only": true,
+          "same_total_testcase_count": true,
+          "no_missing_cases": true,
+          "same_visible_case_ids_and_best_time": true,
+          "both_visible_cases_pass": true,
+          "same_ranking_public_scoring_scale": true,
+          "ranking_scale_matches_terminal": true,
+          "same_before_after_problem_config": true,
+          "same_readonly_template": true,
+          "both_bound_numeric_ranking_scores": true
+        },
+        "bounded_comparison_status": "verified",
+        "observed_score_difference": 0.01,
+        "scope": "Observed official score difference only; no additive/causal speedup inference"
+      },
+      {
+        "candidate": "L",
+        "control": "F",
+        "candidate_task": "6afc3d976bd0f9be378432b7",
+        "control_task": "6afc3ca46bd0f9be3782644c",
+        "candidate_score": 28.77,
+        "control_score": 28.98,
+        "checks": {
+          "both_pass": true,
+          "both_valid": true,
+          "same_problem": true,
+          "same_judge_revision": true,
+          "same_public_only": true,
+          "same_total_testcase_count": true,
+          "no_missing_cases": true,
+          "same_visible_case_ids_and_best_time": true,
+          "both_visible_cases_pass": true,
+          "same_ranking_public_scoring_scale": true,
+          "ranking_scale_matches_terminal": true,
+          "same_before_after_problem_config": true,
+          "same_readonly_template": true,
+          "both_bound_numeric_ranking_scores": true
+        },
+        "bounded_comparison_status": "verified",
+        "observed_score_difference": -0.21,
+        "scope": "Observed official score difference only; no additive/causal speedup inference"
+      },
+      {
+        "candidate": "P",
+        "control": "F",
+        "candidate_task": "6afc3b166bd0f9be377f93c5",
+        "control_task": "6afc3ca46bd0f9be3782644c",
+        "candidate_score": 29.35,
+        "control_score": 28.98,
+        "checks": {
+          "both_pass": true,
+          "both_valid": true,
+          "same_problem": true,
+          "same_judge_revision": true,
+          "same_public_only": true,
+          "same_total_testcase_count": true,
+          "no_missing_cases": true,
+          "same_visible_case_ids_and_best_time": true,
+          "both_visible_cases_pass": true,
+          "same_ranking_public_scoring_scale": true,
+          "ranking_scale_matches_terminal": true,
+          "same_before_after_problem_config": true,
+          "same_readonly_template": true,
+          "both_bound_numeric_ranking_scores": true
+        },
+        "bounded_comparison_status": "verified",
+        "observed_score_difference": 0.37,
+        "scope": "Observed official score difference only; no additive/causal speedup inference"
+      },
+      {
+        "candidate": "PL",
+        "control": "F",
+        "candidate_task": "6afc3bd16bd0f9be3780fbd0",
+        "control_task": "6afc3ca46bd0f9be3782644c",
+        "candidate_score": 29.36,
+        "control_score": 28.98,
+        "checks": {
+          "both_pass": true,
+          "both_valid": true,
+          "same_problem": true,
+          "same_judge_revision": true,
+          "same_public_only": true,
+          "same_total_testcase_count": true,
+          "no_missing_cases": true,
+          "same_visible_case_ids_and_best_time": true,
+          "both_visible_cases_pass": true,
+          "same_ranking_public_scoring_scale": true,
+          "ranking_scale_matches_terminal": true,
+          "same_before_after_problem_config": true,
+          "same_readonly_template": true,
+          "both_bound_numeric_ranking_scores": true
+        },
+        "bounded_comparison_status": "verified",
+        "observed_score_difference": 0.38,
+        "scope": "Observed official score difference only; no additive/causal speedup inference"
+      }
+    ],
+    "stable_best": null,
+    "reuse_policy": "Reuse all four as historical accepted evidence; no F/L reevaluation. Prior P/PL score values retain their original observation times and scale."
+  },
+  "C_latest_published": {
+    "observed_remote_refs_at": "2026-11-18T12:55:06.155842+00:00",
+    "remote_heads_ref": "remote-heads.txt",
+    "heads": [
+      {
+        "commit": "562db68e0193c407dd714f5f071800911f378190",
+        "ref": "refs/heads/agent-a"
+      },
+      {
+        "commit": "8e245dab91700555bd619e95c70fa780305b1b37",
+        "ref": "refs/heads/agent-b"
+      },
+      {
+        "commit": "b62a68eb4096735299730c58d858f541fd8a270b",
+        "ref": "refs/heads/agent-c"
+      },
+      {
+        "commit": "b62a68eb4096735299730c58d858f541fd8a270b",
+        "ref": "refs/heads/main"
+      },
+      {
+        "commit": "cb4016d4406b245461f57998f693d7feacc0e297",
+        "ref": "refs/heads/q06/r001/a-baseline"
+      },
+      {
+        "commit": "00e523a0871993a333c18b7b5224afab3b96e7ef",
+        "ref": "refs/heads/q06/r001/b-r6-lastplan"
+      },
+      {
+        "commit": "9f0c24f6609a8641f083249a815bdaddef4147cf",
+        "ref": "refs/heads/q06/r001/c-boundary"
+      },
+      {
+        "commit": "facfb39ece01643fa7f9452d09971f9ca4d2b246",
+        "ref": "refs/heads/q06/r002/a-official-comparability"
+      },
+      {
+        "commit": "622d7f0064073dff249c23424330466ce510e3e2",
+        "ref": "refs/heads/q06/r002/c-reference-device"
+      }
+    ],
+    "latest_known_C_round_002_commit": "622d7f0064073dff249c23424330466ce510e3e2",
+    "C_path_history_in_fetched_refs": [
+      "622d7f0064073dff249c23424330466ce510e3e2 2026-11-18 Q06 round-002 C: clean reference replay and legal device case"
+    ],
+    "C_round_002_file_count": 158,
+    "device_execution": false,
+    "actual_npu_output": null,
+    "reference": {
+      "sha256": "1542d63e602aa3aaa60242e91ea0d6a8ac038bab788c6898dc4777557f040ed3",
+      "dependency_versions": {
+        "python": "3.11.16",
+        "numpy": "1.26.4",
+        "torch": "2.15.0+cpu",
+        "ml_dtypes": "0.5.1"
+      }
+    },
+    "legal_case": {
+      "x_shape": [
+        1,
+        1,
+        1,
+        5
+      ],
+      "x_fp32": [
+        1.7e+38,
+        1,
+        -1.7e+38,
+        0,
+        0
+      ],
+      "mode": "edge",
+      "last_axis_padding": [
+        2,
+        0
+      ],
+      "output_shape": [
+        1,
+        1,
+        1,
+        3
+      ],
+      "variants": [
+        {
+          "case_id": "int32-contiguous",
+          "input_x_sha256": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+          "paddings_sha256": "edc0e40c3027d41914bf3144a08078742b337b96da8e503d4ff84bb6a8e97d55",
+          "golden_y_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b",
+          "golden_y": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "expected_device": "all three FP32 outputs must be within 1e-4",
+          "source_model_expectation": "r6 AddScalar source model is 1 at output 0; this is not a device result"
+        },
+        {
+          "case_id": "int32-split",
+          "input_x_sha256": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+          "paddings_sha256": "18122cf13ab2412fa65cb693713794de6b30403b65688234a6fa940fc6d506ff",
+          "golden_y_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b",
+          "golden_y": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "expected_device": "all three FP32 outputs must be within 1e-4",
+          "source_model_expectation": "r6 AddScalar source model is 1 at output 0; this is not a device result"
+        },
+        {
+          "case_id": "int64-contiguous",
+          "input_x_sha256": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+          "paddings_sha256": "c7369912a28787eaa421384e7526e59514244343797b53382ec3666aa8890d44",
+          "golden_y_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b",
+          "golden_y": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "expected_device": "all three FP32 outputs must be within 1e-4",
+          "source_model_expectation": "r6 AddScalar source model is 1 at output 0; this is not a device result"
+        },
+        {
+          "case_id": "int64-split",
+          "input_x_sha256": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+          "paddings_sha256": "44ffef2caac31aa58c323e8d54c4969e805140a8068e54c6948106fdfcf39ffb",
+          "golden_y_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b",
+          "golden_y": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "expected_device": "all three FP32 outputs must be within 1e-4",
+          "source_model_expectation": "r6 AddScalar source model is 1 at output 0; this is not a device result"
+        }
+      ],
+      "frozen_r6_seven_source_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949"
+    },
+    "interpretation": "C true-dependency reference and four-variant package are published. CPU source model returns 1 at output 0; this is NOT an NPU result. Old reflect candidate is outside current formal legal matrix. No later published C branch or NPU verdict is visible in discovered refs.",
+    "baseline_qualification": "Pending actual NPU output plus call/branch evidence for the frozen r6/P on the same legal input; central decides. Cannot promote CPU evidence or archived official Pass to this case verdict.",
+    "limitation": "Only published refs observed at this time; unpublished work is unknown."
+  },
+  "round_003_required_comparison_conditions": [
+    "Root operator audit must query 1379766 / 6afc1e5b6bd0f9be374a4c6d for actual source, terminal status, native valid/revision/public_only, configuration and exact-submission ranking; this subtask did not query it.",
+    "PL-lazy is frozen at seven-source SHA 03e6bc1bb81dc40ba71d4691aeb08feebdf38fe0a2ac12f2a59aeff0445afb39; compare against direct parent PL 988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41 with the same 31-file template.",
+    "A score must bind exact submission_id and observation time; save same-response public case IDs and unrounded TBest. Current details cannot backfill fields for B old UI score 29.64 or yesterday archived ranking.",
+    "Reuse existing PL or P only to the extent actual observation/protocol/scale allows. If gaps affect the PL-lazy vs PL decision, evaluate only frozen PL-lazy and necessary PL control; P only if claiming superiority to P and no adequate reusable control.",
+    "Do not reevaluate F/L or exp5/u64. Do not create experiments merely to meet an arbitrary run count.",
+    "Record bounded observed official score differences only; stability pending if evidence insufficient or observations disagree. Do not require hidden server details or infer hidden timings/speedup from scores.",
+    "Cloud build, sample/precision, performance and profiling are separate evidence with actual execution reasons. None replaces official comparison. Common-baseline numerical eligibility is separate from score comparison."
+  ],
+  "source_hash_manifest": "source-manifest.json",
+  "branch_head_unchanged": true
+}

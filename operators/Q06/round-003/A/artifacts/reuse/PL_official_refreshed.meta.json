@@ -1,0 +1,8 @@
+{
+  "method": "GET",
+  "endpoint": "https://cannjudge.cn/api/submissions/6afc3bd16bd0f9be3780fbd0",
+  "request_started_at": "2026-11-18T12:58:55.344104+00:00",
+  "observed_at": "2026-11-18T12:58:55.477127+00:00",
+  "http_status": 200,
+  "raw_response_sha256": "3a94b781c5616582c98953bc5e1d1a885854b0b971ae744212770b785921e36a"
+}

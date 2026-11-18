@@ -1,0 +1,43 @@
+{
+  "task_id": "Q06-R003-A-LAZY-OFFICIAL",
+  "round_id": "round-003",
+  "agent_id": "A",
+  "recorded_at": "2026-11-18T12:54:23.602922+00:00",
+  "status": "passed",
+  "base_official_manifest_sha256": "983f19b79cbbb4cf126f4967bd395ab59f2797e327c68ddaea068c243cf151d8",
+  "patch_sha256": "8059341fd005f14606feec6e0ef6de336485e8abb348165a1692b6235766b6e7",
+  "patch_utf8_lf": true,
+  "source_pl_all_38_matches_r002_official_manifest": true,
+  "editable_paths": [
+    "op_host/pad_v3_grad_def.cpp",
+    "op_host/pad_v3_grad_infershape.cpp",
+    "op_host/pad_v3_grad_tiling.cpp",
+    "op_kernel/pad_v3_grad.cpp",
+    "op_kernel/pad_v3_grad.h",
+    "op_kernel/pad_v3_grad_tiling_data.h",
+    "op_kernel/pad_v3_grad_tiling_key.h"
+  ],
+  "code_prefix_present": false,
+  "expected_tree_hashes": {
+    "PL": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41",
+    "PL-lazy": "03e6bc1bb81dc40ba71d4691aeb08feebdf38fe0a2ac12f2a59aeff0445afb39"
+  },
+  "actual_tree_hashes": {
+    "PL": "988e491ec2d8d758adac5caa0e304cc81cb500ade732aadc9427fa1254267d41",
+    "PL-lazy": "03e6bc1bb81dc40ba71d4691aeb08feebdf38fe0a2ac12f2a59aeff0445afb39"
+  },
+  "expected_lazy_header_sha256": "676d61fc35ade7689f96fa8e1cc77c2973aab0820b949607d3480f847edcdcac",
+  "actual_lazy_header_sha256": "676d61fc35ade7689f96fa8e1cc77c2973aab0820b949607d3480f847edcdcac",
+  "reference_sha256": "1542d63e602aa3aaa60242e91ea0d6a8ac038bab788c6898dc4777557f040ed3",
+  "changed_paths": [
+    "op_kernel/pad_v3_grad.h"
+  ],
+  "other_37_files_byte_identical": true,
+  "readonly_31_files_byte_identical": true,
+  "git_apply_check_exit": 0,
+  "git_apply_exit": 0,
+  "build_executed": false,
+  "npu_executed": false,
+  "official_contacted": false,
+  "scope": "Independent byte-level restoration; official actual submission binding is a separate parent-agent step."
+}
