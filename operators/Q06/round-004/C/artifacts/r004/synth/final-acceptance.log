@@ -8,6 +8,6 @@ test_truncated_output_is_not_broadcast (round-004.C.artifacts.tests.test_r004_ru
 test_unexpected_manifest_variant_is_contract_error (round-004.C.artifacts.tests.test_r004_runner.AcceptanceVerifierTest.test_unexpected_manifest_variant_is_contract_error) ... ok
 
 ----------------------------------------------------------------------
-Ran 8 tests in 2.297s
+Ran 8 tests in 2.548s
 
 OK

@@ -34,7 +34,7 @@ def main() -> int:
             tofile=f"b/artifacts/device-runner/{name}",
         ))
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text("".join(lines), encoding="utf-8")
+    args.output.write_text("".join(lines), encoding="utf-8", newline="\n")
     print(f"wrote {args.output} ({len(lines)} lines)")
     return 0
 

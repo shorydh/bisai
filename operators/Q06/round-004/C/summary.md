@@ -28,7 +28,7 @@
 run_four_variants.sh SHA256 = 912a8eea92e6a9e4ed48cbd1d653d82c183ebfad8ff06672b62caebcda71711c
 verify_outputs.py SHA256    = 13977854d2791fa126098b99acb8c068b9a3ab0c817b7414bdaeab93a709eaad
 edge_case_runner.cpp SHA256 = 0dc9b5f158859119134323eb1d3f14b57966b1afbc20cb1d2bc81606b6f6f315
-runner patch SHA256         = ea8b2e526d771ee429821d89a1aaf6680338dd1cdcd1abfdecc6a5167d3d4393
+runner patch SHA256         = 7672cd88867381b2083fde14d555d0e231b99adc44ea178279f9edec4f87963d
 ```
 
 ## 修正前证据
