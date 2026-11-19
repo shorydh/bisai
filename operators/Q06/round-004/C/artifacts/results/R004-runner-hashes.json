@@ -1,0 +1,54 @@
+{
+  "task_id": "Q06-R004-C-RUNNER-VALIDATION",
+  "round_id": "round-004",
+  "base_commit": "791878cdf850df52f5ea807def4557707f8a8987",
+  "generated_at": "2026-11-19T19:20:23.6452302+08:00",
+  "patch_sha256": "ea8b2e526d771ee429821d89a1aaf6680338dd1cdcd1abfdecc6a5167d3d4393",
+  "hashes": {
+    "runner_before": {
+      "CMakeLists.txt": "66251f8f2686547fe2f9eb6e734891ee1d4ae564fb7bb0d9af4b8831c8e5baa0",
+      "edge_case_runner.cpp": "276147f365792c7d0dc61b6556e4adf5945448d8d07be68110438a33d909b831",
+      "README.md": "ab9e8cd06d687c9398a69c8ffc798abb75c1c639d315a4a57cfc695d46cbc5e3",
+      "run_four_variants.sh": "f81618ce2cd43c3ea4cdb693d28b1390840247b99ed29bfb97772f538cd03403",
+      "verify_outputs.py": "761537e3ab3b6f628b56ae5e3d8ed35db5682ded0b218800cd79143c8d7b2ac2"
+    },
+    "runner_after": {
+      "CMakeLists.txt": "6e2e259417236fdb214a19f39ad8b095552324627d73b85c5625ed0bd31cf9d0",
+      "edge_case_runner.cpp": "0dc9b5f158859119134323eb1d3f14b57966b1afbc20cb1d2bc81606b6f6f315",
+      "README.md": "c58877381c8b5d7e85b0aff30e37a88e6dab25eadc2f6bdd8df52bb4d0c42d0c",
+      "run_four_variants.sh": "912a8eea92e6a9e4ed48cbd1d653d82c183ebfad8ff06672b62caebcda71711c",
+      "runner_metadata.py": "eec8c9b423f7be6437162729ee96f622f7bedbe2114b1b1185604e1796bb395a",
+      "stage_cases.py": "1444757596bd6b7d8ec46c3b5282f55de71c04aa9570935cb6932e290adaaa12",
+      "vendor_paths.cmake": "b4d18eefba61f3278c01fd06eaa3531388840d3128d2afc2a271e3ac7c0e6bf7",
+      "verify_outputs.py": "13977854d2791fa126098b99acb8c068b9a3ab0c817b7414bdaeab93a709eaad"
+    },
+    "tests_after": {
+      "audit_r003_assets.py": "815b33e6f1af979bbf6e6be170ab3b98726853b24c01407e29382d9130726b59",
+      "audit_r004_baseline.py": "ebac2efd8846e08bfdb7280925db917d264fd7744e96e1c8be3e7e0d1ad8e0e2",
+      "make_runner_patch.py": "344be8fd7780dea19e2d957a40b264b155ac33debe701c378156f26c40ac89b5",
+      "produce_vendor_switch_evidence.py": "eb06482786ab7fc146ad72df297227c6c744ffcf0f21c1a9ae1ec5841393e9b4",
+      "reproduce_legacy_failures.py": "cccc68e894cfc338e3c1a844ace879d7b6e28f19798d059af46ae1a8fbca61dd",
+      "run_synthetic_suite.py": "38456ff153078678eb45456730879daf06bc121c108af39a7f6f4c582fb1a623",
+      "test_r004_runner.py": "33e906d6a9f95d20eee4eaeb415fe8a9782c6e339587ffdca17e5fcf42a85c44",
+      "test_vendor_switch.py": "1c55214f01d36229fe7e8f959bfa5abfd3475fdceb77eb28f4cc7a6e92591189"
+    },
+    "P_seven": {
+      "op_host/pad_v3_grad_def.cpp": "704380e0b489f02527514fa73ec5fc4b9dcbd32040fa0333a43d0d0c5b072a92",
+      "op_host/pad_v3_grad_infershape.cpp": "908ac633c33c8506964e7ffa75fe2faa8f3ec415723572237509127fae9c385b",
+      "op_host/pad_v3_grad_tiling.cpp": "de2cc09b5189b0201985ec79b1e077b74da8b7450535f1ffe4e847e7f715e689",
+      "op_kernel/pad_v3_grad.cpp": "c22da1fcbf8d4f4607356a004f72ad5c9a251459b97500a5cfd8dc61d6132468",
+      "op_kernel/pad_v3_grad.h": "9739a0c61d4c545dd0d98c0203c7cf4c786acf745d3a4cdb8c1e099a841381bb",
+      "op_kernel/pad_v3_grad_tiling_data.h": "d98e018fb41fe5ec79fdcd2885a1db34530b489e6b505cafdc55b611cbbfe84e",
+      "op_kernel/pad_v3_grad_tiling_key.h": "464965d7728c9eecce949f3b1a79c7c06b1beed970b97df63d7096cec8f2e9ba"
+    },
+    "F_seven": {
+      "op_host/pad_v3_grad_def.cpp": "704380e0b489f02527514fa73ec5fc4b9dcbd32040fa0333a43d0d0c5b072a92",
+      "op_host/pad_v3_grad_infershape.cpp": "908ac633c33c8506964e7ffa75fe2faa8f3ec415723572237509127fae9c385b",
+      "op_host/pad_v3_grad_tiling.cpp": "de2cc09b5189b0201985ec79b1e077b74da8b7450535f1ffe4e847e7f715e689",
+      "op_kernel/pad_v3_grad.cpp": "c22da1fcbf8d4f4607356a004f72ad5c9a251459b97500a5cfd8dc61d6132468",
+      "op_kernel/pad_v3_grad.h": "e354629d43be2f42dd027cbce12d042ee545aa7e6cb062d5c27a68c0369a66e3",
+      "op_kernel/pad_v3_grad_tiling_data.h": "d98e018fb41fe5ec79fdcd2885a1db34530b489e6b505cafdc55b611cbbfe84e",
+      "op_kernel/pad_v3_grad_tiling_key.h": "464965d7728c9eecce949f3b1a79c7c06b1beed970b97df63d7096cec8f2e9ba"
+    }
+  }
+}

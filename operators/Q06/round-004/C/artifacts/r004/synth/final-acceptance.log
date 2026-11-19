@@ -1,0 +1,13 @@
+test_correct_four_cases_and_extra_manifest_pass_synthetic (round-004.C.artifacts.tests.test_r004_runner.AcceptanceVerifierTest.test_correct_four_cases_and_extra_manifest_pass_synthetic) ... ok
+test_input_metadata_shape_mismatch_is_contract_error (round-004.C.artifacts.tests.test_r004_runner.AcceptanceVerifierTest.test_input_metadata_shape_mismatch_is_contract_error) ... ok
+test_missing_output_fails (round-004.C.artifacts.tests.test_r004_runner.AcceptanceVerifierTest.test_missing_output_fails) ... ok
+test_out_of_tolerance_fails_with_element_errors (round-004.C.artifacts.tests.test_r004_runner.AcceptanceVerifierTest.test_out_of_tolerance_fails_with_element_errors) ... ok
+test_project_source_identity_is_recorded (round-004.C.artifacts.tests.test_r004_runner.AcceptanceVerifierTest.test_project_source_identity_is_recorded) ... ok
+test_stale_output_fails (round-004.C.artifacts.tests.test_r004_runner.AcceptanceVerifierTest.test_stale_output_fails) ... ok
+test_truncated_output_is_not_broadcast (round-004.C.artifacts.tests.test_r004_runner.AcceptanceVerifierTest.test_truncated_output_is_not_broadcast) ... ok
+test_unexpected_manifest_variant_is_contract_error (round-004.C.artifacts.tests.test_r004_runner.AcceptanceVerifierTest.test_unexpected_manifest_variant_is_contract_error) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 2.297s
+
+OK

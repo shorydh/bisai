@@ -1,0 +1,1221 @@
+--- a/artifacts/device-runner/CMakeLists.txt
++++ b/artifacts/device-runner/CMakeLists.txt
+@@ -2,17 +2,17 @@
+ project(pad_v3_grad_edge_case CXX)
+ set(CMAKE_CXX_STANDARD 17)
+ 
+-set(PROJECT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../source/P")
+-set(OPP_ROOT "${PROJECT_DIR}/build/packages/vendors/pad_v3_grad_custom")
+-find_path(OP_INCLUDE aclnn_pad_v3_grad.h PATHS "${OPP_ROOT}/op_api/include" NO_DEFAULT_PATH REQUIRED)
+-find_library(OP_LIBRARY cust_opapi PATHS "${OPP_ROOT}/op_api/lib" NO_DEFAULT_PATH REQUIRED)
++set(PAD_V3_GRAD_PROJECT_DIR "" CACHE PATH
++    "Explicit PadV3Grad P/F project used by this runner")
++include("${CMAKE_CURRENT_SOURCE_DIR}/vendor_paths.cmake")
+ 
+ add_executable(edge_case_runner edge_case_runner.cpp)
+ target_include_directories(edge_case_runner PRIVATE
+-    "${OP_INCLUDE}"
+-    "${PROJECT_DIR}/examples"
++    "${pad_v3_grad_vendor_root}/op_api/include"
++    "${pad_v3_grad_project_real}/examples"
+     "$ENV{ASCEND_HOME_PATH}/include")
+ target_link_libraries(edge_case_runner PRIVATE
+-    "${OP_LIBRARY}"
++    "${pad_v3_grad_library}"
+     "$ENV{ASCEND_HOME_PATH}/lib64/libascendcl.so"
+-    "$ENV{ASCEND_HOME_PATH}/lib64/libnnopbase.so")
++    "$ENV{ASCEND_HOME_PATH}/lib64/libnnopbase.so"
++    dl)
+--- a/artifacts/device-runner/README.md
++++ b/artifacts/device-runner/README.md
+@@ -1,21 +1,62 @@
+-# R003 legal edge runner
++# R004 PadV3Grad legal-edge runner
+ 
+-This auxiliary runner is prepared but was not compiled or executed because no
+-CANN/NPU connection was available on the execution host.
++This directory is a corrected copy of the R003 runner. The frozen P/F
++projects, inputs, and goldens are byte-preserved under `artifacts/source/` and
++`artifacts/device-case/`.
+ 
+-Run it on a host with the authorized CANN 9.1 environment and the restored P
+-project:
++## Contract
++
++- Cases are sourced only from `device-case/edge-legal-cancellation/manifest.json`.
++  The four required IDs are int32/int64 x contiguous/split. Extra files and
++  directories, including a nested `manifest.json`, are not cases.
++- Every fixture is checked against its dtype, shape, byte size, SHA256, mode,
++  padding layout, golden values `[0,0,0]`, and `rtol=atol=1e-4`.
++- Every device output must be exactly 12 bytes and decode to exactly three
++  FP32 values. Missing, short, oversized, stale, NaN, and out-of-tolerance
++  outputs fail.
++- Synthetic PASS fixtures are always reported with `device_execution=false`.
++  They cannot be promoted to NPU evidence.
++- Device PASS additionally requires four zero runner exit codes, synchronized
++  streams, matching CMake/vendor configuration, and an actual
++  `libcust_opapi.so` mapping equal to the selected project's library.
++
++## Device command
++
++Check `npu-smi info` and shared load first, then run:
+ 
+ ```bash
+-source /path/to/cann/set_env.sh
++source /path/to/cann-9.1.0/set_env.sh
+ DEVICE_ID=<actual-device> bash artifacts/device-runner/run_four_variants.sh \
+   /absolute/path/to/artifacts/source/P
+ ```
+ 
+-The script builds the unmodified P source if its operator package is missing,
+-then runs int32/int64 × contiguous/split against the four immutable R002 case
+-directories. `verify_outputs.py` compares actual device bytes with the existing
+-golden using `rtol=atol=1e-4` and writes
+-`artifacts/results/R003-device-four-variants.json`.
++The explicit project path is passed unchanged through the shell to the
++`PAD_V3_GRAD_PROJECT_DIR` CMake cache entry. CMake validates and records the
++vendor header, library, and version. At runtime, the runner requires
++`PAD_V3_GRAD_EXPECTED_LIBRARY` and checks `/proc/self/maps` after execution.
+ 
+-This runner changes no frozen P source and performs no instrumentation.
++The default output root is a fresh
++`artifacts/r004/device/<UTC-run-id>/`. It contains:
++
++- `run-record.json`: selected project/vendor, CMake cache/config, environment,
++  `npu-smi` output reference, fixture hashes before and after, and build exits.
++- `<case_id>/output/y.bin`: synchronized device output copied to a fresh run
++  directory.
++- `<case_id>/{stdout.log,stderr.log,invocation.json,case-run.json}`.
++- `acceptance.json`: strict per-case verdict, raw values, and element errors.
++- build, loader, cache-binding, and command logs.
++
++If a package is absent, the script runs the frozen project's `build.sh -j4`.
++If CANN is unavailable, build/configure exits are recorded and the four cases
++remain missing; no numerical verdict is claimed.
++
++## Synthetic regression tests
++
++```bash
++python3 artifacts/tests/test_r004_runner.py
++python3 artifacts/tests/test_vendor_switch.py
++```
++
++The second test can be run on a target host with CMake. It configures two
++different fake projects into one build cache and verifies both cache and vendor
++config switching without compiling either project.
+--- a/artifacts/device-runner/edge_case_runner.cpp
++++ b/artifacts/device-runner/edge_case_runner.cpp
+@@ -1,21 +1,104 @@
+ #include "sample_support.h"
+ #include "aclnn_pad_v3_grad.h"
+ 
++#include <cstdlib>
++#include <fstream>
++#include <limits.h>
+ #include <memory>
+ #include <string>
+ #include <vector>
+ 
++namespace {
++std::string RealPath(const std::string& path)
++{
++    char resolved[PATH_MAX];
++    return realpath(path.c_str(), resolved) == nullptr ? path : std::string(resolved);
++}
++
++std::string FindLoadedLibrary()
++{
++    std::ifstream maps("/proc/self/maps");
++    std::string line;
++    while (std::getline(maps, line)) {
++        const std::size_t marker = line.find("libcust_opapi.so");
++        if (marker == std::string::npos) {
++            continue;
++        }
++        const std::size_t slash = line.find('/', marker);
++        if (slash == std::string::npos) {
++            continue;
++        }
++        std::string path = line.substr(slash);
++        const std::string deleted = " (deleted)";
++        if (path.size() >= deleted.size() &&
++            path.compare(path.size() - deleted.size(), deleted.size(), deleted) == 0) {
++            path.resize(path.size() - deleted.size());
++        }
++        return RealPath(path);
++    }
++    return {};
++}
++
++std::string JsonEscape(const std::string& value)
++{
++    std::string escaped;
++    for (const char ch : value) {
++        if (ch == '\\' || ch == '"') {
++            escaped.push_back('\\');
++        }
++        escaped.push_back(ch);
++    }
++    return escaped;
++}
++
++void WriteInvocation(const std::string& root, const std::string& caseId, int device,
++                     const std::string& dtype, const std::string& layout,
++                     const std::string& expectedLibrary, const std::string& loadedLibrary)
++{
++    std::ofstream out(root + "/invocation.json", std::ios::binary);
++    if (!out) {
++        throw std::runtime_error("write: invocation.json");
++    }
++    out << "{\n"
++        << "  \"case_id\": \"" << JsonEscape(caseId) << "\",\n"
++        << "  \"execution_mode\": \"device\",\n"
++        << "  \"device_id\": " << device << ",\n"
++        << "  \"paddings_dtype\": \"" << JsonEscape(dtype) << "\",\n"
++        << "  \"paddings_layout\": \"" << JsonEscape(layout) << "\",\n"
++        << "  \"synchronized\": true,\n"
++        << "  \"expected_library\": \"" << JsonEscape(expectedLibrary) << "\",\n"
++        << "  \"loaded_library\": \"" << JsonEscape(loadedLibrary) << "\"\n"
++        << "}\n";
++}
++} // namespace
++
+ int main(int argc, char** argv)
+ {
+     try {
+-        if (argc != 5) {
+-            std::cerr << "usage: edge_case_runner <case_dir> <device_id> <int32|int64> <contiguous|split>" << std::endl;
++        if (argc != 6) {
++            std::cerr << "usage: edge_case_runner <case_dir> <device_id> <int32|int64> "
++                         "<contiguous|split> <case_id>" << std::endl;
+             return 1;
+         }
+         const std::string root = argv[1];
+         const int device = std::stoi(argv[2]);
+-        const bool useInt64 = std::string(argv[3]) == "int64";
+-        const bool contiguous = std::string(argv[4]) == "contiguous";
++        const std::string dtype = argv[3];
++        const std::string layout = argv[4];
++        const std::string caseId = argv[5];
++        if ((dtype != "int32" && dtype != "int64") ||
++            (layout != "contiguous" && layout != "split")) {
++            throw std::runtime_error("dtype/layout must be int32|int64 and contiguous|split");
++        }
++        if (caseId != dtype + "-" + layout) {
++            throw std::runtime_error("case_id does not match dtype/layout");
++        }
++        const bool useInt64 = dtype == "int64";
++        const bool contiguous = layout == "contiguous";
++        const char* expectedLibraryEnv = std::getenv("PAD_V3_GRAD_EXPECTED_LIBRARY");
++        if (expectedLibraryEnv == nullptr || *expectedLibraryEnv == '\0') {
++            throw std::runtime_error("PAD_V3_GRAD_EXPECTED_LIBRARY is required");
++        }
++        const std::string expectedLibrary = RealPath(expectedLibraryEnv);
+ 
+         check(aclInit(nullptr));
+         check(aclrtSetDevice(device));
+@@ -55,6 +138,16 @@
+             check(aclnnPadV3Grad(workspace, size, executor, stream));
+             check(aclrtSynchronizeStream(stream));
+             output0.save(root);
++            const std::string loadedLibrary = FindLoadedLibrary();
++            if (loadedLibrary.empty()) {
++                throw std::runtime_error("libcust_opapi.so is not mapped in the runner");
++            }
++            if (loadedLibrary != expectedLibrary) {
++                throw std::runtime_error(
++                    "loaded vendor mismatch: expected " + expectedLibrary + ", got " + loadedLibrary);
++            }
++            WriteInvocation(root, caseId, device, dtype, layout, expectedLibrary, loadedLibrary);
++            std::cout << "LOADED_LIBRARY=" << loadedLibrary << std::endl;
+             if (workspace) {
+                 check(aclrtFree(workspace));
+             }
+--- a/artifacts/device-runner/run_four_variants.sh
++++ b/artifacts/device-runner/run_four_variants.sh
+@@ -1,34 +1,199 @@
+ #!/bin/bash
+-set -euo pipefail
++set -uo pipefail
+ 
+ RUNNER_DIR="$(cd "$(dirname "$0")" && pwd)"
+ ROUND_DIR="$(cd "$RUNNER_DIR/.." && pwd)"
+-PROJECT_DIR="${1:-$ROUND_DIR/source/P}"
+-CASES_DIR="$ROUND_DIR/device-case/edge-legal-cancellation"
+-DEVICE_ID="${DEVICE_ID:-0}"
++PROJECT_DIR_INPUT="${1:-}"
++CASES_DIR="${2:-$ROUND_DIR/device-case/edge-legal-cancellation}"
++DEVICE_ID="${DEVICE_ID:?set DEVICE_ID after checking npu-smi}"
++PYTHON="${PYTHON:-python3}"
+ 
+-: "${ASCEND_HOME_PATH:?source the CANN set_env.sh first}"
++if [ -z "$PROJECT_DIR_INPUT" ]; then
++  echo "usage: DEVICE_ID=<id> bash run_four_variants.sh <explicit-P-or-F-project> [cases-dir]" >&2
++  exit 64
++fi
++if [ ! -d "$PROJECT_DIR_INPUT" ]; then
++  echo "project directory does not exist: $PROJECT_DIR_INPUT" >&2
++  exit 66
++fi
++PROJECT_DIR="$(realpath "$PROJECT_DIR_INPUT")"
++VENDOR_ROOT="$PROJECT_DIR/build/packages/vendors/pad_v3_grad_custom"
++OP_API_HEADER="$VENDOR_ROOT/op_api/include/aclnn_pad_v3_grad.h"
++EXPECTED_LIBRARY="$VENDOR_ROOT/op_api/lib/libcust_opapi.so"
++VERSION_INFO="$VENDOR_ROOT/version.info"
++BUILD_DIR="${RUNNER_BUILD_DIR:-$PROJECT_DIR/build/edge-case-runner-r004}"
++CMAKE_CACHE="$BUILD_DIR/CMakeCache.txt"
++CMAKE_CONFIG="$BUILD_DIR/vendor-config.json"
++RUNNER_BINARY="$BUILD_DIR/edge_case_runner"
++STAMP="$(date -u +%Y%m%dT%H%M%SZ)"
++RUN_ID="${STAMP}-$$"
++RUN_ROOT="${RUN_ROOT:-$ROUND_DIR/r004/device/$RUN_ID}"
+ 
+-if [ ! -f "$PROJECT_DIR/build/packages/vendors/pad_v3_grad_custom/op_api/include/aclnn_pad_v3_grad.h" ]; then
+-  bash "$PROJECT_DIR/build.sh" -j4
++if [ -e "$RUN_ROOT" ] && [ -n "$(find "$RUN_ROOT" -mindepth 1 -maxdepth 1 -print -quit 2>/dev/null)" ]; then
++  echo "refusing to reuse non-empty RUN_ROOT: $RUN_ROOT" >&2
++  exit 73
++fi
++mkdir -p "$RUN_ROOT"
++
++NPU_LOG="$RUN_ROOT/npu-smi.log"
++if command -v npu-smi >/dev/null 2>&1; then
++  npu-smi info >"$NPU_LOG" 2>&1
++  NPU_SMI_EXIT=$?
++else
++  printf '%s\n' "npu-smi not found on PATH" >"$NPU_LOG"
++  NPU_SMI_EXIT=127
++fi
++printf '%s\n' "$0 $*" >"$RUN_ROOT/top-level-command.txt"
++
++"$PYTHON" "$RUNNER_DIR/stage_cases.py" --cases "$CASES_DIR" --run-root "$RUN_ROOT" \
++  >"$RUN_ROOT/stage.log" 2>&1
++STAGE_EXIT=$?
++if [ "$STAGE_EXIT" -ne 0 ]; then
++  cat "$RUN_ROOT/stage.log" >&2
++  exit "$STAGE_EXIT"
++fi
++mapfile -t CASE_IDS <"$RUN_ROOT/case-ids.txt"
++if [ "${#CASE_IDS[@]}" -ne 4 ]; then
++  echo "expected exactly four cases, got ${#CASE_IDS[@]}" >&2
++  exit 65
+ fi
+ 
+-export ASCEND_CUSTOM_OPP_PATH="$PROJECT_DIR/build/packages/vendors/pad_v3_grad_custom${ASCEND_CUSTOM_OPP_PATH:+:$ASCEND_CUSTOM_OPP_PATH}"
+-export LD_LIBRARY_PATH="$PROJECT_DIR/build/packages/vendors/pad_v3_grad_custom/op_api/lib:$ASCEND_HOME_PATH/lib64:${LD_LIBRARY_PATH:-}"
++"$PYTHON" "$RUNNER_DIR/runner_metadata.py" begin \
++  --run-root "$RUN_ROOT" \
++  --run-id "$RUN_ID" \
++  --project-dir "$PROJECT_DIR" \
++  --vendor-root "$VENDOR_ROOT" \
++  --expected-library "$EXPECTED_LIBRARY" \
++  --cmake-cache "$CMAKE_CACHE" \
++  --vendor-config "$CMAKE_CONFIG" \
++  --runner-binary "$RUNNER_BINARY" \
++  --cases "$CASES_DIR" \
++  --device-id "$DEVICE_ID" \
++  --npu-smi-log "$NPU_LOG" \
++  --npu-smi-exit-code "$NPU_SMI_EXIT"
++BEGIN_EXIT=$?
++if [ "$BEGIN_EXIT" -ne 0 ]; then
++  exit "$BEGIN_EXIT"
++fi
+ 
+-cmake -S "$RUNNER_DIR" -B "$PROJECT_DIR/build/edge-case-runner"
+-cmake --build "$PROJECT_DIR/build/edge-case-runner" --parallel "${CANNJUDGE_COMPILE_JOBS:-4}"
++PACKAGE_BUILD_EXIT=0
++CONFIGURE_EXIT=0
++COMPILE_EXIT=0
++DEVICE_STARTED=0
++NPU_BEFORE_CASES="$RUN_ROOT/npu-smi-before-cases.log"
++NPU_AFTER_CASES="$RUN_ROOT/npu-smi-after-cases.log"
++NPU_BEFORE_CASES_EXIT=127
++NPU_AFTER_CASES_EXIT=127
++if [ -z "${ASCEND_HOME_PATH:-}" ]; then
++  printf '%s\n' "ASCEND_HOME_PATH is unset; source CANN set_env.sh first" \
++    >"$RUN_ROOT/build-error.log"
++  PACKAGE_BUILD_EXIT=69
++  CONFIGURE_EXIT=69
++  COMPILE_EXIT=69
++elif [ "$NPU_SMI_EXIT" -ne 0 ]; then
++  printf '%s\n' "npu-smi did not complete successfully; refusing a device verdict" \
++    >"$RUN_ROOT/build-error.log"
++  PACKAGE_BUILD_EXIT=70
++  CONFIGURE_EXIT=70
++  COMPILE_EXIT=70
++elif ! command -v cmake >/dev/null 2>&1; then
++  printf '%s\n' "cmake is missing from PATH" >"$RUN_ROOT/build-error.log"
++  PACKAGE_BUILD_EXIT=69
++  CONFIGURE_EXIT=69
++  COMPILE_EXIT=69
++else
++  (
++    cd "$PROJECT_DIR" &&
++    bash build.sh -j4
++  ) >"$RUN_ROOT/package-build.log" 2>&1
++  PACKAGE_BUILD_EXIT=$?
++  if [ "$PACKAGE_BUILD_EXIT" -eq 0 ] &&
++     { [ ! -f "$OP_API_HEADER" ] || [ ! -f "$EXPECTED_LIBRARY" ] || [ ! -f "$VERSION_INFO" ]; }; then
++    printf '%s\n' "selected project build did not produce the required vendor artifacts" \
++      >"$RUN_ROOT/build-error.log"
++    PACKAGE_BUILD_EXIT=71
++  fi
++fi
+ 
+-for dtype in int32 int64; do
+-  for layout in contiguous split; do
+-    case_dir="$CASES_DIR/$dtype-$layout"
+-    mkdir -p "$case_dir/output"
+-    "$PROJECT_DIR/build/edge-case-runner/edge_case_runner" \
+-      "$case_dir" "$DEVICE_ID" "$dtype" "$layout" \
+-      2>&1 | tee "$case_dir/device-run.log"
++if [ "$PACKAGE_BUILD_EXIT" -eq 0 ] && [ -n "${ASCEND_HOME_PATH:-}" ]; then
++  cmake --version >"$RUN_ROOT/cmake-version.log" 2>&1
++  cmake -S "$RUNNER_DIR" -B "$BUILD_DIR" \
++    -DCMAKE_BUILD_TYPE=Release \
++    -DPAD_V3_GRAD_PROJECT_DIR="$PROJECT_DIR" \
++    >"$RUN_ROOT/cmake-configure.log" 2>&1
++  CONFIGURE_EXIT=$?
++fi
++if [ "$CONFIGURE_EXIT" -eq 0 ]; then
++  cmake --build "$BUILD_DIR" --parallel "${CANNJUDGE_COMPILE_JOBS:-4}" \
++    >"$RUN_ROOT/cmake-build.log" 2>&1
++  COMPILE_EXIT=$?
++fi
++
++if [ "$COMPILE_EXIT" -eq 0 ]; then
++  grep -E '^PAD_V3_GRAD_(PROJECT_DIR|RESOLVED_VENDOR_ROOT)' "$CMAKE_CACHE" \
++    >"$RUN_ROOT/cmake-cache-binding.log" 2>&1 || true
++  ldd "$RUNNER_BINARY" >"$RUN_ROOT/loader-ldd.log" 2>&1 || true
++  export ASCEND_CUSTOM_OPP_PATH="$VENDOR_ROOT${ASCEND_CUSTOM_OPP_PATH:+:$ASCEND_CUSTOM_OPP_PATH}"
++  export LD_LIBRARY_PATH="$VENDOR_ROOT/op_api/lib:${ASCEND_HOME_PATH}/lib64:${LD_LIBRARY_PATH:-}"
++  export PAD_V3_GRAD_EXPECTED_LIBRARY="$EXPECTED_LIBRARY"
++  DEVICE_STARTED=1
++  npu-smi info >"$NPU_BEFORE_CASES" 2>&1
++  NPU_BEFORE_CASES_EXIT=$?
++
++  for case_id in "${CASE_IDS[@]}"; do
++    dtype="${case_id%%-*}"
++    layout="${case_id#*-}"
++    case_root="$RUN_ROOT/$case_id"
++    rm -rf "$case_root/output"
++    mkdir -p "$case_root/output"
++    stdout_log="$case_root/stdout.log"
++    stderr_log="$case_root/stderr.log"
++    started_ns="$("$PYTHON" -c 'import time; print(time.time_ns())')"
++    "$RUNNER_BINARY" "$case_root" "$DEVICE_ID" "$dtype" "$layout" "$case_id" \
++      >"$stdout_log" 2>"$stderr_log"
++    runner_exit=$?
++    ended_ns="$("$PYTHON" -c 'import time; print(time.time_ns())')"
++    "$PYTHON" "$RUNNER_DIR/runner_metadata.py" case \
++      --case-root "$case_root" \
++      --case-id "$case_id" \
++      --started-at-ns "$started_ns" \
++      --ended-at-ns "$ended_ns" \
++      --exit-code "$runner_exit" \
++      --command "$RUNNER_BINARY $case_root $DEVICE_ID $dtype $layout $case_id" \
++      --stdout "$stdout_log" \
++      --stderr "$stderr_log"
+   done
+-done
++  npu-smi info >"$NPU_AFTER_CASES" 2>&1
++  NPU_AFTER_CASES_EXIT=$?
++fi
+ 
+-python3 "$RUNNER_DIR/verify_outputs.py" \
++VERIFY_EXIT=1
++"$PYTHON" "$RUNNER_DIR/verify_outputs.py" \
+   --cases "$CASES_DIR" \
+-  --output "$ROUND_DIR/results/R003-device-four-variants.json"
++  --run-root "$RUN_ROOT" \
++  --execution-mode device \
++  --run-record "$RUN_ROOT/run-record.json" \
++  --output "$RUN_ROOT/acceptance.json" \
++  >"$RUN_ROOT/acceptance.log" 2>&1
++VERIFY_EXIT=$?
++
++FINALIZE_ARGS=(
++  "$RUNNER_DIR/runner_metadata.py" finalize
++  --run-root "$RUN_ROOT" \
++  --package-build-exit-code "$PACKAGE_BUILD_EXIT" \
++  --configure-exit-code "$CONFIGURE_EXIT" \
++  --compile-exit-code "$COMPILE_EXIT" \
++  --verify-exit-code "$VERIFY_EXIT" \
++  --npu-smi-before-cases "$NPU_BEFORE_CASES" \
++  --npu-smi-before-cases-exit-code "$NPU_BEFORE_CASES_EXIT" \
++  --npu-smi-after-cases "$NPU_AFTER_CASES" \
++  --npu-smi-after-cases-exit-code "$NPU_AFTER_CASES_EXIT"
++)
++if [ "$DEVICE_STARTED" -eq 1 ]; then
++  FINALIZE_ARGS+=(--device-execution-started)
++fi
++"$PYTHON" "${FINALIZE_ARGS[@]}"
++
++cat "$RUN_ROOT/acceptance.log"
++printf 'RUN_ROOT=%s\n' "$RUN_ROOT"
++exit "$VERIFY_EXIT"
+--- a/artifacts/device-runner/runner_metadata.py
++++ b/artifacts/device-runner/runner_metadata.py
+@@ -0,0 +1,232 @@
++#!/usr/bin/env python3
++"""Record provenance for the R004 device runner without inventing results."""
++
++from __future__ import annotations
++
++import argparse
++import hashlib
++import json
++import os
++from datetime import datetime, timezone
++from pathlib import Path
++from typing import Any
++
++from verify_outputs import load_json, sha256_file, validate_case_fixture, validate_manifest
++
++
++SEVEN_SOURCES = (
++    "op_host/pad_v3_grad_def.cpp",
++    "op_host/pad_v3_grad_infershape.cpp",
++    "op_host/pad_v3_grad_tiling.cpp",
++    "op_kernel/pad_v3_grad.cpp",
++    "op_kernel/pad_v3_grad.h",
++    "op_kernel/pad_v3_grad_tiling_data.h",
++    "op_kernel/pad_v3_grad_tiling_key.h",
++)
++KNOWN_PROJECTS = {
++    "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949": "P/r6",
++    "700af8da3ef6679f48ebf8bbfa9d2f145d9357e9b6fd2e4f288542c662a1969b": "F",
++}
++
++
++def write_json(path: Path, value: dict[str, Any]) -> None:
++    path.parent.mkdir(parents=True, exist_ok=True)
++    path.write_text(
++        json.dumps(value, indent=2, ensure_ascii=False, allow_nan=False) + "\n",
++        encoding="utf-8",
++    )
++
++
++def fixture_snapshot(cases_root: Path) -> dict[str, Any]:
++    _, variants = validate_manifest(cases_root)
++    cases = {}
++    for variant in variants:
++        _, hashes = validate_case_fixture(cases_root, variant)
++        cases[variant["case_id"]] = hashes
++    return {
++        "manifest_sha256": sha256_file(cases_root / "manifest.json"),
++        "cases": cases,
++    }
++
++
++def project_snapshot(project_dir: Path) -> dict[str, Any]:
++    digest = hashlib.sha256()
++    hashes = {}
++    for relative in SEVEN_SOURCES:
++        file_hash = sha256_file(project_dir / relative)
++        hashes[relative] = file_hash
++        digest.update(f"{relative}\0{file_hash}\n".encode("utf-8"))
++    tree_hash = digest.hexdigest()
++    return {
++        "seven_source_sha256": tree_hash,
++        "identified_as": KNOWN_PROJECTS.get(tree_hash),
++        "recognized": tree_hash in KNOWN_PROJECTS,
++        "files": hashes,
++    }
++
++
++def begin(args: argparse.Namespace) -> None:
++    cases_root = args.cases.resolve()
++    record = {
++        "schema_version": 1,
++        "task_id": "Q06-R004-C-RUNNER-VALIDATION",
++        "execution_mode": "device",
++        "run_id": args.run_id,
++        "started_at": datetime.now(timezone.utc).isoformat(),
++        "device_id": args.device_id,
++        "project_dir_requested": str(args.project_dir.resolve()),
++        "project_source": project_snapshot(args.project_dir.resolve()),
++        "vendor_root": str(args.vendor_root.resolve()),
++        "expected_library": str(args.expected_library.resolve()),
++        "cmake_cache": str(args.cmake_cache.resolve()),
++        "vendor_config": str(args.vendor_config.resolve()),
++        "runner_binary": str(args.runner_binary.resolve()),
++        "cases_root": str(cases_root),
++        "run_root": str(args.run_root.resolve()),
++        "npu_smi_log": str(args.npu_smi_log.resolve()),
++        "npu_smi_log_sha256": (
++            sha256_file(args.npu_smi_log.resolve()) if args.npu_smi_log.is_file() else None
++        ),
++        "npu_smi_exit_code": args.npu_smi_exit_code,
++        "environment": {
++            key: os.environ.get(key)
++            for key in ("ASCEND_HOME_PATH", "ASCEND_CUSTOM_OPP_PATH", "LD_LIBRARY_PATH",
++                        "DEVICE_ID", "CANNJUDGE_COMPILE_JOBS")
++        },
++        "fixtures_before": fixture_snapshot(cases_root),
++        "build": {
++            "package_build_exit_code": None,
++            "configure_exit_code": None,
++            "compile_exit_code": None,
++        },
++        "device_execution_started": False,
++    }
++    write_json(args.run_root.resolve() / "run-record.json", record)
++
++
++def case_record(args: argparse.Namespace) -> None:
++    root = args.case_root.resolve()
++    invocation_path = root / "invocation.json"
++    invocation = load_json(invocation_path) if invocation_path.is_file() else {}
++    output_path = root / "output" / "y.bin"
++    stdout_path = args.stdout.resolve()
++    stderr_path = args.stderr.resolve()
++    result = {
++        "schema_version": 1,
++        "case_id": args.case_id,
++        "execution_mode": "device",
++        "started_at_ns": args.started_at_ns,
++        "ended_at_ns": args.ended_at_ns,
++        "runner_exit_code": args.exit_code,
++        "command": args.command,
++        "device_id": arg_device(invocation),
++        "synchronized": invocation.get("synchronized") is True,
++        "expected_library": invocation.get("expected_library"),
++        "loaded_library": invocation.get("loaded_library"),
++        "output_path": str(output_path),
++        "output_exists": output_path.is_file(),
++        "output_bytes": output_path.stat().st_size if output_path.is_file() else None,
++        "output_sha256": sha256_file(output_path) if output_path.is_file() else None,
++        "stdout_log": str(stdout_path),
++        "stdout_sha256": sha256_file(stdout_path) if stdout_path.is_file() else None,
++        "stderr_log": str(stderr_path),
++        "stderr_sha256": sha256_file(stderr_path) if stderr_path.is_file() else None,
++        "invocation_record": str(invocation_path) if invocation_path.is_file() else None,
++    }
++    write_json(root / "case-run.json", result)
++
++
++def arg_device(invocation: dict[str, Any]) -> int | None:
++    value = invocation.get("device_id")
++    return value if isinstance(value, int) else None
++
++
++def finalize(args: argparse.Namespace) -> None:
++    run_root = args.run_root.resolve()
++    record_path = run_root / "run-record.json"
++    record = load_json(record_path)
++    record["finished_at"] = datetime.now(timezone.utc).isoformat()
++    record["build"]["configure_exit_code"] = args.configure_exit_code
++    record["build"]["compile_exit_code"] = args.compile_exit_code
++    record["build"]["package_build_exit_code"] = args.package_build_exit_code
++    record["device_execution_started"] = args.device_execution_started
++    record["verification_exit_code"] = args.verify_exit_code
++    record["npu_smi_before_cases"] = {
++        "path": str(args.npu_smi_before_cases.resolve()),
++        "exit_code": args.npu_smi_before_cases_exit_code,
++        "sha256": (
++            sha256_file(args.npu_smi_before_cases.resolve())
++            if args.npu_smi_before_cases.is_file() else None
++        ),
++    }
++    record["npu_smi_after_cases"] = {
++        "path": str(args.npu_smi_after_cases.resolve()),
++        "exit_code": args.npu_smi_after_cases_exit_code,
++        "sha256": (
++            sha256_file(args.npu_smi_after_cases.resolve())
++            if args.npu_smi_after_cases.is_file() else None
++        ),
++    }
++    record["fixtures_after"] = fixture_snapshot(Path(record["cases_root"]))
++    record["fixtures_unchanged"] = (
++        record["fixtures_before"] == record["fixtures_after"]
++    )
++    record["project_source_after"] = project_snapshot(
++        Path(record["project_dir_requested"])
++    )
++    record["project_source_unchanged"] = (
++        record["project_source"] == record["project_source_after"]
++    )
++    write_json(record_path, record)
++
++
++def main() -> int:
++    parser = argparse.ArgumentParser()
++    subparsers = parser.add_subparsers(dest="command", required=True)
++
++    begin_parser = subparsers.add_parser("begin")
++    begin_parser.add_argument("--run-root", required=True, type=Path)
++    begin_parser.add_argument("--run-id", required=True)
++    begin_parser.add_argument("--project-dir", required=True, type=Path)
++    begin_parser.add_argument("--vendor-root", required=True, type=Path)
++    begin_parser.add_argument("--expected-library", required=True, type=Path)
++    begin_parser.add_argument("--cmake-cache", required=True, type=Path)
++    begin_parser.add_argument("--vendor-config", required=True, type=Path)
++    begin_parser.add_argument("--runner-binary", required=True, type=Path)
++    begin_parser.add_argument("--cases", required=True, type=Path)
++    begin_parser.add_argument("--device-id", required=True, type=int)
++    begin_parser.add_argument("--npu-smi-log", required=True, type=Path)
++    begin_parser.add_argument("--npu-smi-exit-code", required=True, type=int)
++    begin_parser.set_defaults(func=begin)
++
++    case_parser = subparsers.add_parser("case")
++    case_parser.add_argument("--case-root", required=True, type=Path)
++    case_parser.add_argument("--case-id", required=True)
++    case_parser.add_argument("--started-at-ns", required=True, type=int)
++    case_parser.add_argument("--ended-at-ns", required=True, type=int)
++    case_parser.add_argument("--exit-code", required=True, type=int)
++    case_parser.add_argument("--command", required=True)
++    case_parser.add_argument("--stdout", required=True, type=Path)
++    case_parser.add_argument("--stderr", required=True, type=Path)
++    case_parser.set_defaults(func=case_record)
++
++    finalize_parser = subparsers.add_parser("finalize")
++    finalize_parser.add_argument("--run-root", required=True, type=Path)
++    finalize_parser.add_argument("--configure-exit-code", required=True, type=int)
++    finalize_parser.add_argument("--compile-exit-code", required=True, type=int)
++    finalize_parser.add_argument("--package-build-exit-code", required=True, type=int)
++    finalize_parser.add_argument("--device-execution-started", action="store_true")
++    finalize_parser.add_argument("--verify-exit-code", required=True, type=int)
++    finalize_parser.add_argument("--npu-smi-before-cases", required=True, type=Path)
++    finalize_parser.add_argument("--npu-smi-before-cases-exit-code", required=True, type=int)
++    finalize_parser.add_argument("--npu-smi-after-cases", required=True, type=Path)
++    finalize_parser.add_argument("--npu-smi-after-cases-exit-code", required=True, type=int)
++    finalize_parser.set_defaults(func=finalize)
++
++    args = parser.parse_args()
++    args.func(args)
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+--- a/artifacts/device-runner/stage_cases.py
++++ b/artifacts/device-runner/stage_cases.py
+@@ -0,0 +1,52 @@
++#!/usr/bin/env python3
++"""Stage only the four manifest-authorized cases into a fresh run directory."""
++
++from __future__ import annotations
++
++import argparse
++import shutil
++from pathlib import Path
++
++from verify_outputs import sha256_file, validate_case_fixture, validate_manifest
++
++
++def main() -> int:
++    parser = argparse.ArgumentParser()
++    parser.add_argument("--cases", required=True, type=Path)
++    parser.add_argument("--run-root", required=True, type=Path)
++    args = parser.parse_args()
++
++    cases_root = args.cases.resolve()
++    run_root = args.run_root.resolve()
++    if run_root.exists() and any(path.is_dir() for path in run_root.iterdir()):
++        raise SystemExit(f"refusing to reuse non-empty run root: {run_root}")
++    run_root.mkdir(parents=True, exist_ok=True)
++
++    _, variants = validate_manifest(cases_root)
++    case_ids = []
++    for variant in variants:
++        case_id = variant["case_id"]
++        validate_case_fixture(cases_root, variant)
++        source = cases_root / case_id
++        target = run_root / case_id
++        shutil.copytree(source / "input", target / "input")
++        (target / "output").mkdir(parents=True)
++        shutil.copy2(source / "case.json", target / "case.json")
++        shutil.copy2(source / "manifest.json", target / "manifest.json")
++        case_ids.append(case_id)
++
++    (run_root / "case-ids.txt").write_text("\n".join(case_ids) + "\n", encoding="utf-8")
++    (run_root / "staged-input-sha256.txt").write_text(
++        "".join(
++            f"{sha256_file(run_root / case_id / 'input' / name)}  {case_id}/{name}\n"
++            for case_id in case_ids
++            for name in ("x.bin", "paddings.bin")
++        ),
++        encoding="utf-8",
++    )
++    print("\n".join(case_ids))
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+--- a/artifacts/device-runner/vendor_paths.cmake
++++ b/artifacts/device-runner/vendor_paths.cmake
+@@ -0,0 +1,62 @@
++if(NOT DEFINED PAD_V3_GRAD_PROJECT_DIR OR PAD_V3_GRAD_PROJECT_DIR STREQUAL "")
++    message(FATAL_ERROR "PAD_V3_GRAD_PROJECT_DIR must name the explicit P/F project")
++endif()
++if(NOT IS_ABSOLUTE "${PAD_V3_GRAD_PROJECT_DIR}")
++    message(FATAL_ERROR "PAD_V3_GRAD_PROJECT_DIR must be absolute: ${PAD_V3_GRAD_PROJECT_DIR}")
++endif()
++
++get_filename_component(pad_v3_grad_project_real "${PAD_V3_GRAD_PROJECT_DIR}" REALPATH)
++set(PAD_V3_GRAD_PROJECT_DIR "${pad_v3_grad_project_real}" CACHE PATH
++    "Explicit PadV3Grad project used for compilation and runtime loading" FORCE)
++
++set(pad_v3_grad_vendor_root
++    "${pad_v3_grad_project_real}/build/packages/vendors/pad_v3_grad_custom")
++set(PAD_V3_GRAD_RESOLVED_VENDOR_ROOT "${pad_v3_grad_vendor_root}" CACHE INTERNAL
++    "Vendor root resolved from PAD_V3_GRAD_PROJECT_DIR")
++set(pad_v3_grad_header "${pad_v3_grad_vendor_root}/op_api/include/aclnn_pad_v3_grad.h")
++set(pad_v3_grad_library "${pad_v3_grad_vendor_root}/op_api/lib/libcust_opapi.so")
++set(pad_v3_grad_version "${pad_v3_grad_vendor_root}/version.info")
++
++foreach(path IN ITEMS
++        "${pad_v3_grad_header}"
++        "${pad_v3_grad_library}"
++        "${pad_v3_grad_version}")
++    if(NOT EXISTS "${path}")
++        message(FATAL_ERROR "Selected vendor is incomplete; missing ${path}")
++    endif()
++endforeach()
++
++file(SHA256 "${pad_v3_grad_header}" pad_v3_grad_header_sha256)
++file(SHA256 "${pad_v3_grad_library}" pad_v3_grad_library_sha256)
++file(SHA256 "${pad_v3_grad_version}" pad_v3_grad_version_sha256)
++
++function(pad_v3_grad_json_escape input output)
++    string(REPLACE "\\" "\\\\" escaped "${input}")
++    string(REPLACE "\"" "\\\"" escaped "${escaped}")
++    string(REPLACE "\n" "\\n" escaped "${escaped}")
++    set(${output} "${escaped}" PARENT_SCOPE)
++endfunction()
++
++pad_v3_grad_json_escape("${pad_v3_grad_project_real}" project_json)
++pad_v3_grad_json_escape("${pad_v3_grad_vendor_root}" vendor_json)
++pad_v3_grad_json_escape("${pad_v3_grad_header}" header_json)
++pad_v3_grad_json_escape("${pad_v3_grad_library}" library_json)
++pad_v3_grad_json_escape("${pad_v3_grad_version}" version_json)
++
++if(NOT DEFINED PAD_V3_GRAD_CONFIG_OUT)
++    set(PAD_V3_GRAD_CONFIG_OUT "${CMAKE_BINARY_DIR}/vendor-config.json")
++endif()
++file(WRITE "${PAD_V3_GRAD_CONFIG_OUT}"
++"{
++  \"schema_version\": 1,
++  \"requested_project_dir\": \"${project_json}\",
++  \"resolved_project_dir\": \"${project_json}\",
++  \"vendor_root\": \"${vendor_json}\",
++  \"op_api_header\": \"${header_json}\",
++  \"op_api_library\": \"${library_json}\",
++  \"header_sha256\": \"${pad_v3_grad_header_sha256}\",
++  \"library_sha256\": \"${pad_v3_grad_library_sha256}\",
++  \"version_info\": \"${version_json}\",
++  \"version_info_sha256\": \"${pad_v3_grad_version_sha256}\"
++}
++")
+--- a/artifacts/device-runner/verify_outputs.py
++++ b/artifacts/device-runner/verify_outputs.py
+@@ -1,61 +1,364 @@
+ #!/usr/bin/env python3
++"""Strict acceptance verifier for the four R002 legal-edge cases.
++
++The verifier never discovers cases by scanning directories. It follows only
++manifest["variants"], validates each fixture contract, and compares exactly
++three FP32 output values without broadcasting or accepting NaN.
++"""
++
++from __future__ import annotations
+ 
+ import argparse
++import hashlib
+ import json
+ from pathlib import Path
++from typing import Any
+ 
+ import numpy as np
++
++
++EXPECTED_CASE_IDS = (
++    "int32-contiguous",
++    "int32-split",
++    "int64-contiguous",
++    "int64-split",
++)
++EXPECTED_X_SHA256 = "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26"
++EXPECTED_GOLDEN_SHA256 = "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
++EXPECTED_X_SHAPE = [1, 1, 1, 5]
++EXPECTED_Y_SHAPE = [1, 1, 1, 3]
++RTOL = 1e-4
++ATOL = 1e-4
++STALE_MTIME_GRACE_NS = 1_000_000_000
++
++
++class ContractError(ValueError):
++    pass
++
++
++def sha256_bytes(data: bytes) -> str:
++    return hashlib.sha256(data).hexdigest()
++
++
++def sha256_file(path: Path) -> str:
++    return sha256_bytes(path.read_bytes())
++
++
++def load_json(path: Path) -> dict[str, Any]:
++    try:
++        value = json.loads(path.read_text(encoding="utf-8"))
++    except (OSError, json.JSONDecodeError) as exc:
++        raise ContractError(f"cannot read JSON {path}: {exc}") from exc
++    if not isinstance(value, dict):
++        raise ContractError(f"JSON root is not an object: {path}")
++    return value
++
++
++def require(condition: bool, message: str) -> None:
++    if not condition:
++        raise ContractError(message)
++
++
++def first_tensor(case: dict[str, Any], input_name: str | None, output: bool = False) -> dict[str, Any]:
++    section = "outputs" if output else "inputs"
++    for item in case.get(section, []):
++        if output or item.get("name") == input_name:
++            tensors = item.get("tensors")
++            require(isinstance(tensors, list) and len(tensors) == 1,
++                    f"{section} entry {input_name or 'output'} must contain exactly one tensor")
++            require(isinstance(tensors[0], dict), f"invalid tensor metadata for {input_name or 'output'}")
++            return tensors[0]
++    raise ContractError(f"missing {section} entry {input_name or 'output'}")
++
++
++def expected_padding_dtype(case_id: str) -> str:
++    return "int32" if case_id.startswith("int32-") else "int64"
++
++
++def expected_contiguous(case_id: str) -> bool:
++    return case_id.endswith("-contiguous")
++
++
++def validate_manifest(cases_dir: Path) -> tuple[dict[str, Any], list[dict[str, Any]]]:
++    manifest_path = cases_dir / "manifest.json"
++    manifest = load_json(manifest_path)
++    variants = manifest.get("variants")
++    require(isinstance(variants, list), "manifest.variants must be a list")
++    ids = [variant.get("case_id") for variant in variants if isinstance(variant, dict)]
++    require(len(ids) == len(variants), "every manifest variant must be an object")
++    require(len(ids) == len(set(ids)), "manifest contains duplicate case_id values")
++    require(set(ids) == set(EXPECTED_CASE_IDS),
++            f"manifest case IDs differ from required set: {ids}")
++    return manifest, variants
++
++
++def validate_case_fixture(
++    cases_dir: Path, expected: dict[str, Any]
++) -> tuple[dict[str, Any], dict[str, Any]]:
++    case_id = expected.get("case_id")
++    require(isinstance(case_id, str) and case_id in EXPECTED_CASE_IDS,
++            f"unexpected case_id: {case_id!r}")
++    case_dir = cases_dir / case_id
++    require(case_dir.is_dir(), f"case directory missing: {case_dir}")
++    case = load_json(case_dir / "case.json")
++    attrs = case.get("attributes", {})
++    require(attrs.get("mode") == "edge", f"{case_id}: mode must be edge")
++    require(attrs.get("paddings_contiguous") is expected_contiguous(case_id),
++            f"{case_id}: paddings_contiguous does not match case_id")
++
++    x = first_tensor(case, "x")
++    padding = first_tensor(case, "paddings")
++    y = first_tensor(case, None, output=True)
++    dtype = expected_padding_dtype(case_id)
++    padding_shape = [4, 2] if expected_contiguous(case_id) else [2, 4]
++    padding_bytes = 32 if dtype == "int32" else 64
++
++    require(x.get("dtype") == "float32" and x.get("shape") == EXPECTED_X_SHAPE and
++            x.get("bytes") == 20, f"{case_id}: invalid x metadata")
++    require(padding.get("dtype") == dtype and padding.get("shape") == padding_shape and
++            padding.get("bytes") == padding_bytes, f"{case_id}: invalid paddings metadata")
++    require(y.get("dtype") == "float32" and y.get("shape") == EXPECTED_Y_SHAPE and
++            y.get("bytes") == 12, f"{case_id}: invalid y metadata")
++    require(y.get("rtol") == RTOL and y.get("atol") == ATOL,
++            f"{case_id}: tolerance must be rtol=atol=1e-4")
++
++    x_path = case_dir / "input" / "x.bin"
++    padding_path = case_dir / "input" / "paddings.bin"
++    golden_path = case_dir / "golden" / "y.bin"
++    for path, size in ((x_path, 20), (padding_path, padding_bytes), (golden_path, 12)):
++        require(path.is_file(), f"{case_id}: fixture missing {path.name}")
++        require(path.stat().st_size == size,
++                f"{case_id}: {path.name} size {path.stat().st_size}, expected {size}")
++
++    actual_hashes = {
++        "x": sha256_file(x_path),
++        "paddings": sha256_file(padding_path),
++        "golden": sha256_file(golden_path),
++    }
++    require(actual_hashes["x"] == expected.get("input_x_sha256") == EXPECTED_X_SHA256,
++            f"{case_id}: x SHA256 mismatch")
++    require(actual_hashes["paddings"] == expected.get("paddings_sha256"),
++            f"{case_id}: paddings SHA256 mismatch")
++    require(actual_hashes["golden"] == expected.get("golden_y_sha256") == EXPECTED_GOLDEN_SHA256,
++            f"{case_id}: golden SHA256 mismatch")
++    require(expected.get("golden_y") == [0.0, 0.0, 0.0],
++            f"{case_id}: manifest golden is not [0,0,0]")
++
++    golden = np.frombuffer(golden_path.read_bytes(), dtype="<f4")
++    require(golden.shape == (3,), f"{case_id}: golden is not three FP32 values")
++    require(np.array_equal(golden, np.zeros(3, dtype=np.float32)),
++            f"{case_id}: golden bytes are not exactly three zero FP32 values")
++    return case, actual_hashes
++
++
++def parse_cmake_cache(path: Path) -> dict[str, str]:
++    if not path.is_file():
++        raise ContractError(f"CMake cache missing: {path}")
++    result: dict[str, str] = {}
++    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
++        if not line or line.startswith(("#", "//")) or "=" not in line:
++            continue
++        key, value = line.split("=", 1)
++        result[key] = value
++    return result
++
++
++def same_path(left: str, right: str) -> bool:
++    try:
++        return Path(left).resolve() == Path(right).resolve()
++    except (OSError, RuntimeError):
++        return False
++
++
++def validate_device_credentials(run_record_path: Path) -> tuple[str, int]:
++    record = load_json(run_record_path)
++    require(record.get("execution_mode") == "device", "run record is not device execution")
++    device_id = record.get("device_id")
++    require(isinstance(device_id, int) and device_id >= 0, "run record has invalid device_id")
++    project_source = record.get("project_source", {})
++    require(project_source.get("recognized") is True, "selected project source is not P or F")
++    project_dir = record.get("project_dir_requested")
++    vendor_root = record.get("vendor_root")
++    expected_library = record.get("expected_library")
++    cmake_cache_path = record.get("cmake_cache")
++    vendor_config_path = record.get("vendor_config")
++    require(isinstance(project_dir, str) and project_dir, "run record lacks project_dir_requested")
++    require(isinstance(vendor_root, str) and vendor_root, "run record lacks vendor_root")
++    require(isinstance(expected_library, str) and expected_library, "run record lacks expected_library")
++    require(isinstance(cmake_cache_path, str) and cmake_cache_path, "run record lacks cmake_cache")
++    require(isinstance(vendor_config_path, str) and vendor_config_path, "run record lacks vendor_config")
++
++    cache = parse_cmake_cache(Path(cmake_cache_path))
++    require(same_path(cache.get("PAD_V3_GRAD_PROJECT_DIR:PATH", ""), project_dir),
++            "CMake cache project path does not match requested project")
++    require(same_path(cache.get("PAD_V3_GRAD_RESOLVED_VENDOR_ROOT:INTERNAL", ""), vendor_root),
++            "CMake cache vendor root does not match selected project")
++    vendor_config = load_json(Path(vendor_config_path))
++    require(same_path(vendor_config.get("resolved_project_dir", ""), project_dir),
++            "vendor config project path does not match requested project")
++    require(same_path(vendor_config.get("op_api_library", ""), expected_library),
++            "vendor config library does not match expected library")
++    expected_library_path = Path(expected_library)
++    require(expected_library_path.is_file(), "expected vendor library is missing")
++    require(sha256_file(expected_library_path) == vendor_config.get("library_sha256"),
++            "vendor library bytes do not match configured SHA256")
++    expected_header = Path(project_dir) / "build/packages/vendors/pad_v3_grad_custom/op_api/include/aclnn_pad_v3_grad.h"
++    expected_version = Path(project_dir) / "build/packages/vendors/pad_v3_grad_custom/version.info"
++    require(same_path(vendor_config.get("op_api_header", ""), str(expected_header)),
++            "vendor config header is not under the selected project")
++    require(expected_header.is_file() and sha256_file(expected_header) == vendor_config.get("header_sha256"),
++            "vendor header bytes do not match configured SHA256")
++    require(same_path(vendor_config.get("version_info", ""), str(expected_version)),
++            "vendor version file is not under the selected project")
++    require(expected_version.is_file() and sha256_file(expected_version) == vendor_config.get("version_info_sha256"),
++            "vendor version bytes do not match configured SHA256")
++    return expected_library, device_id
++
++
++def compare_case(
++    cases_dir: Path,
++    run_root: Path,
++    variant: dict[str, Any],
++    execution_mode: str,
++    expected_library: str | None,
++    expected_device_id: int | None,
++) -> dict[str, Any]:
++    case_id = variant["case_id"]
++    result: dict[str, Any] = {"case_id": case_id, "status": "FAIL"}
++    try:
++        _, input_hashes = validate_case_fixture(cases_dir, variant)
++        case_run_dir = run_root / case_id
++        output_path = case_run_dir / "output" / "y.bin"
++        case_run_path = case_run_dir / "case-run.json"
++        case_run: dict[str, Any] = {}
++        if case_run_path.is_file():
++            case_run = load_json(case_run_path)
++
++        require(output_path.is_file(), "missing_output")
++        size = output_path.stat().st_size
++        require(size == 12, f"output_size_mismatch:{size}!=12")
++        if case_run.get("started_at_ns") is not None:
++            require(output_path.stat().st_mtime_ns + STALE_MTIME_GRACE_NS >=
++                    int(case_run["started_at_ns"]),
++                    "stale_output")
++            require(int(case_run["started_at_ns"]) <= int(case_run.get("ended_at_ns", -1)),
++                    "invalid_case_run_times")
++
++        actual_bytes = output_path.read_bytes()
++        actual = np.frombuffer(actual_bytes, dtype="<f4")
++        require(actual.shape == (3,), f"output_shape_mismatch:{actual.shape}!= (3,)")
++        require(not np.isnan(actual).any(), "output_contains_nan")
++        golden = np.frombuffer(
++            (cases_dir / case_id / "golden" / "y.bin").read_bytes(), dtype="<f4"
++        )
++        abs_error = np.abs(actual.astype(np.float64) - golden.astype(np.float64))
++        close = np.isclose(actual.astype(np.float64), golden.astype(np.float64),
++                           rtol=RTOL, atol=ATOL, equal_nan=False)
++
++        result.update({
++            "execution_mode": execution_mode,
++            "device_execution": execution_mode == "device",
++            "input_sha256": input_hashes,
++            "output_path": str(output_path),
++            "output_bytes": size,
++            "output_sha256": sha256_bytes(actual_bytes),
++            "actual": [float(value) for value in actual],
++            "golden": [float(value) for value in golden],
++            "abs_error": [float(value) for value in abs_error],
++            "max_abs_error": float(abs_error.max()),
++            "rtol": RTOL,
++            "atol": ATOL,
++        })
++        if case_run:
++            result["runner_exit_code"] = case_run.get("runner_exit_code")
++            result["synchronized"] = case_run.get("synchronized")
++            result["loaded_library"] = case_run.get("loaded_library")
++            result["stdout_log"] = case_run.get("stdout_log")
++            result["stderr_log"] = case_run.get("stderr_log")
++
++        if execution_mode == "device":
++            require(case_run, "missing_case_run_record")
++            require(case_run.get("execution_mode") == "device", "case is not device execution")
++            require(case_run.get("runner_exit_code") == 0, "runner_exit_code_nonzero")
++            require(case_run.get("device_id") == expected_device_id, "case_device_id_mismatch")
++            require(case_run.get("synchronized") is True, "device_stream_not_synchronized")
++            loaded = case_run.get("loaded_library")
++            require(isinstance(loaded, str) and loaded, "loaded_library_missing")
++            require(expected_library is not None and same_path(loaded, expected_library),
++                    "loaded_library_mismatch")
++            require(case_run.get("output_sha256") == result["output_sha256"],
++                    "output_sha256_does_not_match_run_record")
++            for log_name, hash_name in (("stdout_log", "stdout_sha256"),
++                                        ("stderr_log", "stderr_sha256")):
++                log_path = case_run.get(log_name)
++                require(isinstance(log_path, str) and Path(log_path).is_file(),
++                        f"{log_name}_missing")
++                require(sha256_file(Path(log_path)) == case_run.get(hash_name),
++                        f"{log_name}_sha256_mismatch")
++
++        if not bool(close.all()):
++            result["status"] = "FAIL"
++            result["reason"] = "value_out_of_tolerance"
++        else:
++            result["status"] = "PASS"
++            result["reason"] = None
++    except ContractError as exc:
++        result["reason"] = str(exc)
++    return result
+ 
+ 
+ def main() -> int:
+     parser = argparse.ArgumentParser()
+-    parser.add_argument("--cases", required=True)
+-    parser.add_argument("--output", required=True)
++    parser.add_argument("--cases", required=True, type=Path)
++    parser.add_argument("--run-root", required=True, type=Path)
++    parser.add_argument("--execution-mode", required=True, choices=("synthetic", "device"))
++    parser.add_argument("--run-record", type=Path)
++    parser.add_argument("--output", required=True, type=Path)
+     args = parser.parse_args()
+-    results = []
+-    for case_dir in sorted(Path(args.cases).iterdir()):
+-        actual_path = case_dir / "output" / "y.bin"
+-        golden_path = case_dir / "golden" / "y.bin"
+-        if not actual_path.is_file():
+-            results.append(
+-                {
+-                    "case": case_dir.name,
+-                    "status": "missing_output",
+-                    "actual_path": str(actual_path),
+-                }
++
++    report: dict[str, Any] = {
++        "schema_version": 1,
++        "task_id": "Q06-R004-C-RUNNER-VALIDATION",
++        "execution_mode": args.execution_mode,
++        "device_execution": args.execution_mode == "device",
++        "synthetic_fixture": args.execution_mode == "synthetic",
++        "cases_root": str(args.cases.resolve()),
++        "run_root": str(args.run_root.resolve()),
++    }
++    try:
++        manifest, variants = validate_manifest(args.cases.resolve())
++        report["manifest_sha256"] = sha256_file(args.cases.resolve() / "manifest.json")
++        expected_library = None
++        expected_device_id = None
++        if args.execution_mode == "device":
++            require(args.run_record is not None, "device mode requires --run-record")
++            expected_library, expected_device_id = validate_device_credentials(
++                args.run_record.resolve()
+             )
+-            continue
+-        actual = np.frombuffer(actual_path.read_bytes(), dtype=np.float32)
+-        golden = np.frombuffer(golden_path.read_bytes(), dtype=np.float32)
+-        close = np.isclose(
+-            actual.astype(np.float64),
+-            golden.astype(np.float64),
+-            rtol=1e-4,
+-            atol=1e-4,
+-            equal_nan=True,
+-        )
+-        results.append(
+-            {
+-                "case": case_dir.name,
+-                "status": "PASS" if bool(close.all()) else "FAIL",
+-                "actual": [float(v) for v in actual],
+-                "golden": [float(v) for v in golden],
+-                "abs_error": [float(v) for v in np.abs(actual - golden)],
+-                "rtol": 1e-4,
+-                "atol": 1e-4,
+-            }
+-        )
+-    report = {
+-        "device_execution": True,
+-        "cases": results,
+-        "all_pass": all(result["status"] == "PASS" for result in results),
+-    }
+-    Path(args.output).write_text(
+-        json.dumps(report, indent=2, ensure_ascii=False) + "\n",
++            report["run_record"] = str(args.run_record.resolve())
++            report["expected_library"] = expected_library
++        cases = [
++            compare_case(args.cases.resolve(), args.run_root.resolve(), variant,
++                         args.execution_mode, expected_library, expected_device_id)
++            for variant in variants
++        ]
++        report["cases"] = cases
++        report["all_pass"] = all(case["status"] == "PASS" for case in cases)
++        report["contract_ok"] = True
++        report["manifest_variant_count"] = len(manifest["variants"])
++    except (ContractError, OSError, ValueError) as exc:
++        report["cases"] = []
++        report["all_pass"] = False
++        report["contract_ok"] = False
++        report["contract_error"] = str(exc)
++
++    args.output.parent.mkdir(parents=True, exist_ok=True)
++    args.output.write_text(
++        json.dumps(report, indent=2, ensure_ascii=False, allow_nan=False) + "\n",
+         encoding="utf-8",
+     )
+-    print(json.dumps(report, indent=2, ensure_ascii=False))
+-    return 0 if report["all_pass"] else 1
++    print(json.dumps(report, indent=2, ensure_ascii=False, allow_nan=False))
++    return 0 if report["all_pass"] and report["contract_ok"] else 1
+ 
+ 
+ if __name__ == "__main__":

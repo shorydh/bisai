@@ -1,0 +1,66 @@
+{
+  "task_id": "Q06-R004-C-RUNNER-VALIDATION",
+  "round_id": "round-004",
+  "source_results": {
+    "P": {
+      "seven_source_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+      "expected": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+      "matches": true,
+      "file_count": 38
+    },
+    "F": {
+      "seven_source_sha256": "700af8da3ef6679f48ebf8bbfa9d2f145d9357e9b6fd2e4f288542c662a1969b",
+      "expected": "700af8da3ef6679f48ebf8bbfa9d2f145d9357e9b6fd2e4f288542c662a1969b",
+      "matches": true,
+      "file_count": 38
+    }
+  },
+  "device_cases": [
+    {
+      "case_id": "int32-contiguous",
+      "hashes": {
+        "x": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+        "paddings": "edc0e40c3027d41914bf3144a08078742b337b96da8e503d4ff84bb6a8e97d55",
+        "golden": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+      },
+      "matches": true
+    },
+    {
+      "case_id": "int32-split",
+      "hashes": {
+        "x": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+        "paddings": "18122cf13ab2412fa65cb693713794de6b30403b65688234a6fa940fc6d506ff",
+        "golden": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+      },
+      "matches": true
+    },
+    {
+      "case_id": "int64-contiguous",
+      "hashes": {
+        "x": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+        "paddings": "c7369912a28787eaa421384e7526e59514244343797b53382ec3666aa8890d44",
+        "golden": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+      },
+      "matches": true
+    },
+    {
+      "case_id": "int64-split",
+      "hashes": {
+        "x": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+        "paddings": "44ffef2caac31aa58c323e8d54c4969e805140a8068e54c6948106fdfcf39ffb",
+        "golden": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+      },
+      "matches": true
+    }
+  ],
+  "reference_sha256": "1542d63e602aa3aaa60242e91ea0d6a8ac038bab788c6898dc4777557f040ed3",
+  "reference_expected_sha256": "1542d63e602aa3aaa60242e91ea0d6a8ac038bab788c6898dc4777557f040ed3",
+  "fixture_findings": {
+    "host_ut_old_key_1": true,
+    "source_fp32_rank_le_8_uses_key_3": true,
+    "kernel_ut_references_removed_totalNum": true,
+    "tiling_data_defines_totalNum": false,
+    "requires_fixture_update": true
+  },
+  "verified": true
+}

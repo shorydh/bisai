@@ -1,0 +1,10 @@
+{
+  "execution_mode": "synthetic",
+  "device_execution": false,
+  "observations": {
+    "legacy_with_manifest_exit": 1,
+    "legacy_truncated_exit": 0,
+    "strict_correct_with_manifest_exit": 0,
+    "strict_after_truncate_exit": 1
+  }
+}

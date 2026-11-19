@@ -1,0 +1,62 @@
+{
+  "task_id": "Q06-R002-C-REFERENCE-DEVICE-20261117",
+  "source": {
+    "r6_package_sha256": "18679dad71f9ea7723ca524599b0d9363861aeadf8f8032202f6391199a5a85a",
+    "r6_seven_source_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949"
+  },
+  "variants": [
+    {
+      "case_id": "int32-contiguous",
+      "input_x_sha256": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+      "paddings_sha256": "edc0e40c3027d41914bf3144a08078742b337b96da8e503d4ff84bb6a8e97d55",
+      "golden_y_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b",
+      "golden_y": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "expected_device": "all three FP32 outputs must be within 1e-4",
+      "source_model_expectation": "r6 AddScalar source model is 1 at output 0; this is not a device result"
+    },
+    {
+      "case_id": "int32-split",
+      "input_x_sha256": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+      "paddings_sha256": "18122cf13ab2412fa65cb693713794de6b30403b65688234a6fa940fc6d506ff",
+      "golden_y_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b",
+      "golden_y": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "expected_device": "all three FP32 outputs must be within 1e-4",
+      "source_model_expectation": "r6 AddScalar source model is 1 at output 0; this is not a device result"
+    },
+    {
+      "case_id": "int64-contiguous",
+      "input_x_sha256": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+      "paddings_sha256": "c7369912a28787eaa421384e7526e59514244343797b53382ec3666aa8890d44",
+      "golden_y_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b",
+      "golden_y": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "expected_device": "all three FP32 outputs must be within 1e-4",
+      "source_model_expectation": "r6 AddScalar source model is 1 at output 0; this is not a device result"
+    },
+    {
+      "case_id": "int64-split",
+      "input_x_sha256": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+      "paddings_sha256": "44ffef2caac31aa58c323e8d54c4969e805140a8068e54c6948106fdfcf39ffb",
+      "golden_y_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b",
+      "golden_y": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "expected_device": "all three FP32 outputs must be within 1e-4",
+      "source_model_expectation": "r6 AddScalar source model is 1 at output 0; this is not a device result"
+    }
+  ],
+  "device_execution": false
+}

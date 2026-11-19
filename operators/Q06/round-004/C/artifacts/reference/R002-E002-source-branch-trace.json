@@ -1,0 +1,62 @@
+{
+  "task_id": "Q06-R002-C-REFERENCE-DEVICE-20261117",
+  "case_id": "edge-legal-cancellation",
+  "source_version": {
+    "r6_package_sha256": "18679dad71f9ea7723ca524599b0d9363861aeadf8f8032202f6391199a5a85a",
+    "r6_seven_source_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949"
+  },
+  "input": {
+    "shape": [
+      1,
+      1,
+      1,
+      5
+    ],
+    "mode": "edge",
+    "last_axis_padding": [
+      2,
+      0
+    ],
+    "output_shape": [
+      1,
+      1,
+      1,
+      3
+    ],
+    "output_0_sources": [
+      0,
+      1,
+      2
+    ],
+    "output_0_values": [
+      1.6999999760721821e+38,
+      1.0,
+      -1.6999999760721821e+38
+    ]
+  },
+  "source_model_trace": {
+    "total_input": 5,
+    "total_output": 3,
+    "rank": 4,
+    "block_factor": 8,
+    "core_output_count": 3,
+    "wide_path_condition_initially_true": true,
+    "maximum_contributors": 3,
+    "term_lanes": 32,
+    "sum_abs": 3.4e38,
+    "dynamic_certificate_budget": 64.0,
+    "wide_certificate_expected_rejected": true,
+    "certified_flat_threshold": 26.0,
+    "certified_flat_expected_rejected": true,
+    "small_flat_tile_expected_taken": true,
+    "add_scalar_source_model_output_0": 1.0,
+    "device_execution": false,
+    "note": "Static source-mirror routing only. Vector reduction/certificate and NPU instructions were not executed."
+  },
+  "reference_expectation": {
+    "actual_reference_output_0": 0.0,
+    "exact_real_sum": 1.0,
+    "sequential_fp64_sum": 0.0,
+    "tolerance": 0.0001
+  }
+}

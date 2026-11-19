@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-19T19:15:03.2141014+08:00",
+  "source": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d",
+  "raw_snapshot": "operators/Q06/round-004/C/artifacts/config/problem-2026-11-19.json",
+  "raw_snapshot_sha256": "a452affc8b436756af0ad981abce2dff8cfe643d3dbca185b5fc6ab975bed5a2",
+  "problem_id": "6ad9ab403ff2fef7e80e2a1d",
+  "title": "PadV3Grad",
+  "cann_version": "9.1.0",
+  "judge_revision": 0,
+  "score_mode": 1,
+  "iterations": 5,
+  "ranking_submission_mode": "latest",
+  "testcases": 50,
+  "enable_cannlab": false,
+  "float_tolerance": 0.0001,
+  "half_tolerance": 0.001,
+  "int_tolerance": 0,
+  "public_description_sha256": "b0d4331d3bcdd61ebe0747eb2e5283ea821688093639478c36be22d553cfc5f8",
+  "official_submission_made": false,
+  "unknown": [
+    "complete error algorithm",
+    "timing/warmup/synchronization details",
+    "degradation thresholds"
+  ]
+}

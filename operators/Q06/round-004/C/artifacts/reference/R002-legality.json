@@ -1,0 +1,53 @@
+{
+  "task_id": "Q06-R002-C-REFERENCE-DEVICE-20261117",
+  "observed_at": "2026-11-18T12:25:37+08:00",
+  "competition_problem": {
+    "problem_id": "6ad9ab403ff2fef7e80e2a1d",
+    "cann_version": "9.1.0",
+    "judge_revision": 0,
+    "requirement": "Match the built-in TBE PadV3Grad, support legal inputs, and pass all tests.",
+    "float_tolerance": 0.0001,
+    "source": "https://cannjudge.cn/api/problems/6ad9ab403ff2fef7e80e2a1d"
+  },
+  "ops_math_evidence": {
+    "repository": "https://gitcode.com/cann/ops-math",
+    "commit": "3b2baac63624c32e03781bd9f0290f1a4584f0c7",
+    "commit_date": "2026-11-17T21:00:49+08:00",
+    "reflect_rule": "padFront and padBack must be less than InferredOutShape",
+    "reflect_rule_file": "pad_v3_grad/op_host/arch35/pad_v3_grad_tiling_arch35.cpp",
+    "reflect_rule_lines": "548-558",
+    "reflect_rule_file_sha256": "1a465cd6c3820b3c23f290b284ffbef8ccd52247a24443db18a7c780fdb741af",
+    "edge_rule": "Replication padding values must be less than the corresponding self dimension; inferred output dimension is self dimension here.",
+    "edge_rule_files": [
+      {
+        "path": "pad_v3_grad_replicate/README.md",
+        "sha256": "e76933b3b0248266d39c5924090ca915db44159aff02682189a35d279e60c645"
+      },
+      {
+        "path": "pad_v3_grad_replicate/docs/aclnnReplicationPad2dBackward.md",
+        "sha256": "109ab2445b176ccf3cf092ec0b81872153bc6bfd60095707f0dccfcd53ed477b"
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "case_id": "reflect-periodic-old-candidate",
+      "mode": "reflect",
+      "inferred_output_dimension": 2,
+      "pad_front": 1,
+      "pad_back": 3,
+      "status": "invalid-for-formal-legal-matrix",
+      "reason": "padBack 3 is not less than inferred output dimension 2"
+    },
+    {
+      "case_id": "edge-legal-cancellation",
+      "mode": "edge",
+      "inferred_output_dimension": 3,
+      "pad_front": 2,
+      "pad_back": 0,
+      "status": "legal-candidate",
+      "reason": "edge mode; padFront 2 is less than inferred output dimension 3 and padBack is zero"
+    }
+  ],
+  "version_boundary": "The current CANN 9.1 ops-math source is strong legal-range evidence. Exact historical TBE validation was not separately recovered, so the frozen reference comment alone is not accepted as a legality proof."
+}

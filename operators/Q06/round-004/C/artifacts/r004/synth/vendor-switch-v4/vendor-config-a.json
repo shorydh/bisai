@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "requested_project_dir": "C:/Users/xi/AppData/Local/Temp/tmpm1odcwm1/projects/project-a",
+  "resolved_project_dir": "C:/Users/xi/AppData/Local/Temp/tmpm1odcwm1/projects/project-a",
+  "vendor_root": "C:/Users/xi/AppData/Local/Temp/tmpm1odcwm1/projects/project-a/build/packages/vendors/pad_v3_grad_custom",
+  "op_api_header": "C:/Users/xi/AppData/Local/Temp/tmpm1odcwm1/projects/project-a/build/packages/vendors/pad_v3_grad_custom/op_api/include/aclnn_pad_v3_grad.h",
+  "op_api_library": "C:/Users/xi/AppData/Local/Temp/tmpm1odcwm1/projects/project-a/build/packages/vendors/pad_v3_grad_custom/op_api/lib/libcust_opapi.so",
+  "header_sha256": "d1df53d3075293ab1da3f569a57181b1c1824ce1d69f009f7b34ac6e8797ff44",
+  "library_sha256": "31483ec2de3d027913dcb424efb1b80b59994bf2e6ba7f3a2a6b00a192f4979f",
+  "version_info": "C:/Users/xi/AppData/Local/Temp/tmpm1odcwm1/projects/project-a/build/packages/vendors/pad_v3_grad_custom/version.info",
+  "version_info_sha256": "35bbd9501391260687e46240cc728b0103e6712453062c3672863bd716037504"
+}

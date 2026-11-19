@@ -1,0 +1,88 @@
+{
+  "device_execution": true,
+  "cases": [
+    {
+      "case": "int32-contiguous",
+      "status": "PASS",
+      "actual": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "golden": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "abs_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rtol": 0.0001,
+      "atol": 0.0001
+    },
+    {
+      "case": "int32-split",
+      "status": "PASS",
+      "actual": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "golden": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "abs_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rtol": 0.0001,
+      "atol": 0.0001
+    },
+    {
+      "case": "int64-contiguous",
+      "status": "PASS",
+      "actual": [
+        0.0
+      ],
+      "golden": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "abs_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rtol": 0.0001,
+      "atol": 0.0001
+    },
+    {
+      "case": "int64-split",
+      "status": "PASS",
+      "actual": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "golden": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "abs_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "rtol": 0.0001,
+      "atol": 0.0001
+    }
+  ],
+  "all_pass": true
+}

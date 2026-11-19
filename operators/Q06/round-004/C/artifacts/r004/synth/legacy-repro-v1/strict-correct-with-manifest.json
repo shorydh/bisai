@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "task_id": "Q06-R004-C-RUNNER-VALIDATION",
+  "execution_mode": "synthetic",
+  "device_execution": false,
+  "synthetic_fixture": true,
+  "cases_root": "D:\\算子赛8\\work\\Q06\\round-004\\C\\operators\\Q06\\round-004\\C\\artifacts\\r004\\synth\\legacy-repro-v1\\cases-with-manifest",
+  "run_root": "D:\\算子赛8\\work\\Q06\\round-004\\C\\operators\\Q06\\round-004\\C\\artifacts\\r004\\synth\\legacy-repro-v1\\cases-with-manifest",
+  "manifest_sha256": "e6646b9c1cb03d023a5a5d073b8d12cd4bb6c0acc895e5287f3319ab744317f8",
+  "cases": [
+    {
+      "case_id": "int32-contiguous",
+      "status": "PASS",
+      "execution_mode": "synthetic",
+      "device_execution": false,
+      "input_sha256": {
+        "x": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+        "paddings": "edc0e40c3027d41914bf3144a08078742b337b96da8e503d4ff84bb6a8e97d55",
+        "golden": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+      },
+      "output_path": "D:\\算子赛8\\work\\Q06\\round-004\\C\\operators\\Q06\\round-004\\C\\artifacts\\r004\\synth\\legacy-repro-v1\\cases-with-manifest\\int32-contiguous\\output\\y.bin",
+      "output_bytes": 12,
+      "output_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b",
+      "actual": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "golden": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "abs_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "max_abs_error": 0.0,
+      "rtol": 0.0001,
+      "atol": 0.0001,
+      "reason": null
+    },
+    {
+      "case_id": "int32-split",
+      "status": "PASS",
+      "execution_mode": "synthetic",
+      "device_execution": false,
+      "input_sha256": {
+        "x": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+        "paddings": "18122cf13ab2412fa65cb693713794de6b30403b65688234a6fa940fc6d506ff",
+        "golden": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+      },
+      "output_path": "D:\\算子赛8\\work\\Q06\\round-004\\C\\operators\\Q06\\round-004\\C\\artifacts\\r004\\synth\\legacy-repro-v1\\cases-with-manifest\\int32-split\\output\\y.bin",
+      "output_bytes": 12,
+      "output_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b",
+      "actual": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "golden": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "abs_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "max_abs_error": 0.0,
+      "rtol": 0.0001,
+      "atol": 0.0001,
+      "reason": null
+    },
+    {
+      "case_id": "int64-contiguous",
+      "status": "PASS",
+      "execution_mode": "synthetic",
+      "device_execution": false,
+      "input_sha256": {
+        "x": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+        "paddings": "c7369912a28787eaa421384e7526e59514244343797b53382ec3666aa8890d44",
+        "golden": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+      },
+      "output_path": "D:\\算子赛8\\work\\Q06\\round-004\\C\\operators\\Q06\\round-004\\C\\artifacts\\r004\\synth\\legacy-repro-v1\\cases-with-manifest\\int64-contiguous\\output\\y.bin",
+      "output_bytes": 12,
+      "output_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b",
+      "actual": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "golden": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "abs_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "max_abs_error": 0.0,
+      "rtol": 0.0001,
+      "atol": 0.0001,
+      "reason": null
+    },
+    {
+      "case_id": "int64-split",
+      "status": "PASS",
+      "execution_mode": "synthetic",
+      "device_execution": false,
+      "input_sha256": {
+        "x": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+        "paddings": "44ffef2caac31aa58c323e8d54c4969e805140a8068e54c6948106fdfcf39ffb",
+        "golden": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+      },
+      "output_path": "D:\\算子赛8\\work\\Q06\\round-004\\C\\operators\\Q06\\round-004\\C\\artifacts\\r004\\synth\\legacy-repro-v1\\cases-with-manifest\\int64-split\\output\\y.bin",
+      "output_bytes": 12,
+      "output_sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b",
+      "actual": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "golden": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "abs_error": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "max_abs_error": 0.0,
+      "rtol": 0.0001,
+      "atol": 0.0001,
+      "reason": null
+    }
+  ],
+  "all_pass": true,
+  "contract_ok": true,
+  "manifest_variant_count": 4
+}

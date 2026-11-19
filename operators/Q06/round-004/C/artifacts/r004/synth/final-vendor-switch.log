@@ -1,0 +1,6 @@
+test_same_build_cache_switches_between_two_projects (round-004.C.artifacts.tests.test_vendor_switch.VendorSwitchTest.test_same_build_cache_switches_between_two_projects) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.281s
+
+OK

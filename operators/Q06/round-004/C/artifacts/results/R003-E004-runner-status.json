@@ -1,0 +1,22 @@
+{
+  "task_id": "Q06-R003-C-NUMERICAL-BOUNDARY",
+  "runner_prepared": true,
+  "kernel_modified": false,
+  "instrumentation_modified": false,
+  "compiled": false,
+  "device_executed": false,
+  "reason": "No active local CANN/NPU or CANNLab tunnel is available on this host.",
+  "expected_invocations": [
+    "int32-contiguous",
+    "int32-split",
+    "int64-contiguous",
+    "int64-split"
+  ],
+  "expected_golden": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "source_model_expectation_output_0": 1.0,
+  "output_file": "artifacts/device-runner/README.md"
+}

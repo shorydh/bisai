@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-19T11:13:03.300265+00:00",
+  "same_build_dir": "temporary ASCII probe directory",
+  "cmake": "D:\\\u7b97\u5b50\u8d5b8\\work\\Q06\\round-004\\.tools\\cmake\\cmake\\data\\bin\\cmake.exe",
+  "generator": "Ninja",
+  "observations": [
+    {
+      "marker": "a",
+      "project_dir": "C:\\Users\\xi\\AppData\\Local\\Temp\\tmpbv89ocgh\\projects\\project-a",
+      "configure_exit_code": 0,
+      "cache": "D:\\\u7b97\u5b50\u8d5b8\\work\\Q06\\round-004\\C\\operators\\Q06\\round-004\\C\\artifacts\\r004\\synth\\vendor-switch-v3\\CMakeCache-a.txt",
+      "vendor_config": "D:\\\u7b97\u5b50\u8d5b8\\work\\Q06\\round-004\\C\\operators\\Q06\\round-004\\C\\artifacts\\r004\\synth\\vendor-switch-v3\\vendor-config-a.json"
+    },
+    {
+      "marker": "b",
+      "project_dir": "C:\\Users\\xi\\AppData\\Local\\Temp\\tmpbv89ocgh\\projects\\project-b",
+      "configure_exit_code": 0,
+      "cache": "D:\\\u7b97\u5b50\u8d5b8\\work\\Q06\\round-004\\C\\operators\\Q06\\round-004\\C\\artifacts\\r004\\synth\\vendor-switch-v3\\CMakeCache-b.txt",
+      "vendor_config": "D:\\\u7b97\u5b50\u8d5b8\\work\\Q06\\round-004\\C\\operators\\Q06\\round-004\\C\\artifacts\\r004\\synth\\vendor-switch-v3\\vendor-config-b.json"
+    }
+  ],
+  "all_configure_pass": true
+}

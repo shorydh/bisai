@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+artifacts/source/P/build/
+artifacts/source/P/build_out/
+artifacts/source/F/build/
+artifacts/source/F/build_out/
+artifacts/r004/synth/vendor-switch/
+artifacts/r004/synth/vendor-switch-v2/
+artifacts/r004/synth/vendor-switch-v3/

@@ -1,0 +1,12 @@
+
+In operators\Q06\round-004\C\artifacts\device-runner\run_four_variants.sh line 21:
+OP_API_HEADER="$VENDOR_ROOT/op_api/include/aclnn_pad_v3_grad.h"
+^-----------^ SC2034 (warning): OP_API_HEADER appears unused. Verify use (or export if used externally).
+
+
+In operators\Q06\round-004\C\artifacts\device-runner\run_four_variants.sh line 23:
+VERSION_INFO="$VENDOR_ROOT/version.info"
+^----------^ SC2034 (warning): VERSION_INFO appears unused. Verify use (or export if used externally).
+
+For more information:
+  https://www.shellcheck.net/wiki/SC2034 -- OP_API_HEADER appears unused. Ver...

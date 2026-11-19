@@ -1,0 +1,92 @@
+{
+  "task_id": "Q06-R003-C-NUMERICAL-BOUNDARY",
+  "observed_at_utc": "2026-11-18T13:31:47.210501+00:00",
+  "audit_duration_seconds": 0.01172690000385046,
+  "source_results": {
+    "P": {
+      "seven_source_sha256": "d0b680d59d1dfa088dd24fff5d3128feb2758251bcd8d3b34b39635bad68f949",
+      "expected_ok": true,
+      "file_count": 38
+    },
+    "F": {
+      "seven_source_sha256": "700af8da3ef6679f48ebf8bbfa9d2f145d9357e9b6fd2e4f288542c662a1969b",
+      "expected_ok": true,
+      "file_count": 38
+    }
+  },
+  "device_inputs": [
+    {
+      "case_id": "int32-contiguous",
+      "actual": {
+        "x": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+        "paddings": "edc0e40c3027d41914bf3144a08078742b337b96da8e503d4ff84bb6a8e97d55",
+        "golden": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+      },
+      "matches_manifest": {
+        "x": true,
+        "paddings": true,
+        "golden": true
+      },
+      "mode": "edge",
+      "paddings_contiguous": true
+    },
+    {
+      "case_id": "int32-split",
+      "actual": {
+        "x": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+        "paddings": "18122cf13ab2412fa65cb693713794de6b30403b65688234a6fa940fc6d506ff",
+        "golden": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+      },
+      "matches_manifest": {
+        "x": true,
+        "paddings": true,
+        "golden": true
+      },
+      "mode": "edge",
+      "paddings_contiguous": false
+    },
+    {
+      "case_id": "int64-contiguous",
+      "actual": {
+        "x": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+        "paddings": "c7369912a28787eaa421384e7526e59514244343797b53382ec3666aa8890d44",
+        "golden": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+      },
+      "matches_manifest": {
+        "x": true,
+        "paddings": true,
+        "golden": true
+      },
+      "mode": "edge",
+      "paddings_contiguous": true
+    },
+    {
+      "case_id": "int64-split",
+      "actual": {
+        "x": "3579185fcbb48197725ba969c688363da3e791e77245b011307e62339aa85e26",
+        "paddings": "44ffef2caac31aa58c323e8d54c4969e805140a8068e54c6948106fdfcf39ffb",
+        "golden": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+      },
+      "matches_manifest": {
+        "x": true,
+        "paddings": true,
+        "golden": true
+      },
+      "mode": "edge",
+      "paddings_contiguous": false
+    }
+  ],
+  "a_cannlab": {
+    "reference_commit": "facfb39ece01643fa7f9452d09971f9ca4d2b246",
+    "arm": "P",
+    "build_exit_code": 0,
+    "build_pass": true,
+    "source_unchanged": true,
+    "source_hashes_match_local_P": true,
+    "log_sha256_matches": true,
+    "npu_test_executed": false,
+    "scope": "Supplemental cloud compilation after the official run; elapsed seconds describe build duration, not operator performance"
+  },
+  "errors": [],
+  "verified": true
+}

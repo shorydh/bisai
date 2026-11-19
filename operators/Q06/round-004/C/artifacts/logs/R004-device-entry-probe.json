@@ -1,0 +1,20 @@
+{
+  "task_id": "Q06-R004-C-RUNNER-VALIDATION",
+  "round_id": "round-004",
+  "agent_id": "C",
+  "observed_at": "2026-11-19T19:16:37.8419599+08:00",
+  "host": "DESKTOP-NKCLQ43",
+  "os": "Microsoft Windows NT 10.0.26200.0",
+  "npu_smi": false,
+  "msprof": false,
+  "ccec": false,
+  "bash": false,
+  "cmake_on_path": false,
+  "ascend_home_path": null,
+  "cannlab_31640_open": false,
+  "runner_executed": false,
+  "device_execution": false,
+  "actual_outputs": 0,
+  "reason": "No local CANN/NPU or authorized CANNLab entry is currently available; Windows host has no bash/CANN shell.",
+  "note": "The portable CMake used for routing tests is test tooling only and is not a CANN environment."
+}

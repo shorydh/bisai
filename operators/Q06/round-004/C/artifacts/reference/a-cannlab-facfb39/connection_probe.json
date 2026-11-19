@@ -1,0 +1,9 @@
+{
+  "connected": false,
+  "error": "[WinError 10061] 由于目标计算机积极拒绝，无法连接。",
+  "observed_at": "2026-11-17T12:18:23.745264+00:00",
+  "host": "127.0.0.1",
+  "port": 31640,
+  "build_executed": false,
+  "earlier_ssh_probe": "Timed out after 20 seconds; no remote command or build completion observed"
+}

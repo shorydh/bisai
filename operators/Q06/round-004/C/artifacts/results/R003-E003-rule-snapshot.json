@@ -1,0 +1,12 @@
+{
+  "observed_at": "2026-11-18T21:30:21+08:00",
+  "sha256": "7dacf2f37ec01c0355de2010f8f8605cf6194119c3acb9f888f25518df2ffc08",
+  "title": "PadV3Grad",
+  "cann_version": "9.1.0",
+  "judge_revision": 0,
+  "score_mode": 1,
+  "iterations": 5,
+  "ranking_submission_mode": "latest",
+  "testcases": 50,
+  "description": "#### **赛题概述**\r\n参考昇腾版本内置PadV3Grad算子的 TBE 实现，在昇腾 NPU 上基于 Ascend C 编程语言实现功能一致的算子, 完成算子设计、开发、测试全流程工作。\r\n##### **功能实现要求**\r\n与原 TBE 算子核心功能完全对齐，支持原算子对应的所有数据类型、数据格式，并且比较方式从二进制比较改为逻辑值比较。\r\n必须实现算子泛化功能，满足各类合法输入场景的计算需求。\r\n##### **测试标准**\r\n需参考内置 TBE 算子自行设计全场景自验证用例，测试阶段将采用泛化数据进行功能、精度、性能全维度验证，所有测试用例执行通过。\r\n##### **精度要求**\r\n算子计算精度需满足 CANN Judge平台对应题目精度默认阈值（float : 1e-4, half : 1e-3, int类型:0）。\r\n##### **问题答疑**\r\n相关技术问题请到对应开源仓提交issue：[https://gitcode.com/cann/ops-math/issues](https://gitcode.com/cann/ops-math/issues)"
+}
